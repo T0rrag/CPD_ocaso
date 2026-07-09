@@ -1,0 +1,50 @@
+{
+  "project" : "GITHUB integrado",
+  "projectId" : "8d6489f0-7052-47dd-9d0c-925b4335e952",
+  "created_by" : "cpadmin",
+  "created_at" : null,
+  "environment" : "cp4d",
+  "services_info" : [ {
+    "name" : "ds-canvas",
+    "version" : "531.0.49"
+  }, {
+    "name" : "ds-cas-lite",
+    "version" : "531.0.7"
+  }, {
+    "name" : "ds-codegen",
+    "version" : "531.0.49"
+  }, {
+    "name" : "ds-flow-runtime",
+    "version" : "531.0.11"
+  }, {
+    "name" : "ds-flows",
+    "version" : "531.0.49"
+  }, {
+    "name" : "ds-migration",
+    "version" : "531.0.21"
+  }, {
+    "name" : "ds-px-runtime",
+    "version" : "531.0.31"
+  }, {
+    "name" : "DSAssets",
+    "version" : "531.0.7"
+  } ],
+  "assets" : [ {
+    "name" : "Flow",
+    "type" : "px_executables",
+    "location" : "Flow"
+  }, {
+    "name" : "default_datastage_px",
+    "type" : "environment"
+  }, {
+    "name" : "8d6489f0-7052-47dd-9d0c-925b4335e952-DataStage_settings",
+    "type" : "data_intg_project_settings"
+  }, {
+    "name" : "Flow",
+    "type" : "data_intg_flow"
+  }, {
+    "name" : "Flow.DataStage job",
+    "type" : "job"
+  } ],
+  "flow_job_mapping" : [ ]
+}
