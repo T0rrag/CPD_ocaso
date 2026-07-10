@@ -1,0 +1,1209 @@
+{
+  "app_data" : {
+    "pipeline_data" : {
+      "caching_method" : "automatic",
+      "default_cache_mode" : "never",
+      "default_error_policy" : "continue_on_error",
+      "parameter_sets" : [ ],
+      "validation" : {
+        "valid" : false,
+        "validated_at" : "2026-07-10 08:18:26.305793777 +0000 UTC"
+      },
+      "variables" : [ ],
+      "version" : "12.0"
+    },
+    "ui_data" : {
+      "settings" : {
+        "auto_link_color" : true,
+        "autosave" : false,
+        "enable_ds_funcs" : true,
+        "limit_ab_jobs_scope" : true,
+        "shape_nodes" : true
+      }
+    }
+  },
+  "doc_type" : "pipeline",
+  "id" : "2878f494-6b8b-4022-9ee7-c4d9a9ba331d",
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "pipelines" : [ {
+    "app_data" : {
+      "pipeline_data" : {
+        "inputs" : [ {
+          "default" : "No",
+          "description" : "Inicializar SCD Type 2",
+          "name" : "Reset",
+          "type" : "Enum",
+          "valid_values" : [ "No", "Si" ]
+        }, {
+          "default" : 5,
+          "description" : "Número de años a tratar en filas de hechos",
+          "name" : "NumYears",
+          "type" : "Integer"
+        }, {
+          "default" : 15000,
+          "description" : "Número de filas de hechos a generar",
+          "name" : "NumFacts",
+          "type" : "Integer"
+        }, {
+          "default" : "/opt/workshops/files/DATASTAGE/sectionE/Ficheros",
+          "description" : "SalesPath",
+          "name" : "SalesPath",
+          "type" : "String"
+        }, {
+          "default" : "DSDB",
+          "description" : "APT_DBNAME",
+          "name" : "APT_DBNAME",
+          "type" : "String"
+        } ]
+      },
+      "ui_data" : {
+        "asset_metadata" : {
+          "086bc8c3-15ab-4b1a-adad-7743a7c864e3" : {
+            "name" : "DATASTAGE test project"
+          },
+          "default-asset-id_00b22e4c-c2ed-4be0-9ca1-b05528a7827a" : {
+            "name" : "SCD2_Reset.DataStage job",
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "job",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            }
+          },
+          "default-asset-id_5dff409e-f4cf-4cb5-896d-65fdcdfe61cb" : {
+            "name" : "SCD2_Facts.DataStage job",
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "job",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            }
+          },
+          "default-asset-id_c03211e7-dcdc-4f51-a1c3-a8583654b6c5" : {
+            "name" : "SCD2_Dims.DataStage job",
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "job",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            }
+          },
+          "default-asset-id_e455c869-a689-4866-af01-9bc9eb319721" : {
+            "name" : "SCD2_SKG.DataStage job",
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "job",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            }
+          }
+        },
+        "comments" : [ ],
+        "exception_handler_x_pos" : -80,
+        "exception_handler_y_pos" : -80,
+        "zoom" : {
+          "k" : 0.8,
+          "x" : 22.4,
+          "y" : 81.6
+        }
+      }
+    },
+    "id" : "9c9fe33d-799c-45e6-b64b-513a2ea9b87b",
+    "nodes" : [ {
+      "app_data" : {
+        "componentGroup" : "wait",
+        "componentLabelRef" : "Nested condition",
+        "groups" : {
+          "inputs" : { },
+          "outputs" : { }
+        },
+        "pipeline_data" : {
+          "config" : {
+            "link" : {
+              "component_id_ref" : "wait-sequencer-all",
+              "component_version_id_ref" : "wait-sequencer-all-1"
+            }
+          },
+          "inputs" : [ ],
+          "name" : "cond1",
+          "outputs" : [ ]
+        },
+        "ui_data" : {
+          "decorations" : [ {
+            "class_name" : "oflow-node-type-label",
+            "id" : "cond1_type_label",
+            "label" : "Nested condition",
+            "position" : "middleCenter",
+            "x_pos" : -63,
+            "y_pos" : 13
+          } ],
+          "image" : "/pipelines/graphics/orchestration-flows/nodes/wait/wait_for_all_result.svg",
+          "label" : "NC_Reset",
+          "x_pos" : 72,
+          "y_pos" : 216
+        },
+        "validators" : { }
+      },
+      "id" : "cond1",
+      "inputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "cardinality" : {
+              "max" : -1,
+              "min" : 0
+            },
+            "class_name" : "oflow-node-port",
+            "label" : "Input Port"
+          }
+        },
+        "id" : "inPort"
+      } ],
+      "op" : "run_container",
+      "outputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "label" : ""
+          }
+        },
+        "id" : "outPort"
+      } ],
+      "type" : "execution_node"
+    }, {
+      "app_data" : {
+        "componentGroup" : "wait",
+        "componentLabelRef" : "Sequencer Any",
+        "groups" : {
+          "inputs" : { },
+          "outputs" : { }
+        },
+        "pipeline_data" : {
+          "config" : {
+            "link" : {
+              "component_id_ref" : "wait-sequencer-any",
+              "component_version_id_ref" : "wait-sequencer-any-1"
+            }
+          },
+          "inputs" : [ ],
+          "name" : "seq1",
+          "outputs" : [ ]
+        },
+        "ui_data" : {
+          "decorations" : [ {
+            "class_name" : "oflow-node-type-label",
+            "id" : "seq1_type_label",
+            "label" : "Sequencer Any",
+            "position" : "middleCenter",
+            "x_pos" : -63,
+            "y_pos" : 13
+          } ],
+          "image" : "/pipelines/graphics/orchestration-flows/nodes/wait/wait_for_any_result.svg",
+          "label" : "SQ_Reset",
+          "x_pos" : 408,
+          "y_pos" : 216
+        },
+        "validators" : { }
+      },
+      "id" : "seq1",
+      "inputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "label" : ""
+          }
+        },
+        "id" : "inPort",
+        "links" : [ {
+          "app_data" : {
+            "pipeline_data" : {
+              "condition" : {
+                "expression" : "params.Reset == 'No'"
+              },
+              "condition_name" : "Lnk_WaitReset",
+              "condition_type" : "advanced"
+            },
+            "ui_data" : {
+              "decorations" : [ {
+                "class_name" : "condition-decorator-simple",
+                "height" : 40,
+                "hotspot" : true,
+                "id" : "assocDecSimplePill",
+                "image" : "/pipelines/graphics/orchestration-flows/link/edit-condition-pill.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 150,
+                "x_pos" : -75,
+                "y_pos" : -20
+              }, {
+                "class_name" : "condition-decorator-simple-text",
+                "height" : 16,
+                "id" : "assocDecSimpleText",
+                "label" : "Lnk_WaitReset",
+                "position" : "middle",
+                "width" : 84,
+                "x_pos" : -59,
+                "y_pos" : -8
+              } ],
+              "style" : {
+                "line" : {
+                  "default" : "stroke: var(--link-col-complex)",
+                  "hover" : "stroke: var(--link-col-complex); stroke-width: 3"
+                }
+              }
+            }
+          },
+          "id" : "cf5ef479-45f8-49a5-b879-3165a80d7ee1",
+          "node_id_ref" : "cond1",
+          "port_id_ref" : "outPort"
+        }, {
+          "app_data" : {
+            "ui_data" : {
+              "decorations" : [ {
+                "class_name" : "condition-decorator-add",
+                "height" : 16,
+                "hotspot" : true,
+                "id" : "assocDecAdd",
+                "image" : "/pipelines/graphics/orchestration-flows/add-condition.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 16,
+                "x_pos" : -8,
+                "y_pos" : -8
+              }, {
+                "class_name" : "condition-decorator-add-hover",
+                "height" : 40,
+                "hotspot" : true,
+                "id" : "assocDecAddPill",
+                "image" : "/pipelines/graphics/orchestration-flows/link/add-condition-pill.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 150,
+                "x_pos" : -75,
+                "y_pos" : -20
+              }, {
+                "class_name" : "condition-decorator-add-hover",
+                "height" : 16,
+                "id" : "assocDecAddText",
+                "label" : "Add condition",
+                "position" : "middle",
+                "width" : 84,
+                "x_pos" : -59,
+                "y_pos" : -12
+              } ]
+            }
+          },
+          "id" : "c52b30c1-11a8-46bb-9ff1-7906017e2ff2",
+          "node_id_ref" : "job1",
+          "port_id_ref" : "outPort"
+        } ]
+      } ],
+      "op" : "run_container",
+      "outputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "label" : ""
+          }
+        },
+        "id" : "outPort"
+      } ],
+      "type" : "execution_node"
+    }, {
+      "app_data" : {
+        "componentGroup" : "run",
+        "componentLabelRef" : "Run DataStage job",
+        "groups" : {
+          "inputs" : {
+            "env_variables" : {
+              "description" : "Optional. Additional environment variables passed to the shell in form of multiline string (e.g. `VAR1=value1\\nVAR2=value2`).",
+              "human_name" : "Environment Variables",
+              "name" : "env_variables",
+              "optional" : true,
+              "type" : "DynamicParamSet"
+            },
+            "job_parameters" : {
+              "description" : "Optional. Additional job parameters passed to the job run.",
+              "descriptive_name" : "Job Parameters",
+              "human_name" : "Job Parameters",
+              "name" : "job_parameters",
+              "optional" : true,
+              "type" : "JobParameters"
+            },
+            "parameter_sets" : {
+              "description" : "Additional parameter sets passed to the job run.",
+              "descriptive_name" : "Parameter sets",
+              "human_name" : "Parameter sets",
+              "name" : "parameter_sets",
+              "optional" : true,
+              "pass_style" : "file",
+              "type" : "ParameterSets"
+            }
+          },
+          "outputs" : {
+            "output_variables" : {
+              "description" : "Custom outputs variables",
+              "human_name" : "Output Variables",
+              "name" : "output_variables",
+              "type" : "DynamicParamSet"
+            }
+          }
+        },
+        "pipeline_data" : {
+          "cache_mode" : "never",
+          "config" : {
+            "link" : {
+              "component_id_ref" : "run-datastage-job",
+              "component_version_id_ref" : "run-datastage-job-1"
+            }
+          },
+          "inputs" : [ {
+            "allowed_scopes" : [ "space", "project" ],
+            "description" : "Required. CPD path of the DataStage job to be run.",
+            "human_name" : "DataStage Job",
+            "name" : "job",
+            "related_asset_type" : "data_intg_flow",
+            "source_of_scope" : true,
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "job",
+                "job_asset_type" : "data_intg_flow",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            },
+            "ui_data" : {
+              "assetInputType" : "exact",
+              "inputType" : "SELECT_RESOURCE",
+              "inputTypes" : {
+                "selected-node-values-job-input" : "SELECT_RESOURCE"
+              },
+              "scopeType" : "project"
+            },
+            "value" : ""
+          }, {
+            "description" : "Optional. An action taken when the run has failed.",
+            "human_name" : "Error Policy",
+            "name" : "error_policy",
+            "type" : "ErrorPolicy",
+            "ui_data" : {
+              "inputType" : "SELECT_RESOURCE"
+            },
+            "value" : "continue_on_error"
+          } ],
+          "name" : "job1",
+          "outputs" : [ {
+            "description" : "The status of the job. One of: \"Completed\", \"CompletedWithWarnings\", \"CompletedWithErrors\", \"Failed\", \"Canceled\"",
+            "human_name" : "Execution Status",
+            "name" : "status",
+            "type" : "ExecutionStatus"
+          }, {
+            "description" : "Message associated with the status.",
+            "human_name" : "Status Message",
+            "name" : "status_message",
+            "type" : "String"
+          }, {
+            "human_name" : "Job",
+            "name" : "job",
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "job",
+                "job_asset_type" : "data_intg_flow",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            }
+          }, {
+            "human_name" : "Job Run",
+            "name" : "job_run",
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "job_run",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            }
+          }, {
+            "human_name" : "Job Name",
+            "name" : "job_name",
+            "type" : "String"
+          }, {
+            "human_name" : "Job Name with Invocation id",
+            "name" : "resolved_job_name",
+            "type" : "String"
+          }, {
+            "human_name" : "User Status",
+            "name" : "user_status",
+            "type" : "String"
+          }, {
+            "annotations" : {
+              "human_name" : "Job Run Name"
+            },
+            "name" : "job_run_name",
+            "type" : "String"
+          } ]
+        },
+        "ui_data" : {
+          "decorations" : [ {
+            "class_name" : "oflow-node-type-label",
+            "id" : "job1_type_label",
+            "label" : "Run DataStage job",
+            "position" : "middleCenter",
+            "x_pos" : -63,
+            "y_pos" : 13
+          } ],
+          "image" : "/pipelines/graphics/orchestration-flows/nodes/run/datastage_flow.svg",
+          "label" : "JA_SKG",
+          "x_pos" : 312,
+          "y_pos" : 48
+        },
+        "validators" : { }
+      },
+      "id" : "job1",
+      "inputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "cardinality" : {
+              "max" : -1,
+              "min" : 0
+            },
+            "class_name" : "oflow-node-port",
+            "label" : "Input Port"
+          }
+        },
+        "id" : "inPort",
+        "links" : [ {
+          "app_data" : {
+            "ui_data" : {
+              "decorations" : [ {
+                "class_name" : "condition-decorator-add",
+                "height" : 16,
+                "hotspot" : true,
+                "id" : "assocDecAdd",
+                "image" : "/pipelines/graphics/orchestration-flows/add-condition.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 16,
+                "x_pos" : -8,
+                "y_pos" : -8
+              }, {
+                "class_name" : "condition-decorator-add-hover",
+                "height" : 40,
+                "hotspot" : true,
+                "id" : "assocDecAddPill",
+                "image" : "/pipelines/graphics/orchestration-flows/link/add-condition-pill.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 150,
+                "x_pos" : -75,
+                "y_pos" : -20
+              }, {
+                "class_name" : "condition-decorator-add-hover",
+                "height" : 16,
+                "id" : "assocDecAddText",
+                "label" : "Add condition",
+                "position" : "middle",
+                "width" : 84,
+                "x_pos" : -59,
+                "y_pos" : -12
+              } ]
+            }
+          },
+          "id" : "7f0b4705-6fb8-4edc-a8b0-5f0c184c5055",
+          "node_id_ref" : "job2",
+          "port_id_ref" : "outPort"
+        } ]
+      } ],
+      "op" : "run_container",
+      "outputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "label" : ""
+          }
+        },
+        "id" : "outPort"
+      } ],
+      "type" : "execution_node"
+    }, {
+      "app_data" : {
+        "componentGroup" : "run",
+        "componentLabelRef" : "Run DataStage job",
+        "groups" : {
+          "inputs" : {
+            "env_variables" : {
+              "description" : "Optional. Additional environment variables passed to the shell in form of multiline string (e.g. `VAR1=value1\\nVAR2=value2`).",
+              "human_name" : "Environment Variables",
+              "name" : "env_variables",
+              "optional" : true,
+              "type" : "DynamicParamSet"
+            },
+            "job_parameters" : {
+              "description" : "Optional. Additional job parameters passed to the job run.",
+              "descriptive_name" : "Job Parameters",
+              "human_name" : "Job Parameters",
+              "name" : "job_parameters",
+              "optional" : true,
+              "type" : "JobParameters"
+            },
+            "parameter_sets" : {
+              "description" : "Additional parameter sets passed to the job run.",
+              "descriptive_name" : "Parameter sets",
+              "human_name" : "Parameter sets",
+              "name" : "parameter_sets",
+              "optional" : true,
+              "pass_style" : "file",
+              "type" : "ParameterSets"
+            }
+          },
+          "outputs" : {
+            "output_variables" : {
+              "description" : "Custom outputs variables",
+              "human_name" : "Output Variables",
+              "name" : "output_variables",
+              "type" : "DynamicParamSet"
+            }
+          }
+        },
+        "pipeline_data" : {
+          "cache_mode" : "never",
+          "config" : {
+            "link" : {
+              "component_id_ref" : "run-datastage-job",
+              "component_version_id_ref" : "run-datastage-job-1"
+            }
+          },
+          "inputs" : [ {
+            "allowed_scopes" : [ "space", "project" ],
+            "description" : "Required. CPD path of the DataStage job to be run.",
+            "human_name" : "DataStage Job",
+            "name" : "job",
+            "related_asset_type" : "data_intg_flow",
+            "source_of_scope" : true,
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "job",
+                "job_asset_type" : "data_intg_flow",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            },
+            "ui_data" : {
+              "assetInputType" : "exact",
+              "inputType" : "SELECT_RESOURCE",
+              "inputTypes" : {
+                "selected-node-values-job-input" : "SELECT_RESOURCE"
+              },
+              "scopeType" : "project"
+            },
+            "value" : ""
+          }, {
+            "description" : "Optional. An action taken when the run has failed.",
+            "human_name" : "Error Policy",
+            "name" : "error_policy",
+            "type" : "ErrorPolicy",
+            "ui_data" : {
+              "inputType" : "SELECT_RESOURCE"
+            },
+            "value" : "continue_on_error"
+          } ],
+          "name" : "job2",
+          "outputs" : [ {
+            "description" : "The status of the job. One of: \"Completed\", \"CompletedWithWarnings\", \"CompletedWithErrors\", \"Failed\", \"Canceled\"",
+            "human_name" : "Execution Status",
+            "name" : "status",
+            "type" : "ExecutionStatus"
+          }, {
+            "description" : "Message associated with the status.",
+            "human_name" : "Status Message",
+            "name" : "status_message",
+            "type" : "String"
+          }, {
+            "human_name" : "Job",
+            "name" : "job",
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "job",
+                "job_asset_type" : "data_intg_flow",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            }
+          }, {
+            "human_name" : "Job Run",
+            "name" : "job_run",
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "job_run",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            }
+          }, {
+            "human_name" : "Job Name",
+            "name" : "job_name",
+            "type" : "String"
+          }, {
+            "human_name" : "Job Name with Invocation id",
+            "name" : "resolved_job_name",
+            "type" : "String"
+          }, {
+            "human_name" : "User Status",
+            "name" : "user_status",
+            "type" : "String"
+          }, {
+            "annotations" : {
+              "human_name" : "Job Run Name"
+            },
+            "name" : "job_run_name",
+            "type" : "String"
+          } ]
+        },
+        "ui_data" : {
+          "decorations" : [ {
+            "class_name" : "oflow-node-type-label",
+            "id" : "job2_type_label",
+            "label" : "Run DataStage job",
+            "position" : "middleCenter",
+            "x_pos" : -63,
+            "y_pos" : 13
+          } ],
+          "image" : "/pipelines/graphics/orchestration-flows/nodes/run/datastage_flow.svg",
+          "label" : "JA_Reset",
+          "x_pos" : 168,
+          "y_pos" : 48
+        },
+        "validators" : { }
+      },
+      "id" : "job2",
+      "inputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "cardinality" : {
+              "max" : -1,
+              "min" : 0
+            },
+            "class_name" : "oflow-node-port",
+            "label" : "Input Port"
+          }
+        },
+        "id" : "inPort",
+        "links" : [ {
+          "app_data" : {
+            "pipeline_data" : {
+              "condition" : {
+                "expression" : "params.Reset == 'Si'"
+              },
+              "condition_name" : "Lnk_Reset_Dim",
+              "condition_type" : "advanced"
+            },
+            "ui_data" : {
+              "decorations" : [ {
+                "class_name" : "condition-decorator-simple",
+                "height" : 40,
+                "hotspot" : true,
+                "id" : "assocDecSimplePill",
+                "image" : "/pipelines/graphics/orchestration-flows/link/edit-condition-pill.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 150,
+                "x_pos" : -75,
+                "y_pos" : -20
+              }, {
+                "class_name" : "condition-decorator-simple-text",
+                "height" : 16,
+                "id" : "assocDecSimpleText",
+                "label" : "Lnk_Reset_Dim",
+                "position" : "middle",
+                "width" : 84,
+                "x_pos" : -59,
+                "y_pos" : -8
+              } ],
+              "style" : {
+                "line" : {
+                  "default" : "stroke: var(--link-col-complex)",
+                  "hover" : "stroke: var(--link-col-complex); stroke-width: 3"
+                }
+              }
+            }
+          },
+          "id" : "7a1a94e1-84ca-407d-9728-e452b5a04ec8",
+          "node_id_ref" : "cond1",
+          "port_id_ref" : "outPort"
+        } ]
+      } ],
+      "op" : "run_container",
+      "outputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "label" : ""
+          }
+        },
+        "id" : "outPort"
+      } ],
+      "type" : "execution_node"
+    }, {
+      "app_data" : {
+        "componentGroup" : "run",
+        "componentLabelRef" : "Run DataStage job",
+        "groups" : {
+          "inputs" : {
+            "env_variables" : {
+              "description" : "Optional. Additional environment variables passed to the shell in form of multiline string (e.g. `VAR1=value1\\nVAR2=value2`).",
+              "human_name" : "Environment Variables",
+              "name" : "env_variables",
+              "optional" : true,
+              "type" : "DynamicParamSet"
+            },
+            "job_parameters" : {
+              "description" : "Optional. Additional job parameters passed to the job run.",
+              "descriptive_name" : "Job Parameters",
+              "human_name" : "Job Parameters",
+              "name" : "job_parameters",
+              "optional" : true,
+              "type" : "JobParameters"
+            },
+            "parameter_sets" : {
+              "description" : "Additional parameter sets passed to the job run.",
+              "descriptive_name" : "Parameter sets",
+              "human_name" : "Parameter sets",
+              "name" : "parameter_sets",
+              "optional" : true,
+              "pass_style" : "file",
+              "type" : "ParameterSets"
+            }
+          },
+          "outputs" : {
+            "output_variables" : {
+              "description" : "Custom outputs variables",
+              "human_name" : "Output Variables",
+              "name" : "output_variables",
+              "type" : "DynamicParamSet"
+            }
+          }
+        },
+        "pipeline_data" : {
+          "cache_mode" : "never",
+          "config" : {
+            "link" : {
+              "component_id_ref" : "run-datastage-job",
+              "component_version_id_ref" : "run-datastage-job-1"
+            }
+          },
+          "inputs" : [ {
+            "allowed_scopes" : [ "space", "project" ],
+            "description" : "Required. CPD path of the DataStage job to be run.",
+            "human_name" : "DataStage Job",
+            "name" : "job",
+            "related_asset_type" : "data_intg_flow",
+            "source_of_scope" : true,
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "job",
+                "job_asset_type" : "data_intg_flow",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            },
+            "ui_data" : {
+              "assetInputType" : "exact",
+              "inputType" : "SELECT_RESOURCE",
+              "inputTypes" : {
+                "selected-node-values-job-input" : "SELECT_RESOURCE"
+              },
+              "scopeType" : "project"
+            },
+            "value" : ""
+          }, {
+            "description" : "Optional. An action taken when the run has failed.",
+            "human_name" : "Error Policy",
+            "name" : "error_policy",
+            "type" : "ErrorPolicy",
+            "ui_data" : {
+              "inputType" : "SELECT_RESOURCE"
+            },
+            "value" : "continue_on_error"
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter NumYears",
+            "name" : "NumYears",
+            "type" : "Integer",
+            "value_from" : {
+              "expression" : "params.NumYears"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter NumFacts",
+            "name" : "NumFacts",
+            "type" : "Integer",
+            "value_from" : {
+              "expression" : "params.NumFacts"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter Ahora",
+            "name" : "Ahora",
+            "type" : "String",
+            "value_from" : {
+              "expression" : "ds.Oconv(string(ds.Date()),'D-YMD[4,2,2]') + ' ' + ds.Oconv(ds.Time(),'MTS')"
+            }
+          } ],
+          "name" : "job3",
+          "outputs" : [ {
+            "description" : "The status of the job. One of: \"Completed\", \"CompletedWithWarnings\", \"CompletedWithErrors\", \"Failed\", \"Canceled\"",
+            "human_name" : "Execution Status",
+            "name" : "status",
+            "type" : "ExecutionStatus"
+          }, {
+            "description" : "Message associated with the status.",
+            "human_name" : "Status Message",
+            "name" : "status_message",
+            "type" : "String"
+          }, {
+            "human_name" : "Job",
+            "name" : "job",
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "job",
+                "job_asset_type" : "data_intg_flow",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            }
+          }, {
+            "human_name" : "Job Run",
+            "name" : "job_run",
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "job_run",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            }
+          }, {
+            "human_name" : "Job Name",
+            "name" : "job_name",
+            "type" : "String"
+          }, {
+            "human_name" : "Job Name with Invocation id",
+            "name" : "resolved_job_name",
+            "type" : "String"
+          }, {
+            "human_name" : "User Status",
+            "name" : "user_status",
+            "type" : "String"
+          }, {
+            "annotations" : {
+              "human_name" : "Job Run Name"
+            },
+            "name" : "job_run_name",
+            "type" : "String"
+          } ]
+        },
+        "ui_data" : {
+          "decorations" : [ {
+            "class_name" : "oflow-node-type-label",
+            "id" : "job3_type_label",
+            "label" : "Run DataStage job",
+            "position" : "middleCenter",
+            "x_pos" : -63,
+            "y_pos" : 13
+          } ],
+          "image" : "/pipelines/graphics/orchestration-flows/nodes/run/datastage_flow.svg",
+          "label" : "JA_Dims",
+          "x_pos" : 600,
+          "y_pos" : 216
+        },
+        "validators" : { }
+      },
+      "id" : "job3",
+      "inputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "cardinality" : {
+              "max" : -1,
+              "min" : 0
+            },
+            "class_name" : "oflow-node-port",
+            "label" : "Input Port"
+          }
+        },
+        "id" : "inPort",
+        "links" : [ {
+          "app_data" : {
+            "ui_data" : {
+              "decorations" : [ {
+                "class_name" : "condition-decorator-add",
+                "height" : 16,
+                "hotspot" : true,
+                "id" : "assocDecAdd",
+                "image" : "/pipelines/graphics/orchestration-flows/add-condition.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 16,
+                "x_pos" : -8,
+                "y_pos" : -8
+              }, {
+                "class_name" : "condition-decorator-add-hover",
+                "height" : 40,
+                "hotspot" : true,
+                "id" : "assocDecAddPill",
+                "image" : "/pipelines/graphics/orchestration-flows/link/add-condition-pill.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 150,
+                "x_pos" : -75,
+                "y_pos" : -20
+              }, {
+                "class_name" : "condition-decorator-add-hover",
+                "height" : 16,
+                "id" : "assocDecAddText",
+                "label" : "Add condition",
+                "position" : "middle",
+                "width" : 84,
+                "x_pos" : -59,
+                "y_pos" : -12
+              } ]
+            }
+          },
+          "id" : "edf218b1-c831-40ea-a33d-b89d5f3810fa",
+          "node_id_ref" : "seq1",
+          "port_id_ref" : "outPort"
+        } ]
+      } ],
+      "op" : "run_container",
+      "outputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "label" : ""
+          }
+        },
+        "id" : "outPort"
+      } ],
+      "type" : "execution_node"
+    }, {
+      "app_data" : {
+        "componentGroup" : "run",
+        "componentLabelRef" : "Run DataStage job",
+        "groups" : {
+          "inputs" : {
+            "env_variables" : {
+              "description" : "Optional. Additional environment variables passed to the shell in form of multiline string (e.g. `VAR1=value1\\nVAR2=value2`).",
+              "human_name" : "Environment Variables",
+              "name" : "env_variables",
+              "optional" : true,
+              "type" : "DynamicParamSet"
+            },
+            "job_parameters" : {
+              "description" : "Optional. Additional job parameters passed to the job run.",
+              "descriptive_name" : "Job Parameters",
+              "human_name" : "Job Parameters",
+              "name" : "job_parameters",
+              "optional" : true,
+              "type" : "JobParameters"
+            },
+            "parameter_sets" : {
+              "description" : "Additional parameter sets passed to the job run.",
+              "descriptive_name" : "Parameter sets",
+              "human_name" : "Parameter sets",
+              "name" : "parameter_sets",
+              "optional" : true,
+              "pass_style" : "file",
+              "type" : "ParameterSets"
+            }
+          },
+          "outputs" : {
+            "output_variables" : {
+              "description" : "Custom outputs variables",
+              "human_name" : "Output Variables",
+              "name" : "output_variables",
+              "type" : "DynamicParamSet"
+            }
+          }
+        },
+        "pipeline_data" : {
+          "cache_mode" : "never",
+          "config" : {
+            "link" : {
+              "component_id_ref" : "run-datastage-job",
+              "component_version_id_ref" : "run-datastage-job-1"
+            }
+          },
+          "inputs" : [ {
+            "allowed_scopes" : [ "space", "project" ],
+            "description" : "Required. CPD path of the DataStage job to be run.",
+            "human_name" : "DataStage Job",
+            "name" : "job",
+            "related_asset_type" : "data_intg_flow",
+            "source_of_scope" : true,
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "job",
+                "job_asset_type" : "data_intg_flow",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            },
+            "ui_data" : {
+              "assetInputType" : "exact",
+              "inputType" : "SELECT_RESOURCE",
+              "inputTypes" : {
+                "selected-node-values-job-input" : "SELECT_RESOURCE"
+              },
+              "scopeType" : "project"
+            },
+            "value" : ""
+          }, {
+            "description" : "Optional. An action taken when the run has failed.",
+            "human_name" : "Error Policy",
+            "name" : "error_policy",
+            "type" : "ErrorPolicy",
+            "ui_data" : {
+              "inputType" : "SELECT_RESOURCE"
+            },
+            "value" : "continue_on_error"
+          } ],
+          "name" : "job4",
+          "outputs" : [ {
+            "description" : "The status of the job. One of: \"Completed\", \"CompletedWithWarnings\", \"CompletedWithErrors\", \"Failed\", \"Canceled\"",
+            "human_name" : "Execution Status",
+            "name" : "status",
+            "type" : "ExecutionStatus"
+          }, {
+            "description" : "Message associated with the status.",
+            "human_name" : "Status Message",
+            "name" : "status_message",
+            "type" : "String"
+          }, {
+            "human_name" : "Job",
+            "name" : "job",
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "job",
+                "job_asset_type" : "data_intg_flow",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            }
+          }, {
+            "human_name" : "Job Run",
+            "name" : "job_run",
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "job_run",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            }
+          }, {
+            "human_name" : "Job Name",
+            "name" : "job_name",
+            "type" : "String"
+          }, {
+            "human_name" : "Job Name with Invocation id",
+            "name" : "resolved_job_name",
+            "type" : "String"
+          }, {
+            "human_name" : "User Status",
+            "name" : "user_status",
+            "type" : "String"
+          }, {
+            "annotations" : {
+              "human_name" : "Job Run Name"
+            },
+            "name" : "job_run_name",
+            "type" : "String"
+          } ]
+        },
+        "ui_data" : {
+          "decorations" : [ {
+            "class_name" : "oflow-node-type-label",
+            "id" : "job4_type_label",
+            "label" : "Run DataStage job",
+            "position" : "middleCenter",
+            "x_pos" : -63,
+            "y_pos" : 13
+          } ],
+          "image" : "/pipelines/graphics/orchestration-flows/nodes/run/datastage_flow.svg",
+          "label" : "JA_Sales",
+          "x_pos" : 792,
+          "y_pos" : 216
+        },
+        "validators" : { }
+      },
+      "id" : "job4",
+      "inputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "cardinality" : {
+              "max" : -1,
+              "min" : 0
+            },
+            "class_name" : "oflow-node-port",
+            "label" : "Input Port"
+          }
+        },
+        "id" : "inPort",
+        "links" : [ {
+          "app_data" : {
+            "ui_data" : {
+              "decorations" : [ {
+                "class_name" : "condition-decorator-add",
+                "height" : 16,
+                "hotspot" : true,
+                "id" : "assocDecAdd",
+                "image" : "/pipelines/graphics/orchestration-flows/add-condition.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 16,
+                "x_pos" : -8,
+                "y_pos" : -8
+              }, {
+                "class_name" : "condition-decorator-add-hover",
+                "height" : 40,
+                "hotspot" : true,
+                "id" : "assocDecAddPill",
+                "image" : "/pipelines/graphics/orchestration-flows/link/add-condition-pill.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 150,
+                "x_pos" : -75,
+                "y_pos" : -20
+              }, {
+                "class_name" : "condition-decorator-add-hover",
+                "height" : 16,
+                "id" : "assocDecAddText",
+                "label" : "Add condition",
+                "position" : "middle",
+                "width" : 84,
+                "x_pos" : -59,
+                "y_pos" : -12
+              } ]
+            }
+          },
+          "id" : "a82d4731-e9b2-42b1-8655-d9802846826f",
+          "node_id_ref" : "job3",
+          "port_id_ref" : "outPort"
+        } ]
+      } ],
+      "op" : "run_container",
+      "outputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "cardinality" : {
+              "max" : -1,
+              "min" : 0
+            },
+            "class_name" : "oflow-node-port",
+            "label" : "Output Port"
+          }
+        },
+        "id" : "outPort"
+      } ],
+      "type" : "execution_node"
+    } ],
+    "runtime_ref" : "kfp"
+  } ],
+  "primary_pipeline" : "9c9fe33d-799c-45e6-b64b-513a2ea9b87b",
+  "schemas" : [ ],
+  "version" : "3.0"
+}

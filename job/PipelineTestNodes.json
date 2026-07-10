@@ -1,0 +1,28 @@
+{
+  "metadata" : {
+    "name" : "PipelineTestNodes",
+    "asset_id" : "bd66b31e-4ac8-4b42-8fbd-28a3f0e2f5a3",
+    "owner_id" : "1000331001",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "f4007afc-ed60-48f3-b9c8-3735b5cd2ef9",
+      "schedule_id" : "",
+      "project_name" : "GITHUB integrado",
+      "configuration" : {
+        "env_type" : "",
+        "env_variables" : [ ]
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "orchestration_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "PipelineTestNodes"
+    }
+  }
+}

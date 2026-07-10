@@ -1,0 +1,24 @@
+{
+  "name" : "FunctionLibraryTest",
+  "description" : "",
+  "asset_type" : "data_intg_parallel_function",
+  "entity" : {
+    "functions" : [ {
+      "return_type" : "int",
+      "updated_on" : "Thu Mar 20 2025 16:14:43 GMT+0100 (Central European Standard Time)",
+      "description" : "",
+      "arguments" : [ {
+        "data_type" : "char*",
+        "name" : "arg_0",
+        "description" : "",
+        "id" : "0"
+      } ],
+      "id" : "0",
+      "display_name" : "LimpiaCampo",
+      "routine_name" : "LimpiaCampo"
+    } ],
+    "dependency" : [ ],
+    "library_name" : "FunctionLibraryTest",
+    "type" : "functionlibrary"
+  }
+}

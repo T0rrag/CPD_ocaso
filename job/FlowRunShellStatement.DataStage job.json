@@ -1,0 +1,35 @@
+{
+  "metadata" : {
+    "name" : "FlowRunShellStatement.DataStage job",
+    "asset_id" : "83ac4bfb-8789-43c2-bcff-0cbe6d24296b",
+    "owner_id" : "1000331001",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "e90d8585-85fc-4b97-ac3b-49765287bd1b",
+      "schedule_id" : "",
+      "project_name" : "GITHUB integrado",
+      "configuration" : {
+        "env_type" : "",
+        "flow_limits" : { },
+        "env_variables" : [ ],
+        "runPriorityQueue" : "Medium"
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "data_intg_flow",
+      "job_parameters" : [ {
+        "name" : "ShellStatement",
+        "value" : "pwd; ls -l"
+      } ],
+      "last_run_status" : "deprecated field",
+      "retention_policy" : { },
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "FlowRunShellStatement"
+    }
+  }
+}

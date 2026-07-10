@@ -1,0 +1,234 @@
+{
+  "parameter_set" : {
+    "value_sets" : [ {
+      "values" : [ {
+        "name" : "ParameterString",
+        "value" : "Value 1"
+      }, {
+        "name" : "ParameterDate",
+        "value" : "1-01-01"
+      }, {
+        "name" : "ParameterEncrypted",
+        "value" : "{dsmenc}XYzn6jjefuBMAhWoswR1kGwHlpvKHmMzeNPeAqtzH8E/f4ZUprpmaSg5/O+261dW"
+      }, {
+        "name" : "ParameterList",
+        "value" : "Value 1"
+      }, {
+        "name" : "ParameterPath",
+        "value" : "/tmp1"
+      }, {
+        "name" : "ParameterInteger",
+        "value" : 1
+      }, {
+        "name" : "ParameterTimestamp",
+        "value" : "0001-01-01 01:01:01"
+      }, {
+        "name" : "ParameterTime",
+        "value" : "01:01:01"
+      }, {
+        "name" : "$APT_CONFIG_FILE",
+        "value" : "/opt/ibm/PXService/Server/config/default.apt"
+      }, {
+        "name" : "$APT_DISABLE_COMBINATION",
+        "value" : "True"
+      }, {
+        "name" : "$APT_DUMP_SCORE",
+        "value" : "True"
+      }, {
+        "name" : "$APT_PM_DUMP_SCHEMAS",
+        "value" : "True"
+      }, {
+        "name" : "$CC_MSG_LEVEL",
+        "value" : "3"
+      }, {
+        "name" : "$OSH_DUMP",
+        "value" : "True"
+      }, {
+        "name" : "$OSH_PRINT_SCHEMAS",
+        "value" : "True"
+      } ],
+      "name" : "Set1"
+    }, {
+      "values" : [ {
+        "name" : "ParameterString",
+        "value" : "Value 2"
+      }, {
+        "name" : "ParameterDate",
+        "value" : "2-02-02"
+      }, {
+        "name" : "ParameterEncrypted",
+        "value" : "{dsmenc}XYzn6jjefuBMAhWoswR1kGwHlpvKHmMzeNPeAqtzH8E/f4ZUprpmaSg5/O+261dW"
+      }, {
+        "name" : "ParameterList",
+        "value" : "Value 2"
+      }, {
+        "name" : "ParameterPath",
+        "value" : "/tmp2"
+      }, {
+        "name" : "ParameterInteger",
+        "value" : 2
+      }, {
+        "name" : "ParameterTimestamp",
+        "value" : "0002-02-02 02:02:02"
+      }, {
+        "name" : "ParameterTime",
+        "value" : "02:02:02"
+      }, {
+        "name" : "$APT_CONFIG_FILE",
+        "value" : "/opt/ibm/PXService/Server/config/default.apt"
+      }, {
+        "name" : "$APT_DISABLE_COMBINATION",
+        "value" : "True"
+      }, {
+        "name" : "$APT_DUMP_SCORE",
+        "value" : "True"
+      }, {
+        "name" : "$APT_PM_DUMP_SCHEMAS",
+        "value" : "True"
+      }, {
+        "name" : "$CC_MSG_LEVEL",
+        "value" : "3"
+      }, {
+        "name" : "$OSH_DUMP",
+        "value" : "True"
+      }, {
+        "name" : "$OSH_PRINT_SCHEMAS",
+        "value" : "True"
+      } ],
+      "name" : "Set2"
+    }, {
+      "values" : [ {
+        "name" : "ParameterString",
+        "value" : "Value 3"
+      }, {
+        "name" : "ParameterDate",
+        "value" : "3-03-03"
+      }, {
+        "name" : "ParameterEncrypted",
+        "value" : "{dsmenc}XYzn6jjefuBMAhWoswR1kGwHlpvKHmMzeNPeAqtzH8E/f4ZUprpmaSg5/O+261dW"
+      }, {
+        "name" : "ParameterList",
+        "value" : "Value 3"
+      }, {
+        "name" : "ParameterPath",
+        "value" : "/tmp3"
+      }, {
+        "name" : "ParameterInteger",
+        "value" : 3
+      }, {
+        "name" : "ParameterTimestamp",
+        "value" : "0003-03-03 03:03:03"
+      }, {
+        "name" : "ParameterTime",
+        "value" : "03:03:03"
+      }, {
+        "name" : "$APT_CONFIG_FILE",
+        "value" : "/opt/ibm/PXService/Server/config/default.apt"
+      }, {
+        "name" : "$APT_DISABLE_COMBINATION",
+        "value" : "True"
+      }, {
+        "name" : "$APT_DUMP_SCORE",
+        "value" : "True"
+      }, {
+        "name" : "$APT_PM_DUMP_SCHEMAS",
+        "value" : "True"
+      }, {
+        "name" : "$CC_MSG_LEVEL",
+        "value" : "3"
+      }, {
+        "name" : "$OSH_DUMP",
+        "value" : "True"
+      }, {
+        "name" : "$OSH_PRINT_SCHEMAS",
+        "value" : "True"
+      } ],
+      "name" : "Set3"
+    } ],
+    "name" : "ParameterSetTest",
+    "description" : "",
+    "parameters" : [ {
+      "name" : "ParameterString",
+      "type" : "string",
+      "prompt" : "Prompt String",
+      "value" : "Value 0"
+    }, {
+      "name" : "ParameterDate",
+      "type" : "date",
+      "prompt" : "Prompt Date",
+      "value" : "1-01-01"
+    }, {
+      "name" : "ParameterEncrypted",
+      "type" : "encrypted",
+      "prompt" : "Prompt Encrypted",
+      "value" : "{dsmenc}XYzn6jjefuBMAhWoswR1kGwHlpvKHmMzeNPeAqtzH8E/f4ZUprpmaSg5/O+261dW"
+    }, {
+      "valid_values" : [ "Value 0", "Value 1", "Value 2", "Value 3" ],
+      "name" : "ParameterList",
+      "type" : "enum",
+      "prompt" : "Prompt List",
+      "value" : "Value 0"
+    }, {
+      "name" : "ParameterPath",
+      "type" : "path",
+      "prompt" : "Prompt Path",
+      "value" : "/tmp0"
+    }, {
+      "name" : "ParameterInteger",
+      "type" : "int64",
+      "prompt" : "Prompt Integer",
+      "value" : 0
+    }, {
+      "name" : "ParameterTimestamp",
+      "type" : "timestamp",
+      "prompt" : "Prompt Timestamp",
+      "value" : "0001-01-01 00:00:00"
+    }, {
+      "name" : "ParameterTime",
+      "type" : "time",
+      "prompt" : "Prompt Time",
+      "value" : "00:00:00"
+    }, {
+      "name" : "$APT_CONFIG_FILE",
+      "type" : "path",
+      "prompt" : "Configuration file",
+      "value" : "/opt/ibm/PXService/Server/config/default.apt"
+    }, {
+      "valid_values" : [ "True", "False" ],
+      "name" : "$APT_DISABLE_COMBINATION",
+      "type" : "enum",
+      "prompt" : "Disable operator combination",
+      "value" : "True"
+    }, {
+      "valid_values" : [ "True", "False" ],
+      "name" : "$APT_DUMP_SCORE",
+      "type" : "enum",
+      "prompt" : "Report score",
+      "value" : "True"
+    }, {
+      "valid_values" : [ "True", "False" ],
+      "name" : "$APT_PM_DUMP_SCHEMAS",
+      "type" : "enum",
+      "prompt" : "Report schemas",
+      "value" : "True"
+    }, {
+      "valid_values" : [ "1", "2", "3", "4", "5", "6" ],
+      "name" : "$CC_MSG_LEVEL",
+      "type" : "enum",
+      "prompt" : "Connector message level",
+      "value" : "3"
+    }, {
+      "valid_values" : [ "True", "False" ],
+      "name" : "$OSH_DUMP",
+      "type" : "enum",
+      "prompt" : "Report step description",
+      "value" : "True"
+    }, {
+      "valid_values" : [ "True", "False" ],
+      "name" : "$OSH_PRINT_SCHEMAS",
+      "type" : "enum",
+      "prompt" : "Report schemas",
+      "value" : "True"
+    } ]
+  }
+}

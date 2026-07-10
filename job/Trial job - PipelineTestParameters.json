@@ -1,0 +1,30 @@
+{
+  "metadata" : {
+    "name" : "Trial job - PipelineTestParameters",
+    "description" : "Trial job and run created for the pipeline: PipelineTestParameters",
+    "asset_id" : "613f74eb-e41d-46da-bd38-b669f8ba0d76",
+    "owner_id" : "1000331001",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "ff9f9fff-05f2-419f-8894-12a11b802e0a",
+      "schedule_id" : "",
+      "project_name" : "GITHUB integrado",
+      "configuration" : {
+        "env_type" : "",
+        "sub_type" : "oflow_trial_run",
+        "env_variables" : [ ]
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "orchestration_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "PipelineTestParameters"
+    }
+  }
+}

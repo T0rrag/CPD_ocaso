@@ -1,0 +1,208 @@
+{
+  "primary_pipeline" : "596aeb2a-009d-40ff-9fe0-fecc0c5703fa",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxSequentialFile",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "52d7bcb4-bd27-4d25-aefc-7f10b6032863",
+          "type_attr" : "PRIMARY",
+          "id" : "95f07deb-652c-4745-928b-dfa9b85b46a8",
+          "link_name" : "Employee_Union",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Employee_Union",
+                "label" : "Employee_Union",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "de57b47b-dd20-4977-83b9-30ab7b2293a2"
+        } ],
+        "id" : "11a0521d-c96e-429c-9795-6c9ae11fbac4",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "append-overwrite" : "overwrite",
+          "final_delim" : "end",
+          "rejects" : "continue",
+          "file" : [ "#xml_example_root_folder#/xml_examples/union_step/example1/output/employees_output.xml" ],
+          "firstLineColumnNames" : " ",
+          "nocleanup" : " ",
+          "writemethod" : " ",
+          "part_coll" : "none",
+          "runtime_column_propagation" : 0,
+          "registerDataAsset" : false,
+          "delim" : "','"
+        },
+        "schema_ref" : "41f3b207-75ae-4159-a123-57f163f204c9"
+      } ],
+      "id" : "4dc6829c-8c3d-4e39-99f0-07a3245a9122",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 648.0,
+          "label" : "Employees_File",
+          "y_pos" : 216.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "de57b47b-dd20-4977-83b9-30ab7b2293a2",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "95f07deb-652c-4745-928b-dfa9b85b46a8"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "41f3b207-75ae-4159-a123-57f163f204c9"
+      } ],
+      "op" : "XMLStagePX",
+      "id" : "52d7bcb4-bd27-4d25-aefc-7f10b6032863",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "outputs_order" : "de57b47b-dd20-4977-83b9-30ab7b2293a2"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/XMLStagePX.svg",
+          "x_pos" : 312.0,
+          "label" : "Employees",
+          "y_pos" : 216.0
+        }
+      },
+      "parameters" : {
+        "enable_split_data_into_batches" : false,
+        "num_assembly_threads" : 4,
+        "stage_type" : "XMLStage",
+        "enable_disk_based" : true,
+        "params" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><!DOCTYPE properties SYSTEM \"http://java.sun.com/dtd/properties.dtd\"><properties><entry key=\"DSProjectName\">#DSProjectName#</entry><entry key=\"DSJobWaveNo\">#DSJobWaveNo#</entry><entry key=\"DSJobInvocationId\">#DSJobInvocationId#</entry><entry key=\"DSJobController\">#DSJobController#</entry><entry key=\"DSHostName\">#DSHostName#</entry><entry key=\"DSJobName\">#DSJobName#</entry><entry key=\"DSJobStartTime\">#DSJobStartTime#</entry><entry key=\"DSJobStartDate\">#DSJobStartDate#</entry><entry key=\"DSJobStartTimestamp\">#DSJobStartTimestamp#</entry><entry key=\"xml_example_root_folder\">#xml_example_root_folder#</entry></properties>",
+        "allow_column_mapping" : false,
+        "e2_assembly" : "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",
+        "security_info" : "{dsnextenc}JlppiuBlsRla9lguomyoF5sAIAMeZzWAYzdWlTzxhueC7bxBSa795OJEQu24bp9k2FfYd2XgTjQSLbOkMUG8sakLZbBjoqaM7TFQNkc/LWamLC3cWayoZwsdi7RUaTq0xKkUsnd0g3wBpgMw2TdFxdSBPxad6IhOXwC29rZB5jAUfkQbVEES7CrfyEysDf4r+zp41plgThpoOrzGRt5yfHKmJZc2M0ODhJQ6ZG4XnAKPNDTZz4vltrXUQrPMxX3pxnbaV2A/LYi3GcVunVqDWOuj65bCxa77l3YChvFjIkOTgWDrB2QPuXSIeyZ5Efo5XervjAKosW/AZMB7CcppK0pu2iLZUZvteIkh9xZXJYlJkWCwCLs4KOXEgRcoTSWdOC0NIMpYDOOy/aYzHRNajLgMlg/Q10QrmxdCZbBYH4wT0ZeOtT92z41+pbLDFq/O5sVObvq+Z5SxctQ1IPpRI06TpcmjLChpYTDrSP/e4rt0ULPR56M8CC92+ViSvjfQfeyx6SzrbeoB+uxmgIu3tibZfRlaVfgqgUbmrHTyAvR+2MqDnTJ+X/Uk5lQX4IKQJ3BaFjHMMQ7B8nLfqn9JLBccF6Tsug6pAGAYmoEF1ur53ktlfkoKW6Oy+xR/kGBFC0kwQJo8SfNJPsUW1kNz1Fy5KKWVpYtWf+Mbv7Z8mMWPF1ExWWHk+1ehD2EZLP+Nqc1OdsjBb2BnBnNcZgxCKSfX6vGOtTdlkX4YwE/T5PaA0Pib262LvTTI1MyMNGo4+COPYfy1NRh4Nbkuz65X35At9UmRo9WfPFo/iDufgC1Y5KTgBtyDyLzn/IOHm7DFFqItYncdFoY8LA/QNBIrrcdoZimCa4C21uOzdD4r2+fOoAdqUcm7UATF1G3lJ1tDTXGkXplB2grs9mkZzieIdtnNY4WS26Vwr/UJAaDR4OJMW5yI1ci3Eiuc5xLbU+T0UNCh4pD/6EpiYMRJBcj58ZBi50UR0/X6zFcGghOXc/+eCFrBw9UTOa7yOl76jQYbLm/dKkqPbwAvb+eEwZNgg5iQl03r7IopSXgOXsILuMN8q4eydxeO2Z3J1JN4PfazMv7Hdf8BTlDni4VV71Pl4N7TZtmEjQDY9sUgOKpet/hFxcd8gar13xkDqb97QsCFjfxZTmbioem1DkIL/0ukie47mwMLIfczmYDWrJV4ObUqdFftcR1LmbfGfhl/P4Ua",
+        "e2_assembly_errors" : 0,
+        "column_properties" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><extendedAttributesList/>",
+        "output_count" : 1,
+        "input_count" : 0,
+        "enable_logging" : false,
+        "maximum_stack_size" : 256,
+        "heap_size" : 256,
+        "limit_output_rows" : false,
+        "last_modified" : "2011-01-27T11:11:23.422 +0530",
+        "debug_test_data" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DebugTestValues><jobParams paramName=\"xml_example_root_folder\"/></DebugTestValues>"
+      }
+    } ],
+    "id" : "596aeb2a-009d-40ff-9fe0-fecc0c5703fa",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "41f3b207-75ae-4159-a123-57f163f204c9",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "result_string",
+      "type" : "string",
+      "app_data" : {
+        "data_element_name" : "XML",
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : true,
+        "type_code" : "STRING"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "62d78b46-bc1d-4d3c-b03e-f1a665fd1856",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "isDefineParameterToggled" : true
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ {
+      "name" : "xml_example_root_folder",
+      "description" : "Point to the root of the file tree folder of the example archive",
+      "type" : "string",
+      "prompt" : "Roof of example folder tree",
+      "value" : "/opt/workshops/files/DATASTAGE"
+    }, {
+      "name" : "DSJobController",
+      "type" : "string"
+    }, {
+      "name" : "DSJobInvocationId",
+      "type" : "string",
+      "prompt" : "Job invocation ID"
+    } ]
+  }
+}

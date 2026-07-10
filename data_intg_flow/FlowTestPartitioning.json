@@ -1,0 +1,2047 @@
+{
+  "primary_pipeline" : "7582fe93-b11a-49d8-a5f6-fdd2d946f1a7",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "12f9d88a-43ae-4d71-8659-56888ade7c11",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "d124e572-da6a-4503-b10b-516d2f87b42e"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          },
+          "additionalProperties" : {
+            "enableAcp" : true
+          }
+        },
+        "schema_ref" : "1fbd9990-a7e9-48f8-835a-66697b4eb08c",
+        "parameters" : {
+          "records" : 10,
+          "buf_mode" : "default",
+          "enableSchemalessDesign" : false
+        }
+      } ],
+      "op" : "PxRowGenerator",
+      "id" : "fcb7cbe4-b4c1-4fa1-aa26-12dc0a07a16b",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxRowGenerator.svg",
+          "x_pos" : 63.36,
+          "label" : "Row_Generator_1",
+          "y_pos" : 95.03999999999999
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "output_count" : 1,
+        "input_count" : 0,
+        "execmode" : "default_seq",
+        "preserve" : -3
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "9086cc56-7ac2-4a53-b05f-9fe11967fb1c",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "031e5e8f-829f-4609-a514-04c663848c6f"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          },
+          "additionalProperties" : {
+            "enableAcp" : true
+          }
+        },
+        "schema_ref" : "d1f16b2b-b1f2-4a9b-b0fd-d1d29a7063c4",
+        "parameters" : {
+          "buf_mode" : "default"
+        }
+      } ],
+      "op" : "PxSort",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "fcb7cbe4-b4c1-4fa1-aa26-12dc0a07a16b",
+          "type_attr" : "PRIMARY",
+          "id" : "d124e572-da6a-4503-b10b-516d2f87b42e",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/link-marking--repartitioning.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 50,
+                "tooltip" : "Repartition",
+                "x_pos" : -15,
+                "id" : "dec-9V",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_1",
+                "y_pos" : -20,
+                "height" : 80
+              }, {
+                "temporary" : false,
+                "width" : 200,
+                "x_pos" : -20,
+                "id" : "dec-9",
+                "position" : "middle",
+                "label" : "10 rows\n10 rows/sec",
+                "y_pos" : 28,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkFinishedStyle___QBKP8"
+            }
+          },
+          "link_name" : "Link_1",
+          "port_id_ref" : "12f9d88a-43ae-4d71-8659-56888ade7c11"
+        } ],
+        "id" : "d8eaa0a7-0f46-45cb-a52b-e2b205b623fc",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "1fbd9990-a7e9-48f8-835a-66697b4eb08c",
+        "parameters" : {
+          "keyColsPart" : [ {
+            "ci-cs" : "cs",
+            "sorting" : false,
+            "partitioning" : true,
+            "keyCol" : "COLUMN_1"
+          } ],
+          "part_stable" : false,
+          "part_unique" : false,
+          "perform_sort" : false,
+          "part_type" : "hash",
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        }
+      } ],
+      "id" : "2e520472-c586-4cc4-bb3d-a0bd8fd31a59",
+      "type" : "execution_node",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSort.svg",
+          "x_pos" : 205.92,
+          "label" : "Sort_1",
+          "y_pos" : 95.03999999999999
+        }
+      },
+      "parameters" : {
+        "showPartType" : true,
+        "keyProperties" : [ {
+          "sorted-clustered" : " ",
+          "asc-desc" : "asc",
+          "key" : "COLUMN_1"
+        } ],
+        "showCollType" : false,
+        "part_type" : "hash",
+        "enableSchemalessDesign" : false,
+        "preserve" : -2,
+        "operator" : "tsort",
+        "inputName" : "Link_1",
+        "showSortOptions" : false,
+        "combinability" : "auto",
+        "inputcolProperties" : [ {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_1",
+          "TempOldColumnName" : "COLUMN_1",
+          "ColumnName" : "COLUMN_1",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_2",
+          "TempOldColumnName" : "COLUMN_2",
+          "ColumnName" : "COLUMN_2",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_3",
+          "TempOldColumnName" : "COLUMN_3",
+          "ColumnName" : "COLUMN_3",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_4",
+          "TempOldColumnName" : "COLUMN_4",
+          "ColumnName" : "COLUMN_4",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_5",
+          "TempOldColumnName" : "COLUMN_5",
+          "ColumnName" : "COLUMN_5",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_6",
+          "TempOldColumnName" : "COLUMN_6",
+          "ColumnName" : "COLUMN_6",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_7",
+          "TempOldColumnName" : "COLUMN_7",
+          "ColumnName" : "COLUMN_7",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_8",
+          "TempOldColumnName" : "COLUMN_8",
+          "ColumnName" : "COLUMN_8",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_9",
+          "TempOldColumnName" : "COLUMN_9",
+          "ColumnName" : "COLUMN_9",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_10",
+          "TempOldColumnName" : "COLUMN_10",
+          "ColumnName" : "COLUMN_10",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        } ],
+        "stats" : " ",
+        "output_count" : 1,
+        "stable" : "stable",
+        "execmode" : "default_par",
+        "input_count" : 1,
+        "unique" : " ",
+        "perform_sort" : false,
+        "flagCluster" : " ",
+        "flagKey" : " "
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "faf503d2-ec47-4490-97fb-d72b20dacdbb",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "fa54bc23-8428-4fc3-8fe2-cd6f9f46b20a"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          },
+          "additionalProperties" : {
+            "enableAcp" : true
+          }
+        },
+        "schema_ref" : "e79cf133-6d68-4d2c-a70a-9046bed4bfae",
+        "parameters" : {
+          "buf_mode" : "default"
+        }
+      } ],
+      "op" : "PxCopy",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "2e520472-c586-4cc4-bb3d-a0bd8fd31a59",
+          "type_attr" : "PRIMARY",
+          "id" : "031e5e8f-829f-4609-a514-04c663848c6f",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/link-marking--auto-partitioning.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 2,
+                "width" : 50,
+                "tooltip" : "Auto-partition",
+                "x_pos" : -15,
+                "id" : "dec-6R",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_2",
+                "y_pos" : -20,
+                "height" : 80
+              }, {
+                "temporary" : false,
+                "width" : 200,
+                "x_pos" : -20,
+                "id" : "dec-9",
+                "position" : "middle",
+                "label" : "10 rows\n10 rows/sec",
+                "y_pos" : 28,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkFinishedStyle___QBKP8"
+            }
+          },
+          "link_name" : "Link_2",
+          "port_id_ref" : "9086cc56-7ac2-4a53-b05f-9fe11967fb1c"
+        } ],
+        "id" : "0ceaf690-377c-46c2-ab85-c62f3e626941",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "d1f16b2b-b1f2-4a9b-b0fd-d1d29a7063c4",
+        "parameters" : {
+          "runtime_column_propagation" : 0
+        }
+      } ],
+      "id" : "a7c27300-a7bf-4110-b742-b591ef501442",
+      "type" : "execution_node",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxCopy.svg",
+          "x_pos" : 364.32,
+          "label" : "Copy_1",
+          "y_pos" : 95.03999999999999
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "showPartType" : true,
+        "inputcolProperties" : [ {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_1",
+          "TempOldColumnName" : "COLUMN_1",
+          "ColumnName" : "COLUMN_1",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_2",
+          "TempOldColumnName" : "COLUMN_2",
+          "ColumnName" : "COLUMN_2",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_3",
+          "TempOldColumnName" : "COLUMN_3",
+          "ColumnName" : "COLUMN_3",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_4",
+          "TempOldColumnName" : "COLUMN_4",
+          "ColumnName" : "COLUMN_4",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_5",
+          "TempOldColumnName" : "COLUMN_5",
+          "ColumnName" : "COLUMN_5",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_6",
+          "TempOldColumnName" : "COLUMN_6",
+          "ColumnName" : "COLUMN_6",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_7",
+          "TempOldColumnName" : "COLUMN_7",
+          "ColumnName" : "COLUMN_7",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_8",
+          "TempOldColumnName" : "COLUMN_8",
+          "ColumnName" : "COLUMN_8",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_9",
+          "TempOldColumnName" : "COLUMN_9",
+          "ColumnName" : "COLUMN_9",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_10",
+          "TempOldColumnName" : "COLUMN_10",
+          "ColumnName" : "COLUMN_10",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        } ],
+        "output_count" : 1,
+        "execmode" : "default_par",
+        "showCollType" : false,
+        "input_count" : 1,
+        "force" : " ",
+        "enableSchemalessDesign" : false,
+        "preserve" : -3,
+        "inputName" : "Link_2",
+        "showSortOptions" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "op" : "PxCopy",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "99c93e96-72e7-4b1c-8f95-2c27eb72599d",
+          "type_attr" : "PRIMARY",
+          "id" : "7f176d0e-0c0a-472f-a075-58b0d956e5e6",
+          "app_data" : {
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/link-marking--auto-partitioning.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 2,
+                "width" : 50,
+                "tooltip" : "Auto-partition",
+                "x_pos" : -15,
+                "id" : "dec-6R",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_6",
+                "y_pos" : -20,
+                "height" : 80
+              }, {
+                "temporary" : false,
+                "width" : 200,
+                "x_pos" : -20,
+                "id" : "dec-9",
+                "position" : "middle",
+                "label" : "10 rows\n10 rows/sec",
+                "y_pos" : 28,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkFinishedStyle___QBKP8"
+            }
+          },
+          "link_name" : "Link_6",
+          "port_id_ref" : "ae881a54-537e-4f8f-9b7c-acc5e4fac03f"
+        } ],
+        "id" : "e8900bb6-80a7-45a6-9505-49780b6791d6",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "acf06be5-886a-442c-a280-87cd61dac898",
+        "parameters" : {
+          "runtime_column_propagation" : 0
+        }
+      } ],
+      "id" : "4c4510ea-0c2c-453b-8c3f-09b319be77d3",
+      "type" : "execution_node",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxCopy.svg",
+          "x_pos" : 649.4399999999999,
+          "label" : "Copy_2",
+          "y_pos" : 95.03999999999999
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "output_count" : 0,
+        "execmode" : "default_par",
+        "input_count" : 1,
+        "enableFlowAcpControl" : true,
+        "force" : " ",
+        "part_type" : "auto"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "ae881a54-537e-4f8f-9b7c-acc5e4fac03f",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "7f176d0e-0c0a-472f-a075-58b0d956e5e6"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          },
+          "additionalProperties" : {
+            "enableAcp" : true
+          }
+        },
+        "schema_ref" : "acf06be5-886a-442c-a280-87cd61dac898",
+        "parameters" : {
+          "buf_mode" : "default"
+        }
+      } ],
+      "op" : "PxJoin",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "a7c27300-a7bf-4110-b742-b591ef501442",
+          "type_attr" : "PRIMARY",
+          "id" : "fa54bc23-8428-4fc3-8fe2-cd6f9f46b20a",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/link-marking--auto-partitioning.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 2,
+                "width" : 50,
+                "tooltip" : "Auto-partition",
+                "x_pos" : -15,
+                "id" : "dec-6R",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_5",
+                "y_pos" : -20,
+                "height" : 80
+              }, {
+                "temporary" : false,
+                "width" : 200,
+                "x_pos" : -20,
+                "id" : "dec-9",
+                "position" : "middle",
+                "label" : "10 rows\n10 rows/sec",
+                "y_pos" : 28,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkFinishedStyle___QBKP8"
+            }
+          },
+          "link_name" : "Link_5",
+          "port_id_ref" : "faf503d2-ec47-4490-97fb-d72b20dacdbb"
+        } ],
+        "id" : "6bacd5c8-012f-415f-8e13-09e80d6dfaab",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 2147483646
+            }
+          }
+        },
+        "schema_ref" : "e79cf133-6d68-4d2c-a70a-9046bed4bfae",
+        "parameters" : {
+          "runtime_column_propagation" : 0
+        }
+      }, {
+        "links" : [ {
+          "node_id_ref" : "58ce6275-2dc0-4d0a-bc1b-e04cbd834180",
+          "type_attr" : "PRIMARY",
+          "id" : "85397362-af2c-4ec2-8dcd-f5cfcca2cc63",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/link-marking--specific-partitioning.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 50,
+                "tooltip" : "Specific partition",
+                "x_pos" : -15,
+                "id" : "dec-9C",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_7",
+                "y_pos" : -20,
+                "height" : 80
+              }, {
+                "temporary" : false,
+                "width" : 200,
+                "x_pos" : -20,
+                "id" : "dec-9",
+                "position" : "middle",
+                "label" : "10 rows\n10 rows/sec",
+                "y_pos" : 28,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkFinishedStyle___QBKP8"
+            }
+          },
+          "link_name" : "Link_7",
+          "port_id_ref" : "c0a07860-35b7-4968-a4f0-4f5cb40d318e"
+        } ],
+        "id" : "39b5cabf-3867-472f-8a6e-0e1b38f3a840",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 2147483646
+            }
+          }
+        },
+        "schema_ref" : "59efd9dd-82b1-4638-b71b-d3d15a932dad",
+        "parameters" : {
+          "runtime_column_propagation" : 0
+        }
+      } ],
+      "id" : "99c93e96-72e7-4b1c-8f95-2c27eb72599d",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "6bacd5c8-012f-415f-8e13-09e80d6dfaab|39b5cabf-3867-472f-8a6e-0e1b38f3a840",
+          "outputs_order" : "ae881a54-537e-4f8f-9b7c-acc5e4fac03f"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxJoin.svg",
+          "x_pos" : 506.88,
+          "label" : "Join_1",
+          "y_pos" : 95.03999999999999
+        }
+      },
+      "parameters" : {
+        "hideCaseSensitiveColumn" : true,
+        "showPartType" : true,
+        "keyProperties" : [ {
+          "key" : "COLUMN_2"
+        } ],
+        "showCollType" : false,
+        "enableSchemalessDesign" : false,
+        "preserve" : -3,
+        "operator" : "innerjoin",
+        "inputName" : "Link_5",
+        "showSortOptions" : false,
+        "combinability" : "auto",
+        "inputcolProperties" : [ {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_1",
+          "TempOldColumnName" : "COLUMN_1",
+          "ColumnName" : "COLUMN_1",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_2",
+          "TempOldColumnName" : "COLUMN_2",
+          "ColumnName" : "COLUMN_2",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_3",
+          "TempOldColumnName" : "COLUMN_3",
+          "ColumnName" : "COLUMN_3",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_4",
+          "TempOldColumnName" : "COLUMN_4",
+          "ColumnName" : "COLUMN_4",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_5",
+          "TempOldColumnName" : "COLUMN_5",
+          "ColumnName" : "COLUMN_5",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_6",
+          "TempOldColumnName" : "COLUMN_6",
+          "ColumnName" : "COLUMN_6",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_7",
+          "TempOldColumnName" : "COLUMN_7",
+          "ColumnName" : "COLUMN_7",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_8",
+          "TempOldColumnName" : "COLUMN_8",
+          "ColumnName" : "COLUMN_8",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_9",
+          "TempOldColumnName" : "COLUMN_9",
+          "ColumnName" : "COLUMN_9",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_10",
+          "TempOldColumnName" : "COLUMN_10",
+          "ColumnName" : "COLUMN_10",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        } ],
+        "InputlinkOrderingList" : [ {
+          "link_label" : "Left",
+          "link_name" : "Link_5"
+        }, {
+          "link_label" : "Right",
+          "link_name" : "Link_7"
+        } ],
+        "output_count" : 1,
+        "execmode" : "default_par",
+        "input_count" : 2
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "c0a07860-35b7-4968-a4f0-4f5cb40d318e",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "85397362-af2c-4ec2-8dcd-f5cfcca2cc63"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          },
+          "additionalProperties" : {
+            "enableAcp" : true
+          }
+        },
+        "schema_ref" : "59efd9dd-82b1-4638-b71b-d3d15a932dad",
+        "parameters" : {
+          "records" : 10,
+          "buf_mode" : "default",
+          "enableSchemalessDesign" : false
+        }
+      } ],
+      "op" : "PxRowGenerator",
+      "id" : "58ce6275-2dc0-4d0a-bc1b-e04cbd834180",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxRowGenerator.svg",
+          "x_pos" : 506.88,
+          "label" : "Row_Generator_2",
+          "y_pos" : 221.76
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "output_count" : 1,
+        "input_count" : 0,
+        "execmode" : "default_seq",
+        "preserve" : -3
+      }
+    } ],
+    "description" : "",
+    "id" : "7582fe93-b11a-49d8-a5f6-fdd2d946f1a7",
+    "app_data" : {
+      "datastage" : {
+        "nls_map_name" : "",
+        "nls_locale" : "OFF"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "external_paramsets" : [ ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "1fbd9990-a7e9-48f8-835a-66697b4eb08c",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_1",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_2",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_3",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_4",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_5",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_6",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_7",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_8",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_9",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_10",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    } ]
+  }, {
+    "id" : "d1f16b2b-b1f2-4a9b-b0fd-d1d29a7063c4",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_1.COLUMN_1",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_1",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_1.COLUMN_2",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_2",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_1.COLUMN_3",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_3",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_1.COLUMN_4",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_4",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_1.COLUMN_5",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_5",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_1.COLUMN_6",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_6",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_1.COLUMN_7",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_7",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_1.COLUMN_8",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_8",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_1.COLUMN_9",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_9",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_1.COLUMN_10",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_10",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    } ]
+  }, {
+    "id" : "e79cf133-6d68-4d2c-a70a-9046bed4bfae",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_2.COLUMN_1",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_1",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_2.COLUMN_2",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_2",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_2.COLUMN_3",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_3",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_2.COLUMN_4",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_4",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_2.COLUMN_5",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_5",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_2.COLUMN_6",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_6",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_2.COLUMN_7",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_7",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_2.COLUMN_8",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_8",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_2.COLUMN_9",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_9",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_2.COLUMN_10",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_10",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    } ]
+  }, {
+    "id" : "acf06be5-886a-442c-a280-87cd61dac898",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_5.COLUMN_1",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_1",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_5.COLUMN_3",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_3",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_5.COLUMN_4",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_4",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_5.COLUMN_5",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_5",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_5.COLUMN_6",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_6",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_5.COLUMN_7",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_7",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_5.COLUMN_8",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_8",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_5.COLUMN_9",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_9",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_5.COLUMN_10",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_10",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_5.COLUMN_2",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_2",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    } ]
+  }, {
+    "id" : "59efd9dd-82b1-4638-b71b-d3d15a932dad",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_2",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "2802dcd6-2c03-4836-93da-177a9a056f32",
+  "app_data" : {
+    "datastage" : {
+      "timestamp_format" : "",
+      "decimal_separator" : "",
+      "flowRunPriorityQueue" : "Medium",
+      "time_format" : "",
+      "date_format" : "",
+      "message_handlers" : [ ],
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "transInputLinkMapper" : { },
+      "ELTDropdown" : {
+        "id" : "nesting",
+        "label" : "Generate nested SQL",
+        "value" : "NESTED_QUERY"
+      },
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "disableParamsCacheOnFlow" : false,
+      "rcpLinkList" : [ ],
+      "globalAcp" : true,
+      "enableRCP" : false,
+      "isNewTransActive" : false,
+      "isDefineParameterToggled" : true,
+      "enableSchemaLessDesign" : false,
+      "runMode" : "ETL"
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ {
+      "subtype" : "",
+      "name" : "$APT_CONFIG_FILE",
+      "type" : "path",
+      "prompt" : "Configuration file",
+      "value" : "/opt/ibm/PXService/Server/config/default.apt"
+    }, {
+      "subtype" : "",
+      "valid_values" : [ "True", "False" ],
+      "name" : "$OSH_DUMP",
+      "type" : "enum",
+      "value" : "True",
+      "prompt" : "Report step description"
+    } ]
+  }
+}

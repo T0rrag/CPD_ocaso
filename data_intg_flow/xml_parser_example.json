@@ -1,0 +1,612 @@
+{
+  "primary_pipeline" : "dbd2168a-324f-49c0-9133-3ecfb9443ef2",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxSequentialFile",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "6ef5b255-9f63-437f-8676-cff35fd854d2",
+          "type_attr" : "PRIMARY",
+          "id" : "d9ac79ed-f088-486b-b36f-8e4c9100037b",
+          "link_name" : "Employee",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Employee",
+                "label" : "Employee",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "46d308f5-612b-48fe-ab0c-fb8877d59d4a"
+        } ],
+        "id" : "173a5f11-6aa3-4a20-bbd0-712fad20a3f2",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "append-overwrite" : "overwrite",
+          "final_delim" : "end",
+          "rejects" : "continue",
+          "file" : [ "/opt/workshops/files/DATASTAGE/xml_examples/parser_step/example1/output/employee.txt" ],
+          "quote" : "double",
+          "firstLineColumnNames" : "firstLineColumnNames",
+          "nocleanup" : " ",
+          "writemethod" : " ",
+          "part_coll" : "none",
+          "runtime_column_propagation" : 0,
+          "registerDataAsset" : false,
+          "delim" : "','"
+        },
+        "schema_ref" : "ef245b96-57d6-48de-b5b5-17333090c80f"
+      } ],
+      "id" : "7af4591d-6bdc-48ea-b2ff-ba5e9cb9075d",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 720.0,
+          "label" : "Employee_File",
+          "y_pos" : 120.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "46d308f5-612b-48fe-ab0c-fb8877d59d4a",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "d9ac79ed-f088-486b-b36f-8e4c9100037b"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "ef245b96-57d6-48de-b5b5-17333090c80f"
+      }, {
+        "id" : "37a2a909-6398-4bea-92c6-f618892e8c42",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "56c73cf1-2aaa-42bb-9443-d7d0c2b29c26"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "cc8cc280-6305-445a-81d0-9f2dfbf07945"
+      } ],
+      "op" : "XMLStagePX",
+      "id" : "6ef5b255-9f63-437f-8676-cff35fd854d2",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "outputs_order" : "46d308f5-612b-48fe-ab0c-fb8877d59d4a|37a2a909-6398-4bea-92c6-f618892e8c42"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/XMLStagePX.svg",
+          "x_pos" : 312.0,
+          "label" : "Departments",
+          "y_pos" : 216.0
+        }
+      },
+      "parameters" : {
+        "enable_split_data_into_batches" : false,
+        "num_assembly_threads" : 4,
+        "stage_type" : "XMLStage",
+        "enable_disk_based" : true,
+        "params" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><!DOCTYPE properties SYSTEM \"http://java.sun.com/dtd/properties.dtd\"><properties><entry key=\"DSProjectName\">#DSProjectName#</entry><entry key=\"DSJobWaveNo\">#DSJobWaveNo#</entry><entry key=\"DSJobInvocationId\">#DSJobInvocationId#</entry><entry key=\"DSJobController\">#DSJobController#</entry><entry key=\"DSHostName\">#DSHostName#</entry><entry key=\"DSJobName\">#DSJobName#</entry><entry key=\"DSJobStartTime\">#DSJobStartTime#</entry><entry key=\"DSJobStartDate\">#DSJobStartDate#</entry><entry key=\"DSJobStartTimestamp\">#DSJobStartTimestamp#</entry></properties>",
+        "allow_column_mapping" : false,
+        "e2_assembly" : "H4sIAAAAAAAAAO09a3PiOLbf51e4/Olu3QUDnZ6eoZLeIeBk2CaQCmSmu2qrKMcWxHeM7ZHlJNyZ/u+rh41lWza2eYQEqFQSZOnovHUkHcnn/3pZWNITgJ7p2Bdys96QJWDrjmHa8wv5fnJV+0n+1+cfzkGrDVo1Fzo68LyaAWambSLchG/6Qf5BkjA422uP3Fqr5gH4ZOrgVoPaAiAAbzT3Qvah3TYfFhha23EB1JADae02ho2/o2Vb0CwG+KymO7YNdNyyb7s+GuuPYKFlQj6LIIvaZYEe+agabL5hBBy0LuRHhNy2ojw/P9cxrLruLBTQUtTWLeOqHFR98WJVnz/UHThXWo1GU/l6MwgAf8aQiVDQ0gUe+YK/vnhtjz6lXyUJaXAO0BBz0XM1HWzCIfJZR8gKuRp4QcAmWlGeppAQYIEFsFFQIklY4zTfQhey4rhIeXbgH96j43rKzLSAp/Q6k8540rlWFdzdFLxoC5cUuxrEyjT1EHCVoLCpmISyKWtnAFwFkY68Om4pr7rDHDK9kUs0XLMuZAR9EHtoe/d3/RyG0k5qrgMR+zfWmMjsi2kbFzKmfTqe3PWH17JkYzldyBiLK4waEZoskYq4CIsVQWyPMq+oFGwZDJRAS5SVmuxAbZLK/1p6w8koaB52aNozx3MfAQREV5QRnGu2+f8akXQkJCYLTjtCfHDvpSB+XoEkyGm27SD6ICoPnrguAUPQjipdOfBCNhFYyJLn+JCIQszBrmMjqOloYD5ADS7HtLLM94F7EVaSLPat36Ni/jv4+ne/Nx3rwNag6cgxMBJVyoGja9YwzSTyjBSPmeKUYJQS44gSsYTjoJLBQsJADB9b98sEI5DkrQf+9PGQBhL8ECqLHNonIw6Lu91bEUiAJ7mx0F5Guu5DrKe+/eD4tgEMWVqYdljalFPaFCgT7u1zAloOJevoEVIV9zT93p16FaKz0GxtDmDayShr4AqeSoXNTcW0OUuQYiP7MMxAUGdldMj2CsMVIV+Ar8W4K+Rx9jghZFOkXJisdoi3SLX4z1o1a8gJ7mVwohQ/ynAlgzfjpY0eATL19cxhnxiLbnFw6djrmMM+dqIFHuKBZXgrY9tIgZI0FmZe1KQoC6MWAvdUqG2MhVe+RT11MSaSD2OkTSOQLEeVjXRJzmzImzL8SIVc5ZlZhZEzE3pIHM8VJ1ccOaxpE8QUgtghP45aDxq7owGw5+ixUIsZDgbo4EkGQRrGy9KTZvn4+1lDPN5kdGva2+m2WabX50ccg9GIZtNuXQjI5BYU7l0YB61vUVZZlMigdmaBZYbJWMNXNN2FaRhZc7GT7Z5sN7f3d2S7r2iClnYaPE8G+L4MUCkf8SqVIutNfEPVWccW/MQ1wNNbWNZTzGmrrEXTUnOYA3MYroYQgPamBrTQLPD3DJA/JwtONno9M+l1JmoZPTc0BEazSxOix2LNVgZBWk5MflpfQg1e3y0gE1lgikq6BdrqPXoFYPsLshmD8dnUMG9gKU3YZsfea/Vseq/WdamOT+5XVL94+FQ2dCqDzpZXu4tuBrCPnWpzWvGmLOkYBtZ0r3j8yG2utBJ7dyUGmqDb05p5yBA80gKACm4wHgTGuomWbwlfD/tZQWxzuAjrjm8j+KZ47DqYy1bXMfbK6Gqr5Zwj+yDeHXYfHRsM/cUDnim/df9UYbgNWyKw4HSif3M7UKfd0XCiDieFgcTzHRIZOUGoZex7jnQbybfs+gkCL+h//lFyShlPTAMtTPdalrzZGdfWFm6bZ6+zcFuq2y2tOv3H+Kv5/T81/OdD7M/Z99MsKNnoHS4j72uY1lj0zZaHKg/Ub4Kl+19yfDQh6MVDzW2tJVZOC1glbDIU/+08vKOp10bJElHqKmZKpVlwlGJYrKUg0Pw/5+HNS2FTn4R5MBGvPu9runP9Te3c3eDA9teS00qIsuz9sFEHtvHaiA9GJUcu2/Y1a6xZWmxibDl71JPL0WigdoalpvI+hLg/YucR0g+OYwHNPriJcWrO15lga768LzoMZqTSl2DXL3z6/6GvI2ydXeV95y+mcYR8qmCHv5jeTeooR1k7fBtx7+oM4EyzvBIiqizbLS0wldeKXa4tVdExrGS3pFsblVwfChWx1ALRW9faQ96hLGsKOcpcah4qGEHDqcIv4ZElUlTa5R8uhUUHvVSAUIEPhVWuuLIVU7Mc/1zhcFwpj1vNz27Du2b61HL+ckdesoAuFNGCdfLPPWraG91fDjLkwE97Ln1jHtsjNhz/ISs/sZKprzHvlFPKQbmKie4e5zw3k3OYmQDIXhxKEUyqF83BL7Z1s+XNmkSSVt4WQMSEPLdaBqD5ZHqpU+yVwV1Dx3e3BKuLjVyzl+ugRfsrm+2drN8tKbA7ku95ct1bvmPLApwBMgtYGsz2LtVYfw8O+bzWlRq6pXm4+W/0ro8emJW4E6VV9E6U3ng66A+/yIkEN5m/WSj/8hNBV5xQM9Vv83s4ehrSxgjPxSdOH1cnDEoo4MC0/1g9lEbQALBvG+CFuydiRfBrX4khHGYCJAeFj2WtGwz2wPWgI1LPi9WTSJHKKM4K8XvA06FJB+0L2fYabcIAJTqWphIDM4CR1b7vfQHLVUg8AE/AGjp0o2ToW5aGgx3yRdgUh5C6yS7XOsP1x39azC03WykxCBxyvive2ugbS4yoclptO8NPHrW5Q072YFPCHG5KHBR+OwZhYwUtYxT8celXNQtOHCfDeFXDuCp++cXbsYsyNsHd/vGqJhEJ4mQRr2oR1xnHVN+9OYTnczkziKu8EEyWGYh0PGDtAYicJlgFWNGTmllJCe9e6vxp1S15wEj0P6d5fADCj9t7RgbQuxd8cO52d9bOGHsA8uaN/decTMl3L/IoTXTbUv85xd8DkHvcztWcTcx3L/nYFu62vXxk8hyPD07+vdy9oXetAXWF6kB8d2x3WhDj9D704LQ9cLjbA/FT1+92d6CVpPeQNweyDn4fgRMMSd9d2Bv0cHDjn/js/BGInBG+O4FT+Acn7oyrB45A3gHlu7Twg5zgZN7dcAQyX9G+u6g27OLg5J53AcYRiJ4nf3fS53o5OAXIP1p9BCoQZ8DulCDWz8GpwdEucNXrSj1Y4niXy1zbXt44VwD3XjrykroFRXcevqcuKqlBx0GSb5u485qJWRm92qymGZrLyPDkEi/RW6EZ9SLpjj0z4YLIiiZd8z2a9tTTHZdfnidNKQ5ejE249E9fs8yZCYyaq6FHifzCIJ1Ysi4lP9mcNHbou9GKwVxhlQScAELLAjJDYSTYW4jprf0ynbBM8j0AVZsYghGayUHJQARzLftL8UBhr8sjyz6e6D7G8kxQ/sp8WR9DnS17sf+/49HGt5DyV/H3tH3nXvfGvT1xHYiQtu+rd3spQJDmui2xifm6oSwLiE5Z5WMelwyV1Fu3lHiW7L5krIgSYnclbC7L8CTuRP7n3gQuTvXclcijLLqTxOPZjXsTuDCRcVfyDjLKjl7Y81Rm3W6FnM7k21f0pUSpZEcvdT53b2+iF6by7cq+WQ7Z0QsaJVPpdiviVObersS7yhY7MgkLXgqgPAoy53YrZlGu3q4kzS2ZHZms+TXJvYlWvEK5K+HGEr6OTbxGRrbbbgWclWO36zAsTG86MimLHLYg02snMs/qZ3uGHPSgBKlLJ9kmObInEWd1t31J05ylk5zj/NiXlIWd7cKaT5F1wpj3EV7n97YDUw7ykk6CTrFkbwad0d/2hc2lIZ3kLeLKvkSe0+X2pR7LOzrJXcyXfUk+t9Pdz7xOKyl7WUkRcHs7mT584Sr/ymVpOpINXlAtFAbWgprtLy7kMzmRDNQIJB80pcfNpPCfWpiruDDtS3Jp6QrBDiky8RyDCog84ygi6txjl3TEOfawROGDz41zhf/KVzNtxNXivvGVvEesU1y12He+IrtldFWzjuvGi/jKM8vRUKxurISvSl7awPXPf43hSbMmgyfxk1zBVbBhK5oWhbkSL42RAnRzoVlcr4mSBBfBHMA4J/mSGOTg4Hr4rPnzp0at0cQ/k0ajTX/OlWSlGACfqUL47LbxrXHT6E0av+I/Y9w28TzGB80DP55dmrYGl0JGPYKXnKfY1tPl54pYC89NlhnaJe5yTl6Eo764GsntHOIBmLwVttFoyBKRmo5uUk8/kqd8NzfM/Mb+fA48QiAD7EeGwaGqWZbzDAxc5QlAchKzQ16lo+nLC3kwGo+/8cmlmo+cBdmUC+6QHevkrSFe6N2Tj9k5zPAxBwcChL0zMO6o2yUk0Gw8Luv1ioyEQcMYY7FPXTj2F7Ds9z7/AZbnCl+QVdE0MuqdK+t5FTnALAdDfV7onyLXRfILa1n+yzA919KWsVyO83vc4jZsoGNOzh2I5dAfXo3ubjqT/mgoS8RH8o1XtJge2VjD6NG8YiaR4Dai0RM5qwueQy2hCMfQK4h14NBWYiqPegpCEfw3xluHAKNkjCogHDUtgmmr0WzU8E+rMWk2241m++zH+qfmT9L/Nj5+aGyLjMtlZTJw0yJkmB4dXzdGeOEYNBSpwniubQXOf2yfteqNH1tb4nyITBXWc233yfsH6Dx7YGA+QA2awOuZmuXM12J/35/e3o1u1bvJN4a9GEwRQpqfPv6z2Wr+s1HH/5BfG5OEsIuuSgfXtjDyH87KIT+HmvvIT4TCWDc4sNJfkElHMtxtJiY6mSHvAxl6dMSg4CAA/76F4M63EQ6AQh7EYmIKsiNoNwoQ41vhqUJwlYMXHE/51bEMANnt7X07nDykZgpxRqwjw1wwxLPQZWgKEcQ+DOPTZbc84AGdHgYALTzRsm0aa9SN8LhNXdfr3e5Uba0O6tzRxgWRzx8FEXBrRKI1Pb5ShdsKHcJEvRt2BsEAGG/Mtc3Vx0B1ktgLFLEQCaLwo5RTE4Yg62igl11si4TMWKQUHdnxyBpitkZHOjYpRYAgPlmDeaEYZVtkXS43IosfM9eQlRg3NyZAELuUokAUvxyEZASxTCXCdiUbtvoU+P+c0fTrzYB5lOQBvsR4Gp0pq4ULUxJxpuF4xGBAMMs8/qcUG9kwQrd4OgxgR2ftYuxNPB1gRm02kJIlin7i/qCgH+g8mXiwCwfRy7BmYu6PZUZKe47uk+H+znHQMOBJcPwvVpmtCKZr4/KgukR3BWe+FR6o24zC1bgeqCWOP1O0XpkWo62brrxZ74xcth4Q73bc+fo7NHGgFFsskJ5JWQch+LuJHoNlnt+YAaTftUMr85W81Vld+khduGg5pgt1q8PCzKbo46FpxYs3o9XNZnDIXI7QmWlh4tmx4eFomHjPEtWpUXB4eTzBnqM7veoPVKYdpk4kdktXpRXHRcqzA//Ao7DrKRgsllmvM+ngVtcqWTCfgheNnAD2FJfazpSET0pQ2FRoV1PWjluQr+OWybutiqsKYaCQ7o04jFHCYjYNColxJ83rqAZxD2kKoueSpjMGX2F2DcIT8f3BQL3uDKa/dQb36hT7bXI5aGfy7VZNnuSuBu2q01Un401gjdXJdNgfFAYxGKshiPuxOr0ejC4xlJ561bkfTApCmdzdr4BM7vo34cUCFci4H34Zjn4fEgj33cn9XSW+3g/Vr7dqd6L2pljPK7Hzpj8eYxKm6kC9UYeTKZZN9I6uSvCG05vO1+mo272/q4ZRZ0DiBEwTrlwFQO/+dtDvdibqNHnvADXHLNN4S5O4VcTypqdx5GoOFsmc5nIHNpdrtT9+qn9otk5zuQOYy7XOao2PtdYnKpmzduOn+o/Nn6Va46xxPHO5jdep86jh13jj2GeuW1dar96YxKfV2DWJpziVWL9OwCgqLbZpvANKvA4EXd9DzmJTejhIRakSTy5ziJo5cKFZNXZJENlhH5Fdbo++9g4rc/SNwyBrMkqH8OAiYm7ZQPS8jaN+MutInRffMkostScHJ75Cm5spRUgVXXVh+wfJNZfWRmsuott/Cq657HpTJKaR5LZqaGuW+kQOJhn4F3Ge8EIGAVNyd1C4/KsNZ+vgJX8LJWeP55mtW1TbQmGLHm91CyXQ3DcdezMdOsXdBxZ3n/ZQDijuPu2hhCRkhhi+/eD4JIWwcKghetsDN34LHreFF5+9Olap46aCwIcWcckcNKKBuhR47KDz2K2DM+gspBBKLUQBh3JkzAn3ErhOcRPkpBuchQ1Mfp2I4oMR2BCbs7LYtNZiE47/JL378w/0G2jVgoKaAWambbKl8/8CsUlROunDAAA=",
+        "security_info" : "{dsnextenc}JlppiuBlsRla9lguomyoF5sAIAMeZzWAYzdWlTzxhueC7bxBSa795OJEQu24bp9k2FfYd2XgTjQSLbOkMUG8sakLZbBjoqaM7TFQNkc/LWamLC3cWayoZwsdi7RUaTq0xKkUsnd0g3wBpgMw2TdFxdSBPxad6IhOXwC29rZB5jAUfkQbVEES7CrfyEysDf4r+zp41plgThpoOrzGRt5yfHKmJZc2M0ODhJQ6ZG4XnAKPNDTZz4vltrXUQrPMxX3pxnbaV2A/LYi3GcVunVqDWOuj65bCxa77l3YChvFjIkOTgWDrB2QPuXSIeyZ5Efo5XervjAKosW/AZMB7CcppK0pu2iLZUZvteIkh9xZXJYlJkWCwCLs4KOXEgRcoTSWdOC0NIMpYDOOy/aYzHRNajLgMlg/Q10QrmxdCZbBYH4wT0ZeOtT92z41+pbLDFq/O5sVObvq+Z5SxctQ1IPpRI06TpcmjLChpYTDrSP/e4rt0ULPR56M8CC92+ViSvjfQfeyx6SzrbeoB+uxmgIu3tibZfRlaVfgqgUbmrHTyAvR+2MqDnTJ+X/Uk5lQX4IKQJ3BaFjHMMQ7B8nLfqn9JLBccF6Tsug6pAGAYmoEF1ur53ktlfkoKW6Oy+xR/kGBFC0kwQJo8SfNJPsUW1kNz1Fy5KKWVpYtWf+Mbv7Z8mMWPF1ExWWHk+1ehD2EZLP+Nqc1OdsjBb2BnBnNcZgxCKSfX6vGOtTdlkX4YwE/T5PaA0Pib262LvTTI1MyMNGo4+COPYfy1NRh4Nbkuz65X35At9UmRo9WfPFo/iDufgC2SpXUWgVXhNMCL4pE3Cq1Ti94zwSU75T53ZKezVjBpkl0OW1QqdqIk1izj7GbqJirJu8M+PU0kiAg3lK5C3I6FdtsYv7njYRSq8M0FQ3S4QZvBDoMRVvsxsW3r1iwPWCET6c/ZCRLkfD2vSL5pFxvLhSzkbfu88cZkXvAX86DevVaP7JzGrRzO/0tsWABPyZ765phG4te4dw3ck7Vwk0RAnvLDfTPsyqfYCBDreYGTrjEnu3icQ/VXwRpqmFO8a3Ae4pyqY80kgVr/EGMcqoJ7RT+sXd/I8d4sWTwG5M4kl5fRvyiZLr26NyFd/Z7u3TLgZa9+PFeHXTsWHGw/EwjQyyJYpwKAlQA7TbqmbZqKGCNNz6b/xh8UTorREfKJGgA1HAPz2NJPVm0+Ps8U/WzNA6IXiFnmZnNAUf0H2jnSLPSpw9km2AEZvlufrN6qPAuEdmZSYqtDCkrKMnwmoA2qS/MPKAufNyYLNRWe7tqqtlPOzeg283L7SIKjEGCwfn4=",
+        "e2_assembly_errors" : 0,
+        "column_properties" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><extendedAttributesList/>",
+        "output_count" : 2,
+        "input_count" : 0,
+        "enable_logging" : false,
+        "maximum_stack_size" : 256,
+        "heap_size" : 256,
+        "limit_output_rows" : false,
+        "last_modified" : "2024-05-27T11:04:09.924 -0400",
+        "debug_test_data" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DebugTestValues><jobParams paramName=\"xml_example_root_folder\">/opt/workshops/files/DATASTAGE</jobParams><testData operatorID=\"Op-4#top\">H4sIAAAAAAAAAOVZ7XLiNhR9gryDx/9BsvlmjHcIJN12k2Y7sN1O/+woWIC6tsRIIoQ+fa+FwabBBBNINi3DMNaV7pXvOdbVsfA+PEah9UClYoJ3bKeMbYvykQgYn3TsL8PrUtP+4F94AZ0RqSPKtbLAg6s2V07Hnmo9ayPE7qPySESI8bFQsymVFMEgdBXNQrGk1L5Y+Tw3/k5OCGd/Ew33svZpPyq28VssFuVFpSzkBLkYO+iP25vBaEojUmJcacJHZirF2spYb8TIxCoyrzVmIW2jXhsthPyOpB658TSfyej7t0CMFIKfeYyDGY0UgRxpQDTZilJ+VIHtX1jwyUC3RsG2UtvP/Y7ddTDO2j4xHnTsPntgMStJHBMrIpxMqPS7DXDx0LqZDgBW2jSBXaX2J33W+sLM32y18M6b2o6QRiIR3d1lusdMKv1rPOZPyj2UNvNdIhYEITWDPkNeaSvfJSRJ1K+STabaQxvD7ptG+XftTSgPAMeIhNRDSWP3SKCa3o0vmdRT32k1cQlX4euhrH23p2Y6pP6t9NDqandmXjcIJFVqT+JKS0q171awY11BztYNiYi0LsOHwENJZ773iOml35UhLHAtgB3T3jcZJOYP6SNRcfC4sSe2mHMtl/6XQRcCJ4384TMBAcOeCKjfaFbqFQ9lLLlulkdWEH3Tyxn17zy01c4hfy+sBUCHsmN9pQD6wBjeM+BxBTkE8G28P54C7ymTtB+nBng2S7hRchwPbYy7fX4R93nh/hL3meq1LqgMiihcxFfqdlUpO/aYhIrm1LV1rKFZnwMx1gsiqXXFJ4xTCgt307eXPqmzqRkSE1O+G5ScxMnBJcf10NqwhxXO5yQckJAA5w7MhmNCt6x7Hpy5lAAVJOQD8plWDp25XU/B711X1ui7RdFfB1yh3FVKjBigUIgCE2OLhnoJ1w6iwbimVCT8PUuFcdsCvl6IDeOf4QA/z4hxyWfFQ09XC2yAGQFwqDa4rNeq59EGvSXXU0bOrw/6gpMwOIU+GNPiCqFRwk7JaRRQCEypU2mEAeHWNQ3ZjFqDOYOF5FYxLh+6aX0Uc/UjbVkNXGsctGW9pUKoVWSQVQjvGO0DBcKZ9QGO9YFbO48+qByvD37rWl0oLEuliwsD/GrCYKULXl8YPMG8//sG9OrLZMEwXlwvUAROq9WConyUIsDHKgKnGA8mwA8qCXoOvHqeRRIMCT9CEPxU+MCAhSEj0VspAvyWiqCmp9ZAzOPfYtvTLSDGDtycrkMhWUDOuT1V3Npx76+vrAaq/8L7HcPtHHU+c3I94L5YD5jufE1QO8GZQZ8+0FDMjjk0cP/z2sDaLw/qpzo1KESCCbIlEprHigT3/yMSUM4fDklel/NgArUuySvNLLGnw1H6LGysWSOE/gcMs5+wqxoAAA==</testData></DebugTestValues>"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxSequentialFile",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "6ef5b255-9f63-437f-8676-cff35fd854d2",
+          "type_attr" : "PRIMARY",
+          "id" : "56c73cf1-2aaa-42bb-9443-d7d0c2b29c26",
+          "link_name" : "Address",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Address",
+                "label" : "Address",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "37a2a909-6398-4bea-92c6-f618892e8c42"
+        } ],
+        "id" : "f9ff975f-8ae8-4338-bfad-ec1b0c376855",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "append-overwrite" : "overwrite",
+          "final_delim" : "end",
+          "rejects" : "continue",
+          "file" : [ "/opt/workshops/files/DATASTAGE/xml_examples/parser_step/example1/output/address.txt" ],
+          "quote" : "double",
+          "firstLineColumnNames" : "firstLineColumnNames",
+          "nocleanup" : " ",
+          "writemethod" : " ",
+          "part_coll" : "none",
+          "runtime_column_propagation" : 0,
+          "registerDataAsset" : false,
+          "delim" : "','"
+        },
+        "schema_ref" : "cc8cc280-6305-445a-81d0-9f2dfbf07945"
+      } ],
+      "id" : "7e7ef35e-3df1-49ee-aea2-0282f82817b1",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 720.0,
+          "label" : "Address_File",
+          "y_pos" : 240.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    } ],
+    "id" : "dbd2168a-324f-49c0-9133-3ecfb9443ef2",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "ef245b96-57d6-48de-b5b5-17333090c80f",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ns0:name/lastName",
+        "max_length" : 40,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "LastName",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ns0:name/middleName",
+        "max_length" : 40,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MiddleName",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ns0:name/firstName",
+        "max_length" : 40,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "FirstName",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ns0:gender",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "Gender",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ns0:dateOfBirth",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "BirthDate",
+      "type" : "date",
+      "app_data" : {
+        "odbc_type" : "DATE",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DATE"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ns0:title",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "Title",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ns0:hireDate",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "HireDate",
+      "type" : "date",
+      "app_data" : {
+        "odbc_type" : "DATE",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DATE"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ns0:@employeeID",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "EmployeeID",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:@departmentID",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "DepartmentID",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  }, {
+    "id" : "cc8cc280-6305-445a-81d0-9f2dfbf07945",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:street",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "street",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:city",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "city",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:state",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "state",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:country",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "country",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:postalCode",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "postalCode",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:address_type",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "address_type",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "../../ns0:@employeeID",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "EmployeeID",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "36d132c1-fa07-48ec-b339-b8ec966eb01b",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "isDefineParameterToggled" : true
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ {
+      "name" : "xml_example_root_folder",
+      "description" : "Point to the root of the file tree folder of the example archive",
+      "type" : "string",
+      "prompt" : "Roof of example folder tree",
+      "value" : "/opt/workshops/files/DATASTAGE"
+    }, {
+      "name" : "DSJobController",
+      "type" : "string"
+    }, {
+      "name" : "DSJobInvocationId",
+      "type" : "string",
+      "prompt" : "Job invocation ID"
+    } ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "metadata" : {
+    "name" : "Trial job - PipelineRunShellStatement",
+    "description" : "Trial job and run created for the pipeline: PipelineRunShellStatement",
+    "asset_id" : "d18f49f9-ded5-401d-ba61-881fe2ff8f86",
+    "owner_id" : "1000331001",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "1edc60a9-eb36-4c88-a7c0-b11ff04abd6e",
+      "schedule_id" : "",
+      "project_name" : "GITHUB integrado",
+      "configuration" : {
+        "version" : "1edc60a9-eb36-4c88-a7c0-b11ff04abd6e-0",
+        "env_type" : "",
+        "sub_type" : "oflow_trial_run",
+        "env_variables" : [ ]
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "orchestration_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "PipelineRunShellStatement"
+    }
+  }
+}

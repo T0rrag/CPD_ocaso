@@ -1,0 +1,29 @@
+{
+  "metadata" : {
+    "name" : "jpFTPRead",
+    "asset_id" : "e564693a-c3c6-4e7f-b1bd-91ff609d3312",
+    "owner_id" : "1000331001",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "a6595b9f-7b61-44e5-85d1-90a4d4113ccc",
+      "schedule_id" : "",
+      "project_name" : "GITHUB integrado",
+      "configuration" : {
+        "env_type" : "",
+        "env_variables" : [ ],
+        "runPriorityQueue" : "Low"
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "data_intg_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "jpFTPRead"
+    }
+  }
+}

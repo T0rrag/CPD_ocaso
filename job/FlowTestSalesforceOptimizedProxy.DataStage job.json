@@ -1,0 +1,43 @@
+{
+  "metadata" : {
+    "name" : "FlowTestSalesforceOptimizedProxy.DataStage job",
+    "asset_id" : "44c70b14-4586-4795-b2f3-995d0ef69571",
+    "owner_id" : "1000331001",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "b5658ca6-d5a1-4ad1-b78d-5d6ccb945220",
+      "schedule_id" : "",
+      "project_name" : "GITHUB integrado",
+      "configuration" : {
+        "env_type" : "",
+        "flow_limits" : {
+          "warn_limit" : 100
+        },
+        "env_variables" : [ ],
+        "runPriorityQueue" : "Medium"
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "data_intg_flow",
+      "job_parameters" : [ {
+        "name" : "pmSalesforcePassword",
+        "value" : "{dsnextenc}RqMzdrqteY7VtEYFfuQ8Jg=="
+      }, {
+        "name" : "pmProxyUsername",
+        "value" : "USERNAME"
+      }, {
+        "name" : "pmProxyPassword",
+        "value" : "{dsnextenc}RqMzdrqteY7VtEYFfuQ8Jg=="
+      } ],
+      "last_run_status" : "deprecated field",
+      "retention_policy" : { },
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "FlowTestSalesforceOptimizedProxyParameters"
+    }
+  }
+}

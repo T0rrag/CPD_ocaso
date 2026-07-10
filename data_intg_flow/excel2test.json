@@ -1,0 +1,340 @@
+{
+  "primary_pipeline" : "dc52e6cd-16c5-4eb8-a890-e58737ce8934",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "4b14f48e-c4ea-44d6-94fe-6b6ed2cccda8",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "14a28f7f-1873-4a4f-a84e-13b9a4108130"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "template_data_area" : "Sheet1!A1:F1001",
+          "source_column_header" : 0,
+          "skip_null_row" : false,
+          "hidden_columns" : 0,
+          "buf_free_run" : 50,
+          "area_expression" : "Sheet1!A1:F1001",
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576,
+          "area_type" : 0,
+          "col_map" : [ {
+            "excel_column" : {
+              "first_row_cell_value" : "Zip",
+              "excel_col_position" : "@6",
+              "name" : "EXL.COLUMN",
+              "import_option" : "COLUMN",
+              "excel_col_type" : "excelColumn"
+            },
+            "datastage_column_name" : "Zip"
+          }, {
+            "excel_column" : {
+              "first_row_cell_value" : "LName",
+              "excel_col_position" : "@4",
+              "name" : "EXL.COLUMN",
+              "import_option" : "COLUMN",
+              "excel_col_type" : "excelColumn"
+            },
+            "datastage_column_name" : "LName"
+          }, {
+            "excel_column" : {
+              "first_row_cell_value" : "Address",
+              "excel_col_position" : "@5",
+              "name" : "EXL.COLUMN",
+              "import_option" : "COLUMN",
+              "excel_col_type" : "excelColumn"
+            },
+            "datastage_column_name" : "Address"
+          }, {
+            "excel_column" : {
+              "first_row_cell_value" : "CustID",
+              "excel_col_position" : "@1",
+              "name" : "EXL.COLUMN",
+              "import_option" : "COLUMN",
+              "excel_col_type" : "excelColumn"
+            },
+            "datastage_column_name" : "CustID"
+          }, {
+            "excel_column" : {
+              "first_row_cell_value" : "FName",
+              "excel_col_position" : "@2",
+              "name" : "EXL.COLUMN",
+              "import_option" : "COLUMN",
+              "excel_col_type" : "excelColumn"
+            },
+            "datastage_column_name" : "FName"
+          }, {
+            "excel_column" : {
+              "first_row_cell_value" : "MiddleInit",
+              "excel_col_position" : "@3",
+              "name" : "EXL.COLUMN",
+              "import_option" : "COLUMN",
+              "excel_col_type" : "excelColumn"
+            },
+            "datastage_column_name" : "MiddleInit"
+          } ]
+        },
+        "schema_ref" : "01d6c740-d2d4-4067-9da4-ab49785b96b6"
+      } ],
+      "op" : "UnstructuredDataConnectorPX",
+      "id" : "96cdb9cc-2645-44b7-9437-c9e1aa4260cd",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/UnstructuredDataConnectorPX.svg",
+          "x_pos" : 240.0,
+          "label" : "input_customers",
+          "y_pos" : 144.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "file_name" : "/opt/workshops/files/DATASTAGE/sectionD/input_customers.xls",
+        "doc_type" : 0,
+        "allow_column_mapping" : false,
+        "error_action" : 0
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxSequentialFile",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "96cdb9cc-2645-44b7-9437-c9e1aa4260cd",
+          "type_attr" : "PRIMARY",
+          "id" : "14a28f7f-1873-4a4f-a84e-13b9a4108130",
+          "link_name" : "DSLink2",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "DSLink2",
+                "label" : "DSLink2",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "4b14f48e-c4ea-44d6-94fe-6b6ed2cccda8"
+        } ],
+        "id" : "9d3620f4-0a75-4e14-a6aa-f7767274f768",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "append-overwrite" : "overwrite",
+          "final_delim" : "end",
+          "rejects" : "continue",
+          "file" : [ "/opt/workshops/files/DATASTAGE/sectionD/output_customers_excel.txt" ],
+          "quote" : "double",
+          "firstLineColumnNames" : "firstLineColumnNames",
+          "nocleanup" : " ",
+          "writemethod" : " ",
+          "part_coll" : "none",
+          "runtime_column_propagation" : 0,
+          "registerDataAsset" : false,
+          "delim" : "','"
+        },
+        "schema_ref" : "01d6c740-d2d4-4067-9da4-ab49785b96b6"
+      } ],
+      "id" : "b93b03a1-849b-4911-97c1-f323f66691bb",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 528.0,
+          "label" : "input_customers_output_txt",
+          "y_pos" : 144.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    } ],
+    "id" : "dc52e6cd-16c5-4eb8-a890-e58737ce8934",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "01d6c740-d2d4-4067-9da4-ab49785b96b6",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "Value of column A",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "CustID",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "Value of column B",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "FName",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "Value of column C",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "MiddleInit",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "Value of column D",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "LName",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "Value of column E",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "Address",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "Value of column F",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "Zip",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "c979ed27-6274-4494-8d06-1915bc46dc99",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "isDefineParameterToggled" : true
+    }
+  },
+  "version" : "3.0"
+}

@@ -1,0 +1,247 @@
+{
+  "primary_pipeline" : "e3f40a1c-d18e-40f4-932f-22af5f6d9c09",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "ec092765-9643-49d6-ba1a-9db042ae1ef7",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "82989c9d-c034-4be9-8e42-51e9add7a487"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "valueDerivation" : [ {
+            "parsedExpression" : "SurrogateKeyGen(SGK_PK)",
+            "columnName" : "SGK_PK"
+          } ],
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "f5b8774c-bb7e-4d7e-97cf-9d957510be94"
+      } ],
+      "op" : "PxSurrogateKeyGeneratorN",
+      "id" : "ead43354-1793-4806-be9c-fda618405cb3",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSurrogateKeyGeneratorN.svg",
+          "x_pos" : 48.0,
+          "label" : "SKG_Generator",
+          "y_pos" : 48.0
+        }
+      },
+      "parameters" : {
+        "dbtypeProperties" : {
+          "dbtype" : "db2",
+          "connection" : {
+            "ref" : "app_defined",
+            "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+            "properties" : { }
+          },
+          "client_instance" : "db2inst1"
+        },
+        "sk_id" : "TEST_SKG",
+        "num-outputs" : 1,
+        "output_count" : 1,
+        "keysourcetype" : "dbsequence",
+        "records" : 10,
+        "input_count" : 0,
+        "output_key" : "SGK_PK",
+        "additionalPropertiesSet_option" : [ "records" ],
+        "num-inputs" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "op" : "PxPeek",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "ead43354-1793-4806-be9c-fda618405cb3",
+          "type_attr" : "PRIMARY",
+          "id" : "82989c9d-c034-4be9-8e42-51e9add7a487",
+          "link_name" : "Lnk_View",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_View",
+                "label" : "Lnk_View",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "ec092765-9643-49d6-ba1a-9db042ae1ef7"
+        } ],
+        "id" : "1a7e7778-cf4d-4362-b48f-e49ad273b8c1",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "f5b8774c-bb7e-4d7e-97cf-9d957510be94"
+      } ],
+      "id" : "cf0bf9d2-a89d-4690-ac88-e0d6ba961ba8",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "1a7e7778-cf4d-4362-b48f-e49ad273b8c1"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxPeek.svg",
+          "x_pos" : 264.0,
+          "label" : "PE_View",
+          "y_pos" : 48.0
+        }
+      },
+      "parameters" : {
+        "all" : "all",
+        "selection" : " ",
+        "output_count" : 0,
+        "input_count" : 1,
+        "columns" : " ",
+        "name" : "name",
+        "dataset" : " ",
+        "allow_column_mapping" : false
+      }
+    } ],
+    "id" : "e3f40a1c-d18e-40f4-932f-22af5f6d9c09",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ {
+          "associated_id_refs" : [ ],
+          "formats" : [ {
+            "type" : "fontType",
+            "value" : "font-ibm-plex-sans"
+          }, {
+            "type" : "letter-spacing",
+            "value" : "-0.5px"
+          }, {
+            "type" : "textSize",
+            "value" : "text-size-12"
+          }, {
+            "type" : "alignHorizontally",
+            "value" : "align-center"
+          }, {
+            "type" : "alignVertically",
+            "value" : "align-middle"
+          }, {
+            "type" : "backgroundColor",
+            "value" : "#ffffc1"
+          }, {
+            "type" : "outlineStyle",
+            "value" : "outline-solid"
+          }, {
+            "type" : "line-height",
+            "value" : "1.2"
+          }, {
+            "type" : "padding",
+            "value" : "1px"
+          }, {
+            "type" : "border-color",
+            "value" : "#000000"
+          } ],
+          "width" : 422,
+          "x_pos" : 40.0,
+          "id" : "4a6a0919-a428-4704-9ec3-f9b2003533b0",
+          "y_pos" : 147.0,
+          "contentType" : "WYSIWYG",
+          "class_name" : "d3-comment-rect",
+          "content" : "- Genera Claves primarias (uint64)\r\n- Guarda referencia de la última creada en secuencia base de datos DB2: FAQ_SKG\r\n",
+          "height" : 94
+        } ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "external_paramsets" : [ {
+    "ref" : "2f07fb67-d7a5-49b4-93cc-47865c67e02d",
+    "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+    "name" : "ConnParamSet_SurrogateKeyGeneratorN"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "f5b8774c-bb7e-4d7e-97cf-9d957510be94",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "SGK_PK",
+      "type" : "integer",
+      "app_data" : {
+        "odbc_type" : "BIGINT",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "79924df7-043a-41a5-b870-f438c40e2c2d",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "isDefineParameterToggled" : true
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ {
+      "name" : "$APT_DBNAME",
+      "description" : "Base de datos DB2 predeterminada para utilizar",
+      "type" : "string",
+      "prompt" : "Base de datos DB2",
+      "value" : "DSDB"
+    } ]
+  }
+}

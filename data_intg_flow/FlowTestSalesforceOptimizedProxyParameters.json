@@ -1,0 +1,354 @@
+{
+  "primary_pipeline" : "d2ccf152-da1d-4f84-9afd-683ab9af7a5e",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "3f3552d3-0589-4818-bb4d-26696f909e1f",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "7f2e2317-da30-4c95-9d36-22640e0cbda0"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2
+            }
+          },
+          "additionalProperties" : {
+            "enableAcp" : true
+          }
+        },
+        "parameters" : {
+          "outputName" : "Link_1",
+          "buf_mode" : "default",
+          "has_ref_output" : false
+        }
+      } ],
+      "op" : "SALESFORCEJCConnectorPX",
+      "inputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type"
+        }
+      } ],
+      "connection" : {
+        "ref" : "local",
+        "properties" : {
+          "currentOutputLinkType" : "PRIMARY",
+          "access_method" : "real_time_mode",
+          "batch_size" : 200,
+          "proxy_server" : true,
+          "outputAcpShouldHide" : true,
+          "enable_flat_file" : false,
+          "enableFlowAcpControl" : false,
+          "enableSchemalessDesign" : false,
+          "reference_soql" : "#pmSalesforceProgram#",
+          "proxy_server_port" : "#pmProxyPortnumber#",
+          "authentication_type" : "username_and_password",
+          "url" : "#pmHostnameSalesforce#",
+          "proxy_server_host" : "#pmProxyHostname#",
+          "node_number" : 0,
+          "proxy_server_password" : "#pmProxyPassword#",
+          "password" : "#pmSalesforcePassword#",
+          "read_mode" : "query",
+          "soql_string" : "#pmSalesforceQuery#",
+          "proxy_server_username" : "#pmProxyUsername#",
+          "node_count" : 1,
+          "username" : "#pmSalesforceUsername#"
+        }
+      },
+      "id" : "6966bae5-91ec-46f3-9499-e1cd37a17d16",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/SALESFORCEJCConnectorPX.svg",
+          "x_pos" : 47.52,
+          "label" : "Salesforcecom_Optimized_Proxy",
+          "y_pos" : 47.52
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "output_count" : 1,
+        "input_count" : 0,
+        "execmode" : "default_par",
+        "preserve" : -3
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        },
+        "parameters" : { }
+      } ],
+      "op" : "PxPeek",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "6966bae5-91ec-46f3-9499-e1cd37a17d16",
+          "type_attr" : "PRIMARY",
+          "id" : "7f2e2317-da30-4c95-9d36-22640e0cbda0",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "path" : "M -15 -15 L -15 15 15 15 15 -15 Z",
+                "temporary" : false,
+                "distance" : 40,
+                "tooltip" : "No columns",
+                "x_pos" : 5,
+                "id" : "dec-1",
+                "position" : "source"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/link-marking--no-metadata.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 40,
+                "width" : 12,
+                "tooltip" : "No columns",
+                "x_pos" : -2,
+                "id" : "dec-2",
+                "position" : "source",
+                "y_pos" : -6,
+                "height" : 12
+              }, {
+                "path" : "M -15 -15 L -15 15 15 15 15 -15 Z",
+                "temporary" : false,
+                "distance" : 90,
+                "tooltip" : "Automatic column propagation is disabled for this link",
+                "x_pos" : 5,
+                "id" : "dec-4",
+                "position" : "source"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/acp-off.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 90,
+                "width" : 12,
+                "tooltip" : "Automatic column propagation is disabled for this link",
+                "x_pos" : -2,
+                "id" : "dec-5",
+                "position" : "source",
+                "y_pos" : -6,
+                "height" : 12
+              }, {
+                "path" : "M -15 -15 L -15 15 15 15 15 -15 Z",
+                "temporary" : false,
+                "distance" : -50,
+                "tooltip" : "Auto-partition",
+                "x_pos" : 5,
+                "id" : "dec-4",
+                "position" : "target"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/link-marking--auto-partitioning.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : -50,
+                "width" : 12,
+                "tooltip" : "Auto-partition",
+                "x_pos" : -2,
+                "id" : "dec-5",
+                "position" : "target",
+                "y_pos" : -6,
+                "height" : 12
+              }, {
+                "path" : "M -25 -20 L -25 20 25 20 25 -20 Z",
+                "temporary" : false,
+                "id" : "dec-7",
+                "position" : "middle",
+                "class_name" : "linkMiddleImage"
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -20,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_1",
+                "y_pos" : -8,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_1",
+          "port_id_ref" : "3f3552d3-0589-4818-bb4d-26696f909e1f"
+        } ],
+        "id" : "54a71147-c407-4d01-8b3f-0d41df1b73af",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "runtime_column_propagation" : 1
+        }
+      } ],
+      "id" : "197c49af-0bb4-4d46-851e-38e5c2a5004b",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "54a71147-c407-4d01-8b3f-0d41df1b73af",
+          "outputs_order" : ""
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxPeek.svg",
+          "x_pos" : 237.60000000000002,
+          "label" : "Peek_Sample_10_Rows",
+          "y_pos" : 47.52
+        }
+      },
+      "parameters" : {
+        "all" : " ",
+        "showPartType" : true,
+        "columns" : " ",
+        "showCollType" : false,
+        "inputName" : "Link_1",
+        "showSortOptions" : false,
+        "combinability" : "auto",
+        "OutputlinkOrderingList" : [ ],
+        "inputcolProperties" : [ ],
+        "nrecs" : 10,
+        "selection" : " ",
+        "output_count" : 0,
+        "execmode" : "default_par",
+        "input_count" : 1,
+        "name" : "name",
+        "dataset" : " "
+      }
+    } ],
+    "description" : "",
+    "id" : "d2ccf152-da1d-4f84-9afd-683ab9af7a5e",
+    "app_data" : {
+      "datastage" : {
+        "nls_map_name" : "",
+        "nls_locale" : "OFF"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "external_paramsets" : [ ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ ],
+  "doc_type" : "pipeline",
+  "id" : "c0abbb14-ece6-4ac8-8afc-d2e9367eae09",
+  "app_data" : {
+    "datastage" : {
+      "timestamp_format" : "",
+      "decimal_separator" : "",
+      "flowRunPriorityQueue" : "Medium",
+      "time_format" : "",
+      "date_format" : "",
+      "message_handlers" : [ ],
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "transInputLinkMapper" : { },
+      "ELTDropdown" : {
+        "id" : "nesting",
+        "label" : "Generate nested SQL",
+        "value" : "NESTED_QUERY"
+      },
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "rcpLinkList" : [ "7f2e2317-da30-4c95-9d36-22640e0cbda0" ],
+      "globalAcp" : false,
+      "enableRCP" : false,
+      "isDefineParameterToggled" : true,
+      "enableSchemaLessDesign" : false,
+      "runMode" : "ETL"
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ {
+      "subtype" : "",
+      "name" : "pmHostnameSalesforce",
+      "type" : "string",
+      "value" : "https://test.salesforce.com/services/Soap/u/55.0",
+      "prompt" : "Salesforce hostname"
+    }, {
+      "subtype" : "",
+      "name" : "pmSalesforceUsername",
+      "type" : "string",
+      "value" : "USERNAME",
+      "prompt" : "Salesforce username"
+    }, {
+      "subtype" : "",
+      "name" : "pmSalesforcePassword",
+      "type" : "encrypted",
+      "value" : "{dsmenc}pqbNt11iH6I4mdRZwOiY1X6R0kYQkb8ngtIIcCAW59CAeGqMCs1050Kp1hjZohHT",
+      "prompt" : "Salesforce password"
+    }, {
+      "subtype" : "",
+      "name" : "pmProxyHostname",
+      "type" : "string",
+      "value" : "proxy-sa.seg-social.es",
+      "prompt" : "Proxy hostname"
+    }, {
+      "subtype" : "",
+      "name" : "pmProxyPortnumber",
+      "type" : "string",
+      "value" : "8080",
+      "prompt" : "Proxy portnumber"
+    }, {
+      "subtype" : "",
+      "name" : "pmProxyUsername",
+      "type" : "string",
+      "value" : "USERNAME",
+      "prompt" : "Proxy username"
+    }, {
+      "subtype" : "",
+      "name" : "pmProxyPassword",
+      "type" : "encrypted",
+      "value" : "{dsmenc}pqbNt11iH6I4mdRZwOiY1X6R0kYQkb8ngtIIcCAW59CAeGqMCs1050Kp1hjZohHT",
+      "prompt" : "Proxy password"
+    }, {
+      "subtype" : "",
+      "name" : "pmSalesforceQuery",
+      "type" : "string",
+      "value" : "SELECT * FROM TABLE",
+      "prompt" : "Salesforce query"
+    }, {
+      "subtype" : "",
+      "name" : "pmSalesforceProgram",
+      "type" : "string",
+      "value" : "PROGRAM",
+      "prompt" : "Salesforce program"
+    } ]
+  }
+}

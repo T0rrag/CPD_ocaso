@@ -1,0 +1,224 @@
+{
+  "primary_pipeline" : "95265b85-318f-4c27-a1ba-904ba2b96cd0",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "26d43f3d-303a-4f4d-ab29-7a92dc112528",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "6e06bff5-e555-4418-9217-73c9cd9e8d73"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        }
+      } ],
+      "op" : "DB2ConnectorPX",
+      "connection" : {
+        "ref" : "app_defined",
+        "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+        "properties" : {
+          "session.schema_reconciliation.fail_on_code_page_mismatch" : false,
+          "sql.select_statement.tables.table" : "XMETA.PROJECT_PROJECT",
+          "session.isolation_level" : "cursor_stability",
+          "lock_wait_mode" : "use_the_lock_timeout_database_configuration_parameter",
+          "session.pass_lob_locator" : false,
+          "limit_rows" : false,
+          "transaction.end_of_wave" : "none",
+          "session.schema_reconciliation.fail_on_size_mismatch" : true,
+          "xml_column_as_lob" : false,
+          "sql.select_statement.read_from_file_select" : false,
+          "sql.select_statement" : "SELECT * FROM XMETA.PROJECT_PROJECT",
+          "session.array_size" : 1,
+          "sql.enable_partitioning" : false,
+          "session.autocommit_mode" : "off",
+          "prefix_for_expression_columns" : "EXPR",
+          "session.schema_reconciliation.fail_on_type_mismatch" : true,
+          "re_optimization" : "none",
+          "migrated_job" : false,
+          "before_after" : false,
+          "generate_sql" : false,
+          "transaction.record_count" : 2000
+        }
+      },
+      "id" : "462292e6-7ad3-4364-acb1-64bb18b042c0",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : {
+          "outputs_order" : "26d43f3d-303a-4f4d-ab29-7a92dc112528"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/DB2ConnectorPX.svg",
+          "x_pos" : 312.0,
+          "label" : "database",
+          "y_pos" : 144.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "op" : "PxPeek",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "462292e6-7ad3-4364-acb1-64bb18b042c0",
+          "type_attr" : "PRIMARY",
+          "id" : "6e06bff5-e555-4418-9217-73c9cd9e8d73",
+          "link_name" : "DSLink2",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "DSLink2",
+                "label" : "DSLink2",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "26d43f3d-303a-4f4d-ab29-7a92dc112528"
+        } ],
+        "id" : "9eba0e92-d140-46bb-a61d-19ed8b3baea0",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 1
+        }
+      } ],
+      "id" : "4907188b-264e-4b2b-a1bd-8e11272f6efd",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "9eba0e92-d140-46bb-a61d-19ed8b3baea0"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxPeek.svg",
+          "x_pos" : 480.0,
+          "label" : "Peek_6",
+          "y_pos" : 144.0
+        }
+      },
+      "parameters" : {
+        "all" : " ",
+        "nrecs" : 10,
+        "selection" : " ",
+        "output_count" : 0,
+        "input_count" : 1,
+        "columns" : " ",
+        "name" : "name",
+        "dataset" : " ",
+        "allow_column_mapping" : false
+      }
+    } ],
+    "id" : "95265b85-318f-4c27-a1ba-904ba2b96cd0",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ {
+          "associated_id_refs" : [ ],
+          "formats" : [ {
+            "type" : "fontType",
+            "value" : "font-ibm-plex-sans"
+          }, {
+            "type" : "letter-spacing",
+            "value" : "-0.5px"
+          }, {
+            "type" : "textSize",
+            "value" : "text-size-12"
+          }, {
+            "type" : "alignHorizontally",
+            "value" : "align-center"
+          }, {
+            "type" : "alignVertically",
+            "value" : "align-middle"
+          }, {
+            "type" : "backgroundColor",
+            "value" : "#ffffc1"
+          }, {
+            "type" : "outlineStyle",
+            "value" : "outline-solid"
+          }, {
+            "type" : "line-height",
+            "value" : "1.2"
+          }, {
+            "type" : "padding",
+            "value" : "1px"
+          }, {
+            "type" : "border-color",
+            "value" : "#000000"
+          } ],
+          "width" : 72,
+          "x_pos" : 377.0,
+          "id" : "50eb201e-ddfa-4fd9-b754-2a7429d76ca9",
+          "y_pos" : 48.0,
+          "contentType" : "WYSIWYG",
+          "class_name" : "d3-comment-rect",
+          "content" : "Example of a Peek Stage reading output data via RCP",
+          "height" : 72
+        } ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "external_paramsets" : [ {
+    "ref" : "a3c04721-d0db-49bd-b732-54de3fd64874",
+    "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+    "name" : "ConnParamSet_DB2_XMETA"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ ],
+  "doc_type" : "pipeline",
+  "id" : "34513c69-3bc8-42c4-a3ff-aaa2f8f95f38",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "isDefineParameterToggled" : true
+    }
+  },
+  "version" : "3.0"
+}

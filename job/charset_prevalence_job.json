@@ -1,0 +1,29 @@
+{
+  "metadata" : {
+    "name" : "charset_prevalence_job",
+    "asset_id" : "a77403ed-4cb8-4572-88aa-d17f25856219",
+    "owner_id" : "1000331001",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "388a2474-1360-49fa-a868-15f47e208ad0",
+      "schedule_id" : "",
+      "project_name" : "GITHUB integrado",
+      "configuration" : {
+        "env_type" : "",
+        "env_variables" : [ ],
+        "runPriorityQueue" : "Low"
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "data_intg_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "charset_prevalence_job"
+    }
+  }
+}

@@ -1,0 +1,342 @@
+{
+  "primary_pipeline" : "dfe4e681-e579-4d31-8326-20e4f4bf2796",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "XMLStagePX",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "ef5bf282-c571-4279-bb5a-314b4889b006",
+          "type_attr" : "PRIMARY",
+          "id" : "0d1fc8b6-bcfa-4a36-82f6-7dc36ee9079b",
+          "link_name" : "Address",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Address",
+                "label" : "Address",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "f4002789-9bfd-4433-9279-7a11331ead17"
+        } ],
+        "id" : "db8d8262-0e00-4881-8df7-f8e405f1a48e",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 2
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "none",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "89157d1a-531f-4ef0-ad82-083c27e79400"
+      } ],
+      "id" : "c41864f3-ad87-4ed7-b160-34ceb3d88a02",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "db8d8262-0e00-4881-8df7-f8e405f1a48e"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/XMLStagePX.svg",
+          "x_pos" : 384.0,
+          "label" : "Address_compose",
+          "y_pos" : 192.0
+        }
+      },
+      "parameters" : {
+        "enable_split_data_into_batches" : false,
+        "num_assembly_threads" : 4,
+        "stage_type" : "XMLStage",
+        "enable_disk_based" : true,
+        "params" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><!DOCTYPE properties SYSTEM \"http://java.sun.com/dtd/properties.dtd\"><properties><entry key=\"DSProjectName\">#DSProjectName#</entry><entry key=\"DSJobWaveNo\">#DSJobWaveNo#</entry><entry key=\"DSJobInvocationId\">#DSJobInvocationId#</entry><entry key=\"DSJobController\">#DSJobController#</entry><entry key=\"DSHostName\">#DSHostName#</entry><entry key=\"DSJobName\">#DSJobName#</entry><entry key=\"DSJobStartTime\">#DSJobStartTime#</entry><entry key=\"DSJobStartDate\">#DSJobStartDate#</entry><entry key=\"DSJobStartTimestamp\">#DSJobStartTimestamp#</entry><entry key=\"xml_example_root_folder\">#xml_example_root_folder#</entry></properties>",
+        "allow_column_mapping" : false,
+        "e2_assembly" : "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",
+        "security_info" : "{dsnextenc}JlppiuBlsRla9lguomyoF5sAIAMeZzWAYzdWlTzxhueC7bxBSa795OJEQu24bp9k2FfYd2XgTjQSLbOkMUG8sakLZbBjoqaM7TFQNkc/LWamLC3cWayoZwsdi7RUaTq0xKkUsnd0g3wBpgMw2TdFxdSBPxad6IhOXwC29rZB5jAUfkQbVEES7CrfyEysDf4r+zp41plgThpoOrzGRt5yfHKmJZc2M0ODhJQ6ZG4XnAKPNDTZz4vltrXUQrPMxX3pxnbaV2A/LYi3GcVunVqDWOuj65bCxa77l3YChvFjIkOTgWDrB2QPuXSIeyZ5Efo5XervjAKosW/AZMB7CcppK0pu2iLZUZvteIkh9xZXJYlJkWCwCLs4KOXEgRcoTSWdOC0NIMpYDOOy/aYzHRNajLgMlg/Q10QrmxdCZbBYH4wT0ZeOtT92z41+pbLDFq/O5sVObvq+Z5SxctQ1IPpRI06TpcmjLChpYTDrSP/e4rt0ULPR56M8CC92+ViSvjfQfeyx6SzrbeoB+uxmgIu3tibZfRlaVfgqgUbmrHTyAvR+2MqDnTJ+X/Uk5lQX4IKQJ3BaFjHMMQ7B8nLfqn9JLBccF6Tsug6pAGAYmoEF1ur53ktlfkoKW6Oy+xR/kGBFC0kwQJo8SfNJPsUW1kNz1Fy5KKWVpYtWf+Mbv7Z8mMWPF1ExWWHk+1ehD2EZLP+Nqc1OdsjBb2BnBnNcZgxCKSfX6vGOtTdlkX4YwE/T5PaA0Pib262LvTTI1MyMNGo4+COPYfy1NRh4Nbkuz65X35At9UmRo9WfPFo/iDufgC2SpXUWgVXhNMCL4pE3Cq1Ti94zwSU75T53ZKezVjBpkuTZmoZ2mTfngeLaLEqDkI+9j+oT6Kie7vT0BvbloPJ0MPFV7zKKWonyK8N4kbTegYkW6VlZukd+uQo+0jhMLI67LnbDWnblVQWqt+wA6HnNMiJ8IAyUnRJ2EcfP4nUQVbf+YtgHQe0ABOv2gzQy4uDhJV0xKmSsYZPRN856lKkUbClS/hxpbEfJ+vhxedHQzSrFrLjB0+K/IqZD4VF4lNaoYXV3mP4+Hji9diQHWn9h9YMWGPqzR213EgUI1RgeScr/rKOxqctzxmlKYYKabVG9u41Qpv7PWp5qRWx0UtQmvvLnBZZ0X+JNWCscBzZDqQjuUReGXDVadZdWWymHuqU8VbxJSWNBd0dq+2qkzyZ2aiFjCgnYqLDBMk3b0M5tXEV97RfHnTA5AS/ifT1FevHEZk3cOsRZql2yEyqOQQRbzOMKGIjCG3PACGpLDHLbzxgmfBPKWI4XCXHAWpXexJg=",
+        "e2_assembly_errors" : 0,
+        "column_properties" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><extendedAttributesList/>",
+        "output_count" : 0,
+        "input_count" : 1,
+        "enable_logging" : false,
+        "maximum_stack_size" : 256,
+        "heap_size" : 256,
+        "limit_output_rows" : false,
+        "last_modified" : "2011-10-31T16:36:06.380 +0530",
+        "debug_test_data" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DebugTestValues><jobParams paramName=\"xml_example_root_folder\"/><testData operatorID=\"Op-1#DSLink2\">H4sIAAAAAAAAAH2OvQrCMBSFn6DvEOLqkDb9W6sIDoJDFUeJ9qKFNinJrdi392RwcHG53z2Hy8ddCRnYE7Fcy3vPCxDYMMXoZss+NpNDN2xdF+vp6SzZebyRT39jhmi6zlMIV14mkonMtErFzgQWBzMaLzbDq8NV44fePthZ7Cd6mwCe2wazqnWpwTTTOVCUVQ0co0pBdSGo2u/DfzVKgbnO4pMFCOxl8gHGLQV58AAAAA==</testData></DebugTestValues>"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "f4002789-9bfd-4433-9279-7a11331ead17",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "0d1fc8b6-bcfa-4a36-82f6-7dc36ee9079b"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2
+            }
+          }
+        },
+        "parameters" : {
+          "final_delim" : "none",
+          "firstLineColumnNames" : "firstLineColumnNames",
+          "buf_free_run" : 50,
+          "record_delim_string" : "'\\r\\n'",
+          "keepPartitions" : " ",
+          "disk_write_inc" : 1048576,
+          "file +" : [ "#xml_example_root_folder#/xml_examples/hpivot_step/example1/input_files/address.txt" ],
+          "rejects" : "continue",
+          "quote" : "double",
+          "selection" : "file",
+          "missingFile" : " ",
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "reportProgress" : "yes",
+          "delim" : "','"
+        },
+        "schema_ref" : "89157d1a-531f-4ef0-ad82-083c27e79400"
+      } ],
+      "op" : "PxSequentialFile",
+      "id" : "ef5bf282-c571-4279-bb5a-314b4889b006",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 120.0,
+          "label" : "Address_file",
+          "y_pos" : 192.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    } ],
+    "id" : "dfe4e681-e579-4d31-8326-20e4f4bf2796",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "89157d1a-531f-4ef0-ad82-083c27e79400",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "street",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "city",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "state",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "country",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "postalCode",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "phonenumber1",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "phonenumber2",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "address_type",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "b882b890-8104-4fae-9355-b1eb8e66d97d",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "isDefineParameterToggled" : true
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ {
+      "name" : "xml_example_root_folder",
+      "description" : "Point to the root of the file tree folder",
+      "type" : "string",
+      "prompt" : "Root of example folder tree",
+      "value" : "/opt/workshops/files/DATASTAGE"
+    }, {
+      "name" : "DSJobController",
+      "type" : "string"
+    }, {
+      "name" : "DSJobInvocationId",
+      "type" : "string",
+      "prompt" : "Job invocation ID"
+    } ]
+  }
+}

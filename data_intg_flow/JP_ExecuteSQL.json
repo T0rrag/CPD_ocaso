@@ -1,0 +1,204 @@
+{
+  "primary_pipeline" : "3ea0d40f-0de9-4b07-9afb-e6326b226431",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "a2508ded-b31f-4199-b060-7e577e52fe66",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "ecb3f9cb-b567-4320-a202-c5497c97aa66"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        }
+      } ],
+      "op" : "DB2ConnectorPX",
+      "connection" : {
+        "ref" : "app_defined",
+        "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+        "properties" : {
+          "session.schema_reconciliation.fail_on_code_page_mismatch" : false,
+          "session.isolation_level" : "cursor_stability",
+          "lock_wait_mode" : "use_the_lock_timeout_database_configuration_parameter",
+          "session.pass_lob_locator" : false,
+          "limit_rows" : false,
+          "transaction.end_of_wave" : "none",
+          "session.schema_reconciliation.fail_on_size_mismatch" : true,
+          "xml_column_as_lob" : false,
+          "sql.select_statement.read_from_file_select" : false,
+          "sql.select_statement" : "#PM_STATEMENT#",
+          "session.array_size" : 1,
+          "sql.enable_partitioning" : false,
+          "session.autocommit_mode" : "off",
+          "prefix_for_expression_columns" : "EXPR",
+          "session.schema_reconciliation.fail_on_type_mismatch" : true,
+          "re_optimization" : "none",
+          "migrated_job" : false,
+          "before_after" : false,
+          "generate_sql" : false,
+          "transaction.record_count" : 0
+        }
+      },
+      "id" : "57dff06f-2109-448a-942b-498eef7b838c",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : {
+          "outputs_order" : "a2508ded-b31f-4199-b060-7e577e52fe66"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/DB2ConnectorPX.svg",
+          "x_pos" : 72.0,
+          "label" : "DB_Execute",
+          "y_pos" : 48.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "op" : "PxPeek",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "57dff06f-2109-448a-942b-498eef7b838c",
+          "type_attr" : "PRIMARY",
+          "id" : "ecb3f9cb-b567-4320-a202-c5497c97aa66",
+          "link_name" : "L_Selected",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "L_Selected",
+                "label" : "L_Selected",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "a2508ded-b31f-4199-b060-7e577e52fe66"
+        } ],
+        "id" : "b68911ec-d2e2-4d08-b434-2a27af6eec22",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 1
+        }
+      } ],
+      "id" : "2a57ff20-b060-411d-9e52-0153214bf25c",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "b68911ec-d2e2-4d08-b434-2a27af6eec22"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxPeek.svg",
+          "x_pos" : 216.0,
+          "label" : "PK_Dump",
+          "y_pos" : 48.0
+        }
+      },
+      "parameters" : {
+        "all" : "all",
+        "selection" : " ",
+        "output_count" : 0,
+        "input_count" : 1,
+        "columns" : " ",
+        "name" : "name",
+        "dataset" : " ",
+        "allow_column_mapping" : false
+      }
+    } ],
+    "id" : "3ea0d40f-0de9-4b07-9afb-e6326b226431",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "external_paramsets" : [ {
+    "ref" : "4c2e8099-9737-4ad8-a572-9fee4f43b2a0",
+    "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+    "name" : "ConnParamSet_DB2__PM_IISREP_Database"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ ],
+  "doc_type" : "pipeline",
+  "id" : "f3cce02c-0891-4e01-9364-c9816107f39a",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "isDefineParameterToggled" : true
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ {
+      "name" : "PM_STATEMENT",
+      "type" : "string",
+      "prompt" : "SQL statement",
+      "value" : "SELECT * FROM "
+    }, {
+      "name" : "$PM_IISREP_Database",
+      "type" : "string",
+      "prompt" : "IIS repository database",
+      "value" : "PROJDEF"
+    }, {
+      "name" : "$PM_IISREP_Username",
+      "type" : "string",
+      "prompt" : "IIS repository username",
+      "value" : "PROJDEF"
+    }, {
+      "name" : "$PM_IISREP_Password",
+      "type" : "encrypted",
+      "prompt" : "IIS repository password",
+      "value" : "{dsmenc}fJIAtWfUGz/snJJt8mSTzQ=="
+    } ]
+  }
+}

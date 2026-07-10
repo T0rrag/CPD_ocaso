@@ -1,0 +1,65 @@
+{
+  "name" : "woSource",
+  "description" : null,
+  "tags" : [ "show_on_palette", "is_compiled" ],
+  "asset_type" : "data_intg_wrapped_stage",
+  "entity" : {
+    "general" : {
+      "execmode" : "par",
+      "node_type_name" : "woSource",
+      "wrapped_name" : "woSource",
+      "command" : "bash -c 'for Counter in {1..10}; do echo; done'"
+    },
+    "creator" : {
+      "version" : "0.0.0"
+    },
+    "schemas" : [ {
+      "id" : "Exercises-Wrapped-tdExample",
+      "fields" : [ {
+        "metadata" : {
+          "item_index" : 0,
+          "is_key" : false,
+          "min_length" : 0,
+          "decimal_scale" : 0,
+          "decimal_precision" : 0,
+          "max_length" : 0,
+          "is_signed" : false
+        },
+        "nullable" : false,
+        "name" : "Column",
+        "type" : "string",
+        "app_data" : {
+          "odbc_type" : "VARCHAR",
+          "is_unicode_string" : false,
+          "type_code" : "STRING"
+        }
+      } ],
+      "app_data" : {
+        "apt_field_properties" : "final_delim=none, record_delim='\\n', delim=',', quote=none"
+      }
+    } ],
+    "ui_data" : {
+      "show_on_palette" : true
+    },
+    "type" : "wrapped",
+    "wrapped" : {
+      "interfaces" : {
+        "output" : [ {
+          "use_stream" : true,
+          "file_descriptor" : "stdout",
+          "id" : "603dce11-0370-4fa6-a246-d32fa1f6e4e2",
+          "link_name" : "0",
+          "table_name" : "Exercises-Wrapped-tdExample"
+        } ],
+        "input" : [ ],
+        "outputs_order" : "603dce11-0370-4fa6-a246-d32fa1f6e4e2"
+      },
+      "environment" : {
+        "exit_codes" : {
+          "all_exit_codes_successful" : false
+        }
+      }
+    },
+    "properties" : [ ]
+  }
+}

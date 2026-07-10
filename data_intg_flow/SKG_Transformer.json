@@ -1,0 +1,369 @@
+{
+  "primary_pipeline" : "13a925ef-607d-4960-9bd2-da7cb87f7124",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "4020d7e6-2862-4478-b3b1-fd537d13e8fd",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "965295fc-28c0-4891-b5f6-fa86bd838fcc"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "Reject" : false,
+          "RowLimit" : 0,
+          "valueDerivation" : [ {
+            "parsedExpression" : "NextSurrogateKey()",
+            "columnName" : "SKG_PK"
+          }, {
+            "parsedExpression" : "@INROWNUM",
+            "columnName" : "CP"
+          }, {
+            "parsedExpression" : "\"Provincia \" : @INROWNUM",
+            "columnName" : "Provincia"
+          } ],
+          "SortOrderPreserved" : true
+        },
+        "schema_ref" : "f4a824cf-c479-4498-bcf5-e87081a5c42a"
+      } ],
+      "op" : "CTransformerStage",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "9759d2b3-cb1b-4cf2-a056-16cb4171ddfe",
+          "type_attr" : "PRIMARY",
+          "id" : "9067978c-9183-4f7e-b162-e2627c255fbc",
+          "link_name" : "Lnk_Prov",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Prov",
+                "label" : "Lnk_Prov",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "a0c3875d-8e66-4daa-8fff-e75821773578"
+        } ],
+        "id" : "a7358e9a-de4d-457a-aba0-829519ff84d1",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "7fc01b1b-5a8e-4f77-abd4-fc80dd059bc2"
+      } ],
+      "id" : "d9164697-40d3-471b-b310-66b774a051ab",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "a7358e9a-de4d-457a-aba0-829519ff84d1",
+          "outputs_order" : "4020d7e6-2862-4478-b3b1-fd537d13e8fd"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/CTransformerStage.svg",
+          "x_pos" : 216.0,
+          "label" : "TR_SKG",
+          "y_pos" : 72.0
+        }
+      },
+      "parameters" : {
+        "MaxLoopIterations" : 0,
+        "SurKeyStateFile" : "#$SalesPath##FileSKG#",
+        "output_count" : 1,
+        "BlockSizeSelectedType" : "manualSelected",
+        "input_count" : 1,
+        "BlockSize" : 2,
+        "SKKeySourceType" : "file"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "a0c3875d-8e66-4daa-8fff-e75821773578",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "9067978c-9183-4f7e-b162-e2627c255fbc"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "records" : 10,
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "7fc01b1b-5a8e-4f77-abd4-fc80dd059bc2"
+      } ],
+      "op" : "PxRowGenerator",
+      "id" : "9759d2b3-cb1b-4cf2-a056-16cb4171ddfe",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxRowGenerator.svg",
+          "x_pos" : 48.0,
+          "label" : "RG_SKG",
+          "y_pos" : 72.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "op" : "PxPeek",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "d9164697-40d3-471b-b310-66b774a051ab",
+          "type_attr" : "PRIMARY",
+          "id" : "965295fc-28c0-4891-b5f6-fa86bd838fcc",
+          "link_name" : "Lnk_View",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_View",
+                "label" : "Lnk_View",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "4020d7e6-2862-4478-b3b1-fd537d13e8fd"
+        } ],
+        "id" : "a7887b52-ed1a-45cf-b7ad-d4255b0da3db",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "f4a824cf-c479-4498-bcf5-e87081a5c42a"
+      } ],
+      "id" : "18ca3cab-0f2f-4496-bcb7-cbb80b0c8bac",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "a7887b52-ed1a-45cf-b7ad-d4255b0da3db"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxPeek.svg",
+          "x_pos" : 384.0,
+          "label" : "PE_View",
+          "y_pos" : 72.0
+        }
+      },
+      "parameters" : {
+        "all" : " ",
+        "nrecs" : 10,
+        "selection" : " ",
+        "output_count" : 0,
+        "input_count" : 1,
+        "columns" : " ",
+        "name" : "name",
+        "dataset" : " ",
+        "allow_column_mapping" : false
+      }
+    } ],
+    "id" : "13a925ef-607d-4960-9bd2-da7cb87f7124",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "f4a824cf-c479-4498-bcf5-e87081a5c42a",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "SKG_PK",
+      "type" : "integer",
+      "app_data" : {
+        "odbc_type" : "BIGINT",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 2,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 2,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CP",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CP",
+        "odbc_type" : "CHAR",
+        "table_def" : "Secuencial-Destino-ProvinciasNew.txt",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 255,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "Provincia",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "Provincia",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Secuencial-Destino-ProvinciasNew.txt",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  }, {
+    "id" : "7fc01b1b-5a8e-4f77-abd4-fc80dd059bc2",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 2,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 2,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CP",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CP",
+        "odbc_type" : "CHAR",
+        "table_def" : "Secuencial-Destino-ProvinciasNew.txt",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 255,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "Provincia",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "Provincia",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Secuencial-Destino-ProvinciasNew.txt",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "6ebc34ab-dd57-481c-8adf-92f491f425ef",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "isDefineParameterToggled" : true
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ {
+      "name" : "$SalesPath",
+      "type" : "string",
+      "prompt" : "Sales path",
+      "value" : "/IBMdemos/files/dsx/skg/Ficheros/"
+    }, {
+      "name" : "FileSKG",
+      "type" : "string",
+      "prompt" : "File SKG",
+      "value" : "SKG.pk"
+    } ]
+  }
+}

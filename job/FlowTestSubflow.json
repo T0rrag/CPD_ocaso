@@ -1,0 +1,29 @@
+{
+  "metadata" : {
+    "name" : "FlowTestSubflow",
+    "asset_id" : "3d4753d8-7a71-4a3b-98d2-9dde3843aaed",
+    "owner_id" : "1000331001",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "206c858e-ace8-4394-9119-6e15e7f1d888",
+      "schedule_id" : "",
+      "project_name" : "GITHUB integrado",
+      "configuration" : {
+        "env_type" : "",
+        "env_variables" : [ ],
+        "runPriorityQueue" : "Low"
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "data_intg_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "FlowTestSubflow"
+    }
+  }
+}

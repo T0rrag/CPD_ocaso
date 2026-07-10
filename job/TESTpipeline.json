@@ -1,0 +1,28 @@
+{
+  "metadata" : {
+    "name" : "TESTpipeline",
+    "asset_id" : "56c94a9f-c9fc-452d-95a0-84b454b05471",
+    "owner_id" : "1000331001",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "a72a6154-2917-4600-84fb-73a6ba757483",
+      "schedule_id" : "",
+      "project_name" : "GITHUB integrado",
+      "configuration" : {
+        "env_type" : "",
+        "env_variables" : [ ]
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "orchestration_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "TEST pipeline"
+    }
+  }
+}

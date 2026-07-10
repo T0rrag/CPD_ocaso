@@ -1,0 +1,464 @@
+{
+  "primary_pipeline" : "f302aa73-f833-4629-960c-c0d5fddca44b",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "041df4a6-4266-4c30-8dc6-a45aebd0bef5",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "01e2bf78-5d41-4e31-aef5-d9b1d46547bc"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2
+            }
+          }
+        },
+        "parameters" : {
+          "final_delim" : "end",
+          "firstLineColumnNames" : "firstLineColumnNames",
+          "padchar" : "'#'",
+          "buf_free_run" : 50,
+          "keepPartitions" : " ",
+          "record_delim" : "'\\n'",
+          "disk_write_inc" : 1048576,
+          "file +" : [ "/opt/workshops/files/DATASTAGE/input_customers.txt" ],
+          "rejects" : "continue",
+          "quote" : "double",
+          "selection" : "file",
+          "missingFile" : " ",
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "reportProgress" : "yes",
+          "delim" : "','"
+        }
+      } ],
+      "op" : "PxSequentialFile",
+      "id" : "3ea1e460-2c5e-4da1-bf1d-9a6e5a841576",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 312.0,
+          "label" : "input_customers_1",
+          "y_pos" : 192.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "nls_map_name" : "ASCL_ASCII",
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxSequentialFile",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "3ea1e460-2c5e-4da1-bf1d-9a6e5a841576",
+          "type_attr" : "PRIMARY",
+          "id" : "01e2bf78-5d41-4e31-aef5-d9b1d46547bc",
+          "link_name" : "DSLink8",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "DSLink8",
+                "label" : "DSLink8",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "041df4a6-4266-4c30-8dc6-a45aebd0bef5"
+        } ],
+        "id" : "12fa7eff-61dd-4c6b-8c4f-1ceba97bbc04",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "append-overwrite" : "overwrite",
+          "final_delim" : "end",
+          "rejects" : "continue",
+          "file" : [ "/opt/workshops/files/DATASTAGE/sectionC/input_customers_ansi.txt" ],
+          "quote" : "double",
+          "firstLineColumnNames" : "firstLineColumnNames",
+          "nocleanup" : " ",
+          "writemethod" : " ",
+          "part_coll" : "none",
+          "runtime_column_propagation" : 1,
+          "registerDataAsset" : false,
+          "delim" : "','"
+        }
+      } ],
+      "id" : "c2a2f6a8-b5d6-4ccb-b4ac-5ae99978ac5a",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 528.0,
+          "label" : "ansi",
+          "y_pos" : 192.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "ba2cddc1-33ab-4724-9219-c87fa05ca1c6",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "2be7d6aa-69da-4bd1-9d12-4c3588c8e21a"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2
+            }
+          }
+        },
+        "parameters" : {
+          "final_delim" : "end",
+          "firstLineColumnNames" : "firstLineColumnNames",
+          "padchar" : "'#'",
+          "buf_free_run" : 50,
+          "keepPartitions" : " ",
+          "record_delim" : "'\\n'",
+          "disk_write_inc" : 1048576,
+          "file +" : [ "/opt/workshops/files/DATASTAGE/input_customers.txt" ],
+          "rejects" : "continue",
+          "quote" : "double",
+          "selection" : "file",
+          "missingFile" : " ",
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "reportProgress" : "yes",
+          "delim" : "','"
+        }
+      } ],
+      "op" : "PxSequentialFile",
+      "id" : "dd6a2b0f-218b-4074-a63e-1f136ad2f237",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 312.0,
+          "label" : "input_customers_2",
+          "y_pos" : 288.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "nls_map_name" : "UTF-16LE",
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxSequentialFile",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "dd6a2b0f-218b-4074-a63e-1f136ad2f237",
+          "type_attr" : "PRIMARY",
+          "id" : "2be7d6aa-69da-4bd1-9d12-4c3588c8e21a",
+          "link_name" : "DSLink7",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "DSLink7",
+                "label" : "DSLink7",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "ba2cddc1-33ab-4724-9219-c87fa05ca1c6"
+        } ],
+        "id" : "de617579-86ed-4df5-b0a6-6e6d95ffb358",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "append-overwrite" : "overwrite",
+          "final_delim" : "end",
+          "rejects" : "continue",
+          "file" : [ "/opt/workshops/files/DATASTAGE/sectionC/input_customers_utf16" ],
+          "quote" : "double",
+          "firstLineColumnNames" : "firstLineColumnNames",
+          "nocleanup" : " ",
+          "writemethod" : " ",
+          "part_coll" : "none",
+          "runtime_column_propagation" : 1,
+          "registerDataAsset" : false,
+          "delim" : "','"
+        }
+      } ],
+      "id" : "c24a58b5-3b94-4ece-96fd-64aed176f793",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 528.0,
+          "label" : "utf16",
+          "y_pos" : 288.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "4f8f3d4b-1534-4bb3-bef0-9251133020da",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "3def681a-eec5-45a5-ad01-7b7143f9a4e9"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2
+            }
+          }
+        },
+        "parameters" : {
+          "final_delim" : "end",
+          "firstLineColumnNames" : "firstLineColumnNames",
+          "buf_free_run" : 50,
+          "keepPartitions" : " ",
+          "disk_write_inc" : 1048576,
+          "file +" : [ "/opt/workshops/files/DATASTAGE/input_customers.txt" ],
+          "rejects" : "continue",
+          "quote" : "double",
+          "selection" : "file",
+          "missingFile" : " ",
+          "schemafile" : "/opt/workshops/files/DATASTAGE/input_customers.schema",
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "reportProgress" : "yes",
+          "delim" : "','"
+        }
+      } ],
+      "op" : "PxSequentialFile",
+      "id" : "e1f23592-7852-4bf6-ace4-4de8ff156a52",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 312.0,
+          "label" : "input_customers_3",
+          "y_pos" : 384.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "nls_map_name" : "ASCL_EBCDIC",
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxSequentialFile",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "e1f23592-7852-4bf6-ace4-4de8ff156a52",
+          "type_attr" : "PRIMARY",
+          "id" : "3def681a-eec5-45a5-ad01-7b7143f9a4e9",
+          "link_name" : "DSLink6",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "DSLink6",
+                "label" : "DSLink6",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "4f8f3d4b-1534-4bb3-bef0-9251133020da"
+        } ],
+        "id" : "401c0030-580d-42ac-b83f-1d280df2aa02",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "append-overwrite" : "overwrite",
+          "final_delim" : "end",
+          "rejects" : "continue",
+          "file" : [ "/opt/workshops/files/DATASTAGE/sectionC/input_customers_ebcdic" ],
+          "quote" : "double",
+          "firstLineColumnNames" : "firstLineColumnNames",
+          "nocleanup" : " ",
+          "writemethod" : " ",
+          "part_coll" : "none",
+          "runtime_column_propagation" : 1,
+          "registerDataAsset" : false,
+          "delim" : "','"
+        }
+      } ],
+      "id" : "a452ca46-90b5-4b69-ae3b-0e2f006524ab",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 528.0,
+          "label" : "EBCDIC",
+          "y_pos" : 384.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    } ],
+    "id" : "f302aa73-f833-4629-960c-c0d5fddca44b",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ {
+          "associated_id_refs" : [ ],
+          "formats" : [ {
+            "type" : "fontType",
+            "value" : "font-ibm-plex-sans"
+          }, {
+            "type" : "letter-spacing",
+            "value" : "-0.5px"
+          }, {
+            "type" : "textSize",
+            "value" : "text-size-12"
+          }, {
+            "type" : "alignHorizontally",
+            "value" : "align-center"
+          }, {
+            "type" : "alignVertically",
+            "value" : "align-middle"
+          }, {
+            "type" : "backgroundColor",
+            "value" : "#ffffc1"
+          }, {
+            "type" : "outlineStyle",
+            "value" : "outline-solid"
+          }, {
+            "type" : "line-height",
+            "value" : "1.2"
+          }, {
+            "type" : "padding",
+            "value" : "1px"
+          }, {
+            "type" : "border-color",
+            "value" : "#000000"
+          } ],
+          "width" : 72,
+          "x_pos" : 393.0,
+          "id" : "c93db953-5f1c-46b2-a509-6aa928fefa76",
+          "y_pos" : 83.0,
+          "contentType" : "WYSIWYG",
+          "class_name" : "d3-comment-rect",
+          "content" : "Example where NLS is not available if schema is specified (input_customers_3)",
+          "height" : 72
+        } ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ ],
+  "doc_type" : "pipeline",
+  "id" : "ccdbd4f4-6b91-4dfa-8950-f3b0d77cc7f2",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "isDefineParameterToggled" : true
+    }
+  },
+  "version" : "3.0"
+}

@@ -1,0 +1,61 @@
+{
+  "metadata" : {
+    "name" : "FlowTestSalesforceOptimizedProxyParameters.DataStage job",
+    "asset_id" : "dce22b9d-8da2-43c0-a0cf-ef3d24643292",
+    "owner_id" : "1000331001",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "b5658ca6-d5a1-4ad1-b78d-5d6ccb945220",
+      "schedule_id" : "",
+      "project_name" : "GITHUB integrado",
+      "configuration" : {
+        "env_type" : "",
+        "flow_limits" : {
+          "warn_limit" : 100
+        },
+        "env_variables" : [ ],
+        "runPriorityQueue" : "Medium"
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "data_intg_flow",
+      "job_parameters" : [ {
+        "name" : "pmHostnameSalesforce",
+        "value" : "https://test.salesforce.com/services/Soap/u/55.0"
+      }, {
+        "name" : "pmSalesforceUsername",
+        "value" : "USERNAME"
+      }, {
+        "name" : "pmSalesforcePassword",
+        "value" : "{dsnextenc}RqMzdrqteY7VtEYFfuQ8Jg=="
+      }, {
+        "name" : "pmProxyHostname",
+        "value" : "proxy-sa.seg-social.es"
+      }, {
+        "name" : "pmProxyPortnumber",
+        "value" : "8080"
+      }, {
+        "name" : "pmProxyUsername",
+        "value" : "USERNAME"
+      }, {
+        "name" : "pmProxyPassword",
+        "value" : "{dsnextenc}RqMzdrqteY7VtEYFfuQ8Jg=="
+      }, {
+        "name" : "pmSalesforceQuery",
+        "value" : "SELECT * FROM TABLE"
+      }, {
+        "name" : "pmSalesforceProgram",
+        "value" : "PROGRAM"
+      } ],
+      "last_run_status" : "deprecated field",
+      "retention_policy" : { },
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "FlowTestSalesforceOptimizedProxyParameters"
+    }
+  }
+}

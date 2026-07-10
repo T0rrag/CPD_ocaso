@@ -1,0 +1,29 @@
+{
+  "metadata" : {
+    "name" : "SKG_CreateDatabaseSequence",
+    "asset_id" : "6fdf7edc-8989-4470-b57e-31c88d048611",
+    "owner_id" : "1000331001",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "d3451e36-f210-440c-a177-a779718d0eec",
+      "schedule_id" : "",
+      "project_name" : "GITHUB integrado",
+      "configuration" : {
+        "env_type" : "",
+        "env_variables" : [ ],
+        "runPriorityQueue" : "Low"
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "data_intg_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "SKG_CreateDatabaseSequence"
+    }
+  }
+}

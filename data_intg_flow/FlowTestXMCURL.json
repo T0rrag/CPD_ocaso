@@ -1,0 +1,264 @@
+{
+  "primary_pipeline" : "31d340e3-879f-44ea-9748-d248cf0b75e4",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "e1620f24-7183-46d6-bd9a-31146925aa03",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "4e3077e3-8910-49d0-9797-2e2c6335ca44"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2
+            }
+          },
+          "additionalProperties" : {
+            "enableAcp" : true
+          }
+        },
+        "schema_ref" : "5ca95684-5d36-47f9-b432-b7cfbc93a57d",
+        "parameters" : {
+          "final_delim" : "end",
+          "rejects" : "continue",
+          "null_field_sep_flag" : false,
+          "null_field" : "'NULL'",
+          "quote" : "none",
+          "selection" : "program",
+          "buf_mode" : "default",
+          "keepPartitions" : " ",
+          "record_delim" : "'\\n'",
+          "enableSchemalessDesign" : false,
+          "source" : [ "curl -k -X GET \"http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso/ListOfContinentsByName\"" ],
+          "delim" : "none"
+        }
+      } ],
+      "op" : "PxExternalSource",
+      "id" : "c354b1ab-d685-4d7b-bad3-653733cc8fd0",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxExternalSource.svg",
+          "x_pos" : 63.36,
+          "label" : "External_Source_1",
+          "y_pos" : 31.68
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "output_count" : 1,
+        "nls_map_name" : "UTF-8",
+        "input_count" : 0,
+        "execmode" : "default_par",
+        "preserve" : -1,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        },
+        "parameters" : { }
+      } ],
+      "op" : "PxPeek",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "c354b1ab-d685-4d7b-bad3-653733cc8fd0",
+          "type_attr" : "PRIMARY",
+          "id" : "4e3077e3-8910-49d0-9797-2e2c6335ca44",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/link-marking--auto-partitioning.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 2,
+                "width" : 50,
+                "tooltip" : "Auto-partition",
+                "x_pos" : -15,
+                "id" : "dec-6R",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_1",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_1",
+          "port_id_ref" : "e1620f24-7183-46d6-bd9a-31146925aa03"
+        } ],
+        "id" : "942fefcb-dcf6-44b9-9607-91524b436a2c",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "5ca95684-5d36-47f9-b432-b7cfbc93a57d",
+        "parameters" : {
+          "runtime_column_propagation" : 0
+        }
+      } ],
+      "id" : "c9cf56bc-25f4-4282-bb46-ab5d9826daf3",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "942fefcb-dcf6-44b9-9607-91524b436a2c",
+          "outputs_order" : ""
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxPeek.svg",
+          "x_pos" : 205.92,
+          "label" : "Peek_1",
+          "y_pos" : 31.68
+        }
+      },
+      "parameters" : {
+        "all" : "all",
+        "showPartType" : true,
+        "columns" : " ",
+        "showCollType" : false,
+        "inputName" : "Link_1",
+        "showSortOptions" : false,
+        "combinability" : "auto",
+        "OutputlinkOrderingList" : [ ],
+        "inputcolProperties" : [ {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : false,
+          "Metadata" : "VARCHAR",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_XML",
+          "TempOldColumnName" : "COLUMN_XML",
+          "ColumnName" : "COLUMN_XML",
+          "Length" : 0,
+          "MisFieldProperties" : "",
+          "DataType" : "VARCHAR",
+          "Key" : false,
+          "Nullable" : false
+        } ],
+        "selection" : " ",
+        "output_count" : 0,
+        "execmode" : "default_par",
+        "input_count" : 1,
+        "name" : "name",
+        "dataset" : " "
+      }
+    } ],
+    "description" : "",
+    "id" : "31d340e3-879f-44ea-9748-d248cf0b75e4",
+    "app_data" : {
+      "datastage" : {
+        "nls_map_name" : "",
+        "nls_locale" : "OFF"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "external_paramsets" : [ ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "5ca95684-5d36-47f9-b432-b7cfbc93a57d",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COLUMN_XML",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "VARCHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "9339c2b1-ddd0-4aa4-82cd-67afd5ac3c86",
+  "app_data" : {
+    "datastage" : {
+      "timestamp_format" : "",
+      "decimal_separator" : "",
+      "flowRunPriorityQueue" : "Medium",
+      "time_format" : "",
+      "date_format" : "",
+      "message_handlers" : [ ],
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "transInputLinkMapper" : { },
+      "ELTDropdown" : {
+        "id" : "nesting",
+        "label" : "Generate nested SQL",
+        "value" : "NESTED_QUERY"
+      },
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "disableParamsCacheOnFlow" : false,
+      "rcpLinkList" : [ ],
+      "globalAcp" : true,
+      "enableRCP" : false,
+      "isNewTransActive" : false,
+      "isDefineParameterToggled" : true,
+      "enableSchemaLessDesign" : false,
+      "runMode" : "ETL"
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ {
+      "subtype" : "",
+      "valid_values" : [ "True", "False" ],
+      "name" : "$APT_IMPEXP_INFER_EOL_RECORD_DELIM",
+      "type" : "enum",
+      "value" : "False",
+      "prompt" : "Handle incorrect end of line record delimiter"
+    } ]
+  }
+}

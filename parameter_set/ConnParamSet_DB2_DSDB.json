@@ -1,0 +1,32 @@
+{
+  "parameter_set" : {
+    "name" : "ConnParamSet_DB2_DSDB",
+    "description" : "DataStage generated parameter set for connection properties.",
+    "parameters" : [ {
+      "name" : "username",
+      "type" : "string",
+      "prompt" : "",
+      "value" : "db2inst1"
+    }, {
+      "name" : "password",
+      "type" : "encrypted",
+      "prompt" : "",
+      "value" : "{dsmenc}gXHRy8g7sBeBvnq+snG1bQ=="
+    }, {
+      "name" : "database",
+      "type" : "string",
+      "prompt" : "",
+      "value" : "DSDB"
+    }, {
+      "name" : "hostname",
+      "type" : "string",
+      "prompt" : "",
+      "value" : ""
+    }, {
+      "name" : "port",
+      "type" : "int64",
+      "prompt" : "",
+      "value" : 50000
+    } ]
+  }
+}

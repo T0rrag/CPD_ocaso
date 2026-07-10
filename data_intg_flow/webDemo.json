@@ -1,0 +1,194 @@
+{
+  "primary_pipeline" : "fd638fe4-b129-4c51-90b2-53320a8ad710",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "064e8c10-88a8-4fbc-b334-a8cfdcdc09ee",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "892138dc-cfdb-41b9-955f-7bebce605ace"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "is_output_header_xml_column" : false,
+          "LinkMinimised" : "0",
+          "is_reject_link" : false,
+          "is_pass_through_disabled" : false,
+          "is_output_xml_column" : false,
+          "is_reject_column" : false,
+          "field_delimiter" : " ",
+          "inherit_from_stage" : "1"
+        },
+        "schema_ref" : "a4f1a993-87ab-4057-924f-d681d84ef086"
+      } ],
+      "op" : "WSTransformerPX",
+      "id" : "5540230b-7bd7-4e2d-a5a8-d0a7f3d0647e",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/WSClientPX.svg",
+          "x_pos" : 264.0,
+          "label" : "Web_Services_Client_0",
+          "y_pos" : 144.0
+        }
+      },
+      "parameters" : {
+        "ssl_certificate" : "",
+        "is_proxy_required" : false,
+        "truststore_type" : "JKS",
+        "wsdl_service_name" : "http://www.learnwebservices.com",
+        "rejectLinkName" : "",
+        "error_handling" : 6,
+        "field_delimiter" : " ",
+        "allow_column_mapping" : false,
+        "is_authentication_required" : false,
+        "is_certificate_required" : false,
+        "operation_timeout" : 0,
+        "is_automatic_trust" : false,
+        "rejectLinkIndex" : -1,
+        "certificate_passwd" : "",
+        "output_count" : 1,
+        "input_count" : 0,
+        "log_response" : "0",
+        "wsdl_document_uri" : "http://www.learnwebservices.com/services/hello?WSDL",
+        "is_log_reject_reason_disabled" : false,
+        "wsdl_operation_name" : "GET"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "op" : "PxPeek",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "5540230b-7bd7-4e2d-a5a8-d0a7f3d0647e",
+          "type_attr" : "PRIMARY",
+          "id" : "892138dc-cfdb-41b9-955f-7bebce605ace",
+          "link_name" : "DSLink2",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "DSLink2",
+                "label" : "DSLink2",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "064e8c10-88a8-4fbc-b334-a8cfdcdc09ee"
+        } ],
+        "id" : "36a0795d-c14b-42fa-ac97-4b9bce0a80b5",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "a4f1a993-87ab-4057-924f-d681d84ef086"
+      } ],
+      "id" : "758a67c0-65d9-4e9e-a3e6-2dfdd4df05b4",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "36a0795d-c14b-42fa-ac97-4b9bce0a80b5"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxPeek.svg",
+          "x_pos" : 504.0,
+          "label" : "Peek_4",
+          "y_pos" : 144.0
+        }
+      },
+      "parameters" : {
+        "all" : " ",
+        "nrecs" : 10,
+        "selection" : " ",
+        "output_count" : 0,
+        "input_count" : 1,
+        "columns" : " ",
+        "name" : "name",
+        "dataset" : " ",
+        "allow_column_mapping" : false
+      }
+    } ],
+    "id" : "fd638fe4-b129-4c51-90b2-53320a8ad710",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "a4f1a993-87ab-4057-924f-d681d84ef086",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "Result",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "d3a34159-331c-48be-a848-ef4ca50ac645",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "isDefineParameterToggled" : true
+    }
+  },
+  "version" : "3.0"
+}

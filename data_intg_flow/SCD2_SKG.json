@@ -1,0 +1,189 @@
+{
+  "primary_pipeline" : "676e2d1d-2702-43e7-a0bd-3f6b9ccc7ceb",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxSurrogateKeyGeneratorN",
+      "id" : "28bc9c64-3474-4255-b164-36cfa86d6a25",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSurrogateKeyGeneratorN.svg",
+          "x_pos" : 96.0,
+          "label" : "SKG_CUSTOMERS",
+          "y_pos" : 72.0
+        }
+      },
+      "parameters" : {
+        "dbtypeProperties" : {
+          "dbtype" : "db2",
+          "connection" : {
+            "ref" : "app_defined",
+            "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+            "properties" : { }
+          },
+          "client_instance" : "db2inst1"
+        },
+        "blockSizeProperties" : {
+          "dbblocktype" : "adaptivesize"
+        },
+        "sk_id" : "SKG_Cust",
+        "num-outputs" : 0,
+        "output_count" : 0,
+        "keysourcetype" : "dbsequence",
+        "input_count" : 0,
+        "additionalPropertiesSet_option" : [ "start_value +" ],
+        "admin" : "create",
+        "start_value +" : 1,
+        "num-inputs" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxSurrogateKeyGeneratorN",
+      "id" : "aff22e18-9929-43f3-b1b6-7864371ccf63",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSurrogateKeyGeneratorN.svg",
+          "x_pos" : 216.0,
+          "label" : "SKG_PRODUCTS",
+          "y_pos" : 72.0
+        }
+      },
+      "parameters" : {
+        "dbtypeProperties" : {
+          "dbtype" : "db2",
+          "connection" : {
+            "ref" : "app_defined",
+            "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+            "properties" : { }
+          },
+          "client_instance" : "db2inst1"
+        },
+        "blockSizeProperties" : {
+          "dbblocktype" : "adaptivesize"
+        },
+        "sk_id" : "SKG_Prod",
+        "num-outputs" : 0,
+        "output_count" : 0,
+        "keysourcetype" : "dbsequence",
+        "input_count" : 0,
+        "additionalPropertiesSet_option" : [ "start_value +" ],
+        "admin" : "create",
+        "start_value +" : 1,
+        "num-inputs" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxSurrogateKeyGeneratorN",
+      "id" : "9802aa08-8a90-411e-86ae-23b40913c504",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSurrogateKeyGeneratorN.svg",
+          "x_pos" : 336.0,
+          "label" : "SKG_DEALERS",
+          "y_pos" : 72.0
+        }
+      },
+      "parameters" : {
+        "dbtypeProperties" : {
+          "dbtype" : "db2",
+          "connection" : {
+            "ref" : "app_defined",
+            "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+            "properties" : { }
+          },
+          "client_instance" : "db2inst1"
+        },
+        "sk_id" : "SKG_Deal",
+        "num-outputs" : 0,
+        "output_count" : 0,
+        "keysourcetype" : "dbsequence",
+        "input_count" : 0,
+        "admin" : "create",
+        "num-inputs" : 0,
+        "allow_column_mapping" : false
+      }
+    } ],
+    "id" : "676e2d1d-2702-43e7-a0bd-3f6b9ccc7ceb",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "external_paramsets" : [ {
+    "ref" : "2f07fb67-d7a5-49b4-93cc-47865c67e02d",
+    "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+    "name" : "ConnParamSet_SurrogateKeyGeneratorN"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ ],
+  "doc_type" : "pipeline",
+  "id" : "5f7caf71-22e1-46f6-ba38-b8830dc35915",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "isDefineParameterToggled" : true
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ {
+      "name" : "APT_DBNAME",
+      "type" : "string",
+      "prompt" : "APT_DBNAME",
+      "value" : "DSDB"
+    } ]
+  }
+}

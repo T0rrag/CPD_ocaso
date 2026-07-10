@@ -1,0 +1,296 @@
+{
+  "app_data" : {
+    "pipeline_data" : {
+      "caching_conditions" : [ "retry_on_failure", "inputs_unchanged", "pipeline_unchanged" ],
+      "caching_method" : "automatic",
+      "default_cache_mode" : "never",
+      "default_error_policy" : "continue_on_error",
+      "settings" : {
+        "propagate_completed_with_warnings_status" : true
+      },
+      "validation" : {
+        "valid" : true,
+        "validated_at" : "2026-07-10 08:18:03.860037817 +0000 UTC"
+      },
+      "version" : "12.0"
+    },
+    "ui_data" : {
+      "raw_allowed" : false,
+      "settings" : {
+        "autosave" : true,
+        "autosave_freq" : 1000,
+        "enable_ds_funcs" : true
+      }
+    }
+  },
+  "doc_type" : "pipeline",
+  "id" : "646587f1-44f1-49a4-9fd9-a910cc9c76a2",
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "pipelines" : [ {
+    "app_data" : {
+      "ui_data" : {
+        "comments" : [ ],
+        "exception_handler_x_pos" : 483,
+        "exception_handler_y_pos" : 537,
+        "node_prev_unique_idx" : {
+          "action_error_handling" : 0,
+          "copy_assets" : 0,
+          "copy_export" : 0,
+          "copy_import" : 0,
+          "create_data_file" : 0,
+          "run_bash_script" : 0,
+          "run_datastage_job" : 0,
+          "run_pipeline_job" : 0,
+          "run_pipelines_component" : 0,
+          "send_email" : 0,
+          "wait_file" : 0,
+          "wait_sequencer_any" : 0
+        },
+        "zoom" : {
+          "k" : 1,
+          "x" : -20.24233920553104,
+          "y" : -240.0555447288301
+        }
+      }
+    },
+    "id" : "51b2d68c-e5c4-40dd-962a-c54bca80ab74",
+    "nodes" : [ {
+      "app_data" : {
+        "annotations" : {
+          "cache_supported" : "true",
+          "component_group" : "send",
+          "component_type" : "email-datastage",
+          "component_type_name" : "Email",
+          "encrypted_supported" : "true",
+          "node_id_prefix" : "send_email"
+        },
+        "componentGroup" : "send",
+        "componentLabelRef" : "Send email",
+        "emptyImage" : "/pipelines/graphics/orchestration-flows/nodes/send/empty.svg",
+        "groups" : {
+          "inputs" : {
+            "template_variables" : {
+              "description" : "Additional variables used to render the email body template.",
+              "descriptive_name" : "Body Template Variables",
+              "human_name" : "Body Template Variables",
+              "name" : "template_variables",
+              "optional" : true,
+              "pass_style" : "file",
+              "type" : "DynamicParamSet"
+            }
+          },
+          "outputs" : { }
+        },
+        "notConfigured" : false,
+        "pipeline_data" : {
+          "cache_mode" : "never",
+          "config" : {
+            "link" : {
+              "component_id_ref" : "send-email-datastage",
+              "component_version_id_ref" : "send-email-datastage-1"
+            }
+          },
+          "descriptive_name" : "Send email",
+          "inputs" : [ {
+            "extensions" : [ "txt" ],
+            "name" : "recipients_file",
+            "type" : {
+              "CPDPath" : {
+                "path_type" : "file"
+              }
+            }
+          }, {
+            "name" : "recipients_addr",
+            "type" : "Encrypted",
+            "ui_data" : {
+              "inputType" : "SELECT_RESOURCE",
+              "inputTypes" : {
+                "selected-node-values-recipients_addr-input" : "SELECT_RESOURCE"
+              }
+            },
+            "value" : "{dsmenc}KCHq+YFLBeJQQDyo20XN/ZCFWY3NghWiAWh0QAELrMc="
+          }, {
+            "name" : "subject",
+            "type" : "String",
+            "ui_data" : {
+              "inputType" : "SELECT_RESOURCE",
+              "inputTypes" : {
+                "selected-node-values-subject-input" : "SELECT_RESOURCE"
+              }
+            },
+            "value" : "Test subject"
+          }, {
+            "extensions" : [ "txt" ],
+            "name" : "body_template",
+            "type" : {
+              "CPDPath" : {
+                "path_type" : "file"
+              }
+            }
+          }, {
+            "name" : "body",
+            "type" : "String",
+            "ui_data" : {
+              "inputType" : "SELECT_RESOURCE",
+              "inputTypes" : {
+                "selected-node-values-body-input" : "SELECT_RESOURCE"
+              }
+            },
+            "value" : "Test body"
+          }, {
+            "name" : "attachments",
+            "type" : {
+              "List" : {
+                "items" : {
+                  "CPDPath" : {
+                    "path_type" : "file"
+                  }
+                }
+              }
+            }
+          }, {
+            "default" : true,
+            "name" : "compress_attachements",
+            "type" : "Bool",
+            "value" : true
+          }, {
+            "name" : "error_policy",
+            "type" : "ErrorPolicy"
+          }, {
+            "allowed_scopes" : [ "project" ],
+            "description" : "A predefined text file that consists of sender email address.",
+            "extensions" : [ "txt" ],
+            "human_name" : "Sender email address file",
+            "name" : "sender_file",
+            "optional" : true,
+            "type" : {
+              "CPDPath" : {
+                "path_type" : "file"
+              }
+            }
+          }, {
+            "description" : "Sender email address.",
+            "human_name" : "Sender email address",
+            "name" : "sender_addr",
+            "optional" : true,
+            "type" : "Encrypted",
+            "validators" : {
+              "maxLength" : 998,
+              "minLength" : 1
+            }
+          }, {
+            "default" : false,
+            "name" : "include_status",
+            "type" : "Bool"
+          } ],
+          "name" : "send_email",
+          "outputs" : [ {
+            "name" : "status",
+            "type" : "ExecutionStatus"
+          }, {
+            "name" : "status_message",
+            "type" : "String"
+          } ]
+        },
+        "ui_data" : {
+          "decorations" : [ {
+            "class_name" : "oflow-node-type-label",
+            "id" : "send_email_type_label",
+            "label" : "Send email",
+            "position" : "topLeft",
+            "x_pos" : 66,
+            "y_pos" : 45
+          } ],
+          "description" : "Send an email to selected recipients",
+          "image" : "/pipelines/graphics/orchestration-flows/nodes/send/send_e-mail.svg",
+          "label" : "Send email",
+          "x_pos" : 37,
+          "y_pos" : 255
+        },
+        "validators" : {
+          "excluding_groups" : [ {
+            "human_name" : "Recipients input type",
+            "name" : "recipients_input_type",
+            "variants" : [ {
+              "human_name" : "Recipients addresses",
+              "members" : [ "recipients_addr" ],
+              "name" : "direct_input",
+              "required" : [ "recipients_addr" ],
+              "selected" : true
+            }, {
+              "human_name" : "File",
+              "members" : [ "recipients_file" ],
+              "name" : "text_file",
+              "required" : [ "recipients_file" ],
+              "selected" : false
+            } ]
+          }, {
+            "human_name" : "Body input type",
+            "name" : "body_input_type",
+            "variants" : [ {
+              "human_name" : "Body Text",
+              "members" : [ "body" ],
+              "name" : "body_txt",
+              "required" : [ "body" ],
+              "selected" : true
+            }, {
+              "human_name" : "Body Template File",
+              "members" : [ "body_template" ],
+              "name" : "body_template_file",
+              "required" : [ "body_template" ],
+              "selected" : false
+            } ]
+          }, {
+            "human_name" : "Sender input type",
+            "name" : "sender_input_type",
+            "optional" : true,
+            "variants" : [ {
+              "human_name" : "Sender address",
+              "members" : [ "sender_addr" ],
+              "name" : "sender_direct_input",
+              "required" : [ ]
+            }, {
+              "human_name" : "Sender File",
+              "members" : [ "sender_file" ],
+              "name" : "sender_text_file",
+              "required" : [ ]
+            } ]
+          } ]
+        }
+      },
+      "id" : "send_email",
+      "inputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "cardinality" : {
+              "max" : -1,
+              "min" : 0
+            },
+            "class_name" : "oflow-node-port",
+            "label" : "Input Port"
+          }
+        },
+        "id" : "inPort"
+      } ],
+      "op" : "run_container",
+      "outputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "cardinality" : {
+              "max" : -1,
+              "min" : 0
+            },
+            "class_name" : "oflow-node-port",
+            "label" : "Output Port"
+          }
+        },
+        "id" : "outPort"
+      } ],
+      "type" : "execution_node"
+    } ],
+    "runtime_ref" : "kfp"
+  } ],
+  "primary_pipeline" : "51b2d68c-e5c4-40dd-962a-c54bca80ab74",
+  "schemas" : [ ],
+  "version" : "3.0"
+}

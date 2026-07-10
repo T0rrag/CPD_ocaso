@@ -1,0 +1,1091 @@
+{
+  "primary_pipeline" : "e07cadc9-597b-4774-bc7b-412b2dca8b82",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "XMLStagePX",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "4f5b9995-dcba-4566-a386-6d8beece1b06",
+          "type_attr" : "PRIMARY",
+          "id" : "caf38749-a7ff-4cfe-9bdc-7e7f6a635e69",
+          "link_name" : "Employee",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Employee",
+                "label" : "Employee",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "3600f0af-8986-4a24-aeff-6ca05db8f72c"
+        } ],
+        "id" : "742094a3-707f-4814-a60d-d15ae45c7e80",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "none",
+          "runtime_column_propagation" : 1
+        },
+        "schema_ref" : "ab3e2c9c-e3a3-44c5-b153-eebd4d93e5b1"
+      }, {
+        "links" : [ {
+          "node_id_ref" : "bac9ecfb-7f9e-4786-85fe-8c47f3f68870",
+          "type_attr" : "PRIMARY",
+          "id" : "49348466-1ec4-4bac-b4d7-cad498bd325f",
+          "link_name" : "Address",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Address",
+                "label" : "Address",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "680fb8e7-c4a8-4ef4-a14f-96b04fc138b0"
+        } ],
+        "id" : "07d78b81-f5f1-426c-8a56-8f9a4fb9a0dd",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "none",
+          "runtime_column_propagation" : 1
+        },
+        "schema_ref" : "1f28a7d7-55b6-4498-b283-5cbcdf4bcb2f"
+      }, {
+        "links" : [ {
+          "node_id_ref" : "2b3c14a3-3198-46d8-a638-fa223a31b462",
+          "type_attr" : "PRIMARY",
+          "id" : "97b12fab-2863-4af2-bc9f-764ca48d86f3",
+          "link_name" : "PhoneNumber",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "PhoneNumber",
+                "label" : "PhoneNumber",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "50098403-b027-4a39-8b6f-b3c91356b3e0"
+        } ],
+        "id" : "d52239f7-0f9e-4679-9114-c616c2c07f8e",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "none",
+          "runtime_column_propagation" : 1
+        },
+        "schema_ref" : "1ff9f5cc-a878-4360-9b16-9fe77eaae9f9"
+      }, {
+        "links" : [ {
+          "node_id_ref" : "7a11e5f1-5bec-4d05-8a5b-b0e5cd68fc4a",
+          "type_attr" : "PRIMARY",
+          "id" : "dff88761-fa92-47fe-b3dd-cf155ee252f0",
+          "link_name" : "Job",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Job",
+                "label" : "Job",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "a3182594-884a-402b-95c2-2412d7ba7684"
+        } ],
+        "id" : "e5bff914-f78f-4fef-90c8-638a9e14ad92",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "none",
+          "runtime_column_propagation" : 1
+        },
+        "schema_ref" : "ed09ac42-e692-4e86-9011-462afa8ce14e"
+      } ],
+      "id" : "6b6158bd-866a-4d02-892b-a9f45d54fc8e",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "742094a3-707f-4814-a60d-d15ae45c7e80|07d78b81-f5f1-426c-8a56-8f9a4fb9a0dd|d52239f7-0f9e-4679-9114-c616c2c07f8e|e5bff914-f78f-4fef-90c8-638a9e14ad92"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/XMLStagePX.svg",
+          "x_pos" : 528.0,
+          "label" : "Join_Details",
+          "y_pos" : 312.0
+        }
+      },
+      "parameters" : {
+        "enable_split_data_into_batches" : false,
+        "num_assembly_threads" : 4,
+        "stage_type" : "XMLStage",
+        "enable_disk_based" : true,
+        "log_level" : "warning",
+        "params" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><!DOCTYPE properties SYSTEM \"http://java.sun.com/dtd/properties.dtd\"><properties><entry key=\"DSProjectName\">#DSProjectName#</entry><entry key=\"DSJobWaveNo\">#DSJobWaveNo#</entry><entry key=\"DSJobInvocationId\">#DSJobInvocationId#</entry><entry key=\"DSJobController\">#DSJobController#</entry><entry key=\"DSHostName\">#DSHostName#</entry><entry key=\"DSJobName\">#DSJobName#</entry><entry key=\"DSJobStartTime\">#DSJobStartTime#</entry><entry key=\"DSJobStartDate\">#DSJobStartDate#</entry><entry key=\"DSJobStartTimestamp\">#DSJobStartTimestamp#</entry><entry key=\"xml_example_root_folder\">#xml_example_root_folder#</entry></properties>",
+        "allow_column_mapping" : false,
+        "e2_assembly" : "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",
+        "security_info" : "{dsnextenc}JlppiuBlsRla9lguomyoF5sAIAMeZzWAYzdWlTzxhueC7bxBSa795OJEQu24bp9k2FfYd2XgTjQSLbOkMUG8sakLZbBjoqaM7TFQNkc/LWamLC3cWayoZwsdi7RUaTq0xKkUsnd0g3wBpgMw2TdFxdSBPxad6IhOXwC29rZB5jAUfkQbVEES7CrfyEysDf4r+zp41plgThpoOrzGRt5yfHKmJZc2M0ODhJQ6ZG4XnAKPNDTZz4vltrXUQrPMxX3pxnbaV2A/LYi3GcVunVqDWOuj65bCxa77l3YChvFjIkOTgWDrB2QPuXSIeyZ5Efo5XervjAKosW/AZMB7CcppK0pu2iLZUZvteIkh9xZXJYlJkWCwCLs4KOXEgRcoTSWdOC0NIMpYDOOy/aYzHRNajLgMlg/Q10QrmxdCZbBYH4wT0ZeOtT92z41+pbLDFq/O5sVObvq+Z5SxctQ1IPpRI06TpcmjLChpYTDrSP/e4rt0ULPR56M8CC92+ViSvjfQfeyx6SzrbeoB+uxmgIu3tibZfRlaVfgqgUbmrHTyAvR+2MqDnTJ+X/Uk5lQX4IKQJ3BaFjHMMQ7B8nLfqn9JLBccF6Tsug6pAGAYmoEF1ur53ktlfkoKW6Oy+xR/kGBFC0kwQJo8SfNJPsUW1kNz1Fy5KKWVpYtWf+Mbv7Z8mMWPF1ExWWHk+1ehD2EZLP+Nqc1OdsjBb2BnBnNcZgxCKSfX6vGOtTdlkX4YwE/T5PaA0Pib262LvTTI1MyMNGo4+COPYfy1NRh4Nbkuz65X35At9UmRo9WfPFo/iDufgC2SpXUWgVXhNMCL4pE3Cq1Ti94zwSU75T53ZKezVjBpkl0OW1QqdqIk1izj7GbqJirJu8M+PU0kiAg3lK5C3I6FdtsYv7njYRSq8M0FQ3S4QZvBDoMRVvsxsW3r1iwPWCET6c/ZCRLkfD2vSL5pFxvLhSzkbfu88cZkXvAX86DevVaP7JzGrRzO/0tsWABPyZ765phG4te4dw3ck7Vwk0RAnvLDfTPsyqfYCBDreYGTrjEnu3icQ/VXwRpqmFO8a3Ae4pyqY80kgVr/EGMcqoJ7RT+sXd/I8d4sWTwG5M4kl5fRvyiZLr26NyFd/Z7u3TLgZa9+PFeHXTsWHGw/EwjQyyJYpwKAlQA7TbqmbZqKGCNNz6b/xh8UTorREfKJGgA1HAPz2NJPVm0+Ps8U/WzNA6IXiFnmZnNAUf0H2jnSLPSpw9km2AEZvlufrN6qPAuEdmZSYqtDCkrKMnwmoA2qS/MPKAufNyYLNRWe7tqqtlPOzeg283L7SIKjEGCwfn4=",
+        "e2_assembly_errors" : 0,
+        "column_properties" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><extendedAttributesList/>",
+        "output_count" : 0,
+        "input_count" : 4,
+        "enable_logging" : true,
+        "maximum_stack_size" : 256,
+        "heap_size" : 256,
+        "limit_output_rows" : false,
+        "last_modified" : "2014-04-09T11:37:36.739 +0530",
+        "debug_test_data" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DebugTestValues><jobParams paramName=\"xml_example_root_folder\"/></DebugTestValues>"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "3600f0af-8986-4a24-aeff-6ca05db8f72c",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "caf38749-a7ff-4cfe-9bdc-7e7f6a635e69"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2
+            }
+          }
+        },
+        "parameters" : {
+          "final_delim" : "none",
+          "firstLineColumnNames" : "firstLineColumnNames",
+          "buf_free_run" : 50,
+          "keepPartitions" : " ",
+          "record_delim" : "'\\n'",
+          "disk_write_inc" : 1048576,
+          "file +" : [ "#xml_example_root_folder#/xml_examples/hjoin_step/example1/input/employee.txt" ],
+          "rejects" : "continue",
+          "quote" : "double",
+          "selection" : "file",
+          "missingFile" : " ",
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "reportProgress" : "yes",
+          "delim" : "','"
+        },
+        "schema_ref" : "ab3e2c9c-e3a3-44c5-b153-eebd4d93e5b1"
+      } ],
+      "op" : "PxSequentialFile",
+      "id" : "4f5b9995-dcba-4566-a386-6d8beece1b06",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 168.0,
+          "label" : "Employee_File",
+          "y_pos" : 144.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "680fb8e7-c4a8-4ef4-a14f-96b04fc138b0",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "49348466-1ec4-4bac-b4d7-cad498bd325f"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2
+            }
+          }
+        },
+        "parameters" : {
+          "final_delim" : "none",
+          "firstLineColumnNames" : "firstLineColumnNames",
+          "buf_free_run" : 50,
+          "keepPartitions" : " ",
+          "record_delim" : "'\\n'",
+          "disk_write_inc" : 1048576,
+          "file +" : [ "#xml_example_root_folder#/xml_examples/hjoin_step/example1/input/address.txt" ],
+          "rejects" : "continue",
+          "quote" : "double",
+          "selection" : "file",
+          "missingFile" : " ",
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "reportProgress" : "yes",
+          "delim" : "','"
+        },
+        "schema_ref" : "1f28a7d7-55b6-4498-b283-5cbcdf4bcb2f"
+      } ],
+      "op" : "PxSequentialFile",
+      "id" : "bac9ecfb-7f9e-4786-85fe-8c47f3f68870",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 168.0,
+          "label" : "Address_File",
+          "y_pos" : 264.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "50098403-b027-4a39-8b6f-b3c91356b3e0",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "97b12fab-2863-4af2-bc9f-764ca48d86f3"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2
+            }
+          }
+        },
+        "parameters" : {
+          "final_delim" : "none",
+          "firstLineColumnNames" : "firstLineColumnNames",
+          "buf_free_run" : 50,
+          "keepPartitions" : " ",
+          "record_delim" : "'\\n'",
+          "disk_write_inc" : 1048576,
+          "file +" : [ "#xml_example_root_folder#/xml_examples/hjoin_step/example1/input/phoneNumber.txt" ],
+          "rejects" : "continue",
+          "quote" : "double",
+          "selection" : "file",
+          "missingFile" : " ",
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "reportProgress" : "yes",
+          "delim" : "','"
+        },
+        "schema_ref" : "1ff9f5cc-a878-4360-9b16-9fe77eaae9f9"
+      } ],
+      "op" : "PxSequentialFile",
+      "id" : "2b3c14a3-3198-46d8-a638-fa223a31b462",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 168.0,
+          "label" : "PhoneNumber_File",
+          "y_pos" : 360.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "a3182594-884a-402b-95c2-2412d7ba7684",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "dff88761-fa92-47fe-b3dd-cf155ee252f0"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2
+            }
+          }
+        },
+        "parameters" : {
+          "final_delim" : "none",
+          "firstLineColumnNames" : "firstLineColumnNames",
+          "buf_free_run" : 50,
+          "keepPartitions" : " ",
+          "record_delim" : "'\\n'",
+          "disk_write_inc" : 1048576,
+          "file +" : [ "#xml_example_root_folder#/xml_examples/hjoin_step/example1/input/job.txt" ],
+          "rejects" : "continue",
+          "quote" : "double",
+          "selection" : "file",
+          "missingFile" : " ",
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "reportProgress" : "yes",
+          "delim" : "','"
+        },
+        "schema_ref" : "ed09ac42-e692-4e86-9011-462afa8ce14e"
+      } ],
+      "op" : "PxSequentialFile",
+      "id" : "7a11e5f1-5bec-4d05-8a5b-b0e5cd68fc4a",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 168.0,
+          "label" : "Job_File",
+          "y_pos" : 480.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    } ],
+    "id" : "e07cadc9-597b-4774-bc7b-412b2dca8b82",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "true"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "ab3e2c9c-e3a3-44c5-b153-eebd4d93e5b1",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:name/firstName",
+        "max_length" : 256,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "firstName",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "firstName",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-employee-employee",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:name/middleName",
+        "max_length" : 256,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "middleName",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "middleName",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-employee-employee",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:name/lastName",
+        "max_length" : 256,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "lastName",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "lastName",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-employee-employee",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:gender",
+        "max_length" : 256,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "gender",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "gender",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-employee-employee",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:dateOfBirth",
+        "max_length" : 256,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "dateOfBirth",
+      "type" : "date",
+      "app_data" : {
+        "column_reference" : "dateOfBirth",
+        "odbc_type" : "DATE",
+        "table_def" : "Saved-employee-employee",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DATE"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:title",
+        "max_length" : 256,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "title",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "title",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-employee-employee",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:@employeeID",
+        "max_length" : 256,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "employeeID",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "employeeID",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-employee-employee",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 256,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "hireDate",
+      "type" : "date",
+      "app_data" : {
+        "odbc_type" : "DATE",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DATE"
+      }
+    } ]
+  }, {
+    "id" : "1f28a7d7-55b6-4498-b283-5cbcdf4bcb2f",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 256,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "addressID",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:street",
+        "max_length" : 256,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "street",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "street",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-address-address",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:city",
+        "max_length" : 256,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "city",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "city",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-address-address",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:state",
+        "max_length" : 256,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "state",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "state",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-address-address",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:country",
+        "max_length" : 256,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "country",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "country",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-address-address",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:postalCode",
+        "max_length" : 256,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "postalCode",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "postalCode",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-address-address",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "../../ns0:@employeeID",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "addressType",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "employeeID",
+        "odbc_type" : "CHAR",
+        "table_def" : "Saved-address-address",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 256,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "employeeID",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  }, {
+    "id" : "1ff9f5cc-a878-4360-9b16-9fe77eaae9f9",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./e2res:text()",
+        "max_length" : 256,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "employeeID",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "phoneNumber",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-phoneNumber-phoneNumber",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "../../../ns0:@employeeID",
+        "max_length" : 256,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "phoneNumber",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "employeeID",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-phoneNumber-phoneNumber",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "addressID",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "../ns0:address_type",
+        "max_length" : 256,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "addressType",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  }, {
+    "id" : "ed09ac42-e692-4e86-9011-462afa8ce14e",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:jobTitle",
+        "max_length" : 256,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "jobTitle",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "jobTitle",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-job-job",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:startDate",
+        "max_length" : 256,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "startDate",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "startDate",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-job-job",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:endDate",
+        "max_length" : 256,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "endDate",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "endDate",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-job-job",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:annualSalary",
+        "max_length" : 256,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "annualSalary",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "annualSalary",
+        "odbc_type" : "BIGINT",
+        "table_def" : "Saved-job-job",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 256,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:currentjob",
+        "max_length" : 256,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "currentjob",
+      "type" : "boolean",
+      "app_data" : {
+        "column_reference" : "currentjob",
+        "odbc_type" : "BIT",
+        "table_def" : "Saved-job-job",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "BOOLEAN"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:@department",
+        "max_length" : 256,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "department",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "department",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-job-job",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:@id",
+        "max_length" : 256,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "id",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "id",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-job-job",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 256,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "./ns0:@isManager",
+        "max_length" : 256,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "isManager",
+      "type" : "boolean",
+      "app_data" : {
+        "column_reference" : "isManager",
+        "odbc_type" : "BIT",
+        "table_def" : "Saved-job-job",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "BOOLEAN"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "../../../ns0:@employeeID",
+        "max_length" : 256,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "employeeID",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "employeeID",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-job-job",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "bfb827f0-beb3-44be-8c43-b8e490e5bc5a",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "isDefineParameterToggled" : true
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ {
+      "name" : "xml_example_root_folder",
+      "description" : "Point to the root of the file tree folder of the example archive",
+      "type" : "string",
+      "prompt" : "Roof of example folder tree",
+      "value" : "/opt/workshops/files/DATASTAGE"
+    }, {
+      "name" : "DSJobController",
+      "type" : "string"
+    }, {
+      "name" : "DSJobInvocationId",
+      "type" : "string",
+      "prompt" : "Job invocation ID"
+    } ]
+  }
+}

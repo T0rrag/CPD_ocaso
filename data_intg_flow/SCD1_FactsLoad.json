@@ -1,0 +1,5856 @@
+{
+  "primary_pipeline" : "75fde308-7132-4bac-899c-e8add1065e5b",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxDataSet",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "17b45eef-b990-491b-978f-0a91097a06a0",
+          "type_attr" : "PRIMARY",
+          "id" : "e8991194-d88c-4166-8739-de0786566367",
+          "link_name" : "Lnk_Cust",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Cust",
+                "label" : "Lnk_Cust",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "2952ed29-a9ec-4c06-b0a7-348c0854cdbd"
+        } ],
+        "id" : "8d0e6372-b5b2-478d-8c27-0fd9ffc59c97",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "datasetmode" : ">| [ds",
+          "keyColsPart" : [ {
+            "sorting" : false,
+            "partitioning" : true,
+            "keyCol" : "ID_CUSTOMER"
+          } ],
+          "part_type" : "hash",
+          "part_coll_sort_columns" : "ID_CUSTOMER",
+          "part_coll" : "part_type",
+          "dataset" : "#SalesPath#TD_CUSTOMERS_TMP.ds",
+          "runtime_column_propagation" : 0,
+          "registerDataAsset" : false
+        },
+        "schema_ref" : "b7423060-941e-407a-9020-3e50e46efcf9"
+      } ],
+      "id" : "3eea389c-6ed4-4b06-bf96-1f0f720f7df4",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxDataSet.svg",
+          "x_pos" : 1104.0,
+          "label" : "DS_CUSTOMERS_TMP",
+          "y_pos" : 96.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "preserve" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "2952ed29-a9ec-4c06-b0a7-348c0854cdbd",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "e8991194-d88c-4166-8739-de0786566367"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "valueDerivation" : [ {
+            "parsedExpression" : "ID_CUSTOMER",
+            "columnName" : "ID_CUSTOMER",
+            "sourceColumn" : "Lnk_Now_Cust.ID_CUSTOMER;Lnk_New_Cust.ID_CUSTOMER"
+          }, {
+            "parsedExpression" : "KB_CUSTOMER",
+            "columnName" : "KB_CUSTOMER",
+            "sourceColumn" : "Lnk_Now_Cust.KB_CUSTOMER;Lnk_New_Cust.KB_CUSTOMER"
+          }, {
+            "parsedExpression" : "CUSTOMER",
+            "columnName" : "CUSTOMER",
+            "sourceColumn" : "Lnk_Now_Cust.CUSTOMER;Lnk_New_Cust.CUSTOMER"
+          }, {
+            "parsedExpression" : "CONTINENT",
+            "columnName" : "CONTINENT",
+            "sourceColumn" : "Lnk_Now_Cust.CONTINENT;Lnk_New_Cust.CONTINENT"
+          }, {
+            "parsedExpression" : "COUNTRY",
+            "columnName" : "COUNTRY",
+            "sourceColumn" : "Lnk_Now_Cust.COUNTRY;Lnk_New_Cust.COUNTRY"
+          } ],
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "b7423060-941e-407a-9020-3e50e46efcf9"
+      } ],
+      "op" : "PxFunnel",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "c18c67af-e78c-4421-81e8-22f39fe7b5a0",
+          "type_attr" : "PRIMARY",
+          "id" : "325e1cc3-d0de-4001-9d7c-e88bdc235f95",
+          "link_name" : "Lnk_Now_Cust",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Now_Cust",
+                "label" : "Lnk_Now_Cust",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "fb94ecc6-e0a4-44a5-924c-acff24b791a7"
+        } ],
+        "id" : "5d09b25e-4707-4145-9470-ea3e247368af",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 2147483646
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "db28a0bc-440f-4273-93f1-089abdf82e38"
+      }, {
+        "links" : [ {
+          "node_id_ref" : "c18c67af-e78c-4421-81e8-22f39fe7b5a0",
+          "type_attr" : "PRIMARY",
+          "id" : "f160c06e-8dfb-4e22-b529-247d4e173298",
+          "link_name" : "Lnk_New_Cust",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_New_Cust",
+                "label" : "Lnk_New_Cust",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "8b6ecb58-bc23-416e-88be-90af844e62c1"
+        } ],
+        "id" : "56e2c99b-a523-4003-b13b-cb9bf72d7d78",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 2147483646
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "ce4b5da8-be6f-4ba1-b665-cc23e2e17ad8"
+      } ],
+      "id" : "17b45eef-b990-491b-978f-0a91097a06a0",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "5d09b25e-4707-4145-9470-ea3e247368af|56e2c99b-a523-4003-b13b-cb9bf72d7d78",
+          "outputs_order" : "2952ed29-a9ec-4c06-b0a7-348c0854cdbd"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxFunnel.svg",
+          "resize_height" : 138.0,
+          "is_resized" : true,
+          "x_pos" : 888.0,
+          "label" : "FU_Cust",
+          "y_pos" : 48.0,
+          "resize_width" : 50.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 2,
+        "preserve" : 0,
+        "allow_column_mapping" : false,
+        "operator" : "funnel"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "8b6ecb58-bc23-416e-88be-90af844e62c1",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "f160c06e-8dfb-4e22-b529-247d4e173298"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 2147483646
+            }
+          }
+        },
+        "parameters" : {
+          "Reject" : false,
+          "TransformerConstraint" : "Lnk_Join_Cust.CG_NEW = 'S'",
+          "RowLimit" : 0,
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "ce4b5da8-be6f-4ba1-b665-cc23e2e17ad8"
+      }, {
+        "id" : "fb94ecc6-e0a4-44a5-924c-acff24b791a7",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "325e1cc3-d0de-4001-9d7c-e88bdc235f95"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 2147483646
+            }
+          }
+        },
+        "parameters" : {
+          "Reject" : true,
+          "RowLimit" : 0,
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "SortOrderPreserved" : true,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "db28a0bc-440f-4273-93f1-089abdf82e38"
+      } ],
+      "op" : "CTransformerStage",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "aed2a5bc-b2ae-48f4-8907-13eb7bf0d484",
+          "type_attr" : "PRIMARY",
+          "id" : "57153d5d-943d-4afa-ae1f-58016a7584d7",
+          "link_name" : "Lnk_Join_Cust",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Join_Cust",
+                "label" : "Lnk_Join_Cust",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "bc7ce345-2185-4ce4-bdd5-fd180a71893c"
+        } ],
+        "id" : "4b97725c-8a7b-417f-b5bc-b905d17d935a",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "0ab4c144-60e5-49da-b3fc-c8954b7a053e"
+      } ],
+      "id" : "c18c67af-e78c-4421-81e8-22f39fe7b5a0",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "4b97725c-8a7b-417f-b5bc-b905d17d935a",
+          "outputs_order" : "8b6ecb58-bc23-416e-88be-90af844e62c1|fb94ecc6-e0a4-44a5-924c-acff24b791a7"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/CTransformerStage.svg",
+          "resize_height" : 133.0,
+          "is_resized" : true,
+          "x_pos" : 672.0,
+          "label" : "TR_Cust",
+          "y_pos" : 48.0,
+          "resize_width" : 48.0
+        }
+      },
+      "parameters" : {
+        "MaxLoopIterations" : 0,
+        "output_count" : 2,
+        "BlockSizeSelectedType" : "systemSelected",
+        "input_count" : 1,
+        "BlockSize" : 0,
+        "SKKeySourceType" : "file"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "bc7ce345-2185-4ce4-bdd5-fd180a71893c",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "57153d5d-943d-4afa-ae1f-58016a7584d7"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "0ab4c144-60e5-49da-b3fc-c8954b7a053e"
+      } ],
+      "op" : "PxJoin",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "8170956b-b6b1-41da-90a3-eaf5a1cca595",
+          "type_attr" : "PRIMARY",
+          "id" : "14b5053b-b7ea-4358-82ff-9f2295df2650",
+          "link_name" : "Lnk_Left_Cust",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Left_Cust",
+                "label" : "Lnk_Left_Cust",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "c9f9243b-ea5d-40d3-a462-ba98f3647370"
+        } ],
+        "id" : "0cc94d64-e282-4203-b16a-655c00481446",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 2147483646
+            }
+          }
+        },
+        "parameters" : {
+          "keyColsPart" : [ {
+            "sorting" : true,
+            "partitioning" : true,
+            "asc-desc" : "asc",
+            "keyCol" : "ID_CUSTOMER"
+          } ],
+          "part_stable" : false,
+          "part_unique" : true,
+          "perform_sort" : true,
+          "part_type" : "hash",
+          "part_coll_sort_columns" : "ID_CUSTOMER",
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "eadd54a2-0711-4a8b-92f5-de050b9b86d9"
+      }, {
+        "links" : [ {
+          "node_id_ref" : "aa6b656b-a197-46ea-ab00-d45180f188b4",
+          "type_attr" : "PRIMARY",
+          "id" : "a10e29bc-cbb4-4366-b1c9-1a570e48ea5f",
+          "link_name" : "Lnk_Right_Cust",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Right_Cust",
+                "label" : "Lnk_Right_Cust",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "59f54c5b-cc4a-45a3-9d5a-f5f12a0ce387"
+        } ],
+        "id" : "cf106f18-d65c-4b64-b72a-d3d393beb9a6",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 2147483646
+            }
+          }
+        },
+        "parameters" : {
+          "part_type" : "same",
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "8ba5098c-4178-439e-b5ef-233b316c980b"
+      } ],
+      "id" : "aed2a5bc-b2ae-48f4-8907-13eb7bf0d484",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "0cc94d64-e282-4203-b16a-655c00481446|cf106f18-d65c-4b64-b72a-d3d393beb9a6",
+          "outputs_order" : "bc7ce345-2185-4ce4-bdd5-fd180a71893c"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxJoin.svg",
+          "x_pos" : 456.0,
+          "label" : "JO_Cust",
+          "y_pos" : 96.0
+        }
+      },
+      "parameters" : {
+        "keyProperties" : [ {
+          "key" : "ID_CUSTOMER"
+        } ],
+        "output_count" : 1,
+        "input_count" : 2,
+        "allow_column_mapping" : false,
+        "operator" : "fullouterjoin"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "c9f9243b-ea5d-40d3-a462-ba98f3647370",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "14b5053b-b7ea-4358-82ff-9f2295df2650"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "missingcolmode" : " ",
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576,
+          "dataset" : "#SalesPath#TD_CUSTOMERS.ds"
+        },
+        "schema_ref" : "eadd54a2-0711-4a8b-92f5-de050b9b86d9"
+      } ],
+      "op" : "PxDataSet",
+      "id" : "8170956b-b6b1-41da-90a3-eaf5a1cca595",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxDataSet.svg",
+          "x_pos" : 72.0,
+          "label" : "DS_CUSTOMERS",
+          "y_pos" : 48.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "preserve" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "59f54c5b-cc4a-45a3-9d5a-f5f12a0ce387",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "a10e29bc-cbb4-4366-b1c9-1a570e48ea5f"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "valueDerivation" : [ {
+            "parsedExpression" : "Generate(CG_NEW)",
+            "columnName" : "CG_NEW",
+            "sourceColumn" : "Lnk_SF_Cust.CG_NEW"
+          } ],
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "8ba5098c-4178-439e-b5ef-233b316c980b"
+      } ],
+      "op" : "PxColumnGenerator",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "f36c96b2-12e6-4f01-ba88-bc0c171a1bee",
+          "type_attr" : "PRIMARY",
+          "id" : "876f6da3-18a5-4b9a-8796-105e5527b9ee",
+          "link_name" : "Lnk_SF_Cust",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_SF_Cust",
+                "label" : "Lnk_SF_Cust",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "9f8171f2-838c-49d9-a175-aa9c07741339"
+        } ],
+        "id" : "54fbae1d-c5cd-4dc8-b395-58af8ddb7b31",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "keyColsPart" : [ {
+            "sorting" : true,
+            "partitioning" : true,
+            "asc-desc" : "asc",
+            "keyCol" : "ID_CUSTOMER"
+          } ],
+          "part_stable" : false,
+          "part_unique" : true,
+          "perform_sort" : true,
+          "part_type" : "hash",
+          "part_coll_sort_columns" : "ID_CUSTOMER",
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "495a51be-c47f-43f5-a864-cb53be5680c5"
+      } ],
+      "id" : "aa6b656b-a197-46ea-ab00-d45180f188b4",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxColumnGenerator.svg",
+          "x_pos" : 264.0,
+          "label" : "CG_Cust",
+          "y_pos" : 168.0
+        }
+      },
+      "parameters" : {
+        "schema" : [ "CG_NEW" ],
+        "selection" : "explicit",
+        "output_count" : 1,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "9f8171f2-838c-49d9-a175-aa9c07741339",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "876f6da3-18a5-4b9a-8796-105e5527b9ee"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2
+            }
+          }
+        },
+        "parameters" : {
+          "final_delim" : "end",
+          "firstLineColumnNames" : " ",
+          "buf_free_run" : 50,
+          "keepPartitions" : " ",
+          "record_delim" : "'\\n'",
+          "disk_write_inc" : 1048576,
+          "file +" : [ "#SalesPath#TD_CUSTOMERS.txt" ],
+          "rejects" : "continue",
+          "quote" : "none",
+          "selection" : "file",
+          "missingFile" : " ",
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "reportProgress" : "yes",
+          "delim" : "'\\t'"
+        },
+        "schema_ref" : "495a51be-c47f-43f5-a864-cb53be5680c5"
+      } ],
+      "op" : "PxSequentialFile",
+      "id" : "f36c96b2-12e6-4f01-ba88-bc0c171a1bee",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 72.0,
+          "label" : "SF_CUSTOMERS",
+          "y_pos" : 168.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "d77d84d5-45d9-415e-ad66-7f42028c4c70",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "c5c72373-bfe4-4011-8712-57e2ee1f7c2f"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2
+            }
+          }
+        },
+        "parameters" : {
+          "final_delim" : "end",
+          "firstLineColumnNames" : " ",
+          "buf_free_run" : 50,
+          "keepPartitions" : " ",
+          "record_delim" : "'\\n'",
+          "disk_write_inc" : 1048576,
+          "file +" : [ "#SalesPath#TF_SALES.txt" ],
+          "rejects" : "continue",
+          "quote" : "none",
+          "selection" : "file",
+          "missingFile" : " ",
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "reportProgress" : "yes",
+          "delim" : "'\\t'"
+        },
+        "schema_ref" : "ea56fd73-c691-40b5-b2e5-1180f32f403b"
+      } ],
+      "op" : "PxSequentialFile",
+      "id" : "3901f162-9d5f-4b22-a349-37b7c6432d78",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 72.0,
+          "label" : "SF_Facts",
+          "y_pos" : 912.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "9157819d-2418-4e23-895e-e72d273d0699",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "cd344331-8543-44c5-9c11-afe8419d969b"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "Reject" : false,
+          "RowLimit" : 0,
+          "valueDerivation" : [ {
+            "parsedExpression" : "AsInteger(StringToDecimal(Convert('/', '', Lnk_Facts.FactFec)))",
+            "columnName" : "FactFec",
+            "sourceColumn" : "Lnk_Facts.FactFec"
+          }, {
+            "parsedExpression" : "Lnk_Facts.Units * Lnk_Facts.Price",
+            "columnName" : "Amount",
+            "sourceColumn" : "Lnk_Facts.Units;Lnk_Facts.Price"
+          }, {
+            "parsedExpression" : "Lnk_Facts.Units * (Lnk_Facts.Price - Lnk_Facts.Cost)",
+            "columnName" : "Profit",
+            "sourceColumn" : "Lnk_Facts.Units;Lnk_Facts.Price;Lnk_Facts.Cost"
+          } ],
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "SortOrderPreserved" : true,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "382c1280-a51d-45b1-be09-61e6367cfa8c"
+      } ],
+      "op" : "CTransformerStage",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "3901f162-9d5f-4b22-a349-37b7c6432d78",
+          "type_attr" : "PRIMARY",
+          "id" : "c5c72373-bfe4-4011-8712-57e2ee1f7c2f",
+          "link_name" : "Lnk_Facts",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Facts",
+                "label" : "Lnk_Facts",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "d77d84d5-45d9-415e-ad66-7f42028c4c70"
+        } ],
+        "id" : "5029db22-a3c0-4e60-8a2e-dabebb2f098f",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "ea56fd73-c691-40b5-b2e5-1180f32f403b"
+      } ],
+      "id" : "80b6336c-56c3-47b6-8230-cbbd966bebd7",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "5029db22-a3c0-4e60-8a2e-dabebb2f098f",
+          "outputs_order" : "9157819d-2418-4e23-895e-e72d273d0699"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/CTransformerStage.svg",
+          "x_pos" : 384.0,
+          "label" : "TR_Facts_Sales",
+          "y_pos" : 912.0
+        }
+      },
+      "parameters" : {
+        "MaxLoopIterations" : 0,
+        "output_count" : 1,
+        "BlockSizeSelectedType" : "systemSelected",
+        "input_count" : 1,
+        "BlockSize" : 0,
+        "SKKeySourceType" : "file"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxDataSet",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "80b6336c-56c3-47b6-8230-cbbd966bebd7",
+          "type_attr" : "PRIMARY",
+          "id" : "cd344331-8543-44c5-9c11-afe8419d969b",
+          "link_name" : "Lnk_Sales",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Sales",
+                "label" : "Lnk_Sales",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "9157819d-2418-4e23-895e-e72d273d0699"
+        } ],
+        "id" : "efd80147-ec83-4bc1-b2d3-921865386381",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "datasetmode" : ">> [ds",
+          "keyColsPart" : [ {
+            "sorting" : false,
+            "partitioning" : true,
+            "keyCol" : "ID_CUSTOMER"
+          }, {
+            "sorting" : false,
+            "partitioning" : true,
+            "keyCol" : "ID_PRODUCT"
+          }, {
+            "sorting" : false,
+            "partitioning" : true,
+            "keyCol" : "ID_DEALER"
+          }, {
+            "sorting" : false,
+            "partitioning" : true,
+            "keyCol" : "FactFec"
+          } ],
+          "part_type" : "hash",
+          "part_coll_sort_columns" : "ID_CUSTOMER,ID_PRODUCT,ID_DEALER,FactFec",
+          "part_coll" : "part_type",
+          "dataset" : "#SalesPath#TF_SALES.ds",
+          "runtime_column_propagation" : 0,
+          "registerDataAsset" : false
+        },
+        "schema_ref" : "382c1280-a51d-45b1-be09-61e6367cfa8c"
+      } ],
+      "id" : "956128d5-9336-4bf2-bbca-d3cfe13bf56f",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxDataSet.svg",
+          "x_pos" : 624.0,
+          "label" : "DS_SALES",
+          "y_pos" : 912.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxDataSet",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "a28009aa-d934-4e41-99de-a259438e2ca2",
+          "type_attr" : "PRIMARY",
+          "id" : "23bd1aae-1ba3-4c16-86a3-8363ceca0f00",
+          "link_name" : "Lnjk_Prod",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnjk_Prod",
+                "label" : "Lnjk_Prod",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "80aab9e9-dc41-40eb-9a1e-f086c8497e19"
+        } ],
+        "id" : "c942a49e-d2f5-4e07-8fbc-a231cac57f13",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "datasetmode" : ">| [ds",
+          "keyColsPart" : [ {
+            "sorting" : false,
+            "partitioning" : true,
+            "keyCol" : "ID_PRODUCT"
+          } ],
+          "part_type" : "hash",
+          "part_coll_sort_columns" : "ID_PRODUCT",
+          "part_coll" : "part_type",
+          "dataset" : "#SalesPath#TD_PRODUCTS_TMP.ds",
+          "runtime_column_propagation" : 0,
+          "registerDataAsset" : false
+        },
+        "schema_ref" : "68c2d8c4-e2eb-4270-ac7e-ff1786390dfc"
+      } ],
+      "id" : "b2382c99-54f4-4324-bef3-78427f6f8dd5",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxDataSet.svg",
+          "x_pos" : 1104.0,
+          "label" : "DS_PRODUCTS_TMP",
+          "y_pos" : 408.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "80aab9e9-dc41-40eb-9a1e-f086c8497e19",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "23bd1aae-1ba3-4c16-86a3-8363ceca0f00"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "valueDerivation" : [ {
+            "parsedExpression" : "ID_PRODUCT",
+            "columnName" : "ID_PRODUCT",
+            "sourceColumn" : "Lnk_Now_Prod.ID_PRODUCT;Lnk_New_Prod.ID_PRODUCT"
+          }, {
+            "parsedExpression" : "KB_PRODUCT",
+            "columnName" : "KB_PRODUCT",
+            "sourceColumn" : "Lnk_Now_Prod.KB_PRODUCT;Lnk_New_Prod.KB_PRODUCT"
+          }, {
+            "parsedExpression" : "BRAND",
+            "columnName" : "BRAND",
+            "sourceColumn" : "Lnk_Now_Prod.BRAND;Lnk_New_Prod.BRAND"
+          }, {
+            "parsedExpression" : "TYPE",
+            "columnName" : "TYPE",
+            "sourceColumn" : "Lnk_Now_Prod.TYPE;Lnk_New_Prod.TYPE"
+          }, {
+            "parsedExpression" : "MODEL",
+            "columnName" : "MODEL",
+            "sourceColumn" : "Lnk_Now_Prod.MODEL;Lnk_New_Prod.MODEL"
+          }, {
+            "parsedExpression" : "COST",
+            "columnName" : "COST",
+            "sourceColumn" : "Lnk_Now_Prod.COST;Lnk_New_Prod.COST"
+          } ],
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "68c2d8c4-e2eb-4270-ac7e-ff1786390dfc"
+      } ],
+      "op" : "PxFunnel",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "c5618d47-0f21-4a1a-88b6-65ac5aacf21d",
+          "type_attr" : "PRIMARY",
+          "id" : "8c8d0a5e-bd6e-46be-a6a2-974b37b86d3f",
+          "link_name" : "Lnk_Now_Prod",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Now_Prod",
+                "label" : "Lnk_Now_Prod",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "28f173c6-3c3f-4481-9a23-89dda20a3483"
+        } ],
+        "id" : "f5da43d7-4df9-4259-a3a2-4cb4d44a3d09",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 2147483646
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "dc0ea182-88f3-4c62-9842-2d9648f12ffc"
+      }, {
+        "links" : [ {
+          "node_id_ref" : "c5618d47-0f21-4a1a-88b6-65ac5aacf21d",
+          "type_attr" : "PRIMARY",
+          "id" : "ceccfc2d-f8b7-4fad-8d56-3f3535cf8a79",
+          "link_name" : "Lnk_New_Prod",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_New_Prod",
+                "label" : "Lnk_New_Prod",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "0e403def-f89c-4c0b-a272-0db52c2fdbb1"
+        } ],
+        "id" : "99afe5ce-dd86-4300-ad27-c23e897e431d",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 2147483646
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "514cfff5-488b-4d7c-8d74-f57edb2dd00b"
+      } ],
+      "id" : "a28009aa-d934-4e41-99de-a259438e2ca2",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "f5da43d7-4df9-4259-a3a2-4cb4d44a3d09|99afe5ce-dd86-4300-ad27-c23e897e431d",
+          "outputs_order" : "80aab9e9-dc41-40eb-9a1e-f086c8497e19"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxFunnel.svg",
+          "resize_height" : 121.0,
+          "is_resized" : true,
+          "x_pos" : 888.0,
+          "label" : "FU_Prod",
+          "y_pos" : 360.0,
+          "resize_width" : 50.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 2,
+        "preserve" : 0,
+        "allow_column_mapping" : false,
+        "operator" : "funnel"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "28f173c6-3c3f-4481-9a23-89dda20a3483",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "8c8d0a5e-bd6e-46be-a6a2-974b37b86d3f"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 2147483646
+            }
+          }
+        },
+        "parameters" : {
+          "Reject" : false,
+          "TransformerConstraint" : "Lnk_Join_Prod.CG_NEW <> 'S'",
+          "RowLimit" : 0,
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "SortOrderPreserved" : true,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "dc0ea182-88f3-4c62-9842-2d9648f12ffc"
+      }, {
+        "id" : "0e403def-f89c-4c0b-a272-0db52c2fdbb1",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "ceccfc2d-f8b7-4fad-8d56-3f3535cf8a79"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 2147483646
+            }
+          }
+        },
+        "parameters" : {
+          "Reject" : false,
+          "TransformerConstraint" : "Lnk_Join_Prod.CG_NEW = 'S'",
+          "RowLimit" : 0,
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "SortOrderPreserved" : true,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "514cfff5-488b-4d7c-8d74-f57edb2dd00b"
+      } ],
+      "op" : "CTransformerStage",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "21d8e604-d334-4bff-be45-73080f1931c4",
+          "type_attr" : "PRIMARY",
+          "id" : "77d8fe05-3f63-4d2c-ae79-c4897de2bea4",
+          "link_name" : "Lnk_Join_Prod",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Join_Prod",
+                "label" : "Lnk_Join_Prod",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "b46fafa2-d66c-4774-870f-097a3d924150"
+        } ],
+        "id" : "63f3ec59-8148-48c2-863f-a5aeebd25e6d",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "adbb6079-6424-49b5-9e6c-f83a1e6a0de7"
+      } ],
+      "id" : "c5618d47-0f21-4a1a-88b6-65ac5aacf21d",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "63f3ec59-8148-48c2-863f-a5aeebd25e6d",
+          "outputs_order" : "28f173c6-3c3f-4481-9a23-89dda20a3483|0e403def-f89c-4c0b-a272-0db52c2fdbb1"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/CTransformerStage.svg",
+          "resize_height" : 111.0,
+          "is_resized" : true,
+          "x_pos" : 672.0,
+          "label" : "TR_Prod",
+          "y_pos" : 360.0,
+          "resize_width" : 48.0
+        }
+      },
+      "parameters" : {
+        "MaxLoopIterations" : 0,
+        "output_count" : 2,
+        "BlockSizeSelectedType" : "systemSelected",
+        "input_count" : 1,
+        "BlockSize" : 0,
+        "SKKeySourceType" : "file"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "b46fafa2-d66c-4774-870f-097a3d924150",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "77d8fe05-3f63-4d2c-ae79-c4897de2bea4"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "adbb6079-6424-49b5-9e6c-f83a1e6a0de7"
+      } ],
+      "op" : "PxJoin",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "f83f8095-599d-4086-8def-73cc9991abc5",
+          "type_attr" : "PRIMARY",
+          "id" : "7582ff7a-d11f-444d-9bac-d61a88404eb4",
+          "link_name" : "Lnk_Left_Prod",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Left_Prod",
+                "label" : "Lnk_Left_Prod",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "4087e2b1-3e86-418e-8cc0-5a33c5c7007a"
+        } ],
+        "id" : "4a35c92f-958f-4097-b305-8a2de33b38fb",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 2147483646
+            }
+          }
+        },
+        "parameters" : {
+          "keyColsPart" : [ {
+            "sorting" : true,
+            "partitioning" : true,
+            "asc-desc" : "asc",
+            "keyCol" : "ID_PRODUCT"
+          } ],
+          "part_stable" : false,
+          "part_unique" : true,
+          "perform_sort" : true,
+          "part_type" : "hash",
+          "part_coll_sort_columns" : "ID_PRODUCT",
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "7bc71aa4-4f0c-4c31-891f-c589b1750228"
+      }, {
+        "links" : [ {
+          "node_id_ref" : "699f86bf-d3de-4407-aa8b-d496ff6774a5",
+          "type_attr" : "PRIMARY",
+          "id" : "58d64c18-0110-4066-8992-c7fb47ecf92b",
+          "link_name" : "Lnk_Right_Prod",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Right_Prod",
+                "label" : "Lnk_Right_Prod",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "131258fe-6615-46eb-a0e5-339f204c2e71"
+        } ],
+        "id" : "1a3ff69a-b193-463f-a945-b8fc83efb0f2",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 2147483646
+            }
+          }
+        },
+        "parameters" : {
+          "part_type" : "same",
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "e4464553-8d94-4f1f-a18f-fac8c311dae2"
+      } ],
+      "id" : "21d8e604-d334-4bff-be45-73080f1931c4",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "4a35c92f-958f-4097-b305-8a2de33b38fb|1a3ff69a-b193-463f-a945-b8fc83efb0f2",
+          "outputs_order" : "b46fafa2-d66c-4774-870f-097a3d924150"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxJoin.svg",
+          "x_pos" : 456.0,
+          "label" : "JO_Prod",
+          "y_pos" : 384.0
+        }
+      },
+      "parameters" : {
+        "keyProperties" : [ {
+          "key" : "ID_PRODUCT"
+        } ],
+        "output_count" : 1,
+        "input_count" : 2,
+        "allow_column_mapping" : false,
+        "operator" : "fullouterjoin"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "4087e2b1-3e86-418e-8cc0-5a33c5c7007a",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "7582ff7a-d11f-444d-9bac-d61a88404eb4"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "missingcolmode" : " ",
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576,
+          "dataset" : "#SalesPath#TD_PRODUCTS.ds"
+        },
+        "schema_ref" : "7bc71aa4-4f0c-4c31-891f-c589b1750228"
+      } ],
+      "op" : "PxDataSet",
+      "id" : "f83f8095-599d-4086-8def-73cc9991abc5",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxDataSet.svg",
+          "x_pos" : 72.0,
+          "label" : "DS_PRODUCTS",
+          "y_pos" : 336.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "preserve" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "131258fe-6615-46eb-a0e5-339f204c2e71",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "58d64c18-0110-4066-8992-c7fb47ecf92b"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "valueDerivation" : [ {
+            "parsedExpression" : "Generate(CG_NEW)",
+            "columnName" : "CG_NEW",
+            "sourceColumn" : "Lnk_SF_Prod.CG_NEW"
+          } ],
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "e4464553-8d94-4f1f-a18f-fac8c311dae2"
+      } ],
+      "op" : "PxColumnGenerator",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "73430051-a950-4034-a9d8-ba21a2487b98",
+          "type_attr" : "PRIMARY",
+          "id" : "ab94f57a-fddc-48c6-b180-38ceb2144482",
+          "link_name" : "Lnk_SF_Prod",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_SF_Prod",
+                "label" : "Lnk_SF_Prod",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "c857c0ac-71c9-4586-a708-8ac949ad2603"
+        } ],
+        "id" : "be13e0d5-5cdc-40e2-8c13-40fa5d19bac1",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "keyColsPart" : [ {
+            "sorting" : true,
+            "partitioning" : true,
+            "asc-desc" : "asc",
+            "keyCol" : "ID_PRODUCT"
+          } ],
+          "part_stable" : false,
+          "part_unique" : true,
+          "perform_sort" : true,
+          "part_type" : "hash",
+          "part_coll_sort_columns" : "ID_PRODUCT",
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "e82df143-59ca-4279-b44f-8210d9ec475f"
+      } ],
+      "id" : "699f86bf-d3de-4407-aa8b-d496ff6774a5",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxColumnGenerator.svg",
+          "x_pos" : 264.0,
+          "label" : "CG_Prod",
+          "y_pos" : 456.0
+        }
+      },
+      "parameters" : {
+        "schema" : [ "CG_NEW" ],
+        "selection" : "explicit",
+        "output_count" : 1,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "c857c0ac-71c9-4586-a708-8ac949ad2603",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "ab94f57a-fddc-48c6-b180-38ceb2144482"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2
+            }
+          }
+        },
+        "parameters" : {
+          "final_delim" : "end",
+          "firstLineColumnNames" : " ",
+          "buf_free_run" : 50,
+          "keepPartitions" : " ",
+          "record_delim" : "'\\n'",
+          "disk_write_inc" : 1048576,
+          "file +" : [ "#SalesPath#TD_PRODUCTS.txt" ],
+          "rejects" : "continue",
+          "quote" : "none",
+          "selection" : "file",
+          "missingFile" : " ",
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "reportProgress" : "yes",
+          "delim" : "'\\t'"
+        },
+        "schema_ref" : "e82df143-59ca-4279-b44f-8210d9ec475f"
+      } ],
+      "op" : "PxSequentialFile",
+      "id" : "73430051-a950-4034-a9d8-ba21a2487b98",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 72.0,
+          "label" : "SF_PRODUCTS",
+          "y_pos" : 456.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxDataSet",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "94408ace-9787-4262-b97a-5cb1784a3fae",
+          "type_attr" : "PRIMARY",
+          "id" : "9ce5a42e-d30c-40bf-bbd6-5685c339c666",
+          "link_name" : "Lnk_Deal",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Deal",
+                "label" : "Lnk_Deal",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "541a3f40-4876-41c8-9fbb-ff7b701b6638"
+        } ],
+        "id" : "4cd97e5d-9268-4ff5-997f-5ed8259190fb",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "datasetmode" : ">| [ds",
+          "keyColsPart" : [ {
+            "sorting" : false,
+            "partitioning" : true,
+            "keyCol" : "ID_DEALER"
+          } ],
+          "part_type" : "hash",
+          "part_coll_sort_columns" : "ID_DEALER",
+          "part_coll" : "part_type",
+          "dataset" : "#SalesPath#TD_DEALERS_TMP.ds",
+          "runtime_column_propagation" : 0,
+          "registerDataAsset" : false
+        },
+        "schema_ref" : "664de768-0256-4597-a4f6-656b45b3f87a"
+      } ],
+      "id" : "7a241572-045a-4d27-8732-8c5bd049001f",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxDataSet.svg",
+          "x_pos" : 1104.0,
+          "label" : "DS_DEALERS_TMP",
+          "y_pos" : 672.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "541a3f40-4876-41c8-9fbb-ff7b701b6638",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "9ce5a42e-d30c-40bf-bbd6-5685c339c666"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "valueDerivation" : [ {
+            "parsedExpression" : "ID_DEALER",
+            "columnName" : "ID_DEALER",
+            "sourceColumn" : "Lnk_Now_Deal.ID_DEALER;Lnk_New_Deal.ID_DEALER"
+          }, {
+            "parsedExpression" : "KB_DEALER",
+            "columnName" : "KB_DEALER",
+            "sourceColumn" : "Lnk_Now_Deal.KB_DEALER;Lnk_New_Deal.KB_DEALER"
+          }, {
+            "parsedExpression" : "DEALER",
+            "columnName" : "DEALER",
+            "sourceColumn" : "Lnk_Now_Deal.DEALER;Lnk_New_Deal.DEALER"
+          }, {
+            "parsedExpression" : "CONTINENT",
+            "columnName" : "CONTINENT",
+            "sourceColumn" : "Lnk_Now_Deal.CONTINENT;Lnk_New_Deal.CONTINENT"
+          }, {
+            "parsedExpression" : "COUNTRY",
+            "columnName" : "COUNTRY",
+            "sourceColumn" : "Lnk_Now_Deal.COUNTRY;Lnk_New_Deal.COUNTRY"
+          } ],
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "664de768-0256-4597-a4f6-656b45b3f87a"
+      } ],
+      "op" : "PxFunnel",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "604b43b6-979a-46cc-93a0-b119a494ceb4",
+          "type_attr" : "PRIMARY",
+          "id" : "58253768-01ed-4691-a76f-56fed9864efa",
+          "link_name" : "Lnk_Now_Deal",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Now_Deal",
+                "label" : "Lnk_Now_Deal",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "abfaa226-cd61-43b3-a111-b6f48f4a93c8"
+        } ],
+        "id" : "7cd90709-8ee9-4f81-85f7-bd0621f9afff",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 2147483646
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "bb5372f2-1ee5-4cda-aab7-a712b4e3354d"
+      }, {
+        "links" : [ {
+          "node_id_ref" : "604b43b6-979a-46cc-93a0-b119a494ceb4",
+          "type_attr" : "PRIMARY",
+          "id" : "29ee05ba-a83c-4d8f-8cdc-f938f6601f30",
+          "link_name" : "Lnk_New_Deal",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_New_Deal",
+                "label" : "Lnk_New_Deal",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "31022b47-ffc9-4aa2-9514-c1c9f6c7ead2"
+        } ],
+        "id" : "d36bf0a9-2472-45bc-be27-8ba1a3ee2b29",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 2147483646
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "a5e7a29a-701a-4a83-9842-60fb1bd137f2"
+      } ],
+      "id" : "94408ace-9787-4262-b97a-5cb1784a3fae",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "7cd90709-8ee9-4f81-85f7-bd0621f9afff|d36bf0a9-2472-45bc-be27-8ba1a3ee2b29",
+          "outputs_order" : "541a3f40-4876-41c8-9fbb-ff7b701b6638"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxFunnel.svg",
+          "resize_height" : 127.0,
+          "is_resized" : true,
+          "x_pos" : 888.0,
+          "label" : "FU_Deal",
+          "y_pos" : 624.0,
+          "resize_width" : 48.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 2,
+        "preserve" : 0,
+        "allow_column_mapping" : false,
+        "operator" : "funnel"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "abfaa226-cd61-43b3-a111-b6f48f4a93c8",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "58253768-01ed-4691-a76f-56fed9864efa"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 2147483646
+            }
+          }
+        },
+        "parameters" : {
+          "Reject" : false,
+          "TransformerConstraint" : "Lnk_Join_Deal.CG_NEW <> 'S'",
+          "RowLimit" : 0,
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "SortOrderPreserved" : true,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "bb5372f2-1ee5-4cda-aab7-a712b4e3354d"
+      }, {
+        "id" : "31022b47-ffc9-4aa2-9514-c1c9f6c7ead2",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "29ee05ba-a83c-4d8f-8cdc-f938f6601f30"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 2147483646
+            }
+          }
+        },
+        "parameters" : {
+          "Reject" : false,
+          "TransformerConstraint" : "Lnk_Join_Deal.CG_NEW = 'S'",
+          "RowLimit" : 0,
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "SortOrderPreserved" : true,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "a5e7a29a-701a-4a83-9842-60fb1bd137f2"
+      } ],
+      "op" : "CTransformerStage",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "b048601c-b6f3-4098-9ca8-7da74c4ba0be",
+          "type_attr" : "PRIMARY",
+          "id" : "637a30b2-84f0-4665-b909-c31f931a479e",
+          "link_name" : "Lnk_Join_Deal",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Join_Deal",
+                "label" : "Lnk_Join_Deal",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "30c9455f-1dc6-4c46-ac4d-1abde5167a53"
+        } ],
+        "id" : "567b6d01-528a-494a-b3c3-78c8c6668927",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "37d2218b-ec73-44ce-a40a-a8c98a831911"
+      } ],
+      "id" : "604b43b6-979a-46cc-93a0-b119a494ceb4",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "567b6d01-528a-494a-b3c3-78c8c6668927",
+          "outputs_order" : "abfaa226-cd61-43b3-a111-b6f48f4a93c8|31022b47-ffc9-4aa2-9514-c1c9f6c7ead2"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/CTransformerStage.svg",
+          "resize_height" : 118.0,
+          "is_resized" : true,
+          "x_pos" : 672.0,
+          "label" : "TR_Deal",
+          "y_pos" : 624.0,
+          "resize_width" : 48.0
+        }
+      },
+      "parameters" : {
+        "MaxLoopIterations" : 0,
+        "output_count" : 2,
+        "BlockSizeSelectedType" : "systemSelected",
+        "input_count" : 1,
+        "BlockSize" : 0,
+        "SKKeySourceType" : "file"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "30c9455f-1dc6-4c46-ac4d-1abde5167a53",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "637a30b2-84f0-4665-b909-c31f931a479e"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "37d2218b-ec73-44ce-a40a-a8c98a831911"
+      } ],
+      "op" : "PxJoin",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "5536639f-140b-49b6-8545-343e38abef38",
+          "type_attr" : "PRIMARY",
+          "id" : "2eb26a52-b9ad-4295-94da-0af078ebb33d",
+          "link_name" : "Lnk_Left_Deal",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Left_Deal",
+                "label" : "Lnk_Left_Deal",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "eea538c5-b5c1-4b5a-b558-3a7c5811ef64"
+        } ],
+        "id" : "8e2fd572-4c03-4d13-9c5c-a16dd085766a",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 2147483646
+            }
+          }
+        },
+        "parameters" : {
+          "keyColsPart" : [ {
+            "sorting" : true,
+            "partitioning" : true,
+            "asc-desc" : "asc",
+            "keyCol" : "ID_DEALER"
+          } ],
+          "part_stable" : false,
+          "part_unique" : true,
+          "perform_sort" : true,
+          "part_type" : "hash",
+          "part_coll_sort_columns" : "ID_DEALER",
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "6886d043-6c6b-4898-bf7a-f3a73fe1dde8"
+      }, {
+        "links" : [ {
+          "node_id_ref" : "573b7634-06af-4f14-83e7-619ccec9006a",
+          "type_attr" : "PRIMARY",
+          "id" : "8b94c215-9f2e-465b-9f02-92af48afaf6f",
+          "link_name" : "Lnk_Right_Deal",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Right_Deal",
+                "label" : "Lnk_Right_Deal",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "30d791e6-5bd2-4891-a9ce-c7136f851788"
+        } ],
+        "id" : "cfeff1a2-3c40-4c1c-a83c-923bb3905071",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 2147483646
+            }
+          }
+        },
+        "parameters" : {
+          "part_type" : "same",
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "60d70bfa-b18a-4374-bf48-2c3ff5002f75"
+      } ],
+      "id" : "b048601c-b6f3-4098-9ca8-7da74c4ba0be",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "8e2fd572-4c03-4d13-9c5c-a16dd085766a|cfeff1a2-3c40-4c1c-a83c-923bb3905071",
+          "outputs_order" : "30c9455f-1dc6-4c46-ac4d-1abde5167a53"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxJoin.svg",
+          "x_pos" : 456.0,
+          "label" : "JO_Deal",
+          "y_pos" : 648.0
+        }
+      },
+      "parameters" : {
+        "keyProperties" : [ {
+          "key" : "ID_DEALER"
+        } ],
+        "output_count" : 1,
+        "input_count" : 2,
+        "allow_column_mapping" : false,
+        "operator" : "fullouterjoin"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "eea538c5-b5c1-4b5a-b558-3a7c5811ef64",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "2eb26a52-b9ad-4295-94da-0af078ebb33d"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "missingcolmode" : " ",
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576,
+          "dataset" : "#SalesPath#TD_DEALERS.ds"
+        },
+        "schema_ref" : "6886d043-6c6b-4898-bf7a-f3a73fe1dde8"
+      } ],
+      "op" : "PxDataSet",
+      "id" : "5536639f-140b-49b6-8545-343e38abef38",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxDataSet.svg",
+          "x_pos" : 72.0,
+          "label" : "DS_DEALERS",
+          "y_pos" : 600.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "preserve" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "30d791e6-5bd2-4891-a9ce-c7136f851788",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "8b94c215-9f2e-465b-9f02-92af48afaf6f"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "valueDerivation" : [ {
+            "parsedExpression" : "Generate(CG_NEW)",
+            "columnName" : "CG_NEW",
+            "sourceColumn" : "Lnk_Deal.CG_NEW"
+          } ],
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "60d70bfa-b18a-4374-bf48-2c3ff5002f75"
+      } ],
+      "op" : "PxColumnGenerator",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "03538bd0-542f-49eb-b693-4f14e4a09414",
+          "type_attr" : "PRIMARY",
+          "id" : "619e1fd9-4686-450a-938e-626b0cb3fc49",
+          "link_name" : "Lnk_Deal",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Deal",
+                "label" : "Lnk_Deal",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "50b24251-19d6-4c47-acd9-bafae93961d9"
+        } ],
+        "id" : "e3d9a853-131d-43bd-99b0-be8e86b91971",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "keyColsPart" : [ {
+            "sorting" : true,
+            "partitioning" : true,
+            "asc-desc" : "asc",
+            "keyCol" : "ID_DEALER"
+          } ],
+          "part_stable" : false,
+          "part_unique" : true,
+          "perform_sort" : true,
+          "part_type" : "hash",
+          "part_coll_sort_columns" : "ID_DEALER",
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "ebfedde5-ea72-4d45-9394-0dbea4327f2e"
+      } ],
+      "id" : "573b7634-06af-4f14-83e7-619ccec9006a",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxColumnGenerator.svg",
+          "x_pos" : 288.0,
+          "label" : "CG_Deal",
+          "y_pos" : 744.0
+        }
+      },
+      "parameters" : {
+        "schema" : [ "CG_NEW" ],
+        "selection" : "explicit",
+        "output_count" : 1,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "50b24251-19d6-4c47-acd9-bafae93961d9",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "619e1fd9-4686-450a-938e-626b0cb3fc49"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2
+            }
+          }
+        },
+        "parameters" : {
+          "final_delim" : "end",
+          "firstLineColumnNames" : " ",
+          "buf_free_run" : 50,
+          "keepPartitions" : " ",
+          "record_delim" : "'\\n'",
+          "disk_write_inc" : 1048576,
+          "file +" : [ "#SalesPath#TD_DEALERS.txt" ],
+          "rejects" : "continue",
+          "quote" : "none",
+          "selection" : "file",
+          "missingFile" : " ",
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "reportProgress" : "yes",
+          "delim" : "'\\t'"
+        },
+        "schema_ref" : "ebfedde5-ea72-4d45-9394-0dbea4327f2e"
+      } ],
+      "op" : "PxSequentialFile",
+      "id" : "03538bd0-542f-49eb-b693-4f14e4a09414",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 72.0,
+          "label" : "SF_DEALERS",
+          "y_pos" : 744.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    } ],
+    "id" : "75fde308-7132-4bac-899c-e8add1065e5b",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "b7423060-941e-407a-9020-3e50e46efcf9",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_CUSTOMER: int64",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_CUSTOMER",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "KB_CUSTOMER: int32",
+        "max_length" : 9,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "KB_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "KB_CUSTOMER",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "CUSTOMER: string",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CUSTOMER",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CUSTOMER",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "CONTINENT: string",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CONTINENT",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CONTINENT",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "COUNTRY: string",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COUNTRY",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "COUNTRY",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  }, {
+    "id" : "ce4b5da8-be6f-4ba1-b665-cc23e2e17ad8",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_CUSTOMER: int64",
+        "source_field_id" : "Lnk_Join_Cust.rightRec_ID_CUSTOMER",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_CUSTOMER",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "KB_CUSTOMER: int32",
+        "source_field_id" : "Lnk_Join_Cust.SF_KB_CUSTOMER",
+        "max_length" : 9,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "KB_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "KB_CUSTOMER",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "CUSTOMER: string",
+        "source_field_id" : "Lnk_Join_Cust.SF_CUSTOMER",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CUSTOMER",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CUSTOMER",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "CONTINENT: string",
+        "source_field_id" : "Lnk_Join_Cust.SF_CONTINENT",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CONTINENT",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CONTINENT",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "COUNTRY: string",
+        "source_field_id" : "Lnk_Join_Cust.SF_COUNTRY",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COUNTRY",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "COUNTRY",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  }, {
+    "id" : "db28a0bc-440f-4273-93f1-089abdf82e38",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_CUSTOMER: int64",
+        "source_field_id" : "Lnk_Join_Cust.ID_CUSTOMER",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_CUSTOMER",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "KB_CUSTOMER: int32",
+        "source_field_id" : "Lnk_Join_Cust.KB_CUSTOMER",
+        "max_length" : 9,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "KB_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "KB_CUSTOMER",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "CUSTOMER: string",
+        "source_field_id" : "Lnk_Join_Cust.CUSTOMER",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CUSTOMER",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CUSTOMER",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "CONTINENT: string",
+        "source_field_id" : "Lnk_Join_Cust.CONTINENT",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CONTINENT",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CONTINENT",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "COUNTRY: string",
+        "source_field_id" : "Lnk_Join_Cust.COUNTRY",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COUNTRY",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "COUNTRY",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  }, {
+    "id" : "0ab4c144-60e5-49da-b3fc-c8954b7a053e",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_CUSTOMER: int64",
+        "source_field_id" : "Lnk_Left_Cust.ID_CUSTOMER",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_CUSTOMER",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "KB_CUSTOMER: int32",
+        "source_field_id" : "Lnk_Left_Cust.KB_CUSTOMER",
+        "max_length" : 9,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "KB_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "KB_CUSTOMER",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "CUSTOMER: string",
+        "source_field_id" : "Lnk_Left_Cust.CUSTOMER",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CUSTOMER",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CUSTOMER",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "CONTINENT: string",
+        "source_field_id" : "Lnk_Left_Cust.CONTINENT",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CONTINENT",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CONTINENT",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "COUNTRY: string",
+        "source_field_id" : "Lnk_Left_Cust.COUNTRY",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COUNTRY",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "COUNTRY",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_CUSTOMER: int64",
+        "source_field_id" : "Lnk_Right_Cust.ID_CUSTOMER",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "rightRec_ID_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_CUSTOMER",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "KB_CUSTOMER: int32",
+        "source_field_id" : "Lnk_Right_Cust.SF_KB_CUSTOMER",
+        "max_length" : 9,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "SF_KB_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "KB_CUSTOMER",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "CUSTOMER: string",
+        "source_field_id" : "Lnk_Right_Cust.SF_CUSTOMER",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "SF_CUSTOMER",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CUSTOMER",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "CONTINENT: string",
+        "source_field_id" : "Lnk_Right_Cust.SF_CONTINENT",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "SF_CONTINENT",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CONTINENT",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "COUNTRY: string",
+        "source_field_id" : "Lnk_Right_Cust.SF_COUNTRY",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "SF_COUNTRY",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "COUNTRY",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_Right_Cust.CG_NEW",
+        "max_length" : 1,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CG_NEW",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "apt_field_properties" : "alphabet='S'",
+        "usedin_filterconstraint" : "",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  }, {
+    "id" : "eadd54a2-0711-4a8b-92f5-de050b9b86d9",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_CUSTOMER: int64",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_CUSTOMER",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "KB_CUSTOMER: int32",
+        "max_length" : 9,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "KB_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "KB_CUSTOMER",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "CUSTOMER: string",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CUSTOMER",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CUSTOMER",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "CONTINENT: string",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CONTINENT",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CONTINENT",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "COUNTRY: string",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COUNTRY",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "COUNTRY",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  }, {
+    "id" : "8ba5098c-4178-439e-b5ef-233b316c980b",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_CUSTOMER: int64",
+        "source_field_id" : "Lnk_SF_Cust.ID_CUSTOMER",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_CUSTOMER",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "KB_CUSTOMER: int32",
+        "source_field_id" : "Lnk_SF_Cust.KB_CUSTOMER",
+        "max_length" : 9,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "SF_KB_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "KB_CUSTOMER",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "CUSTOMER: string",
+        "source_field_id" : "Lnk_SF_Cust.CUSTOMER",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "SF_CUSTOMER",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CUSTOMER",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "CONTINENT: string",
+        "source_field_id" : "Lnk_SF_Cust.CONTINENT",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "SF_CONTINENT",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CONTINENT",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "COUNTRY: string",
+        "source_field_id" : "Lnk_SF_Cust.COUNTRY",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "SF_COUNTRY",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "COUNTRY",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 1,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CG_NEW",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "apt_field_properties" : "cycle={value='S'}",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  }, {
+    "id" : "495a51be-c47f-43f5-a864-cb53be5680c5",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_CUSTOMER: int64",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_CUSTOMER",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "KB_CUSTOMER: int32",
+        "max_length" : 9,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "KB_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "KB_CUSTOMER",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "CUSTOMER: string",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CUSTOMER",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CUSTOMER",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "CONTINENT: string",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CONTINENT",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CONTINENT",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "COUNTRY: string",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COUNTRY",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "COUNTRY",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_CUSTOMERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  }, {
+    "id" : "ea56fd73-c691-40b5-b2e5-1180f32f403b",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_CUSTOMER: int64",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_CUSTOMER",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Saved-Lnk_Out_Facts-Facts",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_PRODUCT: int64",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_PRODUCT",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_PRODUCT",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Saved-Lnk_Out_Facts-Facts",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_DEALER: int64",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_DEALER",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_DEALER",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Saved-Lnk_Out_Facts-Facts",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 10,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "FactFec",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "FactFec",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-Lnk_Out_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "Units",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "Units",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Saved-Lnk_Out_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "Price",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "Price",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Saved-Lnk_Out_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "Cost",
+      "type" : "integer",
+      "app_data" : {
+        "odbc_type" : "INTEGER",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    } ]
+  }, {
+    "id" : "382c1280-a51d-45b1-be09-61e6367cfa8c",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_CUSTOMER: int64",
+        "source_field_id" : "Lnk_Facts.ID_CUSTOMER",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_CUSTOMER",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Saved-Lnk_Out_Facts-Facts",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_PRODUCT: int64",
+        "source_field_id" : "Lnk_Facts.ID_PRODUCT",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_PRODUCT",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_PRODUCT",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Saved-Lnk_Out_Facts-Facts",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_DEALER: int64",
+        "source_field_id" : "Lnk_Facts.ID_DEALER",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_DEALER",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_DEALER",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Saved-Lnk_Out_Facts-Facts",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "FactFec",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "FactFec",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Saved-Lnk_Out_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_Facts.Units",
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "Units",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "Units",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Saved-Lnk_Out_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_Facts.Price",
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "Price",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "Price",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Saved-Lnk_Out_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "Amount",
+      "type" : "double",
+      "app_data" : {
+        "odbc_type" : "DOUBLE",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "Profit",
+      "type" : "double",
+      "app_data" : {
+        "odbc_type" : "DOUBLE",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    } ]
+  }, {
+    "id" : "68c2d8c4-e2eb-4270-ac7e-ff1786390dfc",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_PRODUCT: int64",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_PRODUCT",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_PRODUCT",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "KB_PRODUCT: int32",
+        "max_length" : 9,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "KB_PRODUCT",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "KB_PRODUCT",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "BRAND: string",
+        "max_length" : 20,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "BRAND",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "BRAND",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "TYPE: string",
+        "max_length" : 30,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "TYPE",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "TYPE",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "MODEL: string",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MODEL",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "MODEL",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "COST: dfloat",
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COST",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "COST",
+        "odbc_type" : "DOUBLE",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    } ]
+  }, {
+    "id" : "dc0ea182-88f3-4c62-9842-2d9648f12ffc",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_PRODUCT: int64",
+        "source_field_id" : "Lnk_Join_Prod.leftRec_ID_PRODUCT",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_PRODUCT",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_PRODUCT",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "KB_PRODUCT: int32",
+        "source_field_id" : "Lnk_Join_Prod.KB_PRODUCT",
+        "max_length" : 9,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "KB_PRODUCT",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "KB_PRODUCT",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "BRAND: string",
+        "source_field_id" : "Lnk_Join_Prod.BRAND",
+        "max_length" : 20,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "BRAND",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "BRAND",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "TYPE: string",
+        "source_field_id" : "Lnk_Join_Prod.TYPE",
+        "max_length" : 30,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "TYPE",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "TYPE",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "MODEL: string",
+        "source_field_id" : "Lnk_Join_Prod.MODEL",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MODEL",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "MODEL",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "COST: dfloat",
+        "source_field_id" : "Lnk_Join_Prod.COST",
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COST",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "COST",
+        "odbc_type" : "DOUBLE",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    } ]
+  }, {
+    "id" : "514cfff5-488b-4d7c-8d74-f57edb2dd00b",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_PRODUCT: int64",
+        "source_field_id" : "Lnk_Join_Prod.rightRec_ID_PRODUCT",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_PRODUCT",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_PRODUCT",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "KB_PRODUCT: int32",
+        "source_field_id" : "Lnk_Join_Prod.SF_KB_PRODUCT",
+        "max_length" : 9,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "KB_PRODUCT",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "KB_PRODUCT",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "BRAND: string",
+        "source_field_id" : "Lnk_Join_Prod.SF_BRAND",
+        "max_length" : 20,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "BRAND",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "BRAND",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "TYPE: string",
+        "source_field_id" : "Lnk_Join_Prod.SF_TYPE",
+        "max_length" : 30,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "TYPE",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "TYPE",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "MODEL: string",
+        "source_field_id" : "Lnk_Join_Prod.SF_MODEL",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MODEL",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "MODEL",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "COST: dfloat",
+        "source_field_id" : "Lnk_Join_Prod.SF_COST",
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COST",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "COST",
+        "odbc_type" : "DOUBLE",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    } ]
+  }, {
+    "id" : "adbb6079-6424-49b5-9e6c-f83a1e6a0de7",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_PRODUCT: int64",
+        "source_field_id" : "Lnk_Left_Prod.ID_PRODUCT",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "leftRec_ID_PRODUCT",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_PRODUCT",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "KB_PRODUCT: int32",
+        "source_field_id" : "Lnk_Left_Prod.KB_PRODUCT",
+        "max_length" : 9,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "KB_PRODUCT",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "KB_PRODUCT",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "BRAND: string",
+        "source_field_id" : "Lnk_Left_Prod.BRAND",
+        "max_length" : 20,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "BRAND",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "BRAND",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "TYPE: string",
+        "source_field_id" : "Lnk_Left_Prod.TYPE",
+        "max_length" : 30,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "TYPE",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "TYPE",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "MODEL: string",
+        "source_field_id" : "Lnk_Left_Prod.MODEL",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MODEL",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "MODEL",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "COST: dfloat",
+        "source_field_id" : "Lnk_Left_Prod.COST",
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COST",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "COST",
+        "odbc_type" : "DOUBLE",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_PRODUCT: int64",
+        "source_field_id" : "Lnk_Right_Prod.ID_PRODUCT",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "rightRec_ID_PRODUCT",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_PRODUCT",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "KB_PRODUCT: int32",
+        "source_field_id" : "Lnk_Right_Prod.SF_KB_PRODUCT",
+        "max_length" : 9,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "SF_KB_PRODUCT",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "KB_PRODUCT",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "BRAND: string",
+        "source_field_id" : "Lnk_Right_Prod.SF_BRAND",
+        "max_length" : 20,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "SF_BRAND",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "BRAND",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "TYPE: string",
+        "source_field_id" : "Lnk_Right_Prod.SF_TYPE",
+        "max_length" : 30,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "SF_TYPE",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "TYPE",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "MODEL: string",
+        "source_field_id" : "Lnk_Right_Prod.SF_MODEL",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "SF_MODEL",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "MODEL",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "COST: dfloat",
+        "source_field_id" : "Lnk_Right_Prod.SF_COST",
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "SF_COST",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "COST",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_Right_Prod.CG_NEW",
+        "max_length" : 1,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CG_NEW",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "apt_field_properties" : "alphabet='S'",
+        "usedin_filterconstraint" : "",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  }, {
+    "id" : "7bc71aa4-4f0c-4c31-891f-c589b1750228",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_PRODUCT: int64",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_PRODUCT",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_PRODUCT",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "KB_PRODUCT: int32",
+        "max_length" : 9,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "KB_PRODUCT",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "KB_PRODUCT",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "BRAND: string",
+        "max_length" : 20,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "BRAND",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "BRAND",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "TYPE: string",
+        "max_length" : 30,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "TYPE",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "TYPE",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "MODEL: string",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MODEL",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "MODEL",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "COST: dfloat",
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COST",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "COST",
+        "odbc_type" : "DOUBLE",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    } ]
+  }, {
+    "id" : "e4464553-8d94-4f1f-a18f-fac8c311dae2",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_PRODUCT: int64",
+        "source_field_id" : "Lnk_SF_Prod.ID_PRODUCT",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_PRODUCT",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_PRODUCT",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "KB_PRODUCT: int32",
+        "source_field_id" : "Lnk_SF_Prod.KB_PRODUCT",
+        "max_length" : 9,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "SF_KB_PRODUCT",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "KB_PRODUCT",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "BRAND: string",
+        "source_field_id" : "Lnk_SF_Prod.BRAND",
+        "max_length" : 20,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "SF_BRAND",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "BRAND",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "TYPE: string",
+        "source_field_id" : "Lnk_SF_Prod.TYPE",
+        "max_length" : 30,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "SF_TYPE",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "TYPE",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "MODEL: string",
+        "source_field_id" : "Lnk_SF_Prod.MODEL",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "SF_MODEL",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "MODEL",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "COST: dfloat",
+        "source_field_id" : "Lnk_SF_Prod.COST",
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "SF_COST",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "COST",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 1,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CG_NEW",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "apt_field_properties" : "cycle={value='S'}",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  }, {
+    "id" : "e82df143-59ca-4279-b44f-8210d9ec475f",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_PRODUCT: int64",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_PRODUCT",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_PRODUCT",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "KB_PRODUCT: int32",
+        "max_length" : 9,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "KB_PRODUCT",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "KB_PRODUCT",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "BRAND: string",
+        "max_length" : 20,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "BRAND",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "BRAND",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "TYPE: string",
+        "max_length" : 30,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "TYPE",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "TYPE",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "MODEL: string",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MODEL",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "MODEL",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "COST: dfloat",
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COST",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "COST",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_PRODUCTS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    } ]
+  }, {
+    "id" : "664de768-0256-4597-a4f6-656b45b3f87a",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_DEALER: int64",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_DEALER",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_DEALER",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "KB_DEALER: int32",
+        "max_length" : 9,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "KB_DEALER",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "KB_DEALER",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "DEALER: string",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "DEALER",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "DEALER",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "CONTINENT: string",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CONTINENT",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CONTINENT",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "COUNTRY: string",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COUNTRY",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "COUNTRY",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  }, {
+    "id" : "bb5372f2-1ee5-4cda-aab7-a712b4e3354d",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_DEALER: int64",
+        "source_field_id" : "Lnk_Join_Deal.leftRec_ID_DEALER",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_DEALER",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_DEALER",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "KB_DEALER: int32",
+        "source_field_id" : "Lnk_Join_Deal.KB_DEALER",
+        "max_length" : 9,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "KB_DEALER",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "KB_DEALER",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "DEALER: string",
+        "source_field_id" : "Lnk_Join_Deal.DEALER",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "DEALER",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "DEALER",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "CONTINENT: string",
+        "source_field_id" : "Lnk_Join_Deal.CONTINENT",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CONTINENT",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CONTINENT",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "COUNTRY: string",
+        "source_field_id" : "Lnk_Join_Deal.COUNTRY",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COUNTRY",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "COUNTRY",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  }, {
+    "id" : "a5e7a29a-701a-4a83-9842-60fb1bd137f2",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_DEALER: int64",
+        "source_field_id" : "Lnk_Join_Deal.rightRec_ID_DEALER",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_DEALER",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_DEALER",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "KB_DEALER: int32",
+        "source_field_id" : "Lnk_Join_Deal.SF_KB_DEALER",
+        "max_length" : 9,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "KB_DEALER",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "KB_DEALER",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "DEALER: string",
+        "source_field_id" : "Lnk_Join_Deal.SF_DEALER",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "DEALER",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "DEALER",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "CONTINENT: string",
+        "source_field_id" : "Lnk_Join_Deal.SF_CONTINENT",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CONTINENT",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CONTINENT",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "COUNTRY: string",
+        "source_field_id" : "Lnk_Join_Deal.SF_COUNTRY",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COUNTRY",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "COUNTRY",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  }, {
+    "id" : "37d2218b-ec73-44ce-a40a-a8c98a831911",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_DEALER: int64",
+        "source_field_id" : "Lnk_Left_Deal.ID_DEALER",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "leftRec_ID_DEALER",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_DEALER",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "KB_DEALER: int32",
+        "source_field_id" : "Lnk_Left_Deal.KB_DEALER",
+        "max_length" : 9,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "KB_DEALER",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "KB_DEALER",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "DEALER: string",
+        "source_field_id" : "Lnk_Left_Deal.DEALER",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "DEALER",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "DEALER",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "CONTINENT: string",
+        "source_field_id" : "Lnk_Left_Deal.CONTINENT",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CONTINENT",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CONTINENT",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "COUNTRY: string",
+        "source_field_id" : "Lnk_Left_Deal.COUNTRY",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COUNTRY",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "COUNTRY",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_DEALER: int64",
+        "source_field_id" : "Lnk_Right_Deal.ID_DEALER",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "rightRec_ID_DEALER",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_DEALER",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "KB_DEALER: int32",
+        "source_field_id" : "Lnk_Right_Deal.SF_KB_DEALER",
+        "max_length" : 9,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "SF_KB_DEALER",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "KB_DEALER",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "DEALER: string",
+        "source_field_id" : "Lnk_Right_Deal.SF_DEALER",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "SF_DEALER",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "DEALER",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "CONTINENT: string",
+        "source_field_id" : "Lnk_Right_Deal.SF_CONTINENT",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "SF_CONTINENT",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CONTINENT",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "COUNTRY: string",
+        "source_field_id" : "Lnk_Right_Deal.SF_COUNTRY",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "SF_COUNTRY",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "COUNTRY",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_Right_Deal.CG_NEW",
+        "max_length" : 1,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CG_NEW",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "apt_field_properties" : "alphabet='S'",
+        "usedin_filterconstraint" : "",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  }, {
+    "id" : "6886d043-6c6b-4898-bf7a-f3a73fe1dde8",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_DEALER: int64",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_DEALER",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_DEALER",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "KB_DEALER: int32",
+        "max_length" : 9,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "KB_DEALER",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "KB_DEALER",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "DEALER: string",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "DEALER",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "DEALER",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "CONTINENT: string",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CONTINENT",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CONTINENT",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "COUNTRY: string",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COUNTRY",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "COUNTRY",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  }, {
+    "id" : "60d70bfa-b18a-4374-bf48-2c3ff5002f75",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_DEALER: int64",
+        "source_field_id" : "Lnk_Deal.ID_DEALER",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_DEALER",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_DEALER",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "KB_DEALER: int32",
+        "source_field_id" : "Lnk_Deal.KB_DEALER",
+        "max_length" : 9,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "SF_KB_DEALER",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "KB_DEALER",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "DEALER: string",
+        "source_field_id" : "Lnk_Deal.DEALER",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "SF_DEALER",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "DEALER",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "CONTINENT: string",
+        "source_field_id" : "Lnk_Deal.CONTINENT",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "SF_CONTINENT",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CONTINENT",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "COUNTRY: string",
+        "source_field_id" : "Lnk_Deal.COUNTRY",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "SF_COUNTRY",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "COUNTRY",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 1,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CG_NEW",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "apt_field_properties" : "cycle={value='S'}",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  }, {
+    "id" : "ebfedde5-ea72-4d45-9394-0dbea4327f2e",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "ID_DEALER: int64",
+        "max_length" : 18,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_DEALER",
+      "type" : "integer",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "column_reference" : "ID_DEALER",
+        "native_type" : "BINARY",
+        "odbc_type" : "BIGINT",
+        "usage" : "COMP",
+        "sign_option" : 0,
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "KB_DEALER: int32",
+        "max_length" : 9,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "KB_DEALER",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "KB_DEALER",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "DEALER: string",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "DEALER",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "DEALER",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "CONTINENT: string",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CONTINENT",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CONTINENT",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "COUNTRY: string",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COUNTRY",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "COUNTRY",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Orchestrate-SchemaImports-TD_DEALERS_ds",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "afa47aa1-a026-4132-bc9f-f1c4426bdb7d",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "isDefineParameterToggled" : true
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ {
+      "name" : "SalesPath",
+      "type" : "string",
+      "prompt" : "SalesPath",
+      "value" : "/opt/workshops/files/DATASTAGE/sectionE/Ficheros/"
+    } ]
+  }
+}

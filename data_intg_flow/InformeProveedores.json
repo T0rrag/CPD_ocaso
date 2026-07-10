@@ -1,0 +1,3014 @@
+{
+  "primary_pipeline" : "32caf5e1-dbb7-4a6f-a8a9-112c9f01ef4c",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "49e4b447-3b39-44d5-beb4-291165bf8ff1",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "6308eefd-0231-4446-af09-e8d2ebf19015"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "Reject" : false,
+          "RowLimit" : 0,
+          "valueDerivation" : [ {
+            "parsedExpression" : "Right ( \"00\" : Trim ( L_1.IND_TIPO_COLEG ) , 2 ) : Right ( \"00000\" : Trim ( L_1.NUM_COLEG ) , 5 )",
+            "columnName" : "COLEGIADO",
+            "sourceColumn" : "L_1.IND_TIPO_COLEG;L_1.NUM_COLEG"
+          }, {
+            "parsedExpression" : "Trim ( Trim ( L_1.NOM_APELLIDO_1 ) : \" \" : Trim ( L_1.NOM_APELLIDO ) : \", \" : Trim ( L_1.NOM_NOMBRE ) )",
+            "columnName" : "NOM_PROVEEDOR",
+            "sourceColumn" : "L_1.NOM_APELLIDO_1;L_1.NOM_APELLIDO;L_1.NOM_NOMBRE"
+          } ],
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "2edc89b8-408d-42f3-9fe2-7f0d8d2318fe"
+      } ],
+      "op" : "CTransformerStage",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "55611f69-a7fd-42de-b85f-c4387a63cbac",
+          "type_attr" : "PRIMARY",
+          "id" : "e8138130-cdcb-488e-a983-f7d47117e23c",
+          "link_name" : "L_1",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "L_1",
+                "label" : "L_1",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "c363ddc7-6a85-462c-84ea-07f10f6849b6"
+        } ],
+        "id" : "1ed46aae-3bd4-48a8-b0e0-ddfc783a7bcc",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "c7f36edc-798e-45a2-863e-38c67ba8973d"
+      } ],
+      "id" : "3d881ba3-5819-4664-93c9-7f31958ee878",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "1ed46aae-3bd4-48a8-b0e0-ddfc783a7bcc",
+          "outputs_order" : "49e4b447-3b39-44d5-beb4-291165bf8ff1"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/CTransformerStage.svg",
+          "x_pos" : 144.0,
+          "label" : "TR_Preparar",
+          "y_pos" : 96.0
+        }
+      },
+      "parameters" : {
+        "MaxLoopIterations" : 0,
+        "OldNullHandling" : true,
+        "output_count" : 1,
+        "BlockSizeSelectedType" : "systemSelected",
+        "input_count" : 1,
+        "BlockSize" : 0
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "c363ddc7-6a85-462c-84ea-07f10f6849b6",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "e8138130-cdcb-488e-a983-f7d47117e23c"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "c7f36edc-798e-45a2-863e-38c67ba8973d"
+      } ],
+      "op" : "ODBCConnectorPX",
+      "connection" : {
+        "ref" : "app_defined",
+        "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+        "properties" : {
+          "generate_sql" : false,
+          "sql.select_statement" : "SELECT A.COD_PETICION,                                               CHAR('PROVEEDORES', 20) AS TIPO_INFORME,                             CHAR('1', 1) AS HOJA,                                                A.COD_DELEGACION,                                                    A.NOM_DELEGACION,                                                    A.COD_PROVEEDOR,                                                     VWPROVEED.IND_TIPO_COLEG,                                            VWPROVEED.NUM_COLEG,                                                 VWPROVEED.NOM_APELLIDO_1,                                            VWPROVEED.NOM_APELLIDO,                                              VWPROVEED.NOM_NOMBRE,                                                A.MES_PAGO,                                                          VALUE(SUM(VALUE(A.EUR_IMP_BRUTO, 0)), 0) AS EUR_IMP_BRUTO ,          A.MIN_MES_PAGO,                                                      A.MAX_MES_PAGO,                                                      A.NUM_MES_ANNO_VALOR AS NUM_MES_ANNO_PETICION                        FROM                                                                 (                                                                    SELECT TMAPROCE.COD_PETICION,                                            TPAGOPRO.COD_DELEGACION,                                             TDELEGA.NOMB_DELEGA AS NOM_DELEGACION,                               TPAGOPRO.COD_PROVEEDOR,                                              CHAR(CONCAT(SUBSTR(CHAR(                                               VALUE(TPAGOPRO.FEC_TRANSFERENCIA, '0001-01-01')), 1, 4),             SUBSTR(CHAR(                                                         VALUE(TPAGOPRO.FEC_TRANSFERENCIA, '0001-01-01')), 6, 2)),            20 ) AS MES_PAGO,                                                  VALUE((TPAGOPRO.EUR_IMP_VALORACION +                                  TPAGOPRO.EUR_IMP_REGULARIZA +                                     TPAGOPRO.EUR_PAGO_FIJO -                                             TPAGOPRO.EUR_IMP_DESCUENTO), 0)   AS EUR_IMP_BRUTO,                  CHAR(CONCAT(SUBSTR(CHAR(YEAR(DATE(                                       LAST_DAY(TMAPROCE.FEC_PETICION - 14 MONTHS) + 1 DAY))),              1, 4),                                                               SUBSTR(CHAR(DATE(                                                    LAST_DAY(TMAPROCE.FEC_PETICION - 14 MONTHS) + 1 DAY)),               6, 2)), 6                                                            ) AS MIN_MES_PAGO,                                               CHAR(CONCAT(SUBSTR(CHAR(TMAPROCE.FEC_PETICION), 1, 4),                      SUBSTR(CHAR(TMAPROCE.FEC_PETICION), 6, 2)), 6                     ) AS MAX_MES_PAGO,                                               TMAPROCE.FEC_VALOR_DESDE AS NUM_MES_ANNO_VALOR                       FROM DBA1.TMAPROCE TMAPROCE, DBA1.TPAGOPRO TPAGOPRO,                  DBA1.TDELEGA TDELEGA                                                WHERE                                                                   TPAGOPRO.FEC_TRANSFERENCIA BETWEEN CHAR((DATE(                      LAST_DAY(TMAPROCE.FEC_PETICION - 14 MONTHS) + 1 DAY)))               AND TMAPROCE.FEC_PETICION               and tpagopro.cod_delegacion = 100                                             AND TPAGOPRO.COD_DELEGACION    = TDELEGA.COD_DELE                    AND (TPAGOPRO.COD_DELEGACION = TMAPROCE.COD_DELEGACION )             AND TMAPROCE.TIPO_OPERACION = 15                                     AND TMAPROCE.COD_peticion = 16904                                      AND TMAPROCE.FEC_BAJA IS NULL                                        AND TPAGOPRO.FEC_BAJA IS NULL                                     ) AS A, DBA1.VWPROVEED VWPROVEED                                     WHERE VWPROVEED.NUM_PROVEED = A.COD_PROVEEDOR                        GROUP BY A.COD_PETICION,                                                      A.COD_DELEGACION,                                                    A.NOM_DELEGACION,                                                    A.COD_PROVEEDOR,                                                     VWPROVEED.IND_TIPO_COLEG,                                            VWPROVEED.NUM_COLEG,                                                 VWPROVEED.NOM_APELLIDO_1,                                            VWPROVEED.NOM_APELLIDO,                                              VWPROVEED.NOM_NOMBRE,                                                A.MES_PAGO,                                                          A.MIN_MES_PAGO,                                                      A.MAX_MES_PAGO,                                                      A.NUM_MES_ANNO_VALOR                                     UNION ALL  SELECT A.COD_PETICION,                                                CHAR('PROVEEDORES', 20) AS TIPO_INFORME,                              CHAR('1', 1) AS HOJA,                                                 A.COD_DELEGACION,                                                     A.NOM_DELEGACION,                                                     A.COD_PROVEEDOR,                                                      VWPROVEED.IND_TIPO_COLEG,                                             VWPROVEED.NUM_COLEG,                                                  VWPROVEED.NOM_APELLIDO_1,                                             VWPROVEED.NOM_APELLIDO,                                               VWPROVEED.NOM_NOMBRE,                                                 A.MES_PAGO,                                                           VALUE(SUM(VALUE(A.EUR_IMP_DISTRIBUIDO, 0)), 0)                        AS EUR_IMP_BRUTO,                                               A.MIN_MES_PAGO,                                                       A.MAX_MES_PAGO,                                                       A.NUM_MES_ANNO_VALOR AS NUM_MES_ANNO_PETICION                         FROM                                                                  (                                                                      SELECT TMAPROCE.COD_PETICION,                                            TCPTOPRO.COD_DELEGACION,                                              TDELEGA.NOMB_DELEGA AS NOM_DELEGACION,                                TCPTOPRO.COD_REALIZADOR AS COD_PROVEEDOR,                             CHAR('ATRASADO', 20) AS MES_PAGO,                                     VALUE((TCPTOPRO.EUR_IMP_DISTRIBU), 0) AS EUR_IMP_DISTRIBUIDO,         CHAR(CONCAT(SUBSTR(CHAR(YEAR(DATE(                                     LAST_DAY(TMAPROCE.FEC_PETICION - 14 MONTHS) + 1 DAY))),               1, 4),                                                                SUBSTR(CHAR(DATE(                                                     LAST_DAY(TMAPROCE.FEC_PETICION - 14 MONTHS) + 1 DAY)),                6, 2)), 6                                                             ) AS MIN_MES_PAGO,                                                   CHAR(CONCAT(SUBSTR(CHAR(TMAPROCE.FEC_PETICION), 1, 4),                   SUBSTR(CHAR(TMAPROCE.FEC_PETICION), 6, 2)), 6                      ) AS MAX_MES_PAGO,                                                    TMAPROCE.FEC_VALOR_DESDE AS NUM_MES_ANNO_VALOR                        FROM DBA1.TMAPROCE TMAPROCE, DBA1.TCPTOPRO TCPTOPRO,                  DBA1.TDELEGA TDELEGA                                                  WHERE                                                                  TCPTOPRO.NUM_MES_ANNO_VALOR <                                          CAST(TMAPROCE.FEC_VALOR_DESDE AS DECIMAL(6))                           AND TCPTOPRO.COD_DELEGACION    = TDELEGA.COD_DELE                      AND (TCPTOPRO.COD_DELEGACION = TMAPROCE.COD_DELEGACION )               AND TMAPROCE.TIPO_OPERACION = 15                                       AND  TMAPROCE.COD_peticion = 16904                                        AND TMAPROCE.FEC_BAJA IS NULL                                          ) AS A, DBA1.VWPROVEED VWPROVEED                                       WHERE VWPROVEED.NUM_PROVEED = A.COD_PROVEEDOR                          GROUP BY A.COD_PETICION,                                                        A.COD_DELEGACION,                                                      A.NOM_DELEGACION,                                                      A.COD_PROVEEDOR,                                                       VWPROVEED.IND_TIPO_COLEG,                                              VWPROVEED.NUM_COLEG,                                                   VWPROVEED.NOM_APELLIDO_1,                                              VWPROVEED.NOM_APELLIDO,                                                VWPROVEED.NOM_NOMBRE,                                                  A.MES_PAGO,                                                            A.MIN_MES_PAGO,                                                        A.MAX_MES_PAGO,                                                        A.NUM_MES_ANNO_VALOR                                          WITH UR;"
+        }
+      },
+      "id" : "55611f69-a7fd-42de-b85f-c4387a63cbac",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/ODBCConnectorPX.svg",
+          "x_pos" : 24.0,
+          "label" : "ODBC_Extraer",
+          "y_pos" : 96.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "47513b5f-d5a6-4082-9a1d-3d2a07ff536d",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "907ab2f1-91a6-4b30-82c2-15790de0cc79"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "489d14ec-262c-408f-980c-45167cb61b1d"
+      } ],
+      "op" : "PxSort",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "3d881ba3-5819-4664-93c9-7f31958ee878",
+          "type_attr" : "PRIMARY",
+          "id" : "6308eefd-0231-4446-af09-e8d2ebf19015",
+          "link_name" : "L_2",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "L_2",
+                "label" : "L_2",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "49e4b447-3b39-44d5-beb4-291165bf8ff1"
+        } ],
+        "id" : "95a23072-f22e-41bb-b838-ec9bbf142e11",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "keyColsPart" : [ {
+            "sorting" : false,
+            "partitioning" : true,
+            "keyCol" : "COD_PETICION"
+          }, {
+            "sorting" : false,
+            "partitioning" : true,
+            "keyCol" : "COD_DELEGACION"
+          }, {
+            "ci-cs" : "cs",
+            "sorting" : false,
+            "partitioning" : true,
+            "keyCol" : "NOM_DELEGACION"
+          }, {
+            "ci-cs" : "cs",
+            "sorting" : false,
+            "partitioning" : true,
+            "keyCol" : "COLEGIADO"
+          }, {
+            "ci-cs" : "cs",
+            "sorting" : false,
+            "partitioning" : true,
+            "keyCol" : "MES_PAGO"
+          } ],
+          "part_type" : "hash",
+          "part_coll_sort_columns" : "COD_PETICION,COD_DELEGACION,NOM_DELEGACION,COLEGIADO,MES_PAGO",
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 1
+        },
+        "schema_ref" : "2edc89b8-408d-42f3-9fe2-7f0d8d2318fe"
+      } ],
+      "id" : "0fb2cb98-1971-42bd-9be6-66d63ffda214",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSort.svg",
+          "x_pos" : 264.0,
+          "label" : "ST_Ordenar",
+          "y_pos" : 96.0
+        }
+      },
+      "parameters" : {
+        "keyProperties" : [ {
+          "sorted-clustered" : " ",
+          "asc-desc" : "asc",
+          "key" : "COD_PETICION"
+        }, {
+          "sorted-clustered" : " ",
+          "asc-desc" : "asc",
+          "key" : "COD_DELEGACION"
+        }, {
+          "sorted-clustered" : " ",
+          "asc-desc" : "asc",
+          "key" : "NOM_DELEGACION"
+        }, {
+          "sorted-clustered" : " ",
+          "asc-desc" : "asc",
+          "key" : "COLEGIADO"
+        }, {
+          "sorted-clustered" : " ",
+          "asc-desc" : "asc",
+          "key" : "MES_PAGO"
+        } ],
+        "output_count" : 1,
+        "stats" : " ",
+        "input_count" : 1,
+        "stable" : "stable",
+        "unique" : " ",
+        "flagCluster" : " ",
+        "allow_column_mapping" : false,
+        "operator" : "tsort",
+        "flagKey" : " "
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "bf651f02-337a-47e0-83a6-6c055262dbff",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "c670dd3d-e74c-4afd-b8bb-e2ee23a80c54"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "Reject" : false,
+          "RowLimit" : 0,
+          "valueDerivation" : [ {
+            "parsedExpression" : "trim ( L_3.COD_PETICION ) ",
+            "columnName" : "COD_PETICION",
+            "sourceColumn" : "L_3.COD_PETICION"
+          }, {
+            "parsedExpression" : "trim ( L_3.COD_DELEGACION ) ",
+            "columnName" : "COD_DELEGACION",
+            "sourceColumn" : "L_3.COD_DELEGACION"
+          }, {
+            "parsedExpression" : "If svPOSICION = 1 Then L_3.EUR_IMP_BRUTO Else 0",
+            "stageVars" : "svPOSICION",
+            "columnName" : "MES1",
+            "sourceColumn" : "L_3.EUR_IMP_BRUTO"
+          }, {
+            "parsedExpression" : "If svPOSICION = 2 Then L_3.EUR_IMP_BRUTO Else 0",
+            "stageVars" : "svPOSICION",
+            "columnName" : "MES2",
+            "sourceColumn" : "L_3.EUR_IMP_BRUTO"
+          }, {
+            "parsedExpression" : "If svPOSICION = 3 Then L_3.EUR_IMP_BRUTO Else 0",
+            "stageVars" : "svPOSICION",
+            "columnName" : "MES3",
+            "sourceColumn" : "L_3.EUR_IMP_BRUTO"
+          }, {
+            "parsedExpression" : "If svPOSICION = 4 Then L_3.EUR_IMP_BRUTO Else 0",
+            "stageVars" : "svPOSICION",
+            "columnName" : "MES4",
+            "sourceColumn" : "L_3.EUR_IMP_BRUTO"
+          }, {
+            "parsedExpression" : "If svPOSICION = 5 Then L_3.EUR_IMP_BRUTO Else 0",
+            "stageVars" : "svPOSICION",
+            "columnName" : "MES5",
+            "sourceColumn" : "L_3.EUR_IMP_BRUTO"
+          }, {
+            "parsedExpression" : "If svPOSICION = 6 Then L_3.EUR_IMP_BRUTO Else 0",
+            "stageVars" : "svPOSICION",
+            "columnName" : "MES6",
+            "sourceColumn" : "L_3.EUR_IMP_BRUTO"
+          }, {
+            "parsedExpression" : "If svPOSICION = 7 Then L_3.EUR_IMP_BRUTO Else 0",
+            "stageVars" : "svPOSICION",
+            "columnName" : "MES7",
+            "sourceColumn" : "L_3.EUR_IMP_BRUTO"
+          }, {
+            "parsedExpression" : "If svPOSICION = 8 Then L_3.EUR_IMP_BRUTO Else 0",
+            "stageVars" : "svPOSICION",
+            "columnName" : "MES8",
+            "sourceColumn" : "L_3.EUR_IMP_BRUTO"
+          }, {
+            "parsedExpression" : "If svPOSICION = 9 Then L_3.EUR_IMP_BRUTO Else 0",
+            "stageVars" : "svPOSICION",
+            "columnName" : "MES9",
+            "sourceColumn" : "L_3.EUR_IMP_BRUTO"
+          }, {
+            "parsedExpression" : "If svPOSICION = 10 Then L_3.EUR_IMP_BRUTO Else 0",
+            "stageVars" : "svPOSICION",
+            "columnName" : "MES10",
+            "sourceColumn" : "L_3.EUR_IMP_BRUTO"
+          }, {
+            "parsedExpression" : "If svPOSICION = 11 Then L_3.EUR_IMP_BRUTO Else 0",
+            "stageVars" : "svPOSICION",
+            "columnName" : "MES11",
+            "sourceColumn" : "L_3.EUR_IMP_BRUTO"
+          }, {
+            "parsedExpression" : "If svPOSICION = 12 Then L_3.EUR_IMP_BRUTO Else 0",
+            "stageVars" : "svPOSICION",
+            "columnName" : "MES12",
+            "sourceColumn" : "L_3.EUR_IMP_BRUTO"
+          }, {
+            "parsedExpression" : "If svPOSICION = 13 Then L_3.EUR_IMP_BRUTO Else 0",
+            "stageVars" : "svPOSICION",
+            "columnName" : "MES13",
+            "sourceColumn" : "L_3.EUR_IMP_BRUTO"
+          }, {
+            "parsedExpression" : "If svPOSICION = 14 Then L_3.EUR_IMP_BRUTO Else 0",
+            "stageVars" : "svPOSICION",
+            "columnName" : "MES14",
+            "sourceColumn" : "L_3.EUR_IMP_BRUTO"
+          }, {
+            "parsedExpression" : "If svPOSICION = 15 Then L_3.EUR_IMP_BRUTO Else 0",
+            "stageVars" : "svPOSICION",
+            "columnName" : "ACTUAL",
+            "sourceColumn" : "L_3.EUR_IMP_BRUTO"
+          }, {
+            "parsedExpression" : "If svPOSICION = 16 Then L_3.EUR_IMP_BRUTO Else 0",
+            "stageVars" : "svPOSICION",
+            "columnName" : "ATRASADO",
+            "sourceColumn" : "L_3.EUR_IMP_BRUTO"
+          } ],
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "1614da94-c978-4d1e-94d3-65ce3b1cfa7b"
+      } ],
+      "op" : "CTransformerStage",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "0fb2cb98-1971-42bd-9be6-66d63ffda214",
+          "type_attr" : "PRIMARY",
+          "id" : "907ab2f1-91a6-4b30-82c2-15790de0cc79",
+          "link_name" : "L_3",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "L_3",
+                "label" : "L_3",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "47513b5f-d5a6-4082-9a1d-3d2a07ff536d"
+        } ],
+        "id" : "3756f2f6-c8c9-4c51-8169-1bb98de8d052",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "489d14ec-262c-408f-980c-45167cb61b1d"
+      } ],
+      "id" : "9874d9d0-6c80-49ad-8c37-adfe11da2843",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "3756f2f6-c8c9-4c51-8169-1bb98de8d052",
+          "outputs_order" : "bf651f02-337a-47e0-83a6-6c055262dbff"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/CTransformerStage.svg",
+          "x_pos" : 384.0,
+          "label" : "TR_Pivotar",
+          "y_pos" : 96.0
+        }
+      },
+      "parameters" : {
+        "MaxLoopIterations" : 0,
+        "OldNullHandling" : true,
+        "output_count" : 1,
+        "BlockSizeSelectedType" : "systemSelected",
+        "StageVariables" : [ {
+          "Precision" : 255,
+          "Derivation" : "if  trim ( L_3.MES_PAGO ) = \"ACTUAL\" or trim ( L_3.MES_PAGO ) = \"ATRASADO\" then 0 else Trim ( L_3.MIN_MES_PAGO ) [ 1 , 4 ] ",
+          "SqlType" : "SMALLINT",
+          "Scale" : 0,
+          "Name" : "svANOMIN"
+        }, {
+          "Precision" : 255,
+          "Derivation" : "if  trim ( L_3.MES_PAGO ) = \"ACTUAL\" or trim ( L_3.MES_PAGO ) = \"ATRASADO\" then 0 else Trim ( L_3.MIN_MES_PAGO ) [ 5 , 2 ]",
+          "SqlType" : "SMALLINT",
+          "Scale" : 0,
+          "Name" : "svMESMIN"
+        }, {
+          "Precision" : 255,
+          "Derivation" : "if  trim ( L_3.MES_PAGO ) = \"ACTUAL\" or trim ( L_3.MES_PAGO ) = \"ATRASADO\" then 0 else  Trim ( L_3.MES_PAGO ) [ 1 , 4 ]",
+          "SqlType" : "SMALLINT",
+          "Scale" : 0,
+          "Name" : "svANOACT"
+        }, {
+          "Precision" : 255,
+          "Derivation" : "if  trim ( L_3.MES_PAGO ) = \"ACTUAL\" or trim ( L_3.MES_PAGO ) = \"ATRASADO\" then 0 else  Trim ( L_3.MES_PAGO ) [ 5 , 2 ]",
+          "SqlType" : "SMALLINT",
+          "Scale" : 0,
+          "Name" : "svMESACT"
+        }, {
+          "Precision" : 255,
+          "Derivation" : "if  trim ( L_3.MES_PAGO ) = \"ACTUAL\" or trim ( L_3.MES_PAGO ) = \"ATRASADO\" then 0 else ( svANOACT - svANOMIN ) * 12",
+          "SqlType" : "SMALLINT",
+          "Scale" : 0,
+          "Name" : "svOFFSET"
+        }, {
+          "Precision" : 5,
+          "Derivation" : "if  trim ( L_3.MES_PAGO ) = \"ACTUAL\"  then\r\n   15\r\nelse if  trim ( L_3.MES_PAGO ) = \"ATRASADO\"  then\r\n            16\r\n       else svMESACT + svOFFSET - svMESMIN +1 \r\n       ",
+          "SqlType" : "SMALLINT",
+          "Scale" : 0,
+          "Name" : "svPOSICION"
+        } ],
+        "input_count" : 1,
+        "BlockSize" : 0
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "519ca6d2-a014-42c2-ae33-0826e5582d89",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "676a1d68-868e-4981-8da5-c857c2aae291"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "valueDerivation" : [ {
+            "parsedExpression" : "Sum(L_4.MES1)",
+            "columnName" : "MES1",
+            "sourceColumn" : "L_4.MES1"
+          }, {
+            "parsedExpression" : "Sum(L_4.MES2)",
+            "columnName" : "MES2",
+            "sourceColumn" : "L_4.MES2"
+          }, {
+            "parsedExpression" : "Sum(L_4.MES3)",
+            "columnName" : "MES3",
+            "sourceColumn" : "L_4.MES3"
+          }, {
+            "parsedExpression" : "Sum(L_4.MES4)",
+            "columnName" : "MES4",
+            "sourceColumn" : "L_4.MES4"
+          }, {
+            "parsedExpression" : "Sum(L_4.MES5)",
+            "columnName" : "MES5",
+            "sourceColumn" : "L_4.MES5"
+          }, {
+            "parsedExpression" : "Sum(L_4.MES6)",
+            "columnName" : "MES6",
+            "sourceColumn" : "L_4.MES6"
+          }, {
+            "parsedExpression" : "Sum(L_4.MES7)",
+            "columnName" : "MES7",
+            "sourceColumn" : "L_4.MES7"
+          }, {
+            "parsedExpression" : "Sum(L_4.MES8)",
+            "columnName" : "MES8",
+            "sourceColumn" : "L_4.MES8"
+          }, {
+            "parsedExpression" : "Sum(L_4.MES9)",
+            "columnName" : "MES9",
+            "sourceColumn" : "L_4.MES9"
+          }, {
+            "parsedExpression" : "Sum(L_4.MES10)",
+            "columnName" : "MES10",
+            "sourceColumn" : "L_4.MES10"
+          }, {
+            "parsedExpression" : "Sum(L_4.MES11)",
+            "columnName" : "MES11",
+            "sourceColumn" : "L_4.MES11"
+          }, {
+            "parsedExpression" : "Sum(L_4.MES12)",
+            "columnName" : "MES12",
+            "sourceColumn" : "L_4.MES12"
+          }, {
+            "parsedExpression" : "Sum(L_4.MES13)",
+            "columnName" : "MES13",
+            "sourceColumn" : "L_4.MES13"
+          }, {
+            "parsedExpression" : "Sum(L_4.MES14)",
+            "columnName" : "MES14",
+            "sourceColumn" : "L_4.MES14"
+          }, {
+            "parsedExpression" : "Sum(L_4.ACTUAL)",
+            "columnName" : "ACTUAL",
+            "sourceColumn" : "L_4.ACTUAL"
+          }, {
+            "parsedExpression" : "Sum(L_4.ATRASADO)",
+            "columnName" : "ATRASADO",
+            "sourceColumn" : "L_4.ATRASADO"
+          } ],
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "2aa26567-d3d5-4d59-a53b-a3fbdc8f6cd5"
+      } ],
+      "op" : "PxAggregator",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "9874d9d0-6c80-49ad-8c37-adfe11da2843",
+          "type_attr" : "PRIMARY",
+          "id" : "c670dd3d-e74c-4afd-b8bb-e2ee23a80c54",
+          "link_name" : "L_4",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "L_4",
+                "label" : "L_4",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "bf651f02-337a-47e0-83a6-6c055262dbff"
+        } ],
+        "id" : "76a6df9e-de5c-4d0c-a393-e30b3854d445",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 1
+        },
+        "schema_ref" : "1614da94-c978-4d1e-94d3-65ce3b1cfa7b"
+      } ],
+      "id" : "51540abf-2bbd-4fbf-8aa2-790ffdc4e286",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxAggregator.svg",
+          "x_pos" : 504.0,
+          "label" : "AG_Agrupar",
+          "y_pos" : 96.0
+        }
+      },
+      "parameters" : {
+        "keyProperties" : [ {
+          "key" : "COD_PETICION"
+        }, {
+          "key" : "COD_DELEGACION"
+        }, {
+          "key" : "NOM_DELEGACION"
+        }, {
+          "key" : "COLEGIADO"
+        }, {
+          "key" : "MIN_MES_PAGO"
+        } ],
+        "method" : "sort",
+        "selection" : "reduce",
+        "output_count" : 1,
+        "nul_res" : " ",
+        "input_count" : 1,
+        "allow_column_mapping" : false,
+        "reduceProperties" : [ [ {
+          "reduce" : "MES1"
+        }, {
+          "sum" : "MES1"
+        } ], [ {
+          "reduce" : "MES2"
+        }, {
+          "sum" : "MES2"
+        } ], [ {
+          "reduce" : "MES3"
+        }, {
+          "sum" : "MES3"
+        } ], [ {
+          "reduce" : "MES4"
+        }, {
+          "sum" : "MES4"
+        } ], [ {
+          "reduce" : "MES5"
+        }, {
+          "sum" : "MES5"
+        } ], [ {
+          "reduce" : "MES6"
+        }, {
+          "sum" : "MES6"
+        } ], [ {
+          "reduce" : "MES7"
+        }, {
+          "sum" : "MES7"
+        } ], [ {
+          "reduce" : "MES8"
+        }, {
+          "sum" : "MES8"
+        } ], [ {
+          "reduce" : "MES9"
+        }, {
+          "sum" : "MES9"
+        } ], [ {
+          "reduce" : "MES10"
+        }, {
+          "sum" : "MES10"
+        } ], [ {
+          "reduce" : "MES11"
+        }, {
+          "sum" : "MES11"
+        } ], [ {
+          "reduce" : "MES12"
+        }, {
+          "sum" : "MES12"
+        } ], [ {
+          "reduce" : "MES13"
+        }, {
+          "sum" : "MES13"
+        } ], [ {
+          "reduce" : "MES14"
+        }, {
+          "sum" : "MES14"
+        } ], [ {
+          "reduce" : "ACTUAL"
+        }, {
+          "sum" : "ACTUAL"
+        } ], [ {
+          "reduce" : "ATRASADO"
+        }, {
+          "sum" : "ATRASADO"
+        } ] ]
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "c44bfe67-7bb2-41e1-8499-49d93aba6bb5",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "9d05e9e9-c0a8-427e-9354-441355c9307c"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "Reject" : false,
+          "RowLimit" : 0,
+          "valueDerivation" : [ {
+            "parsedExpression" : "svNODONOMDELEGACION : Char ( 13 ) : Char ( 10 ) : svNODOMES1",
+            "stageVars" : "svNODONOMDELEGACION;svNODOMES1",
+            "columnName" : "XML"
+          } ],
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "2c98a6b5-5f23-4d9a-ba10-ff67977d18ad"
+      } ],
+      "op" : "CTransformerStage",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "51540abf-2bbd-4fbf-8aa2-790ffdc4e286",
+          "type_attr" : "PRIMARY",
+          "id" : "676a1d68-868e-4981-8da5-c857c2aae291",
+          "link_name" : "L_5",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "L_5",
+                "label" : "L_5",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "519ca6d2-a014-42c2-ae33-0826e5582d89"
+        } ],
+        "id" : "a0f5614a-844c-4ae1-a117-475119c40be6",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "2aa26567-d3d5-4d59-a53b-a3fbdc8f6cd5"
+      } ],
+      "id" : "d0acef6c-4a23-4bae-87c8-b13d242bc81c",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "a0f5614a-844c-4ae1-a117-475119c40be6",
+          "outputs_order" : "c44bfe67-7bb2-41e1-8499-49d93aba6bb5"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/CTransformerStage.svg",
+          "x_pos" : 624.0,
+          "label" : "TR_XML_Subnodos",
+          "y_pos" : 96.0
+        }
+      },
+      "parameters" : {
+        "MaxLoopIterations" : 0,
+        "OldNullHandling" : true,
+        "output_count" : 1,
+        "BlockSizeSelectedType" : "systemSelected",
+        "StageVariables" : [ {
+          "Precision" : 255,
+          "Derivation" : "\"<DATO TIPO=\" : DQuote ( \"STRING\" ) : \" CELDA=\" : DQuote ( \"A\" ) : \">\" : L_5.COLEGIADO : \"</DATO>\"",
+          "SqlType" : "VARCHAR",
+          "Scale" : 0,
+          "Name" : "svNODONOMDELEGACION"
+        }, {
+          "Precision" : 255,
+          "Derivation" : "\"<DATO TIPO=\" : DQuote ( \"STRING\" ) : \" CELDA=\" : DQuote ( \"B\" ) : \">\" : L_5.MES1 : \"</DATO>\"",
+          "SqlType" : "VARCHAR",
+          "Scale" : 0,
+          "Name" : "svNODOMES1"
+        }, {
+          "Precision" : 255,
+          "Derivation" : "\"<DATO TIPO=\" : DQuote ( \"STRING\" ) : \" CELDA=\" : DQuote ( \"C\" ) : \">\" : L_5.MES2 : \"</DATO>\"",
+          "SqlType" : "VARCHAR",
+          "Scale" : 0,
+          "Name" : "svNODOMES2"
+        } ],
+        "input_count" : 1,
+        "BlockSize" : 0
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxXMLOutput",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "d0acef6c-4a23-4bae-87c8-b13d242bc81c",
+          "type_attr" : "PRIMARY",
+          "id" : "9d05e9e9-c0a8-427e-9354-441355c9307c",
+          "link_name" : "L_6",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "L_6",
+                "label" : "L_6",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "c44bfe67-7bb2-41e1-8499-49d93aba6bb5"
+        } ],
+        "id" : "cc2b2732-41de-4ac3-bf85-f03beaaf9026",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 2
+            }
+          }
+        },
+        "parameters" : {
+          "LinkMinimised" : "0",
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 1
+        },
+        "schema_ref" : "2c98a6b5-5f23-4d9a-ba10-ff67977d18ad"
+      } ],
+      "id" : "385cc0c9-6101-4d76-96e5-7e3103d4d275",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/XMLOutputPX.svg",
+          "x_pos" : 744.0,
+          "label" : "XML_Informe",
+          "y_pos" : 96.0
+        }
+      },
+      "parameters" : {
+        "xml_chunk_text" : "text",
+        "header_text" : "text",
+        "log_reject_errors" : false,
+        "allow_column_mapping" : false,
+        "document_type_text" : "text",
+        "generate_full_document" : true,
+        "indentation_character" : "\\\\s",
+        "output_count" : 0,
+        "input_count" : 1,
+        "enable_grammar_caching" : false,
+        "indentation_length" : 2,
+        "validate_output" : false,
+        "empty_element_style" : "use open/close tags",
+        "new_line_style" : "MAC",
+        "generate_comment" : true,
+        "output_file" : "C:\\tmp\\InformeProveedores.xml",
+        "output_row_generation" : "all rows",
+        "include_xml_chunk" : false,
+        "replace_nulls" : false,
+        "multi_line_output" : true,
+        "discard_empty_values" : false,
+        "xml_validation_level" : "0",
+        "include_namespaces" : false,
+        "include_document" : false,
+        "include_header" : false,
+        "xml_encoding" : "UTF-8"
+      }
+    } ],
+    "description" : "Informe de proveedores",
+    "id" : "32caf5e1-dbb7-4a6f-a8a9-112c9f01ef4c",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "true"
+      },
+      "ui_data" : {
+        "comments" : [ {
+          "associated_id_refs" : [ ],
+          "formats" : [ {
+            "type" : "fontType",
+            "value" : "font-ibm-plex-sans"
+          }, {
+            "type" : "letter-spacing",
+            "value" : "-0.5px"
+          }, {
+            "type" : "textSize",
+            "value" : "text-size-12"
+          }, {
+            "type" : "alignHorizontally",
+            "value" : "align-center"
+          }, {
+            "type" : "alignVertically",
+            "value" : "align-middle"
+          }, {
+            "type" : "backgroundColor",
+            "value" : "#ffffc1"
+          }, {
+            "type" : "outlineStyle",
+            "value" : "outline-solid"
+          }, {
+            "type" : "line-height",
+            "value" : "1.2"
+          }, {
+            "type" : "padding",
+            "value" : "1px"
+          }, {
+            "type" : "border-color",
+            "value" : "#000000"
+          } ],
+          "width" : 437,
+          "x_pos" : 15.0,
+          "id" : "5721dd6c-e0c3-434e-9fe2-2d1a85079585",
+          "y_pos" : 37.0,
+          "contentType" : "WYSIWYG",
+          "class_name" : "d3-comment-rect",
+          "content" : "Informe de proveedores",
+          "height" : 35
+        } ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "external_paramsets" : [ {
+    "ref" : "3e3aa042-f913-46ae-8134-c586b1f94cdd",
+    "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+    "name" : "ConnParamSet_ODBC"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "2edc89b8-408d-42f3-9fe2-7f0d8d2318fe",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 9,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "L_1.COD_PETICION",
+        "max_length" : 9,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COD_PETICION",
+      "type" : "double",
+      "app_data" : {
+        "odbc_type" : "DECIMAL",
+        "apt_field_properties" : "quote=none",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 20,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "L_1.TIPO_INFORME",
+        "max_length" : 20,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "TIPO_INFORME",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "CHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 1,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "L_1.HOJA",
+        "max_length" : 1,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "HOJA",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "CHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 4,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "L_1.COD_DELEGACION",
+        "max_length" : 4,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "COD_DELEGACION",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "COD_DELEGACION",
+        "odbc_type" : "DECIMAL",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-DBEX-DBA1.TMAPROCE",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 25,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "L_1.NOM_DELEGACION",
+        "max_length" : 25,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "NOM_DELEGACION",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "NOMB_DELEGA",
+        "odbc_type" : "CHAR",
+        "apt_field_properties" : "null_field=''",
+        "table_def" : "ODBC-DBEX-DBA1.TDELEGA",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 9,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "L_1.COD_PROVEEDOR",
+        "max_length" : 9,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "COD_PROVEEDOR",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "COD_PROVEEDOR",
+        "odbc_type" : "DECIMAL",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-DBEX-DBA1.TMAPROCE",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 7,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 7,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "COLEGIADO",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "IND_TIPO_COLEG",
+        "odbc_type" : "CHAR",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-DBEX-DBA1.VWPROVEED",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 50,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "NOM_PROVEEDOR",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "NOM_APELLIDO_1",
+        "odbc_type" : "CHAR",
+        "apt_field_properties" : "null_field=''",
+        "table_def" : "ODBC-DBEX-DBA1.VWPROVEED",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 20,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "L_1.MES_PAGO",
+        "max_length" : 20,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES_PAGO",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "NUM_MES_ANNO_VALOR",
+        "odbc_type" : "CHAR",
+        "table_def" : "ODBC-DBEX-DBA1.TPAGOPRO",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 15,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "L_1.EUR_IMP_BRUTO",
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "EUR_IMP_BRUTO",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "EUR_IMP_VALORACION",
+        "odbc_type" : "DECIMAL",
+        "apt_field_properties" : "quote=none",
+        "table_def" : "ODBC-DBEX-DBA1.TPAGOPRO",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 6,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "L_1.MIN_MES_PAGO",
+        "max_length" : 6,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "MIN_MES_PAGO",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "CHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 6,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "L_1.MAX_MES_PAGO",
+        "max_length" : 6,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "MAX_MES_PAGO",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "CHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 6,
+        "source_field_id" : "L_1.NUM_MES_ANNO_PETICION",
+        "max_length" : 6,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "NUM_MES_ANNO_PETICION",
+      "type" : "double",
+      "app_data" : {
+        "odbc_type" : "DECIMAL",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    } ]
+  }, {
+    "id" : "c7f36edc-798e-45a2-863e-38c67ba8973d",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 9,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 9,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COD_PETICION",
+      "type" : "double",
+      "app_data" : {
+        "odbc_type" : "DECIMAL",
+        "apt_field_properties" : "quote=none",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 20,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 20,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "TIPO_INFORME",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "CHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 1,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 1,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "HOJA",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "CHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 4,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 4,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "COD_DELEGACION",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "COD_DELEGACION",
+        "odbc_type" : "DECIMAL",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-DBEX-DBA1.TMAPROCE",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 25,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 25,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "NOM_DELEGACION",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "NOMB_DELEGA",
+        "odbc_type" : "CHAR",
+        "apt_field_properties" : "null_field=''",
+        "table_def" : "ODBC-DBEX-DBA1.TDELEGA",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 9,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 9,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "COD_PROVEEDOR",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "COD_PROVEEDOR",
+        "odbc_type" : "DECIMAL",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-DBEX-DBA1.TMAPROCE",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 5,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "IND_TIPO_COLEG",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "IND_TIPO_COLEG",
+        "odbc_type" : "SMALLINT",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-DBEX-DBA1.VWPROVEED",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT16"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "NUM_COLEG",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "NUM_COLEG",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-DBEX-DBA1.VWPROVEED",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 20,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 20,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "NOM_APELLIDO_1",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "NOM_APELLIDO_1",
+        "odbc_type" : "CHAR",
+        "apt_field_properties" : "null_field=''",
+        "table_def" : "ODBC-DBEX-DBA1.VWPROVEED",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 20,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 20,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "NOM_APELLIDO",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "NOM_APELLIDO",
+        "odbc_type" : "CHAR",
+        "apt_field_properties" : "null_field=''",
+        "table_def" : "ODBC-DBEX-DBA1.VWPROVEED",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 16,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 16,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "NOM_NOMBRE",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "NOM_NOMBRE",
+        "odbc_type" : "CHAR",
+        "apt_field_properties" : "null_field=''",
+        "table_def" : "ODBC-DBEX-DBA1.VWPROVEED",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 20,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 20,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES_PAGO",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "NUM_MES_ANNO_VALOR",
+        "odbc_type" : "CHAR",
+        "table_def" : "ODBC-DBEX-DBA1.TPAGOPRO",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 15,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "EUR_IMP_BRUTO",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "EUR_IMP_VALORACION",
+        "odbc_type" : "DECIMAL",
+        "apt_field_properties" : "quote=none",
+        "table_def" : "ODBC-DBEX-DBA1.TPAGOPRO",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 6,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 6,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "MIN_MES_PAGO",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "CHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 6,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 6,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "MAX_MES_PAGO",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "CHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 6,
+        "max_length" : 6,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "NUM_MES_ANNO_PETICION",
+      "type" : "double",
+      "app_data" : {
+        "odbc_type" : "DECIMAL",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    } ]
+  }, {
+    "id" : "489d14ec-262c-408f-980c-45167cb61b1d",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 9,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "L_2.COD_PETICION",
+        "max_length" : 9,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COD_PETICION",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "COD_PETICION",
+        "odbc_type" : "DECIMAL",
+        "apt_field_properties" : "quote=none",
+        "table_def" : "ODBC-DBEX-DBA1.TMAPROCE",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 20,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "L_2.TIPO_INFORME",
+        "max_length" : 20,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "TIPO_INFORME",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "CHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 1,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "L_2.HOJA",
+        "max_length" : 1,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "HOJA",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "CHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 4,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "L_2.COD_DELEGACION",
+        "max_length" : 4,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "COD_DELEGACION",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "COD_DELEGACION",
+        "odbc_type" : "DECIMAL",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-DBEX-DBA1.TMAPROCE",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 25,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "L_2.NOM_DELEGACION",
+        "max_length" : 25,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "NOM_DELEGACION",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "NOMB_DELEGA",
+        "odbc_type" : "CHAR",
+        "apt_field_properties" : "null_field=''",
+        "table_def" : "ODBC-DBEX-DBA1.TDELEGA",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 9,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "L_2.COD_PROVEEDOR",
+        "max_length" : 9,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "COD_PROVEEDOR",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "COD_PROVEEDOR",
+        "odbc_type" : "DECIMAL",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-DBEX-DBA1.TMAPROCE",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 7,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "L_2.COLEGIADO",
+        "max_length" : 7,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "COLEGIADO",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "IND_TIPO_COLEG",
+        "odbc_type" : "CHAR",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-DBEX-DBA1.VWPROVEED",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 50,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "L_2.NOM_PROVEEDOR",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "NOM_PROVEEDOR",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "NOM_APELLIDO_1",
+        "odbc_type" : "CHAR",
+        "apt_field_properties" : "null_field=''",
+        "table_def" : "ODBC-DBEX-DBA1.VWPROVEED",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 20,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "L_2.MES_PAGO",
+        "max_length" : 20,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES_PAGO",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "NUM_MES_ANNO_VALOR",
+        "odbc_type" : "CHAR",
+        "table_def" : "ODBC-DBEX-DBA1.TPAGOPRO",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 15,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "L_2.EUR_IMP_BRUTO",
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "EUR_IMP_BRUTO",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "EUR_IMP_VALORACION",
+        "odbc_type" : "DECIMAL",
+        "apt_field_properties" : "quote=none",
+        "table_def" : "ODBC-DBEX-DBA1.TPAGOPRO",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 6,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "L_2.MIN_MES_PAGO",
+        "max_length" : 6,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "MIN_MES_PAGO",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "CHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 6,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "L_2.MAX_MES_PAGO",
+        "max_length" : 6,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "MAX_MES_PAGO",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "CHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 6,
+        "source_field_id" : "L_2.NUM_MES_ANNO_PETICION",
+        "max_length" : 6,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "NUM_MES_ANNO_PETICION",
+      "type" : "double",
+      "app_data" : {
+        "odbc_type" : "DECIMAL",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    } ]
+  }, {
+    "id" : "1614da94-c978-4d1e-94d3-65ce3b1cfa7b",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 9,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 9,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COD_PETICION",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "COD_PETICION",
+        "odbc_type" : "CHAR",
+        "apt_field_properties" : "quote=none",
+        "table_def" : "Saved-DSLink17-DSLink171",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 4,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 4,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "COD_DELEGACION",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "COD_DELEGACION",
+        "odbc_type" : "CHAR",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "Saved-DSLink17-DSLink171",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 25,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "L_3.NOM_DELEGACION",
+        "max_length" : 25,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "NOM_DELEGACION",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "NOM_DELEGACION",
+        "odbc_type" : "CHAR",
+        "apt_field_properties" : "null_field=''",
+        "table_def" : "Saved-DSLink17-DSLink171",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 7,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "L_3.COLEGIADO",
+        "max_length" : 7,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "COLEGIADO",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "COLEGIADO",
+        "odbc_type" : "CHAR",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "Saved-DSLink17-DSLink171",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 6,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "L_3.MIN_MES_PAGO",
+        "max_length" : 6,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "MIN_MES_PAGO",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "MIN_MES_PAGO",
+        "odbc_type" : "CHAR",
+        "table_def" : "Saved-DSLink17-DSLink171",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 15,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES1",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES1",
+        "odbc_type" : "DECIMAL",
+        "table_def" : "Saved-DSLink17-DSLink171",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 15,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES2",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES2",
+        "odbc_type" : "DECIMAL",
+        "table_def" : "Saved-DSLink17-DSLink171",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 15,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES3",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES3",
+        "odbc_type" : "DECIMAL",
+        "table_def" : "Saved-DSLink17-DSLink171",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 15,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES4",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES4",
+        "odbc_type" : "DECIMAL",
+        "table_def" : "Saved-DSLink17-DSLink171",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 15,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES5",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES5",
+        "odbc_type" : "DECIMAL",
+        "table_def" : "Saved-DSLink17-DSLink171",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 15,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES6",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES6",
+        "odbc_type" : "DECIMAL",
+        "table_def" : "Saved-DSLink17-DSLink171",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 15,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES7",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES7",
+        "odbc_type" : "DECIMAL",
+        "table_def" : "Saved-DSLink17-DSLink171",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 15,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES8",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES8",
+        "odbc_type" : "DECIMAL",
+        "table_def" : "Saved-DSLink17-DSLink171",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 15,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES9",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES9",
+        "odbc_type" : "DECIMAL",
+        "table_def" : "Saved-DSLink17-DSLink171",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 15,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES10",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES10",
+        "odbc_type" : "DECIMAL",
+        "table_def" : "Saved-DSLink17-DSLink171",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 15,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES11",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES11",
+        "odbc_type" : "DECIMAL",
+        "table_def" : "Saved-DSLink17-DSLink171",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 15,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES12",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES12",
+        "odbc_type" : "DECIMAL",
+        "table_def" : "Saved-DSLink17-DSLink171",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 15,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES13",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES13",
+        "odbc_type" : "DECIMAL",
+        "table_def" : "Saved-DSLink17-DSLink171",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 15,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES14",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES14",
+        "odbc_type" : "DECIMAL",
+        "table_def" : "Saved-DSLink17-DSLink171",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 15,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "ACTUAL",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "ACTUAL",
+        "odbc_type" : "DECIMAL",
+        "table_def" : "Saved-DSLink17-DSLink171",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 15,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "ATRASADO",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "ATRASADO",
+        "odbc_type" : "DECIMAL",
+        "table_def" : "Saved-DSLink17-DSLink171",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    } ]
+  }, {
+    "id" : "2aa26567-d3d5-4d59-a53b-a3fbdc8f6cd5",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 9,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "/DATOS/PAGINA/DATO/@COD_PETICION",
+        "source_field_id" : "L_4.COD_PETICION",
+        "max_length" : 9,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COD_PETICION",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "COD_PETICION",
+        "odbc_type" : "CHAR",
+        "apt_field_properties" : "quote=none",
+        "table_def" : "ODBC-DBEX-DBA1.TMAPROCE",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 4,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "/DATOS/PAGINA/DATO/@COD_DELEGACION",
+        "source_field_id" : "L_4.COD_DELEGACION",
+        "max_length" : 4,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "COD_DELEGACION",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "COD_DELEGACION",
+        "odbc_type" : "CHAR",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-DBEX-DBA1.TMAPROCE",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 25,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "/DATOS/PAGINA/DATO/@NOM_DELEGACION",
+        "source_field_id" : "L_4.NOM_DELEGACION",
+        "max_length" : 25,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "NOM_DELEGACION",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "NOMB_DELEGA",
+        "odbc_type" : "CHAR",
+        "apt_field_properties" : "null_field=''",
+        "table_def" : "ODBC-DBEX-DBA1.TDELEGA",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 7,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "/DATOS/PAGINA/DATO/@COLEGIADO",
+        "source_field_id" : "L_4.COLEGIADO",
+        "max_length" : 7,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "COLEGIADO",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "IND_TIPO_COLEG",
+        "odbc_type" : "CHAR",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-DBEX-DBA1.VWPROVEED",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 6,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "/DATOS/PAGINA/DATO/@MIN_MES_PAGO",
+        "source_field_id" : "L_4.MIN_MES_PAGO",
+        "max_length" : 6,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "MIN_MES_PAGO",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "CHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "description" : "/DATOS/PAGINA/DATO/@MES",
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES1",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES1",
+        "odbc_type" : "DOUBLE",
+        "sign_option" : 0,
+        "table_def" : "Saved-DSLink17-DSLink17",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES2",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES2",
+        "odbc_type" : "DOUBLE",
+        "sign_option" : 0,
+        "table_def" : "Saved-DSLink17-DSLink17",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES3",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES3",
+        "odbc_type" : "DOUBLE",
+        "sign_option" : 0,
+        "table_def" : "Saved-DSLink17-DSLink17",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES4",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES4",
+        "odbc_type" : "DOUBLE",
+        "sign_option" : 0,
+        "table_def" : "Saved-DSLink17-DSLink17",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES5",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES5",
+        "odbc_type" : "DOUBLE",
+        "sign_option" : 0,
+        "table_def" : "Saved-DSLink17-DSLink17",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES6",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES6",
+        "odbc_type" : "DOUBLE",
+        "sign_option" : 0,
+        "table_def" : "Saved-DSLink17-DSLink17",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES7",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES7",
+        "odbc_type" : "DOUBLE",
+        "sign_option" : 0,
+        "table_def" : "Saved-DSLink17-DSLink17",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES8",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES8",
+        "odbc_type" : "DOUBLE",
+        "sign_option" : 0,
+        "table_def" : "Saved-DSLink17-DSLink17",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES9",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES9",
+        "odbc_type" : "DOUBLE",
+        "sign_option" : 0,
+        "table_def" : "Saved-DSLink17-DSLink17",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES10",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES10",
+        "odbc_type" : "DOUBLE",
+        "sign_option" : 0,
+        "table_def" : "Saved-DSLink17-DSLink17",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES11",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES11",
+        "odbc_type" : "DOUBLE",
+        "sign_option" : 0,
+        "table_def" : "Saved-DSLink17-DSLink17",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES12",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES12",
+        "odbc_type" : "DOUBLE",
+        "sign_option" : 0,
+        "table_def" : "Saved-DSLink17-DSLink17",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES13",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES13",
+        "odbc_type" : "DOUBLE",
+        "sign_option" : 0,
+        "table_def" : "Saved-DSLink17-DSLink17",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MES14",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "MES14",
+        "odbc_type" : "DOUBLE",
+        "sign_option" : 0,
+        "table_def" : "Saved-DSLink17-DSLink17",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "ACTUAL",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "ACTUAL",
+        "odbc_type" : "DOUBLE",
+        "sign_option" : 0,
+        "table_def" : "Saved-DSLink17-DSLink171",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "ATRASADO",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "ATRASADO",
+        "odbc_type" : "DOUBLE",
+        "sign_option" : 0,
+        "table_def" : "Saved-DSLink17-DSLink171",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    } ]
+  }, {
+    "id" : "2c98a6b5-5f23-4d9a-ba10-ff67977d18ad",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 9,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "/DATOS/PAGINA/REGISTRO/@COD_PETICION",
+        "source_field_id" : "L_5.COD_PETICION",
+        "max_length" : 9,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COD_PETICION",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "COD_PETICION",
+        "odbc_type" : "CHAR",
+        "apt_field_properties" : "quote=none",
+        "table_def" : "ODBC-DBEX-DBA1.TMAPROCE",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 4,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "/DATOS/PAGINA/REGISTRO/@COD_DELEGACION",
+        "source_field_id" : "L_5.COD_DELEGACION",
+        "max_length" : 4,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "COD_DELEGACION",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "COD_DELEGACION",
+        "odbc_type" : "CHAR",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-DBEX-DBA1.TMAPROCE",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 25,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "/DATOS/PAGINA/REGISTRO/@NOM_DELEGACION",
+        "source_field_id" : "L_5.NOM_DELEGACION",
+        "max_length" : 25,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "NOM_DELEGACION",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "NOMB_DELEGA",
+        "odbc_type" : "CHAR",
+        "apt_field_properties" : "null_field=''",
+        "table_def" : "ODBC-DBEX-DBA1.TDELEGA",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 7,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "/DATOS/PAGINA/REGISTRO/@COLEGIADO",
+        "source_field_id" : "L_5.COLEGIADO",
+        "max_length" : 7,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "COLEGIADO",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "IND_TIPO_COLEG",
+        "odbc_type" : "CHAR",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-DBEX-DBA1.VWPROVEED",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 6,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "/DATOS/PAGINA/REGISTRO/@MIN_MES_PAGO",
+        "source_field_id" : "L_5.MIN_MES_PAGO",
+        "max_length" : 6,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "MIN_MES_PAGO",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "CHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "/DATOS/PAGINA/REGISTRO/text()",
+        "max_length" : 32000,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "XML",
+      "type" : "string",
+      "app_data" : {
+        "data_element_name" : "XML",
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "1d3eb002-49c1-4541-9038-d02ea8dc9a30",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "isDefineParameterToggled" : true
+    }
+  },
+  "version" : "3.0"
+}

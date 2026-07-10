@@ -1,0 +1,216 @@
+{
+  "primary_pipeline" : "6de8bd56-92b8-4658-9d95-3e121af9d2ee",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "871aca35-2662-4ae9-b209-58ee88a15efd",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "f9392abd-d0d9-482d-b0b6-179b21c1cdbe"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "reject_from_link" : -1,
+          "reject_uses" : "rows",
+          "buf_free_run" : 50,
+          "reject_threshold" : 0,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "reject_number" : 0,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "44fc2960-e680-4fe7-a723-7f8dd72ccfd9"
+      } ],
+      "op" : "ODBCConnectorPX",
+      "connection" : {
+        "ref" : "app_defined",
+        "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+        "properties" : {
+          "session.schema_reconciliation.fail_on_code_page_mismatch" : false,
+          "sql.select_statement.tables.table" : "TD_CUSTOMERS",
+          "session.isolation_level" : "default",
+          "before_after.before_node.fail_on_error" : true,
+          "transaction.end_of_wave" : "none",
+          "before_after.before_node.read_from_file_before_sql_node" : false,
+          "before_after.after_node.read_from_file_after_sql_node" : false,
+          "before_after.before" : "CALL SCD2_TRUNCATE()",
+          "session.autocommit_mode" : "off",
+          "session.code_page" : "default",
+          "sql.select_statement.read_statement_from_file" : false,
+          "sql.select_statement.columns.column" : "NUM_ROWS,(null),TD_CUSTOMERS",
+          "before_after.after_node.fail_on_error" : true,
+          "session.pass_lob_locator" : false,
+          "limit_rows" : false,
+          "session.schema_reconciliation.fail_on_size_mismatch" : true,
+          "sql.select_statement" : "SELECT COUNT(0) AS NUM_ROWS FROM TD_CUSTOMERS",
+          "session.array_size" : 2000,
+          "sql.enable_partitioning" : false,
+          "before_after.after.read_from_file_after_sql" : false,
+          "before_after.before.read_from_file_before_sql" : false,
+          "before_after.before.fail_on_error" : true,
+          "session.schema_reconciliation.fail_on_type_mismatch" : true,
+          "before_after" : true,
+          "generate_sql" : false,
+          "transaction.record_count" : 2000,
+          "enable_quoted_i_ds" : false,
+          "before_after.after.fail_on_error" : true
+        }
+      },
+      "id" : "ed11008a-29e2-4e78-b611-897dfa3250bd",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/ODBCConnectorPX.svg",
+          "x_pos" : 24.0,
+          "label" : "ODBC_Reset",
+          "y_pos" : 72.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "op" : "PxPeek",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "ed11008a-29e2-4e78-b611-897dfa3250bd",
+          "type_attr" : "PRIMARY",
+          "id" : "f9392abd-d0d9-482d-b0b6-179b21c1cdbe",
+          "link_name" : "Lnk_Reset",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Reset",
+                "label" : "Lnk_Reset",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "871aca35-2662-4ae9-b209-58ee88a15efd"
+        } ],
+        "id" : "a87b23cd-0067-4d90-a98b-d5ef90a1c9f5",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "44fc2960-e680-4fe7-a723-7f8dd72ccfd9"
+      } ],
+      "id" : "2cb8608c-dffd-46fd-b49f-9d2dbebe5127",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "a87b23cd-0067-4d90-a98b-d5ef90a1c9f5"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxPeek.svg",
+          "x_pos" : 264.0,
+          "label" : "PE_Reset",
+          "y_pos" : 72.0
+        }
+      },
+      "parameters" : {
+        "all" : " ",
+        "nrecs" : 10,
+        "selection" : " ",
+        "output_count" : 0,
+        "input_count" : 1,
+        "columns" : " ",
+        "name" : "name",
+        "dataset" : " ",
+        "allow_column_mapping" : false
+      }
+    } ],
+    "id" : "6de8bd56-92b8-4658-9d95-3e121af9d2ee",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "external_paramsets" : [ {
+    "ref" : "a2ab0964-6335-4932-8669-514e9adc2d28",
+    "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+    "name" : "ConnParamSet_ODBC_DSDB"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "44fc2960-e680-4fe7-a723-7f8dd72ccfd9",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 0,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "NUM_ROWS",
+      "type" : "integer",
+      "app_data" : {
+        "odbc_type" : "INTEGER",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "de03a6c5-8fc8-491c-a0f9-53783f1d2d04",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "isDefineParameterToggled" : true
+    }
+  },
+  "version" : "3.0"
+}

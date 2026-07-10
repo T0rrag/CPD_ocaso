@@ -1,0 +1,477 @@
+{
+  "primary_pipeline" : "f5aac1c4-5b0a-4a4a-b900-a064695203a3",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "b5f9b53b-57bc-47d0-8641-13dad41c9624",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "32ec6d8f-7304-42e6-9643-4659a24b6518"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "dd8ad4d6-6338-4e89-aa08-7a6c5dd1df17",
+        "parameters" : {
+          "records" : 10,
+          "buf_mode" : "default"
+        }
+      } ],
+      "op" : "PxRowGenerator",
+      "id" : "f227afa5-af64-4e0a-8b0b-55a68caab741",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxRowGenerator.svg",
+          "x_pos" : 47.519999999999996,
+          "label" : "Row_Generator_1",
+          "y_pos" : 79.2
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "output_count" : 1,
+        "input_count" : 0,
+        "execmode" : "default_seq",
+        "preserve" : -3
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "aebdc7d6-9320-4bd6-9b52-e10b48436308",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "b44656f0-afec-44fe-bc61-4eb2cf734793"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          },
+          "additionalProperties" : {
+            "enableAcp" : true
+          }
+        },
+        "schema_ref" : "ffc3dcf6-0e53-4766-a616-da64e205c56a",
+        "parameters" : {
+          "valueDerivation" : [ {
+            "parsedExpression" : "Max(Link_6.COLUMN_1)",
+            "columnName" : "COLUMN_1_MAX",
+            "sourceColumn" : "Link_6.COLUMN_1"
+          } ],
+          "buf_mode" : "default"
+        }
+      } ],
+      "op" : "PxAggregator",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "f227afa5-af64-4e0a-8b0b-55a68caab741",
+          "type_attr" : "PRIMARY",
+          "id" : "32ec6d8f-7304-42e6-9643-4659a24b6518",
+          "app_data" : {
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/specific-noACP.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 70,
+                "tooltip" : "Specific partition\nAutomatic column propagation is disabled for this link",
+                "x_pos" : -23,
+                "id" : "dec-6F",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_6",
+                "y_pos" : -20,
+                "height" : 80
+              }, {
+                "temporary" : false,
+                "width" : 200,
+                "x_pos" : -20,
+                "id" : "dec-9",
+                "position" : "middle",
+                "label" : "10 rows\n10 rows/sec",
+                "y_pos" : 28,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkFinishedStyle___QBKP8"
+            },
+            "originalId" : "773c1a65-0746-4d37-80ef-87b0df7cc9a9"
+          },
+          "link_name" : "Link_6",
+          "port_id_ref" : "b5f9b53b-57bc-47d0-8641-13dad41c9624"
+        } ],
+        "id" : "eb087077-2c36-47ab-9fe6-87ae2ba09ef6",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "dd8ad4d6-6338-4e89-aa08-7a6c5dd1df17",
+        "parameters" : {
+          "deletedInputColumns" : [ ],
+          "runtime_column_propagation" : 0
+        }
+      } ],
+      "id" : "b2dbb2db-a628-4eb2-961e-8ba88d7ee509",
+      "type" : "execution_node",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxAggregator.svg",
+          "x_pos" : 205.92,
+          "label" : "Aggregator_1",
+          "y_pos" : 79.2
+        }
+      },
+      "parameters" : {
+        "showPartType" : true,
+        "keyProperties" : [ {
+          "key" : "COLUMN_2"
+        } ],
+        "method" : "hash",
+        "showCollType" : false,
+        "enableSchemalessDesign" : false,
+        "preserve" : -2,
+        "reduceProperties" : [ [ {
+          "reduce" : "COLUMN_1"
+        }, {
+          "max" : "COLUMN_1_MAX",
+          "decimal" : ""
+        }, {
+          "preserveType" : "preserveType"
+        } ] ],
+        "inputName" : "Link_6",
+        "showSortOptions" : false,
+        "combinability" : "auto",
+        "inputcolProperties" : [ {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : false,
+          "Metadata" : "DATE",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_1",
+          "TempOldColumnName" : "COLUMN_1",
+          "ColumnName" : "COLUMN_1",
+          "Length" : "–",
+          "MisFieldProperties" : "",
+          "DataType" : "DATE",
+          "Key" : false,
+          "Nullable" : false
+        }, {
+          "Unicode" : false,
+          "Description" : " ",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_2",
+          "TempOldColumnName" : "COLUMN_2",
+          "ColumnName" : "COLUMN_2",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        } ],
+        "selection" : "reduce",
+        "nul_res" : " ",
+        "output_count" : 1,
+        "execmode" : "default_par",
+        "input_count" : 1
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "op" : "PxPeek",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "b2dbb2db-a628-4eb2-961e-8ba88d7ee509",
+          "type_attr" : "PRIMARY",
+          "id" : "b44656f0-afec-44fe-bc61-4eb2cf734793",
+          "app_data" : {
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/autoParition-noACP.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 5,
+                "width" : 70,
+                "tooltip" : "Auto-partition\nAutomatic column propagation is disabled for this link",
+                "x_pos" : -27,
+                "id" : "dec-6E",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_7",
+                "y_pos" : -20,
+                "height" : 80
+              }, {
+                "temporary" : false,
+                "width" : 200,
+                "x_pos" : -20,
+                "id" : "dec-9",
+                "position" : "middle",
+                "label" : "10 rows\n10 rows/sec",
+                "y_pos" : 28,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkFinishedStyle___QBKP8"
+            },
+            "originalId" : "db55b6af-2046-45a6-9326-48f71e757e57"
+          },
+          "link_name" : "Link_7",
+          "port_id_ref" : "aebdc7d6-9320-4bd6-9b52-e10b48436308"
+        } ],
+        "id" : "c509f2ac-f4b3-4254-9668-69e5fafeebc5",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "ffc3dcf6-0e53-4766-a616-da64e205c56a",
+        "parameters" : {
+          "runtime_column_propagation" : 0
+        }
+      } ],
+      "id" : "91179697-af61-442a-8c34-9d9e8e0695dd",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "c509f2ac-f4b3-4254-9668-69e5fafeebc5",
+          "outputs_order" : ""
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxPeek.svg",
+          "x_pos" : 380.15999999999997,
+          "label" : "Peek_1",
+          "y_pos" : 79.2
+        }
+      },
+      "parameters" : {
+        "all" : " ",
+        "columns" : " ",
+        "enableFlowAcpControl" : true,
+        "part_type" : "auto",
+        "combinability" : "auto",
+        "OutputlinkOrderingList" : [ ],
+        "nrecs" : 10,
+        "selection" : " ",
+        "InputlinkOrderingList" : [ {
+          "link_label" : "0",
+          "link_name" : "Link_7"
+        } ],
+        "output_count" : 0,
+        "execmode" : "default_par",
+        "input_count" : 1,
+        "name" : "name",
+        "dataset" : " "
+      }
+    } ],
+    "description" : "",
+    "id" : "f5aac1c4-5b0a-4a4a-b900-a064695203a3",
+    "app_data" : {
+      "datastage" : {
+        "nls_map_name" : "",
+        "nls_locale" : "OFF"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "external_paramsets" : [ ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "dd8ad4d6-6338-4e89-aa08-7a6c5dd1df17",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "max_length" : 6,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COLUMN_1",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "DATE",
+        "is_unicode_string" : false,
+        "type_code" : "DATE"
+      },
+      "type" : "date"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : " ",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_2",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    } ]
+  }, {
+    "id" : "ffc3dcf6-0e53-4766-a616-da64e205c56a",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : " ",
+        "max_length" : 10,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COLUMN_1_MAX",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "DATE",
+        "is_unicode_string" : false,
+        "type_code" : "DATE"
+      },
+      "type" : "date"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : " ",
+        "source_field_id" : "Link_6.COLUMN_2",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_2",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "affdbc60-5c14-42a0-aabb-1aa26f0bf5d1",
+  "app_data" : {
+    "datastage" : {
+      "timestamp_format" : "",
+      "decimal_separator" : "",
+      "parameterSetListRuntime" : [ ],
+      "flowRunPriorityQueue" : "Medium",
+      "time_format" : "",
+      "runArtifactRetentionJob" : {
+        "enabled" : false
+      },
+      "valueSetSelected" : { },
+      "date_format" : "",
+      "message_handlers" : [ ],
+      "version" : "3.0.5",
+      "localParameterListRuntime" : [ ]
+    },
+    "additionalProperties" : {
+      "transInputLinkMapper" : { },
+      "ELTDropdown" : {
+        "id" : "nesting",
+        "label" : "Generate nested SQL",
+        "value" : "NESTED_QUERY"
+      },
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "disableParamsCacheOnFlow" : true,
+      "rcpLinkList" : [ ],
+      "globalAcp" : false,
+      "enableRCP" : false,
+      "isNewTransActive" : false,
+      "isDefineParameterToggled" : true,
+      "enableSchemaLessDesign" : false,
+      "runMode" : "ETL"
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ ]
+  }
+}

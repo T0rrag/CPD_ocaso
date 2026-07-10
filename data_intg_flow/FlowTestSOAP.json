@@ -1,0 +1,328 @@
+{
+  "primary_pipeline" : "4fe90ec3-9891-4908-8068-ddbc91c6ce1c",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "c12b8997-8aa3-4697-98b9-35b0d6a77bfa",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "2e7a1f78-6371-4056-a8ca-ddbac51e34ba"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2
+            }
+          },
+          "additionalProperties" : {
+            "enableAcp" : true
+          }
+        },
+        "schema_ref" : "05ab3e4d-79b5-4c54-a700-ca71952e88e9",
+        "parameters" : {
+          "is_output_header_xml_column" : false,
+          "is_reject_link" : false,
+          "output_namespace_name" : "xsd wsdl soapenc xsi ns1",
+          "is_pass_through_disabled" : false,
+          "output_col" : [ "sCode", "sName" ],
+          "is_output_xml_column" : false,
+          "output_namespace_value" : "http://www.w3.org/2001/XMLSchema http://schemas.xmlsoap.org/wsdl/ http://schemas.xmlsoap.org/soap/encoding/ http://www.w3.org/2001/XMLSchema-instance http://www.oorsprong.org/websamples.countryinfo",
+          "buf_mode" : "default",
+          "field_delimiter" : " ",
+          "output_message_table_id" : "WebServices\\\\CountryInfoService\\\\ListOfContinentsByName_OUT"
+        }
+      } ],
+      "op" : "WSTransformerPX",
+      "inputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "input_message_table_id" : "WebServices\\\\CountryInfoService\\\\ListOfContinentsByName_IN",
+          "field_delimiter" : " "
+        }
+      } ],
+      "id" : "ef69d1c8-f495-4fc3-9360-6721a658463d",
+      "type" : "execution_node",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/WSTransformerPX.svg",
+          "x_pos" : 0,
+          "label" : "Web_Service_1",
+          "y_pos" : 71.28
+        }
+      },
+      "parameters" : {
+        "wsdl_operation_style" : "Document",
+        "wsdl_service_name" : "CountryInfoService",
+        "input_col" : [ ],
+        "rejectLinkName" : "",
+        "enableSchemalessDesign" : false,
+        "is_authentication_required" : false,
+        "wsdl_port_address" : "http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso",
+        "is_certificate_required" : false,
+        "wsdl_soap_action" : "",
+        "output_col" : [ "sCode", "sName" ],
+        "output_count" : 1,
+        "wsdl_input_message_namespace" : "http://www.oorsprong.org/websamples.countryinfo",
+        "input_count" : 0,
+        "wsdl_document_uri" : "http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL",
+        "wsdl_port_name" : "CountryInfoServiceSoap",
+        "hasReferenceOutput" : false,
+        "is_proxy_required" : false,
+        "responseName" : "ListOfContinentsByNameResponse",
+        "error_handling" : 1,
+        "preserve" : -1,
+        "field_delimiter" : " ",
+        "requestName" : "ListOfContinentsByName",
+        "rejectLinkIndex" : -1,
+        "operation_timeout" : 0,
+        "output_namespace_name" : "xsd wsdl soapenc xsi ns1",
+        "wsdl_document_xml" : "H4sIAAAAAAAAA+1dW2/juBV+L9D/QPipBXatSfpSDJxdzGSRYoBtZzHJon1lZNoWKktakZrE/74kdadISiRlWZD6lOhCnnO+c3hIfiTl3c/v5xB8RykO4uhhc7f9sAEo8uN9EB0fNr+/PP34983PP/35T7s9OgRRQOhbGNAiEX7YnAhJPnoe9k/oDPGW3sUxTLZxevTe8D70NvmLH9/rd9/e3rZvf+Ov3H/4cOf955+/PvPi5bushv6a2ZXXLHJ3P6zQ3X1VjERtteI4xUkaR8e8BHrF8JyECG/9OItIegmiQ7wBETyjh81jfusLvfWM0u+BjzaAwPSIyL/oc5xAH5nXTVEGYEcuCcL8X3rxTq3j5gAUojOKyFOcnn9BB5iF5GHzRwbD4BCg/VjCS5l+zF54f6GqFAaTxzgiQUQ1qN8s9EN/ZDRgUON2/qDQuKgAP8Z7BhKt8mHDipGURtjG6yvGTNIX23kyLfjdhh299mVpSiu42Jr35fnr3C3Mvc20/BTtudQV2fqPNM4StP98cQ3kunxhB2G5pL7bh0FXNdys6VOawsvXg8xbV4PpSysBzCcW5HkEJgGB4WNALhalfzvFEbJUuPKxbfkixdhDVvjrKYRH89K/wuiYwaM83MqHVwiyquoZRtgoFmqarJ3Jsprayab7+BxEX30/S+mYho7gzvC9vMqiV/r6ng0SoiAM4WvIqkmzK7i6E0yW5lflm0bXN+dkqmtvQvq6k3lZ6zZIqsu3bK1uzsrU640ghtWtb/CyAjOEz2Fk0apCAkZ+f3qbhU41wOTroXIC/nyR5X1ZXSIcHbWkCni1BsZafaNzQzp7t9Ku9cBIJJ2pyse3igGz1CPXgIQPKmbnKKbVxI4qRM7LUXmnEKB5tShBqykc1RWpclTZj97KTzNqUIJWE/upp0FN66dSnG0r6rXfeF47gaFXdbggqOHmqU0uczkfEHEqaVatsKPXJB2bRKiya9NybNP6bUa9XEevyf3WN3acjd/6J4W392FXx4n9KVVgsG8lEE/UodQmXKnjLGayN+43azOv22225Nyw1xRgv6ZrB61xTGLmFK6tRd3Su431oSW32trM67q2Jef2rVZFQS/Kt21Tp2i6DVlCxzz5fLWxxrl8HzMzp/BvIef27fdLROo1+OX7t2nuJF1wW94N/f2UhaFmFWhJvhZMvaqfu7I6+boB+k3s/1ReBQjfejasUW1KNwly9XPfCT1XKfU7ps3lumMr1kgLAbdPzKLJE+Rmich58lvVRrE5kZKCUhMwWF2JCndJ985N6KT5MP6CUtM6Sc/1T+2kQtz1yMMbj3maBl7Xz21Bt1xtKzS5KnHYCpx5GDqJeyfnDvM6+OEafmfnMZn5yZvdGWFMldLubXqOYfKN6YCrNZ9dAtPSMPov/UtQijfl4Z08Iym2jHmFFoVoUz3aLnJQpKrKSiHmw/GA4c3MUY9RgGk1g+EKCXt3HIERt0Q56mEPjGoXlJVCI0SMuAfJUY9RgDGNmOamEls4Wlt9rGRamC7ddmPQZsXtGq7Zo7MXxlkXhwyi3ABjqdQY/U5n04mzLiMB5B5B3a0C44Gl3IYwko6jgKjZ6jEkH9Q1Waegxrq3jUSbBCTZvzBcdDHudLS3nBJYyrW3WhyiD1GgXtG1trqxxm4j0cZeyXr3cLTLTsrRzcJSqLlke0d3iMrhKrC1P0fD+WqsjUR7g1srowbtqrEA5tqom0uVLho4NG/Z8uEAVYTlB1sgxDU8W8kWAKjW1MxVaK69jAREa4VrDI3cAZKubA0OWnFtwq3ldNaTHPWwbj/KVZ7BIzdhEcBtOCkurLhpYT1gVC2l2KjjPmMTFzLctBgDFOOJWoOytcaiSftaybSxXMbhGwh3HDuLfLqtZAfLBw2fkzgljSPO3W8/MTXYC5UKcYJSyD6VpSVuG99c2sd+xrTjhX76hkiWRhhAENKCID4AvyoK4nSPUrQHrxde+XbntQtXdQZRkhFQWKJjfJv+q3n2XZwRowpaEDIQKxSGw9JeV7GExaeVOMIihrUxLJ3oNIdFeQK2H5aq6BjRoiGxh8GiY5+dYDGNFiksttGiobCNYXGJFvn5TgUY5JRnMQYH+7+A5AL+EhzAgX0w4a8mUKhI6x4AlLyzRe5QH33sjQcYhgCTmMUB/xKeEBi0b+DBYZNJdKT2wFyi5aIdgTLMJz1AFZ8R5PJcwbLsj7S8tBNYugN+VsAd8woBlVz3X26w6WlvYwh7GGqT3CQ7QSeg9oxg6p9Qnpv2kMBXiBHNRSnFsYwsGmTsaQIxpsjlDTN/YtpAFRR3X8JS0NTmUHT2jghovJwCDA5Z5POifAYLSJyn5iYgkAHB3qhhaTZDow5NzYQPg0U2GDdBRnZgS9N/tTswmJAAhsCnpXnQSAAxjhE5Qd4HhoLkNo+R7jZcDRpVD152VwDSSOEQKeCw6dc0NPqwGJESOubQtE8FafJv9F/WbCBIAp/erMOlwOBA67GwX2TSh9neYcMt0ob01IwmLIKIznqjvKaElcxjQwiJETKpim8fmDpUXLkBRMqDJsrwwCTNfALeAnLiXTRDpNlNUzTYN5HTMy+4Bb9RtPhLLnhpKPkerHSUuj1O8lMaKswiANlG2hozvyzL802JYljwKk38CmgdsFIx+Ga4KVl34+aoPi8xaERYQ0dOkICMDnd4BLKcXaVzPi3NIw/mcdd8Yt5QdQz/oLaqpeaNh9jKMwZ9AUgxLIOsw26Yj6I19P6gYbOOmHfBZNhMtg8Tu9mrht03xcRp3irdQS9A8RTwYXGVdvi4RzY4Zi2oessYFwXB3weHiqO3QKFv3iACUY0GZWC04LIBwnyqoCPuVXDsvJJ5zy9fqY00AWlp+M/5O80TIAP4evbLEB/L6jG5sG+FlqjQqlIYYaaK9icm+E9SsOe1PcbLAFyPuhS7/MRngg+bTUcvT3BVdVkZFO8vrHd52IQBHQ3CsFnEa5cpnGZYR6vQGIT/SgBQU/vrA2BlEaCg65du9gC6fo0QrD4KtPT60uGQ0+Mrsbo7ol284VKie/FWK0ntlVgucNYrsVrBWC/dejUZvTLLFfTy0lHoJYiXDkAfvbs6+1eWABW07VrMXvioducVLGl+ZcDI3t1bcLJ393NhZakmY/mQGeXuxd5arsLNrgYGPUO7RhhWGQ0atnb5xg/kbNcJxP8jYhh/u3xQ1CzuamyXj3pXYL6S0V2B7VpedzX2S9jd1diu4XiXj4Ge6V2d/Rq+d/lYDGJ9lw/DEO53hSisMj1qeOD1GL+KcbHACeOcz1VywhXBKzn4+Ask8ClE7+Df6BUU7wMqLcIgS+Rnc+5BiAjVuNrxjAFMETNlz087PTaO62zBywnRh+yF8owlP16ZIpa9v+fnMHjRMof/AEpf/gCK0T5gw316VU54+QGYFxSi+pyV4vgl/5KIlizfgAJLHU1e7nFuR9VHuN+nCGMQxj7M46ngxd/Qa+EUvI3jFCdpHB05O86eQPa1bLwtwGXYel2x2zdc/yRJvi97sE2M+R9uFX2701puYdnOK2qmV9Sb6BBEAY8Xev0/P9BJHzSRAAA=",
+        "execmode" : "default_seq",
+        "output_namespace_value" : "http://www.w3.org/2001/XMLSchema http://schemas.xmlsoap.org/wsdl/ http://schemas.xmlsoap.org/soap/encoding/ http://www.w3.org/2001/XMLSchema-instance http://www.oorsprong.org/websamples.countryinfo",
+        "wsdl_operation_name" : "ListOfContinentsByName"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        },
+        "parameters" : { }
+      } ],
+      "op" : "PxPeek",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "ef69d1c8-f495-4fc3-9360-6721a658463d",
+          "type_attr" : "PRIMARY",
+          "id" : "2e7a1f78-6371-4056-a8ca-ddbac51e34ba",
+          "app_data" : {
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "path" : "M -15 -15 L -15 15 15 15 15 -15 Z",
+                "temporary" : false,
+                "distance" : -50,
+                "tooltip" : "Specific partition",
+                "x_pos" : 5,
+                "id" : "dec-4",
+                "position" : "target"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/link-marking--specific-partitioning.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : -50,
+                "width" : 12,
+                "tooltip" : "Specific partition",
+                "x_pos" : -2,
+                "id" : "dec-5",
+                "position" : "target",
+                "y_pos" : -6,
+                "height" : 12
+              }, {
+                "path" : "M -25 -20 L -25 20 25 20 25 -20 Z",
+                "temporary" : false,
+                "id" : "dec-7",
+                "position" : "middle",
+                "class_name" : "linkMiddleImage"
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -20,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_9",
+                "y_pos" : -8,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_9",
+          "port_id_ref" : "c12b8997-8aa3-4697-98b9-35b0d6a77bfa"
+        } ],
+        "id" : "bc0b9e66-38eb-46b1-a194-1d3e1512ab84",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "05ab3e4d-79b5-4c54-a700-ca71952e88e9",
+        "parameters" : {
+          "runtime_column_propagation" : 0
+        }
+      } ],
+      "id" : "7429a2e5-bd15-423e-8306-fcdd1174c8ab",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "bc0b9e66-38eb-46b1-a194-1d3e1512ab84",
+          "outputs_order" : ""
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxPeek.svg",
+          "x_pos" : 213.84,
+          "label" : "Peek_1",
+          "y_pos" : 71.28
+        }
+      },
+      "parameters" : {
+        "all" : "all",
+        "showPartType" : true,
+        "columns" : " ",
+        "showCollType" : false,
+        "inputName" : "Link_9",
+        "showSortOptions" : false,
+        "combinability" : "auto",
+        "OutputlinkOrderingList" : [ ],
+        "inputcolProperties" : [ {
+          "Unicode" : false,
+          "Description" : "/ns1:AddResponse/ns1:AddResult/text()",
+          "Signed" : true,
+          "Metadata" : "INTEGER",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "AddResult",
+          "TempOldColumnName" : "AddResult",
+          "ColumnName" : "AddResult",
+          "Length" : "–",
+          "MisFieldProperties" : "",
+          "DataType" : "INTEGER",
+          "Key" : false,
+          "Nullable" : false
+        } ],
+        "selection" : " ",
+        "output_count" : 0,
+        "execmode" : "default_par",
+        "input_count" : 1,
+        "name" : "name",
+        "dataset" : " "
+      }
+    } ],
+    "description" : "",
+    "id" : "4fe90ec3-9891-4908-8068-ddbc91c6ce1c",
+    "app_data" : {
+      "datastage" : {
+        "nls_map_name" : "",
+        "nls_locale" : "OFF"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "external_paramsets" : [ ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "05ab3e4d-79b5-4c54-a700-ca71952e88e9",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "/ns1:ListOfContinentsByNameResponse/ns1:ListOfContinentsByNameResult/ns1:tContinent/ns1:sCode/text()",
+        "max_length" : 255,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "sCode",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "VARCHAR",
+        "table_def" : "",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "/ns1:ListOfContinentsByNameResponse/ns1:ListOfContinentsByNameResult/ns1:tContinent/ns1:sName/text()",
+        "max_length" : 255,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "sName",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "VARCHAR",
+        "table_def" : "",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "8680adfb-442b-4d1a-8c03-0a7b33442491",
+  "app_data" : {
+    "datastage" : {
+      "timestamp_format" : "",
+      "decimal_separator" : "",
+      "flowRunPriorityQueue" : "Medium",
+      "time_format" : "",
+      "date_format" : "",
+      "message_handlers" : [ ],
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "transInputLinkMapper" : { },
+      "ELTDropdown" : {
+        "id" : "nesting",
+        "label" : "Generate nested SQL",
+        "value" : "NESTED_QUERY"
+      },
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "rcpLinkList" : [ ],
+      "globalAcp" : true,
+      "enableRCP" : false,
+      "isDefineParameterToggled" : true,
+      "enableSchemaLessDesign" : false,
+      "runMode" : "ETL"
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ ]
+  }
+}

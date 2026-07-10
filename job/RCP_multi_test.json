@@ -1,0 +1,29 @@
+{
+  "metadata" : {
+    "name" : "RCP_multi_test",
+    "asset_id" : "29e6ea8f-1785-4499-84b7-f1b0bf9f9d11",
+    "owner_id" : "1000331001",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "2c6a4893-b402-4e9f-91d6-20ca6b767629",
+      "schedule_id" : "",
+      "project_name" : "GITHUB integrado",
+      "configuration" : {
+        "env_type" : "",
+        "env_variables" : [ ],
+        "runPriorityQueue" : "Low"
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "data_intg_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "RCP_multi_test"
+    }
+  }
+}

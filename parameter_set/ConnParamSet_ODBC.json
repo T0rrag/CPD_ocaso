@@ -1,0 +1,22 @@
+{
+  "parameter_set" : {
+    "name" : "ConnParamSet_ODBC",
+    "description" : "DataStage generated parameter set for connection properties.",
+    "parameters" : [ {
+      "name" : "hostname",
+      "type" : "string",
+      "prompt" : "",
+      "value" : ""
+    }, {
+      "name" : "port",
+      "type" : "int64",
+      "prompt" : "",
+      "value" : 0
+    }, {
+      "name" : "database",
+      "type" : "string",
+      "prompt" : "",
+      "value" : ""
+    } ]
+  }
+}

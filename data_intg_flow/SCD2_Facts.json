@@ -1,0 +1,647 @@
+{
+  "primary_pipeline" : "2b2c5d22-09d6-4360-b18a-463a4de299d4",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "fa0c61ee-495c-430c-8190-afd0b68f2871",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "861e1016-3614-4597-b0fb-94834fe3b6a0"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2
+            }
+          }
+        },
+        "parameters" : {
+          "final_delim" : "end",
+          "firstLineColumnNames" : " ",
+          "buf_free_run" : 50,
+          "keepPartitions" : " ",
+          "record_delim" : "'\\n'",
+          "disk_write_inc" : 1048576,
+          "file +" : [ "#SalesPath#Sales.txt" ],
+          "rejects" : "continue",
+          "quote" : "none",
+          "selection" : "file",
+          "missingFile" : " ",
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "reportProgress" : "yes",
+          "delim" : "'\\t'"
+        },
+        "schema_ref" : "1c4f44a4-aa2b-4fa2-901b-3a98fa2ad19b"
+      } ],
+      "op" : "PxSequentialFile",
+      "id" : "a57b3bea-0c2c-49c0-b02b-a2e8902a3cd3",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 48.0,
+          "label" : "SF_Sales",
+          "y_pos" : 96.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "323dc0d7-a2c5-47d9-b370-6b3817b9e62c",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "a7559a46-07b8-4837-a8d7-f6f81cd67e2a"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "Reject" : false,
+          "RowLimit" : 0,
+          "valueDerivation" : [ {
+            "parsedExpression" : "AsInteger(StringToDecimal(Convert('-', '', Lnk_Hechos.FactFec)))",
+            "columnName" : "ID_DATE",
+            "sourceColumn" : "Lnk_Hechos.FactFec"
+          }, {
+            "parsedExpression" : "Lnk_Hechos.Units * Lnk_Hechos.Price",
+            "columnName" : "AMOUNT",
+            "sourceColumn" : "Lnk_Hechos.Units;Lnk_Hechos.Price"
+          }, {
+            "parsedExpression" : "Lnk_Hechos.Units * (Lnk_Hechos.Price - Lnk_Hechos.ProdCost)",
+            "columnName" : "PROFIT",
+            "sourceColumn" : "Lnk_Hechos.Units;Lnk_Hechos.Price;Lnk_Hechos.ProdCost"
+          } ],
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "176a9ba1-0935-4a57-8113-b0b8bb286e8e"
+      } ],
+      "op" : "CTransformerStage",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "a57b3bea-0c2c-49c0-b02b-a2e8902a3cd3",
+          "type_attr" : "PRIMARY",
+          "id" : "861e1016-3614-4597-b0fb-94834fe3b6a0",
+          "link_name" : "Lnk_Hechos",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Hechos",
+                "label" : "Lnk_Hechos",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "fa0c61ee-495c-430c-8190-afd0b68f2871"
+        } ],
+        "id" : "4ef3f593-f34b-4213-8d32-98ac63325c74",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "1c4f44a4-aa2b-4fa2-901b-3a98fa2ad19b"
+      } ],
+      "id" : "00947aad-c5fc-4945-8b1b-d98f80731938",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "4ef3f593-f34b-4213-8d32-98ac63325c74",
+          "outputs_order" : "323dc0d7-a2c5-47d9-b370-6b3817b9e62c"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/CTransformerStage.svg",
+          "x_pos" : 264.0,
+          "label" : "TR_Sales",
+          "y_pos" : 96.0
+        }
+      },
+      "parameters" : {
+        "MaxLoopIterations" : 0,
+        "output_count" : 1,
+        "BlockSizeSelectedType" : "systemSelected",
+        "input_count" : 1,
+        "BlockSize" : 0
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "DB2ConnectorPX",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "00947aad-c5fc-4945-8b1b-d98f80731938",
+          "type_attr" : "PRIMARY",
+          "id" : "a7559a46-07b8-4837-a8d7-f6f81cd67e2a",
+          "link_name" : "Lnk_Sales",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Sales",
+                "label" : "Lnk_Sales",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "323dc0d7-a2c5-47d9-b370-6b3817b9e62c"
+        } ],
+        "id" : "3044af83-2ce4-4636-97b2-30532391b206",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "176a9ba1-0935-4a57-8113-b0b8bb286e8e"
+      } ],
+      "connection" : {
+        "ref" : "app_defined",
+        "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+        "properties" : {
+          "session.schema_reconciliation.fail_on_code_page_mismatch" : false,
+          "session.isolation_level" : "cursor_stability",
+          "lock_wait_mode" : "use_the_lock_timeout_database_configuration_parameter",
+          "transaction.time_interval" : 0,
+          "session.schema_reconciliation.fail_on_size_mismatch" : true,
+          "xml_column_as_lob" : false,
+          "session.array_size" : 2000,
+          "table_name" : "TF_SALES",
+          "session.schema_reconciliation.drop_unmatched_fields" : true,
+          "session.autocommit_mode" : "off",
+          "session.fail_on_row_error_px" : true,
+          "logging.log_column_values" : false,
+          "write_mode" : "insert_then_update",
+          "prefix_for_expression_columns" : "EXPR",
+          "session.schema_reconciliation.fail_on_type_mismatch" : true,
+          "re_optimization" : "none",
+          "migrated_job" : false,
+          "before_after" : false,
+          "generate_sql" : true,
+          "transaction.record_count" : 2000,
+          "enable_quoted_i_ds" : false,
+          "table_action" : "append"
+        }
+      },
+      "id" : "780387b5-d09a-42f8-bb4b-9a3a0e68010a",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "3044af83-2ce4-4636-97b2-30532391b206"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/DB2ConnectorPX.svg",
+          "x_pos" : 504.0,
+          "label" : "DB2_Sales",
+          "y_pos" : 96.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    } ],
+    "id" : "2b2c5d22-09d6-4360-b18a-463a4de299d4",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "external_paramsets" : [ {
+    "ref" : "a0805d6b-7d23-4943-9c8f-abd18c1d3b53",
+    "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+    "name" : "ConnParamSet_DB2_DSDB"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "1c4f44a4-aa2b-4fa2-901b-3a98fa2ad19b",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 8,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "ID_CUSTOMER",
+        "native_type" : "BIGINT",
+        "odbc_type" : "BIGINT",
+        "sign_option" : 0,
+        "table_def" : "Saved-Lnk_Out_Facts-FactsTmp",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 8,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_PRODUCT",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "ID_PRODUCT",
+        "native_type" : "BIGINT",
+        "odbc_type" : "BIGINT",
+        "sign_option" : 0,
+        "table_def" : "Saved-Lnk_Out_Facts-FactsTmp",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 8,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_DEALER",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "ID_DEALER",
+        "native_type" : "BIGINT",
+        "odbc_type" : "BIGINT",
+        "sign_option" : 0,
+        "table_def" : "Saved-Lnk_Out_Facts-FactsTmp",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 10,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "FactFec",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "FactFec",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-Lnk_Out_Facts-FactsTmp",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "Units",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "Units",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Saved-Lnk_Out_Facts-FactsTmp",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "Price",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "Price",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Saved-Lnk_Out_Facts-FactsTmp",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ProdCost",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "ProdCost",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Saved-Lnk_Out_Facts-FactsTmp",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    } ]
+  }, {
+    "id" : "176a9ba1-0935-4a57-8113-b0b8bb286e8e",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_Hechos.ID_PRODUCT",
+        "max_length" : 8,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_PRODUCT",
+      "type" : "integer",
+      "app_data" : {
+        "sequence" : 1,
+        "column_reference" : "ID_PRODUCT",
+        "native_type" : "BIGINT",
+        "odbc_type" : "BIGINT",
+        "table_def" : "Database-DS_FAQ-DB2INST1.TF_SALES",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_Hechos.ID_DEALER",
+        "max_length" : 8,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_DEALER",
+      "type" : "integer",
+      "app_data" : {
+        "sequence" : 2,
+        "column_reference" : "ID_DEALER",
+        "native_type" : "BIGINT",
+        "odbc_type" : "BIGINT",
+        "table_def" : "Database-DS_FAQ-DB2INST1.TF_SALES",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_Hechos.ID_CUSTOMER",
+        "max_length" : 8,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "sequence" : 3,
+        "column_reference" : "ID_CUSTOMER",
+        "native_type" : "BIGINT",
+        "odbc_type" : "BIGINT",
+        "table_def" : "Database-DS_FAQ-DB2INST1.TF_SALES",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 4,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_DATE",
+      "type" : "integer",
+      "app_data" : {
+        "sequence" : 4,
+        "column_reference" : "ID_DATE",
+        "native_type" : "INTEGER",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Database-DS_FAQ-DB2INST1.TF_SALES",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_Hechos.Units",
+        "max_length" : 4,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "UNITS",
+      "type" : "integer",
+      "app_data" : {
+        "sequence" : 5,
+        "column_reference" : "UNITS",
+        "native_type" : "INTEGER",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Database-DS_FAQ-DB2INST1.TF_SALES",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_Hechos.Price",
+        "max_length" : 8,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "PRICE",
+      "type" : "double",
+      "app_data" : {
+        "sequence" : 6,
+        "column_reference" : "PRICE",
+        "native_type" : "DOUBLE",
+        "odbc_type" : "DOUBLE",
+        "table_def" : "Database-DS_FAQ-DB2INST1.TF_SALES",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 8,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "AMOUNT",
+      "type" : "double",
+      "app_data" : {
+        "sequence" : 7,
+        "column_reference" : "AMOUNT",
+        "native_type" : "DOUBLE",
+        "odbc_type" : "DOUBLE",
+        "table_def" : "Database-DS_FAQ-DB2INST1.TF_SALES",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 8,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "PROFIT",
+      "type" : "double",
+      "app_data" : {
+        "sequence" : 8,
+        "column_reference" : "PROFIT",
+        "native_type" : "DOUBLE",
+        "odbc_type" : "DOUBLE",
+        "table_def" : "Database-DS_FAQ-DB2INST1.TF_SALES",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "4c48c23b-8f11-4af4-b666-14d03a1cbaa1",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "isDefineParameterToggled" : true
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ {
+      "name" : "SalesPath",
+      "type" : "string",
+      "prompt" : "SalesPath",
+      "value" : "/opt/workshops/files/DATASTAGE/sectionE/Ficheros"
+    } ]
+  }
+}

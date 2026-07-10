@@ -1,0 +1,28 @@
+{
+  "metadata" : {
+    "name" : "JS_IIP_InterimLoad_Loop",
+    "asset_id" : "b8188520-d23e-4bd7-a12a-e9d5c32c700e",
+    "owner_id" : "1000331001",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "59e21266-103d-4b6b-806a-de6aab6cc99c",
+      "schedule_id" : "",
+      "project_name" : "GITHUB integrado",
+      "configuration" : {
+        "env_type" : "",
+        "env_variables" : [ ]
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "orchestration_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "JS_IIP_InterimLoad_Loop"
+    }
+  }
+}

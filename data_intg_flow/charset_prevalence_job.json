@@ -1,0 +1,330 @@
+{
+  "primary_pipeline" : "4495acd3-7b38-4b8a-8183-34037b291505",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "98fd5af0-6e68-48a3-a8b4-66406485c978",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "fa855478-8ac8-4a32-8703-0df511f71c06"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "records" : 1,
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "0bdcd213-bc7f-4cff-8d9e-812e01070d00"
+      } ],
+      "op" : "PxRowGenerator",
+      "id" : "903243c9-ac04-41e6-9c80-fb8a091265dc",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxRowGenerator.svg",
+          "x_pos" : 264.0,
+          "label" : "bytes_test",
+          "y_pos" : 240.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "9b49071d-04d4-491a-83b0-cd4240bbcea3",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "61f8f5df-b7b7-4752-8a8a-649c14e357bc"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "Reject" : false,
+          "RowLimit" : 0,
+          "valueDerivation" : [ {
+            "parsedExpression" : "\"Ñ\"",
+            "columnName" : "test"
+          } ],
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "577131c8-ac03-437a-a829-0e158413bd7f"
+      } ],
+      "op" : "CTransformerStage",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "903243c9-ac04-41e6-9c80-fb8a091265dc",
+          "type_attr" : "PRIMARY",
+          "id" : "fa855478-8ac8-4a32-8703-0df511f71c06",
+          "link_name" : "DSLink2",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "DSLink2",
+                "label" : "DSLink2",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "98fd5af0-6e68-48a3-a8b4-66406485c978"
+        } ],
+        "id" : "4e6c1b6e-8fe7-4795-b2f6-e8514cafa883",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "0bdcd213-bc7f-4cff-8d9e-812e01070d00"
+      } ],
+      "id" : "72dbfa9b-f935-4379-aa4b-4f6573c4618d",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "4e6c1b6e-8fe7-4795-b2f6-e8514cafa883",
+          "outputs_order" : "9b49071d-04d4-491a-83b0-cd4240bbcea3"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/CTransformerStage.svg",
+          "x_pos" : 408.0,
+          "label" : "trf_column",
+          "y_pos" : 240.0
+        }
+      },
+      "parameters" : {
+        "MaxLoopIterations" : 0,
+        "output_count" : 1,
+        "BlockSizeSelectedType" : "systemSelected",
+        "input_count" : 1,
+        "BlockSize" : 0
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxSequentialFile",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "72dbfa9b-f935-4379-aa4b-4f6573c4618d",
+          "type_attr" : "PRIMARY",
+          "id" : "61f8f5df-b7b7-4752-8a8a-649c14e357bc",
+          "link_name" : "DSLink9",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "DSLink9",
+                "label" : "DSLink9",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "9b49071d-04d4-491a-83b0-cd4240bbcea3"
+        } ],
+        "id" : "db8b7ead-547e-4a83-9802-43708e2aeb1a",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "append-overwrite" : "overwrite",
+          "final_delim" : "none",
+          "rejects" : "continue",
+          "file" : [ "/opt/workshops/files/DATASTAGE/sectionC/chraset_prevalence.txt" ],
+          "quote" : "none",
+          "firstLineColumnNames" : " ",
+          "nocleanup" : " ",
+          "writemethod" : " ",
+          "part_coll" : "coll_type",
+          "runtime_column_propagation" : 0,
+          "registerDataAsset" : false,
+          "delim" : "none"
+        },
+        "schema_ref" : "577131c8-ac03-437a-a829-0e158413bd7f"
+      } ],
+      "id" : "90a5d4ec-acb3-48e7-9e66-a57a8ee072c7",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 528.0,
+          "label" : "test",
+          "y_pos" : 240.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "nls_map_name" : "ASCL_ISO8859-1",
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    } ],
+    "id" : "4495acd3-7b38-4b8a-8183-34037b291505",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ {
+          "associated_id_refs" : [ ],
+          "formats" : [ {
+            "type" : "fontType",
+            "value" : "font-ibm-plex-sans"
+          }, {
+            "type" : "letter-spacing",
+            "value" : "-0.5px"
+          }, {
+            "type" : "textSize",
+            "value" : "text-size-12"
+          }, {
+            "type" : "alignHorizontally",
+            "value" : "align-center"
+          }, {
+            "type" : "alignVertically",
+            "value" : "align-middle"
+          }, {
+            "type" : "backgroundColor",
+            "value" : "#ffffc1"
+          }, {
+            "type" : "outlineStyle",
+            "value" : "outline-solid"
+          }, {
+            "type" : "line-height",
+            "value" : "1.2"
+          }, {
+            "type" : "padding",
+            "value" : "1px"
+          }, {
+            "type" : "border-color",
+            "value" : "#000000"
+          } ],
+          "width" : 138,
+          "x_pos" : 354.0,
+          "id" : "010804f8-b7ad-4820-b022-6d1e1d026447",
+          "y_pos" : 155.0,
+          "contentType" : "WYSIWYG",
+          "class_name" : "d3-comment-rect",
+          "content" : "Example to demonstrate waht happens if project NLS, job NLS and stage NLS are different",
+          "height" : 72
+        } ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "0bdcd213-bc7f-4cff-8d9e-812e01070d00",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 255,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "test",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  }, {
+    "id" : "577131c8-ac03-437a-a829-0e158413bd7f",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 255,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "test",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "68507b04-2f57-41c9-b185-b13c49cf74e5",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "isDefineParameterToggled" : true
+    }
+  },
+  "version" : "3.0"
+}

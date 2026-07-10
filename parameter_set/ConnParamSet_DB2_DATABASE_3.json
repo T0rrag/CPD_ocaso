@@ -1,0 +1,32 @@
+{
+  "parameter_set" : {
+    "name" : "ConnParamSet_DB2_DATABASE_3",
+    "description" : "DataStage generated parameter set for connection properties.",
+    "parameters" : [ {
+      "name" : "username",
+      "prompt" : "",
+      "type" : "string",
+      "value" : ""
+    }, {
+      "name" : "password",
+      "prompt" : "",
+      "type" : "encrypted",
+      "value" : ""
+    }, {
+      "name" : "database",
+      "prompt" : "",
+      "type" : "string",
+      "value" : "DATABASE_3"
+    }, {
+      "name" : "hostname",
+      "prompt" : "",
+      "type" : "string",
+      "value" : ""
+    }, {
+      "name" : "port",
+      "prompt" : "",
+      "type" : "int64",
+      "value" : 50000
+    } ]
+  }
+}

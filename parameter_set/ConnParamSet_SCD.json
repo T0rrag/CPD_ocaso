@@ -1,0 +1,12 @@
+{
+  "parameter_set" : {
+    "name" : "ConnParamSet_SCD",
+    "description" : "DataStage generated parameter set for connection properties.",
+    "parameters" : [ {
+      "name" : "advancedport",
+      "type" : "int64",
+      "prompt" : "",
+      "value" : 50000
+    } ]
+  }
+}

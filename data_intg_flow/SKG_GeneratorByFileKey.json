@@ -1,0 +1,238 @@
+{
+  "primary_pipeline" : "791684b1-0a2b-45a8-886a-837993ae266c",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "cac581c7-a6f0-4ca9-be08-4eb7ab4b2bed",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "41b472a2-488a-46b0-b65c-090d3ecf9597"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "valueDerivation" : [ {
+            "parsedExpression" : "SurrogateKeyGen(SKG_PK)",
+            "columnName" : "SKG_PK"
+          } ],
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "b9e3fd81-9a4f-4afc-89a0-4290f3c7fc7d"
+      } ],
+      "op" : "PxSurrogateKeyGeneratorN",
+      "id" : "8b4304c8-21b0-4400-b2c5-d534eff0620a",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSurrogateKeyGeneratorN.svg",
+          "x_pos" : 72.0,
+          "label" : "SKG_Generator",
+          "y_pos" : 72.0
+        }
+      },
+      "parameters" : {
+        "sk_id" : "#SalesPath##FileSKG#",
+        "num-outputs" : 1,
+        "output_count" : 1,
+        "keysourcetype" : "file",
+        "records" : 10,
+        "input_count" : 0,
+        "output_key" : "SKG_PK",
+        "additionalPropertiesSet_option" : [ "start_value", "records" ],
+        "start_value" : 9999,
+        "num-inputs" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "op" : "PxPeek",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "8b4304c8-21b0-4400-b2c5-d534eff0620a",
+          "type_attr" : "PRIMARY",
+          "id" : "41b472a2-488a-46b0-b65c-090d3ecf9597",
+          "link_name" : "Lnk_View",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_View",
+                "label" : "Lnk_View",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "cac581c7-a6f0-4ca9-be08-4eb7ab4b2bed"
+        } ],
+        "id" : "00c58e53-09a4-4293-8481-82948e4d85e4",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "b9e3fd81-9a4f-4afc-89a0-4290f3c7fc7d"
+      } ],
+      "id" : "f4fab1b5-6497-4959-92ef-38d4f2c928c5",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "00c58e53-09a4-4293-8481-82948e4d85e4"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxPeek.svg",
+          "x_pos" : 312.0,
+          "label" : "PE_SKG",
+          "y_pos" : 72.0
+        }
+      },
+      "parameters" : {
+        "all" : "all",
+        "selection" : " ",
+        "output_count" : 0,
+        "input_count" : 1,
+        "columns" : " ",
+        "name" : "name",
+        "dataset" : " ",
+        "allow_column_mapping" : false
+      }
+    } ],
+    "id" : "791684b1-0a2b-45a8-886a-837993ae266c",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ {
+          "associated_id_refs" : [ ],
+          "formats" : [ {
+            "type" : "fontType",
+            "value" : "font-ibm-plex-sans"
+          }, {
+            "type" : "letter-spacing",
+            "value" : "-0.5px"
+          }, {
+            "type" : "textSize",
+            "value" : "text-size-12"
+          }, {
+            "type" : "alignHorizontally",
+            "value" : "align-center"
+          }, {
+            "type" : "alignVertically",
+            "value" : "align-middle"
+          }, {
+            "type" : "backgroundColor",
+            "value" : "#ffffc1"
+          }, {
+            "type" : "outlineStyle",
+            "value" : "outline-solid"
+          }, {
+            "type" : "line-height",
+            "value" : "1.2"
+          }, {
+            "type" : "padding",
+            "value" : "1px"
+          }, {
+            "type" : "border-color",
+            "value" : "#000000"
+          } ],
+          "width" : 330,
+          "x_pos" : 69.0,
+          "id" : "7e86d9e4-2760-4962-b960-c9483cdc6716",
+          "y_pos" : 185.0,
+          "contentType" : "WYSIWYG",
+          "class_name" : "d3-comment-rect",
+          "content" : "- Genera Claves primarias (uint64)\r\n- Guarda referencia de la última creada en fichero Orgien de Claves\r\n",
+          "height" : 97
+        } ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "b9e3fd81-9a4f-4afc-89a0-4290f3c7fc7d",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "SKG_PK",
+      "type" : "integer",
+      "app_data" : {
+        "odbc_type" : "BIGINT",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "43ce5ef1-a769-4a97-b7e7-40d986344ea6",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "isDefineParameterToggled" : true
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ {
+      "name" : "FileSKG",
+      "type" : "string",
+      "prompt" : "SKG file",
+      "value" : "SKG.pk"
+    }, {
+      "name" : "SalesPath",
+      "type" : "string",
+      "prompt" : "SalesPath",
+      "value" : "/opt/workshops/files/DATASTAGE/sectionE/Revisado/"
+    } ]
+  }
+}

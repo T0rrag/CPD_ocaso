@@ -1,0 +1,3699 @@
+{
+  "app_data" : {
+    "pipeline_data" : {
+      "caching_conditions" : [ "retry_on_failure", "pipeline_unchanged" ],
+      "caching_method" : "manual",
+      "default_cache_mode" : "conditional",
+      "default_error_policy" : "fail_on_error",
+      "parameter_sets" : [ ],
+      "validation" : {
+        "valid" : false,
+        "validated_at" : "2026-07-10 08:18:09.563366785 +0000 UTC"
+      },
+      "variables" : [ {
+        "inputType" : "EXPRESSION",
+        "name" : "UVA_Declare_Dummy",
+        "type" : "String",
+        "value_from" : {
+          "expression" : "\"\""
+        }
+      } ],
+      "version" : "12.0"
+    },
+    "ui_data" : {
+      "settings" : {
+        "auto_link_color" : true,
+        "autosave" : false,
+        "enable_ds_funcs" : true,
+        "limit_ab_jobs_scope" : true,
+        "shape_nodes" : true
+      }
+    }
+  },
+  "doc_type" : "pipeline",
+  "id" : "8514886d-f6f5-4500-8321-cb6add3b0eff",
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "pipelines" : [ {
+    "app_data" : {
+      "pipeline_data" : {
+        "inputs" : [ {
+          "default" : 100,
+          "description" : "Initialization number for FILE ID",
+          "name" : "FIDINIT",
+          "type" : "Integer"
+        }, {
+          "default" : "/ascdata2/import/IIP",
+          "description" : "Search Directory",
+          "name" : "SRC_DIR",
+          "type" : {
+            "CPDPath" : {
+              "path_type" : "file"
+            }
+          },
+          "ui_data" : {
+            "inputType" : "RAW"
+          }
+        }, {
+          "default" : "/ascdata2/import/IIP_work",
+          "description" : "Move in Directory",
+          "name" : "MOV_DIR",
+          "type" : {
+            "CPDPath" : {
+              "path_type" : "file"
+            }
+          },
+          "ui_data" : {
+            "inputType" : "RAW"
+          }
+        }, {
+          "default" : "/ascdata2/ascwork/workdir/datasets",
+          "description" : "Dataset Directory",
+          "name" : "DS_DIR",
+          "type" : {
+            "CPDPath" : {
+              "path_type" : "file"
+            }
+          },
+          "ui_data" : {
+            "inputType" : "RAW"
+          }
+        }, {
+          "default" : "/ascsoft/progsiip/dta",
+          "description" : "Directory containing steering files",
+          "name" : "DTA_DIR",
+          "type" : {
+            "CPDPath" : {
+              "path_type" : "file"
+            }
+          },
+          "ui_data" : {
+            "inputType" : "RAW"
+          }
+        }, {
+          "default" : "/ascsoft/progsiip/tmp",
+          "description" : "Directory containing the temporary files",
+          "name" : "TMP_DIR",
+          "type" : {
+            "CPDPath" : {
+              "path_type" : "file"
+            }
+          },
+          "ui_data" : {
+            "inputType" : "RAW"
+          }
+        }, {
+          "default" : "/ascsoft/progsiip/log",
+          "description" : "Log Directory",
+          "name" : "LOG_DIR",
+          "type" : {
+            "CPDPath" : {
+              "path_type" : "file"
+            }
+          },
+          "ui_data" : {
+            "inputType" : "RAW"
+          }
+        }, {
+          "default" : "/ascdata2/ascwork/workdir/reports",
+          "description" : "Reject Directory",
+          "name" : "REJ_DIR",
+          "type" : {
+            "CPDPath" : {
+              "path_type" : "file"
+            }
+          },
+          "ui_data" : {
+            "inputType" : "RAW"
+          }
+        }, {
+          "default" : "/ascsoft/progsiip/str/layouts",
+          "description" : "Layout Directory",
+          "name" : "LAYOUT_DIR",
+          "type" : {
+            "CPDPath" : {
+              "path_type" : "file"
+            }
+          },
+          "ui_data" : {
+            "inputType" : "RAW"
+          }
+        }, {
+          "default" : "ger_iip",
+          "description" : "ORACLE Userid",
+          "name" : "USER",
+          "type" : "String"
+        }, {
+          "default" : "{dsmenc}PtDRiVaN+V9/fKzWzMp4OQ==",
+          "description" : "ORACLE Password",
+          "name" : "PWD",
+          "type" : "Encrypted"
+        }, {
+          "default" : "dedwhu",
+          "description" : "ORACLE Remote Server",
+          "name" : "RMT_SERV",
+          "type" : "String"
+        }, {
+          "default" : "TBL_JOB_SCHEDULE",
+          "description" : "ORACLE Table Name for FILE_MASTER",
+          "name" : "ORA_TBL_JOB_SCHED",
+          "type" : "String"
+        }, {
+          "default" : "IIP_file_lst",
+          "description" : "Filename of file list",
+          "name" : "FILE_LST",
+          "type" : "String"
+        }, {
+          "default" : "TABLE_LST.dat",
+          "description" : "Filename of details for Interimload",
+          "name" : "FILE_DETAILS",
+          "type" : "String"
+        }, {
+          "default" : 0,
+          "description" : "Set to 1 if debugging is necessary",
+          "name" : "DEBUG",
+          "type" : "Integer"
+        }, {
+          "default" : 5,
+          "description" : "Memory size used for SORT steps",
+          "name" : "SORTMEM",
+          "type" : "Integer"
+        }, {
+          "default" : "0x0",
+          "description" : "Pad character",
+          "name" : "$APT_STRING_PADCHAR",
+          "type" : "String"
+        }, {
+          "default" : "/ascsoft/Ascential/DataStage/Configurations/1_way.apt",
+          "description" : "APT Config File for One Node",
+          "name" : "APT_ONE_NODE",
+          "type" : {
+            "CPDPath" : {
+              "path_type" : "file"
+            }
+          },
+          "ui_data" : {
+            "inputType" : "RAW"
+          }
+        }, {
+          "description" : "RepExt",
+          "name" : "RepExt",
+          "type" : "String"
+        }, {
+          "default" : "Manfred.Hagedorn@citi.com",
+          "description" : "E-Mail-Address",
+          "name" : "EMAIL_ADR",
+          "type" : "String"
+        }, {
+          "default" : 1,
+          "description" : "E-Mail-Flag",
+          "name" : "EMAIL_FLG",
+          "type" : "Integer"
+        }, {
+          "default" : "{dsmenc}PtDRiVaN+V9/fKzWzMp4OQ==",
+          "description" : "OraclePW",
+          "name" : "$OraclePW",
+          "type" : "Encrypted"
+        }, {
+          "default" : "/mnts/ds-storage/GITHUB integrado/MigrationTempFolder",
+          "description" : "Folder path for migration-generated temporary files",
+          "name" : "MigrationTempFolder",
+          "type" : "String"
+        }, {
+          "default" : "",
+          "description" : "Job invocation ID",
+          "name" : "DSJobInvocationId",
+          "type" : "String"
+        } ]
+      },
+      "ui_data" : {
+        "asset_metadata" : {
+          "086bc8c3-15ab-4b1a-adad-7743a7c864e3" : {
+            "name" : "DATASTAGE test project"
+          },
+          "default-asset-id_07b3e4e8-7707-4d90-a45c-5e3a924e580b" : {
+            "name" : "JS_IIP_InterimLoad_Loop.DataStage sequence",
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "job",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            }
+          },
+          "default-asset-id_ad4f72ed-1a03-4e7c-8472-3236dc9d78b5" : {
+            "name" : "JB_IIP_JOB_SCHED_INS.DataStage sequence",
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "job",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            }
+          }
+        },
+        "comments" : [ {
+          "associated_id_refs" : [ ],
+          "class_name" : "d3-comment-rect",
+          "content" : "Create list of available files in Source directory (using ls).",
+          "contentType" : "WYSIWYG",
+          "formats" : [ {
+            "type" : "fontType",
+            "value" : "font-arial"
+          }, {
+            "type" : "textSize",
+            "value" : "text-size-12"
+          }, {
+            "type" : "alignHorizontally",
+            "value" : "align-center"
+          }, {
+            "type" : "alignVertically",
+            "value" : "align-top"
+          }, {
+            "type" : "backgroundColor",
+            "value" : "#ffffc1"
+          }, {
+            "type" : "outlineStyle",
+            "value" : "outline-solid"
+          }, {
+            "type" : "line-height",
+            "value" : "1.2"
+          }, {
+            "type" : "padding",
+            "value" : "1px"
+          }, {
+            "type" : "border-color",
+            "value" : "#000000"
+          } ],
+          "height" : "142",
+          "width" : "100",
+          "x_pos" : "71.0",
+          "y_pos" : "219.0"
+        }, {
+          "associated_id_refs" : [ ],
+          "class_name" : "d3-comment-rect",
+          "content" : "Insert file names into table JOB_SCHEDULE",
+          "contentType" : "WYSIWYG",
+          "formats" : [ {
+            "type" : "fontType",
+            "value" : "font-arial"
+          }, {
+            "type" : "textSize",
+            "value" : "text-size-12"
+          }, {
+            "type" : "alignHorizontally",
+            "value" : "align-center"
+          }, {
+            "type" : "alignVertically",
+            "value" : "align-bottom"
+          }, {
+            "type" : "backgroundColor",
+            "value" : "#ffffc1"
+          }, {
+            "type" : "outlineStyle",
+            "value" : "outline-solid"
+          }, {
+            "type" : "line-height",
+            "value" : "1.2"
+          }, {
+            "type" : "padding",
+            "value" : "1px"
+          }, {
+            "type" : "border-color",
+            "value" : "#000000"
+          } ],
+          "height" : "142",
+          "width" : "105",
+          "x_pos" : "69.0",
+          "y_pos" : "426.0"
+        }, {
+          "associated_id_refs" : [ ],
+          "class_name" : "d3-comment-rect",
+          "content" : "Create file list to work with in LOOP (one string, comma seperated) (using cat).",
+          "contentType" : "WYSIWYG",
+          "formats" : [ {
+            "type" : "fontType",
+            "value" : "font-arial"
+          }, {
+            "type" : "textSize",
+            "value" : "text-size-12"
+          }, {
+            "type" : "alignHorizontally",
+            "value" : "align-center"
+          }, {
+            "type" : "alignVertically",
+            "value" : "align-bottom"
+          }, {
+            "type" : "backgroundColor",
+            "value" : "#ffffc1"
+          }, {
+            "type" : "outlineStyle",
+            "value" : "outline-solid"
+          }, {
+            "type" : "line-height",
+            "value" : "1.2"
+          }, {
+            "type" : "padding",
+            "value" : "1px"
+          }, {
+            "type" : "border-color",
+            "value" : "#000000"
+          } ],
+          "height" : "172",
+          "width" : "105",
+          "x_pos" : "208.0",
+          "y_pos" : "428.0"
+        }, {
+          "associated_id_refs" : [ ],
+          "class_name" : "d3-comment-rect",
+          "content" : "Write date into seperate LOG file (using echo).",
+          "contentType" : "WYSIWYG",
+          "formats" : [ {
+            "type" : "fontType",
+            "value" : "font-arial"
+          }, {
+            "type" : "textSize",
+            "value" : "text-size-12"
+          }, {
+            "type" : "alignHorizontally",
+            "value" : "align-center"
+          }, {
+            "type" : "alignVertically",
+            "value" : "align-top"
+          }, {
+            "type" : "backgroundColor",
+            "value" : "#ffffc1"
+          }, {
+            "type" : "outlineStyle",
+            "value" : "outline-solid"
+          }, {
+            "type" : "line-height",
+            "value" : "1.2"
+          }, {
+            "type" : "padding",
+            "value" : "1px"
+          }, {
+            "type" : "border-color",
+            "value" : "#000000"
+          } ],
+          "height" : "142",
+          "width" : "100",
+          "x_pos" : "212.0",
+          "y_pos" : "220.0"
+        }, {
+          "associated_id_refs" : [ ],
+          "class_name" : "bkg-col-red-50",
+          "content" : "99001",
+          "contentType" : "WYSIWYG",
+          "formats" : [ {
+            "type" : "fontType",
+            "value" : "font-ibm-plex-sans"
+          }, {
+            "type" : "letter-spacing",
+            "value" : "-0.5px"
+          }, {
+            "type" : "textSize",
+            "value" : "text-size-12"
+          }, {
+            "type" : "alignHorizontally",
+            "value" : "align-center"
+          }, {
+            "type" : "alignVertically",
+            "value" : "align-middle"
+          }, {
+            "type" : "backgroundColor",
+            "value" : "#ff8080"
+          }, {
+            "type" : "outlineStyle",
+            "value" : "outline-solid"
+          }, {
+            "type" : "line-height",
+            "value" : "1.2"
+          }, {
+            "type" : "padding",
+            "value" : "1px"
+          }, {
+            "type" : "border-color",
+            "value" : "#000000"
+          } ],
+          "height" : "23",
+          "width" : "40",
+          "x_pos" : "67.0",
+          "y_pos" : "569.0"
+        }, {
+          "associated_id_refs" : [ ],
+          "class_name" : "d3-comment-rect",
+          "content" : "Interim Table LOAD Job-Sequence for IIP Project",
+          "contentType" : "WYSIWYG",
+          "formats" : [ {
+            "type" : "fontType",
+            "value" : "font-arial"
+          }, {
+            "type" : "textSize",
+            "value" : "text-size-12"
+          }, {
+            "type" : "alignHorizontally",
+            "value" : "align-center"
+          }, {
+            "type" : "alignVertically",
+            "value" : "align-middle"
+          }, {
+            "type" : "backgroundColor",
+            "value" : "#ffffc1"
+          }, {
+            "type" : "outlineStyle",
+            "value" : "outline-solid"
+          }, {
+            "type" : "line-height",
+            "value" : "1.2"
+          }, {
+            "type" : "padding",
+            "value" : "1px"
+          }, {
+            "type" : "border-color",
+            "value" : "#000000"
+          } ],
+          "height" : "68",
+          "width" : "468",
+          "x_pos" : "17.0",
+          "y_pos" : "43.0"
+        } ],
+        "exception_handler_x_pos" : -80,
+        "exception_handler_y_pos" : -80,
+        "zoom" : {
+          "k" : 0.8,
+          "x" : 162.84638321795035,
+          "y" : 90.12769711268751
+        }
+      }
+    },
+    "id" : "f797a0c2-229d-4cb1-aa11-6e54405d49aa",
+    "nodes" : [ {
+      "app_data" : {
+        "componentGroup" : "control",
+        "emptyImage" : "/pipelines/graphics/orchestration-flows/nodes/control/empty.svg",
+        "groups" : {
+          "inputs" : { },
+          "outputs" : { }
+        },
+        "op" : "control-sequential-for",
+        "pipeline_data" : {
+          "config" : {
+            "link" : {
+              "component_id_ref" : "control-sequential-for",
+              "component_version_id_ref" : "control-sequential-for-1"
+            }
+          },
+          "id" : "control-sequential-for",
+          "inputs" : [ {
+            "description" : "List literal that the loop will iterate over.",
+            "human_name" : "Over",
+            "name" : "over",
+            "optional" : false,
+            "type" : "List",
+            "ui_data" : { }
+          }, {
+            "description" : "Range start.",
+            "human_name" : "Start",
+            "name" : "start",
+            "optional" : false,
+            "type" : "Integer"
+          }, {
+            "default" : 1,
+            "description" : "Range step.",
+            "human_name" : "Step",
+            "name" : "step",
+            "optional" : true,
+            "type" : "Integer"
+          }, {
+            "description" : "Range end.",
+            "human_name" : "End",
+            "name" : "end",
+            "optional" : false,
+            "type" : "Integer"
+          }, {
+            "human_name" : "Loop list values in a string",
+            "name" : "text",
+            "type" : "String",
+            "ui_data" : {
+              "inputType" : "EXPRESSION",
+              "inputTypes" : {
+                "selected-node-values-text-input" : "EXPRESSION"
+              }
+            },
+            "value_from" : {
+              "expression" : "ds.GetCommandOutput(tasks.exec3)"
+            }
+          }, {
+            "human_name" : "Separator for list values in text",
+            "name" : "separator",
+            "type" : "String",
+            "ui_data" : {
+              "inputType" : "RAW",
+              "inputTypes" : {
+                "selected-node-values-separator-input" : "RAW"
+              }
+            },
+            "value" : ","
+          }, {
+            "name" : "error_policy",
+            "type" : "ErrorPolicy",
+            "value" : "fail_on_error"
+          } ],
+          "name" : "control-sequential-for",
+          "nodes" : [ ],
+          "outputs" : [ {
+            "name" : "status",
+            "type" : "ExecutionStatus"
+          }, {
+            "name" : "status_message",
+            "type" : "String"
+          }, {
+            "name" : "control_break_node_id",
+            "type" : "String"
+          } ],
+          "runtime_ref" : "kfp",
+          "subflowPipelineId" : "5410ff0e-c438-4b53-9e95-eb04be70c443"
+        },
+        "supernode_pipeline_data" : {
+          "config" : {
+            "link" : {
+              "component_id_ref" : "control-sequential-for",
+              "component_version_id_ref" : "control-sequential-for-1"
+            }
+          },
+          "id" : "control-sequential-for",
+          "inputs" : [ {
+            "description" : "List literal that the loop will iterate over.",
+            "human_name" : "Over",
+            "name" : "over",
+            "optional" : false,
+            "type" : "List",
+            "ui_data" : { }
+          }, {
+            "description" : "Range start.",
+            "human_name" : "Start",
+            "name" : "start",
+            "optional" : false,
+            "type" : "Integer"
+          }, {
+            "default" : 1,
+            "description" : "Range step.",
+            "human_name" : "Step",
+            "name" : "step",
+            "optional" : true,
+            "type" : "Integer"
+          }, {
+            "description" : "Range end.",
+            "human_name" : "End",
+            "name" : "end",
+            "optional" : false,
+            "type" : "Integer"
+          }, {
+            "human_name" : "Loop list values in a string",
+            "name" : "text",
+            "type" : "String",
+            "ui_data" : {
+              "inputType" : "EXPRESSION",
+              "inputTypes" : {
+                "selected-node-values-text-input" : "EXPRESSION"
+              }
+            },
+            "value_from" : {
+              "expression" : "ds.GetCommandOutput(tasks.exec3)"
+            }
+          }, {
+            "human_name" : "Separator for list values in text",
+            "name" : "separator",
+            "type" : "String",
+            "ui_data" : {
+              "inputType" : "RAW",
+              "inputTypes" : {
+                "selected-node-values-separator-input" : "RAW"
+              }
+            },
+            "value" : ","
+          }, {
+            "name" : "error_policy",
+            "type" : "ErrorPolicy",
+            "value" : "fail_on_error"
+          } ],
+          "name" : "control-sequential-for",
+          "nodes" : [ ],
+          "outputs" : [ {
+            "name" : "status",
+            "type" : "ExecutionStatus"
+          }, {
+            "name" : "status_message",
+            "type" : "String"
+          } ],
+          "runtime_ref" : "kfp",
+          "subflowPipelineId" : "5410ff0e-c438-4b53-9e95-eb04be70c443"
+        },
+        "ui_data" : {
+          "decorations" : [ {
+            "class_name" : "parallel_loops_highlighter",
+            "height" : 120,
+            "id" : "loop1_parallel_loops_highlighter",
+            "position" : "topLeft",
+            "width" : 5,
+            "x_pos" : 10,
+            "y_pos" : 0
+          }, {
+            "class_name" : "oflow-node-type-label",
+            "id" : "loop1_type_label",
+            "label" : "LO_MV",
+            "position" : "middleCenter",
+            "x_pos" : -63,
+            "y_pos" : -15
+          }, {
+            "class_name" : "parallel_loops_divider",
+            "height" : 1,
+            "id" : "loop1_parallel_loops_divider",
+            "outline" : true,
+            "position" : "middleRight",
+            "width" : 270,
+            "x_pos" : -263,
+            "y_pos" : 5
+          }, {
+            "class_name" : "parallel_loops_group_icon",
+            "height" : 36,
+            "id" : "loop1_parallel_loops_group_icon",
+            "image" : "/pipelines/graphics/orchestration-flows/nodes/run/empty.svg",
+            "outline" : false,
+            "position" : "middleLeft",
+            "width" : 36,
+            "x_pos" : 20,
+            "y_pos" : 15
+          }, {
+            "class_name" : "parallel_loops_group_count",
+            "height" : 10,
+            "id" : "loop1_parallel_loops_group_count",
+            "label" : "3",
+            "label_align" : "center",
+            "label_max_characters" : 3,
+            "label_single_line" : true,
+            "outline" : false,
+            "position" : "middleLeft",
+            "width" : 10,
+            "x_pos" : 33,
+            "y_pos" : 25
+          }, {
+            "class_name" : "loops_expand_btn",
+            "height" : 18,
+            "hotspot" : true,
+            "id" : "loop1_loops_expand",
+            "image" : "/pipelines/graphics/orchestration-flows/node/expand.svg",
+            "outline" : true,
+            "position" : "middleRight",
+            "width" : 18,
+            "x_pos" : -20,
+            "y_pos" : 25
+          } ],
+          "description" : "Run each element of pipeline",
+          "expanded_height" : 200,
+          "expanded_width" : 300,
+          "image" : "/pipelines/graphics/orchestration-flows/nodes/control/sequential_loop.svg",
+          "is_expanded" : false,
+          "label" : "LO_MV",
+          "x_pos" : 408,
+          "y_pos" : 288
+        },
+        "validators" : {
+          "excluding_groups" : [ {
+            "human_name" : "Over",
+            "variants" : [ {
+              "human_name" : "List",
+              "members" : [ "over" ],
+              "required" : [ "over" ],
+              "selected" : false
+            }, {
+              "human_name" : "Text",
+              "members" : [ "text", "separator" ],
+              "required" : [ "text" ],
+              "selected" : true
+            }, {
+              "human_name" : "Range",
+              "members" : [ "start", "step", "end" ],
+              "required" : [ "start", "end" ],
+              "selected" : false
+            } ]
+          } ]
+        }
+      },
+      "id" : "loop1",
+      "inputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "cardinality" : {
+              "max" : 1,
+              "min" : 0
+            },
+            "class_name" : "oflow-node-port",
+            "label" : "Binding port for supernode"
+          }
+        },
+        "id" : "inPort1",
+        "links" : [ {
+          "app_data" : {
+            "ui_data" : {
+              "decorations" : [ {
+                "class_name" : "condition-decorator-add",
+                "height" : 16,
+                "hotspot" : true,
+                "id" : "assocDecAdd",
+                "image" : "/pipelines/graphics/orchestration-flows/add-condition.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 16,
+                "x_pos" : -8,
+                "y_pos" : -8
+              }, {
+                "class_name" : "condition-decorator-add-hover",
+                "height" : 40,
+                "hotspot" : true,
+                "id" : "assocDecAddPill",
+                "image" : "/pipelines/graphics/orchestration-flows/link/add-condition-pill.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 150,
+                "x_pos" : -75,
+                "y_pos" : -20
+              }, {
+                "class_name" : "condition-decorator-add-hover",
+                "height" : 16,
+                "id" : "assocDecAddText",
+                "label" : "Add condition",
+                "position" : "middle",
+                "width" : 84,
+                "x_pos" : -59,
+                "y_pos" : -12
+              } ]
+            }
+          },
+          "id" : "46a19318-5ea3-4e38-901d-4080f51889f7",
+          "node_id_ref" : "exec2",
+          "port_id_ref" : "outPort"
+        } ],
+        "subflow_node_ref" : "subflow-entry-binding"
+      } ],
+      "op" : "control-sequential-for",
+      "outputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "label" : ""
+          }
+        },
+        "id" : "outPort"
+      } ],
+      "subflow_ref" : {
+        "pipeline_id_ref" : "5410ff0e-c438-4b53-9e95-eb04be70c443"
+      },
+      "type" : "super_node"
+    }, {
+      "app_data" : {
+        "componentGroup" : "run",
+        "componentLabelRef" : "Run bash script",
+        "emptyImage" : "/pipelines/graphics/orchestration-flows/nodes/run/empty.svg",
+        "groups" : {
+          "inputs" : {
+            "env_variables" : {
+              "description" : "Optional. Additional environment variables passed to the shell in form of multiline string (e.g. `VAR1=value1\\nVAR2=value2`).",
+              "human_name" : "Environment Variables",
+              "name" : "env_variables",
+              "optional" : true,
+              "pass_style" : "file",
+              "type" : "DynamicParamSet"
+            }
+          },
+          "outputs" : {
+            "output_variables" : {
+              "description" : "Custom outputs variables",
+              "human_name" : "Output Variables",
+              "name" : "output_variables",
+              "pass_style" : "file",
+              "type" : "DynamicParamSet"
+            }
+          }
+        },
+        "pipeline_data" : {
+          "cache_mode" : "never",
+          "config" : {
+            "link" : {
+              "component_id_ref" : "run-bash-script",
+              "component_version_id_ref" : "run-bash-script-1"
+            }
+          },
+          "inputs" : [ {
+            "allowed_scopes" : [ "project" ],
+            "description" : "Run selected bash script asset",
+            "human_name" : "Bash Script Asset",
+            "name" : "script_asset",
+            "optional" : true,
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "script",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            }
+          }, {
+            "description" : "Body of the script.",
+            "human_name" : "Inline script code",
+            "name" : "script",
+            "pass_style" : "file",
+            "type" : "String",
+            "ui_data" : { },
+            "value" : "echo \"ls\" > $command_name_PATH\nls   -l ${SRC_DIR} > ${TMP_DIR}/${FIDINIT}_${FILE_LST}.lst"
+          }, {
+            "default" : "standalone",
+            "description" : "The runtime type for a bash script execution",
+            "human_name" : "Runtime type(optional)",
+            "name" : "runtime_type",
+            "type" : "String",
+            "ui_data" : {
+              "inputType" : "SELECT_RESOURCE",
+              "inputTypes" : {
+                "selected-node-values-runtime_type-input" : "SELECT_RESOURCE"
+              }
+            },
+            "value" : "shared"
+          }, {
+            "description" : "Optional. An action taken when the run has failed.",
+            "human_name" : "Error Policy",
+            "name" : "error_policy",
+            "type" : "ErrorPolicy",
+            "ui_data" : {
+              "inputType" : "SELECT_RESOURCE"
+            },
+            "value" : "fail_on_error"
+          }, {
+            "group" : "env_variables",
+            "human_name" : "Environment variable for #SRC_DIR#",
+            "name" : "SRC_DIR",
+            "value_from" : {
+              "pipeline_input" : {
+                "param_name" : "SRC_DIR"
+              }
+            }
+          }, {
+            "group" : "env_variables",
+            "human_name" : "Environment variable for #TMP_DIR#",
+            "name" : "TMP_DIR",
+            "value_from" : {
+              "pipeline_input" : {
+                "param_name" : "TMP_DIR"
+              }
+            }
+          }, {
+            "group" : "env_variables",
+            "human_name" : "Environment variable for #FIDINIT#",
+            "name" : "FIDINIT",
+            "value_from" : {
+              "pipeline_input" : {
+                "param_name" : "FIDINIT"
+              }
+            }
+          }, {
+            "group" : "env_variables",
+            "human_name" : "Environment variable for #FILE_LST#",
+            "name" : "FILE_LST",
+            "value_from" : {
+              "pipeline_input" : {
+                "param_name" : "FILE_LST"
+              }
+            }
+          }, {
+            "current_scope" : true,
+            "default" : "b128f957-581d-46d0-95b6-8af5cd5be580",
+            "name" : "hardware_specification",
+            "related_asset_type" : "orchestration_flow",
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "hardware_specification",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            },
+            "value" : "abfde4f8-88a7-57c7-bee4-e047a481f7cb"
+          } ],
+          "name" : "exec1",
+          "outputs" : [ {
+            "description" : "Return value from the script",
+            "human_name" : "Return Value",
+            "name" : "return_value",
+            "type" : "Integer"
+          }, {
+            "description" : "Command name of the inline script",
+            "group" : "output_variables",
+            "human_name" : "Command Name",
+            "name" : "command_name",
+            "size_estimation" : 10,
+            "type" : "String"
+          }, {
+            "description" : "Standard Output from the script",
+            "human_name" : "Standard Output",
+            "name" : "standard_output",
+            "pass_style" : "file",
+            "size_estimation" : 250,
+            "type" : "String"
+          }, {
+            "name" : "standard_error",
+            "pass_style" : "file",
+            "type" : "String"
+          }, {
+            "description" : "The status of the job. One of: \"Completed\", \"CompletedWithWarnings\", \"CompletedWithErrors\", \"Failed\", \"Canceled\"",
+            "human_name" : "Execution Status",
+            "name" : "status",
+            "type" : "ExecutionStatus"
+          }, {
+            "description" : "Message associated with the status.",
+            "human_name" : "Status Message",
+            "name" : "status_message",
+            "type" : "String"
+          } ]
+        },
+        "ui_data" : {
+          "decorations" : [ {
+            "class_name" : "oflow-node-type-label",
+            "id" : "exec1_type_label",
+            "label" : "Run Bash script",
+            "position" : "middleCenter",
+            "x_pos" : -63,
+            "y_pos" : 13
+          } ],
+          "image" : "/pipelines/graphics/orchestration-flows/nodes/run/bash_script.svg",
+          "label" : "EC_LS",
+          "x_pos" : 96,
+          "y_pos" : 288
+        },
+        "validators" : { }
+      },
+      "id" : "exec1",
+      "inputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "label" : ""
+          }
+        },
+        "id" : "inPort",
+        "links" : [ {
+          "app_data" : {
+            "ui_data" : {
+              "decorations" : [ {
+                "class_name" : "condition-decorator-add",
+                "height" : 16,
+                "hotspot" : true,
+                "id" : "assocDecAdd",
+                "image" : "/pipelines/graphics/orchestration-flows/add-condition.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 16,
+                "x_pos" : -8,
+                "y_pos" : -8
+              }, {
+                "class_name" : "condition-decorator-add-hover",
+                "height" : 40,
+                "hotspot" : true,
+                "id" : "assocDecAddPill",
+                "image" : "/pipelines/graphics/orchestration-flows/link/add-condition-pill.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 150,
+                "x_pos" : -75,
+                "y_pos" : -20
+              }, {
+                "class_name" : "condition-decorator-add-hover",
+                "height" : 16,
+                "id" : "assocDecAddText",
+                "label" : "Add condition",
+                "position" : "middle",
+                "width" : 84,
+                "x_pos" : -59,
+                "y_pos" : -12
+              } ]
+            }
+          },
+          "id" : "86b30c47-f9ff-43e3-bfaf-c229f69ebd60",
+          "node_id_ref" : "UVA_Declare",
+          "port_id_ref" : "outPort"
+        } ]
+      } ],
+      "op" : "run_container",
+      "outputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "label" : ""
+          }
+        },
+        "id" : "outPort"
+      } ],
+      "type" : "execution_node"
+    }, {
+      "app_data" : {
+        "componentGroup" : "control",
+        "componentLabelRef" : "Set user variables",
+        "emptyImage" : "/pipelines/graphics/orchestration-flows/nodes/control/empty.svg",
+        "groups" : {
+          "inputs" : {
+            "outputs" : {
+              "description" : "Updated variables.",
+              "human_name" : "Output Variables",
+              "name" : "outputs",
+              "type" : "DynamicParamSet"
+            },
+            "variables" : {
+              "description" : "Variables to have their values updates.",
+              "human_name" : "User Variables",
+              "name" : "variables",
+              "type" : "DynamicParamSet"
+            }
+          },
+          "outputs" : {
+            "outputs" : {
+              "hidden" : true,
+              "name" : "outputs",
+              "type" : "DynamicParamSet"
+            },
+            "variables" : {
+              "hidden" : true,
+              "name" : "variables",
+              "type" : "DynamicParamSet"
+            }
+          }
+        },
+        "pipeline_data" : {
+          "config" : {
+            "link" : {
+              "component_id_ref" : "control-user-variables",
+              "component_version_id_ref" : "control-user-variables-1"
+            }
+          },
+          "inputs" : [ {
+            "group" : "variables",
+            "name" : "UVA_Declare_Dummy",
+            "type" : "String",
+            "ui_data" : {
+              "inputType" : "EXPRESSION",
+              "inputTypes" : { }
+            },
+            "value_from" : {
+              "expression" : "tasks.node_IIPGetJobResult1.results.output_variables.var_IIPGetJobResult1"
+            }
+          } ],
+          "name" : "UVA_Declare",
+          "outputs" : [ {
+            "group" : "variables",
+            "name" : "UVA_Declare_Dummy",
+            "type" : "String",
+            "ui_data" : {
+              "inputType" : "EXPRESSION",
+              "inputTypes" : { }
+            },
+            "value_from" : {
+              "expression" : "tasks.node_IIPGetJobResult1.results.output_variables.var_IIPGetJobResult1"
+            }
+          } ]
+        },
+        "ui_data" : {
+          "decorations" : [ {
+            "class_name" : "oflow-node-type-label",
+            "id" : "UVA_Declare_type_label",
+            "label" : "Set user variables",
+            "position" : "middleCenter",
+            "x_pos" : -63,
+            "y_pos" : 13
+          } ],
+          "image" : "/pipelines/graphics/orchestration-flows/nodes/control/user_variables.svg",
+          "label" : "UVA_Declare",
+          "x_pos" : 96,
+          "y_pos" : 120
+        },
+        "validators" : { }
+      },
+      "id" : "UVA_Declare",
+      "inputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "cardinality" : {
+              "max" : -1,
+              "min" : 0
+            },
+            "class_name" : "oflow-node-port",
+            "label" : "Input Port"
+          }
+        },
+        "id" : "inPort",
+        "links" : [ {
+          "app_data" : {
+            "ui_data" : {
+              "decorations" : [ {
+                "class_name" : "condition-decorator-add",
+                "height" : 16,
+                "hotspot" : true,
+                "id" : "assocDecAdd",
+                "image" : "/pipelines/graphics/orchestration-flows/add-condition.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 16,
+                "x_pos" : -8,
+                "y_pos" : -8
+              }, {
+                "class_name" : "condition-decorator-add-hover",
+                "height" : 40,
+                "hotspot" : true,
+                "id" : "assocDecAddPill",
+                "image" : "/pipelines/graphics/orchestration-flows/link/add-condition-pill.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 150,
+                "x_pos" : -75,
+                "y_pos" : -20
+              }, {
+                "class_name" : "condition-decorator-add-hover",
+                "height" : 16,
+                "id" : "assocDecAddText",
+                "label" : "Add condition",
+                "position" : "middle",
+                "width" : 84,
+                "x_pos" : -59,
+                "y_pos" : -12
+              } ]
+            }
+          },
+          "id" : "a9dffad6-4304-4e52-8996-28e30642a099",
+          "node_id_ref" : "node_IIPGetJobResult1",
+          "port_id_ref" : "outPort"
+        } ]
+      } ],
+      "op" : "run_container",
+      "outputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "label" : ""
+          }
+        },
+        "id" : "outPort"
+      } ],
+      "type" : "execution_node"
+    }, {
+      "app_data" : {
+        "componentGroup" : "run",
+        "componentLabelRef" : "Run DataStage job",
+        "groups" : {
+          "inputs" : {
+            "env_variables" : {
+              "description" : "Optional. Additional environment variables passed to the shell in form of multiline string (e.g. `VAR1=value1\\nVAR2=value2`).",
+              "human_name" : "Environment Variables",
+              "name" : "env_variables",
+              "optional" : true,
+              "type" : "DynamicParamSet"
+            },
+            "job_parameters" : {
+              "description" : "Optional. Additional job parameters passed to the job run.",
+              "descriptive_name" : "Job Parameters",
+              "human_name" : "Job Parameters",
+              "name" : "job_parameters",
+              "optional" : true,
+              "type" : "JobParameters"
+            },
+            "parameter_sets" : {
+              "description" : "Additional parameter sets passed to the job run.",
+              "descriptive_name" : "Parameter sets",
+              "human_name" : "Parameter sets",
+              "name" : "parameter_sets",
+              "optional" : true,
+              "pass_style" : "file",
+              "type" : "ParameterSets"
+            }
+          },
+          "outputs" : {
+            "output_variables" : {
+              "description" : "Custom outputs variables",
+              "human_name" : "Output Variables",
+              "name" : "output_variables",
+              "type" : "DynamicParamSet"
+            }
+          }
+        },
+        "pipeline_data" : {
+          "cache_mode" : "on_failure",
+          "config" : {
+            "link" : {
+              "component_id_ref" : "run-datastage-job",
+              "component_version_id_ref" : "run-datastage-job-1"
+            }
+          },
+          "inputs" : [ {
+            "allowed_scopes" : [ "space", "project" ],
+            "description" : "Required. CPD path of the DataStage job to be run.",
+            "human_name" : "DataStage Job",
+            "name" : "job",
+            "related_asset_type" : "data_intg_flow",
+            "source_of_scope" : true,
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "job",
+                "job_asset_type" : "data_intg_flow",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            },
+            "ui_data" : {
+              "assetInputType" : "exact",
+              "inputType" : "SELECT_RESOURCE",
+              "inputTypes" : {
+                "selected-node-values-job-input" : "SELECT_RESOURCE"
+              },
+              "scopeType" : "project"
+            },
+            "value" : ""
+          }, {
+            "description" : "Optional. An action taken when the run has failed.",
+            "human_name" : "Error Policy",
+            "name" : "error_policy",
+            "type" : "ErrorPolicy",
+            "ui_data" : {
+              "inputType" : "SELECT_RESOURCE"
+            },
+            "value" : "continue_on_error"
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter $APT_CONFIG_FILE",
+            "name" : "$APT_CONFIG_FILE",
+            "type" : {
+              "CPDPath" : {
+                "path_type" : "file"
+              }
+            },
+            "value_from" : {
+              "expression" : "params.APT_ONE_NODE"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter $APT_STRING_PADCHAR",
+            "name" : "$APT_STRING_PADCHAR",
+            "type" : "String",
+            "value_from" : {
+              "expression" : "params[\"$APT_STRING_PADCHAR\"]"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter TMP_DIR",
+            "name" : "TMP_DIR",
+            "type" : {
+              "CPDPath" : {
+                "path_type" : "file"
+              }
+            },
+            "value_from" : {
+              "expression" : "params.TMP_DIR"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter DS_DIR",
+            "name" : "DS_DIR",
+            "type" : {
+              "CPDPath" : {
+                "path_type" : "file"
+              }
+            },
+            "value_from" : {
+              "expression" : "params.DS_DIR"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter FILE_LST",
+            "name" : "FILE_LST",
+            "type" : "String",
+            "value_from" : {
+              "expression" : "params.FILE_LST"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter USER",
+            "name" : "USER",
+            "type" : "String",
+            "value_from" : {
+              "expression" : "params.USER"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter PWD",
+            "name" : "PWD",
+            "type" : "Encrypted",
+            "value_from" : {
+              "expression" : "params[\"$OraclePW\"]"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter RMT_SERV",
+            "name" : "RMT_SERV",
+            "type" : "String",
+            "value_from" : {
+              "expression" : "params.RMT_SERV"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter TBL_ORA",
+            "name" : "TBL_ORA",
+            "type" : "String",
+            "value_from" : {
+              "expression" : "params.ORA_TBL_JOB_SCHED"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter DEBUG",
+            "name" : "DEBUG",
+            "type" : "Integer",
+            "value_from" : {
+              "expression" : "params.DEBUG"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter FIDINIT",
+            "name" : "FIDINIT",
+            "type" : "Integer",
+            "value_from" : {
+              "expression" : "params.FIDINIT"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter SORT_MEM",
+            "name" : "SORT_MEM",
+            "type" : "Integer",
+            "value_from" : {
+              "expression" : "params.SORTMEM"
+            }
+          } ],
+          "name" : "job1",
+          "outputs" : [ {
+            "description" : "The status of the job. One of: \"Completed\", \"CompletedWithWarnings\", \"CompletedWithErrors\", \"Failed\", \"Canceled\"",
+            "human_name" : "Execution Status",
+            "name" : "status",
+            "type" : "ExecutionStatus"
+          }, {
+            "description" : "Message associated with the status.",
+            "human_name" : "Status Message",
+            "name" : "status_message",
+            "type" : "String"
+          }, {
+            "human_name" : "Job",
+            "name" : "job",
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "job",
+                "job_asset_type" : "data_intg_flow",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            }
+          }, {
+            "human_name" : "Job Run",
+            "name" : "job_run",
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "job_run",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            }
+          }, {
+            "human_name" : "Job Name",
+            "name" : "job_name",
+            "type" : "String"
+          }, {
+            "human_name" : "Job Name with Invocation id",
+            "name" : "resolved_job_name",
+            "type" : "String"
+          }, {
+            "human_name" : "User Status",
+            "name" : "user_status",
+            "type" : "String"
+          }, {
+            "annotations" : {
+              "human_name" : "Job Run Name"
+            },
+            "name" : "job_run_name",
+            "type" : "String"
+          } ]
+        },
+        "ui_data" : {
+          "decorations" : [ {
+            "class_name" : "oflow-node-type-label",
+            "id" : "job1_type_label",
+            "label" : "Run DataStage job",
+            "position" : "middleCenter",
+            "x_pos" : -63,
+            "y_pos" : 13
+          } ],
+          "image" : "/pipelines/graphics/orchestration-flows/nodes/run/datastage_flow.svg",
+          "label" : "JOB_SCHEDULE_Insert",
+          "x_pos" : 96,
+          "y_pos" : 432
+        },
+        "validators" : { }
+      },
+      "id" : "job1",
+      "inputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "cardinality" : {
+              "max" : -1,
+              "min" : 0
+            },
+            "class_name" : "oflow-node-port",
+            "label" : "Input Port"
+          }
+        },
+        "id" : "inPort",
+        "links" : [ {
+          "app_data" : {
+            "pipeline_data" : {
+              "condition" : {
+                "expression" : "ds.GetReturnValue(tasks.exec1) == 0"
+              },
+              "condition_name" : "LN_JOB_SCHEDULE",
+              "condition_type" : "advanced"
+            },
+            "ui_data" : {
+              "decorations" : [ {
+                "class_name" : "condition-decorator-simple",
+                "height" : 40,
+                "hotspot" : true,
+                "id" : "assocDecSimplePill",
+                "image" : "/pipelines/graphics/orchestration-flows/link/edit-condition-pill.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 150,
+                "x_pos" : -75,
+                "y_pos" : -20
+              }, {
+                "class_name" : "condition-decorator-simple-text",
+                "height" : 16,
+                "id" : "assocDecSimpleText",
+                "label" : "LN_JOB_SCHEDULE",
+                "position" : "middle",
+                "width" : 84,
+                "x_pos" : -59,
+                "y_pos" : -8
+              } ],
+              "style" : {
+                "line" : {
+                  "default" : "stroke: var(--link-col-complex)",
+                  "hover" : "stroke: var(--link-col-complex); stroke-width: 3"
+                }
+              }
+            }
+          },
+          "id" : "c2d428ef-7dbf-4d9f-a169-0b6de46add43",
+          "node_id_ref" : "exec1",
+          "port_id_ref" : "outPort"
+        } ]
+      } ],
+      "op" : "run_container",
+      "outputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "label" : ""
+          }
+        },
+        "id" : "outPort"
+      } ],
+      "type" : "execution_node"
+    }, {
+      "app_data" : {
+        "componentGroup" : "wait",
+        "componentLabelRef" : "Sequencer Any",
+        "groups" : {
+          "inputs" : { },
+          "outputs" : { }
+        },
+        "pipeline_data" : {
+          "config" : {
+            "link" : {
+              "component_id_ref" : "wait-sequencer-any",
+              "component_version_id_ref" : "wait-sequencer-any-1"
+            }
+          },
+          "inputs" : [ ],
+          "name" : "seq1",
+          "outputs" : [ ]
+        },
+        "ui_data" : {
+          "decorations" : [ {
+            "class_name" : "oflow-node-type-label",
+            "id" : "seq1_type_label",
+            "label" : "Sequencer Any",
+            "position" : "middleCenter",
+            "x_pos" : -63,
+            "y_pos" : 13
+          } ],
+          "image" : "/pipelines/graphics/orchestration-flows/nodes/wait/wait_for_any_result.svg",
+          "label" : "Sequencer",
+          "x_pos" : 168,
+          "y_pos" : 720
+        },
+        "validators" : { }
+      },
+      "id" : "seq1",
+      "inputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "label" : ""
+          }
+        },
+        "id" : "inPort",
+        "links" : [ {
+          "app_data" : {
+            "pipeline_data" : {
+              "condition" : {
+                "operands" : [ {
+                  "value_from" : {
+                    "node_output" : {
+                      "node_id_ref" : "job1",
+                      "param_name" : "status"
+                    }
+                  }
+                }, {
+                  "value" : "Failed"
+                } ],
+                "operator" : "=="
+              },
+              "condition_name" : "LN_Aborted",
+              "condition_type" : "node_status"
+            },
+            "ui_data" : {
+              "decorations" : [ {
+                "class_name" : "condition-decorator-simple",
+                "height" : 40,
+                "hotspot" : true,
+                "id" : "assocDecSimplePill",
+                "image" : "/pipelines/graphics/orchestration-flows/link/edit-condition-pill.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 150,
+                "x_pos" : -75,
+                "y_pos" : -20
+              }, {
+                "class_name" : "condition-decorator-simple-text",
+                "height" : 16,
+                "id" : "assocDecSimpleText",
+                "label" : "LN_Aborted",
+                "position" : "middle",
+                "width" : 84,
+                "x_pos" : -59,
+                "y_pos" : -8
+              } ],
+              "style" : {
+                "line" : {
+                  "default" : "stroke: var(--link-col-failed)",
+                  "hover" : "stroke: var(--link-col-failed); stroke-width: 3"
+                }
+              }
+            }
+          },
+          "id" : "9bd1131c-68dc-4c6d-a496-1d155d30d88c",
+          "node_id_ref" : "job1",
+          "port_id_ref" : "outPort"
+        }, {
+          "app_data" : {
+            "pipeline_data" : {
+              "condition" : {
+                "operands" : [ {
+                  "value_from" : {
+                    "node_output" : {
+                      "node_id_ref" : "loop1",
+                      "param_name" : "control_break_node_id"
+                    }
+                  }
+                }, {
+                  "value" : "term_loop1"
+                } ],
+                "operator" : "=="
+              },
+              "condition_name" : "is_loop_completed",
+              "condition_type" : "simple"
+            },
+            "ui_data" : {
+              "decorations" : [ {
+                "class_name" : "condition-decorator-simple",
+                "height" : 40,
+                "hotspot" : true,
+                "id" : "assocDecSimplePill",
+                "image" : "/pipelines/graphics/orchestration-flows/link/edit-condition-pill.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 150,
+                "x_pos" : -75,
+                "y_pos" : -20
+              }, {
+                "class_name" : "condition-decorator-simple-text",
+                "height" : 16,
+                "id" : "assocDecSimpleText",
+                "label" : "is_loop_completed",
+                "position" : "middle",
+                "width" : 84,
+                "x_pos" : -59,
+                "y_pos" : -8
+              } ]
+            }
+          },
+          "id" : "3a8c34fa-40ad-41f9-89b3-a9847220da70",
+          "node_id_ref" : "loop1",
+          "port_id_ref" : "outPort"
+        } ]
+      } ],
+      "op" : "run_container",
+      "outputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "label" : ""
+          }
+        },
+        "id" : "outPort"
+      } ],
+      "type" : "execution_node"
+    }, {
+      "app_data" : {
+        "componentGroup" : "run",
+        "componentLabelRef" : "Run bash script",
+        "emptyImage" : "/pipelines/graphics/orchestration-flows/nodes/run/empty.svg",
+        "groups" : {
+          "inputs" : {
+            "env_variables" : {
+              "description" : "Optional. Additional environment variables passed to the shell in form of multiline string (e.g. `VAR1=value1\\nVAR2=value2`).",
+              "human_name" : "Environment Variables",
+              "name" : "env_variables",
+              "optional" : true,
+              "pass_style" : "file",
+              "type" : "DynamicParamSet"
+            }
+          },
+          "outputs" : {
+            "output_variables" : {
+              "description" : "Custom outputs variables",
+              "human_name" : "Output Variables",
+              "name" : "output_variables",
+              "pass_style" : "file",
+              "type" : "DynamicParamSet"
+            }
+          }
+        },
+        "pipeline_data" : {
+          "cache_mode" : "never",
+          "config" : {
+            "link" : {
+              "component_id_ref" : "run-bash-script",
+              "component_version_id_ref" : "run-bash-script-1"
+            }
+          },
+          "inputs" : [ {
+            "allowed_scopes" : [ "project" ],
+            "description" : "Run selected bash script asset",
+            "human_name" : "Bash Script Asset",
+            "name" : "script_asset",
+            "optional" : true,
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "script",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            }
+          }, {
+            "description" : "Body of the script.",
+            "human_name" : "Inline script code",
+            "name" : "script",
+            "pass_style" : "file",
+            "type" : "String",
+            "ui_data" : { },
+            "value" : "echo \"date\" > $command_name_PATH\ndate \"+Run IIP move FID ${FIDINIT}: %d.%m.%y %H:%M:%S\" >> ${LOG_DIR}/IIP_MV_LOG_FILE.log"
+          }, {
+            "default" : "standalone",
+            "description" : "The runtime type for a bash script execution",
+            "human_name" : "Runtime type(optional)",
+            "name" : "runtime_type",
+            "type" : "String",
+            "ui_data" : {
+              "inputType" : "SELECT_RESOURCE",
+              "inputTypes" : {
+                "selected-node-values-runtime_type-input" : "SELECT_RESOURCE"
+              }
+            },
+            "value" : "shared"
+          }, {
+            "description" : "Optional. An action taken when the run has failed.",
+            "human_name" : "Error Policy",
+            "name" : "error_policy",
+            "type" : "ErrorPolicy",
+            "ui_data" : {
+              "inputType" : "SELECT_RESOURCE"
+            },
+            "value" : "fail_on_error"
+          }, {
+            "group" : "env_variables",
+            "human_name" : "Environment variable for #FIDINIT#",
+            "name" : "FIDINIT",
+            "value_from" : {
+              "pipeline_input" : {
+                "param_name" : "FIDINIT"
+              }
+            }
+          }, {
+            "group" : "env_variables",
+            "human_name" : "Environment variable for #LOG_DIR#",
+            "name" : "LOG_DIR",
+            "value_from" : {
+              "pipeline_input" : {
+                "param_name" : "LOG_DIR"
+              }
+            }
+          }, {
+            "current_scope" : true,
+            "default" : "b128f957-581d-46d0-95b6-8af5cd5be580",
+            "name" : "hardware_specification",
+            "related_asset_type" : "orchestration_flow",
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "hardware_specification",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            },
+            "value" : "abfde4f8-88a7-57c7-bee4-e047a481f7cb"
+          } ],
+          "name" : "exec2",
+          "outputs" : [ {
+            "description" : "Return value from the script",
+            "human_name" : "Return Value",
+            "name" : "return_value",
+            "type" : "Integer"
+          }, {
+            "description" : "Command name of the inline script",
+            "group" : "output_variables",
+            "human_name" : "Command Name",
+            "name" : "command_name",
+            "size_estimation" : 10,
+            "type" : "String"
+          }, {
+            "description" : "Standard Output from the script",
+            "human_name" : "Standard Output",
+            "name" : "standard_output",
+            "pass_style" : "file",
+            "size_estimation" : 250,
+            "type" : "String"
+          }, {
+            "name" : "standard_error",
+            "pass_style" : "file",
+            "type" : "String"
+          }, {
+            "description" : "The status of the job. One of: \"Completed\", \"CompletedWithWarnings\", \"CompletedWithErrors\", \"Failed\", \"Canceled\"",
+            "human_name" : "Execution Status",
+            "name" : "status",
+            "type" : "ExecutionStatus"
+          }, {
+            "description" : "Message associated with the status.",
+            "human_name" : "Status Message",
+            "name" : "status_message",
+            "type" : "String"
+          } ]
+        },
+        "ui_data" : {
+          "decorations" : [ {
+            "class_name" : "oflow-node-type-label",
+            "id" : "exec2_type_label",
+            "label" : "Run Bash script",
+            "position" : "middleCenter",
+            "x_pos" : -63,
+            "y_pos" : 13
+          } ],
+          "image" : "/pipelines/graphics/orchestration-flows/nodes/run/bash_script.svg",
+          "label" : "WRITE_DATE",
+          "x_pos" : 240,
+          "y_pos" : 288
+        },
+        "validators" : { }
+      },
+      "id" : "exec2",
+      "inputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "label" : ""
+          }
+        },
+        "id" : "inPort",
+        "links" : [ {
+          "app_data" : {
+            "pipeline_data" : {
+              "condition" : {
+                "expression" : "ds.GetCommandOutput(tasks.exec3) != \"\""
+              },
+              "condition_name" : "LN_ANY_ERROR",
+              "condition_type" : "advanced"
+            },
+            "ui_data" : {
+              "decorations" : [ {
+                "class_name" : "condition-decorator-simple",
+                "height" : 40,
+                "hotspot" : true,
+                "id" : "assocDecSimplePill",
+                "image" : "/pipelines/graphics/orchestration-flows/link/edit-condition-pill.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 150,
+                "x_pos" : -75,
+                "y_pos" : -20
+              }, {
+                "class_name" : "condition-decorator-simple-text",
+                "height" : 16,
+                "id" : "assocDecSimpleText",
+                "label" : "LN_ANY_ERROR",
+                "position" : "middle",
+                "width" : 84,
+                "x_pos" : -59,
+                "y_pos" : -8
+              } ],
+              "style" : {
+                "line" : {
+                  "default" : "stroke: var(--link-col-complex)",
+                  "hover" : "stroke: var(--link-col-complex); stroke-width: 3"
+                }
+              }
+            }
+          },
+          "id" : "86f3b806-a2fe-4562-bcb3-39f15c0f5b1b",
+          "node_id_ref" : "exec3",
+          "port_id_ref" : "outPort"
+        } ]
+      } ],
+      "op" : "run_container",
+      "outputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "label" : ""
+          }
+        },
+        "id" : "outPort"
+      } ],
+      "type" : "execution_node"
+    }, {
+      "app_data" : {
+        "componentGroup" : "run",
+        "componentLabelRef" : "Run bash script",
+        "emptyImage" : "/pipelines/graphics/orchestration-flows/nodes/run/empty.svg",
+        "groups" : {
+          "inputs" : {
+            "env_variables" : {
+              "description" : "Optional. Additional environment variables passed to the shell in form of multiline string (e.g. `VAR1=value1\\nVAR2=value2`).",
+              "human_name" : "Environment Variables",
+              "name" : "env_variables",
+              "optional" : true,
+              "pass_style" : "file",
+              "type" : "DynamicParamSet"
+            }
+          },
+          "outputs" : {
+            "output_variables" : {
+              "description" : "Custom outputs variables",
+              "human_name" : "Output Variables",
+              "name" : "output_variables",
+              "pass_style" : "file",
+              "type" : "DynamicParamSet"
+            }
+          }
+        },
+        "pipeline_data" : {
+          "cache_mode" : "never",
+          "config" : {
+            "link" : {
+              "component_id_ref" : "run-bash-script",
+              "component_version_id_ref" : "run-bash-script-1"
+            }
+          },
+          "inputs" : [ {
+            "allowed_scopes" : [ "project" ],
+            "description" : "Run selected bash script asset",
+            "human_name" : "Bash Script Asset",
+            "name" : "script_asset",
+            "optional" : true,
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "script",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            }
+          }, {
+            "description" : "Body of the script.",
+            "human_name" : "Inline script code",
+            "name" : "script",
+            "pass_style" : "file",
+            "type" : "String",
+            "ui_data" : { },
+            "value" : "echo \"cat\" > $command_name_PATH\ncat ${TMP_DIR}/${FIDINIT}_${FILE_LST}_mov.txt | awk '{ printf \"%s\\n\",$1 }' | awk ' { NR==1?s=$1:s=s \",\" $1} END { printf \"%s\",s }'"
+          }, {
+            "default" : "standalone",
+            "description" : "The runtime type for a bash script execution",
+            "human_name" : "Runtime type(optional)",
+            "name" : "runtime_type",
+            "type" : "String",
+            "ui_data" : {
+              "inputType" : "SELECT_RESOURCE",
+              "inputTypes" : {
+                "selected-node-values-runtime_type-input" : "SELECT_RESOURCE"
+              }
+            },
+            "value" : "shared"
+          }, {
+            "description" : "Optional. An action taken when the run has failed.",
+            "human_name" : "Error Policy",
+            "name" : "error_policy",
+            "type" : "ErrorPolicy",
+            "ui_data" : {
+              "inputType" : "SELECT_RESOURCE"
+            },
+            "value" : "fail_on_error"
+          }, {
+            "group" : "env_variables",
+            "human_name" : "Environment variable for #TMP_DIR#",
+            "name" : "TMP_DIR",
+            "value_from" : {
+              "pipeline_input" : {
+                "param_name" : "TMP_DIR"
+              }
+            }
+          }, {
+            "group" : "env_variables",
+            "human_name" : "Environment variable for #FIDINIT#",
+            "name" : "FIDINIT",
+            "value_from" : {
+              "pipeline_input" : {
+                "param_name" : "FIDINIT"
+              }
+            }
+          }, {
+            "group" : "env_variables",
+            "human_name" : "Environment variable for #FILE_LST#",
+            "name" : "FILE_LST",
+            "value_from" : {
+              "pipeline_input" : {
+                "param_name" : "FILE_LST"
+              }
+            }
+          }, {
+            "current_scope" : true,
+            "default" : "b128f957-581d-46d0-95b6-8af5cd5be580",
+            "name" : "hardware_specification",
+            "related_asset_type" : "orchestration_flow",
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "hardware_specification",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            },
+            "value" : "abfde4f8-88a7-57c7-bee4-e047a481f7cb"
+          } ],
+          "name" : "exec3",
+          "outputs" : [ {
+            "description" : "Return value from the script",
+            "human_name" : "Return Value",
+            "name" : "return_value",
+            "type" : "Integer"
+          }, {
+            "description" : "Command name of the inline script",
+            "group" : "output_variables",
+            "human_name" : "Command Name",
+            "name" : "command_name",
+            "size_estimation" : 10,
+            "type" : "String"
+          }, {
+            "description" : "Standard Output from the script",
+            "human_name" : "Standard Output",
+            "name" : "standard_output",
+            "pass_style" : "file",
+            "size_estimation" : 250,
+            "type" : "String"
+          }, {
+            "name" : "standard_error",
+            "pass_style" : "file",
+            "type" : "String"
+          }, {
+            "description" : "The status of the job. One of: \"Completed\", \"CompletedWithWarnings\", \"CompletedWithErrors\", \"Failed\", \"Canceled\"",
+            "human_name" : "Execution Status",
+            "name" : "status",
+            "type" : "ExecutionStatus"
+          }, {
+            "description" : "Message associated with the status.",
+            "human_name" : "Status Message",
+            "name" : "status_message",
+            "type" : "String"
+          } ]
+        },
+        "ui_data" : {
+          "decorations" : [ {
+            "class_name" : "oflow-node-type-label",
+            "id" : "exec3_type_label",
+            "label" : "Run Bash script",
+            "position" : "middleCenter",
+            "x_pos" : -63,
+            "y_pos" : 13
+          } ],
+          "image" : "/pipelines/graphics/orchestration-flows/nodes/run/bash_script.svg",
+          "label" : "EC_GET_TABLES",
+          "x_pos" : 240,
+          "y_pos" : 432
+        },
+        "validators" : { }
+      },
+      "id" : "exec3",
+      "inputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "label" : ""
+          }
+        },
+        "id" : "inPort",
+        "links" : [ {
+          "app_data" : {
+            "pipeline_data" : {
+              "condition" : {
+                "expression" : "(ds.GetJobStatus(tasks.job1) == 1) || (ds.GetJobStatus(tasks.job1) == 2)"
+              },
+              "condition_name" : "LN_GET_TABLES",
+              "condition_type" : "advanced"
+            },
+            "ui_data" : {
+              "decorations" : [ {
+                "class_name" : "condition-decorator-simple",
+                "height" : 40,
+                "hotspot" : true,
+                "id" : "assocDecSimplePill",
+                "image" : "/pipelines/graphics/orchestration-flows/link/edit-condition-pill.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 150,
+                "x_pos" : -75,
+                "y_pos" : -20
+              }, {
+                "class_name" : "condition-decorator-simple-text",
+                "height" : 16,
+                "id" : "assocDecSimpleText",
+                "label" : "LN_GET_TABLES",
+                "position" : "middle",
+                "width" : 84,
+                "x_pos" : -59,
+                "y_pos" : -8
+              } ],
+              "style" : {
+                "line" : {
+                  "default" : "stroke: var(--link-col-complex)",
+                  "hover" : "stroke: var(--link-col-complex); stroke-width: 3"
+                }
+              }
+            }
+          },
+          "id" : "4f931a5c-1745-4af0-9a64-6851a9307e1e",
+          "node_id_ref" : "job1",
+          "port_id_ref" : "outPort"
+        } ]
+      } ],
+      "op" : "run_container",
+      "outputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "label" : ""
+          }
+        },
+        "id" : "outPort"
+      } ],
+      "type" : "execution_node"
+    }, {
+      "app_data" : {
+        "componentGroup" : "run",
+        "componentLabelRef" : "Run bash script",
+        "emptyImage" : "/pipelines/graphics/orchestration-flows/nodes/run/empty.svg",
+        "groups" : {
+          "inputs" : {
+            "env_variables" : {
+              "description" : "Optional. Additional environment variables passed to the shell in form of multiline string (e.g. `VAR1=value1\\nVAR2=value2`).",
+              "human_name" : "Environment Variables",
+              "name" : "env_variables",
+              "optional" : true,
+              "pass_style" : "file",
+              "type" : "DynamicParamSet"
+            }
+          },
+          "outputs" : {
+            "output_variables" : {
+              "description" : "Custom outputs variables",
+              "human_name" : "Output Variables",
+              "name" : "output_variables",
+              "pass_style" : "file",
+              "type" : "DynamicParamSet"
+            }
+          }
+        },
+        "pipeline_data" : {
+          "cache_mode" : "never",
+          "config" : {
+            "link" : {
+              "component_id_ref" : "run-bash-script",
+              "component_version_id_ref" : "run-bash-script-1"
+            }
+          },
+          "inputs" : [ {
+            "allowed_scopes" : [ "project" ],
+            "description" : "Run selected bash script asset",
+            "human_name" : "Bash Script Asset",
+            "name" : "script_asset",
+            "optional" : true,
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "script",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            }
+          }, {
+            "description" : "Body of the script.",
+            "human_name" : "Inline script code",
+            "name" : "script",
+            "pass_style" : "file",
+            "type" : "String",
+            "ui_data" : { },
+            "value" : "echo \"rm\" > $command_name_PATH\nrm ${TMP_DIR}/${FIDINIT}_${FILE_LST}_mov.txt ${TMP_DIR}/${FIDINIT}_${FILE_LST}.lst"
+          }, {
+            "default" : "standalone",
+            "description" : "The runtime type for a bash script execution",
+            "human_name" : "Runtime type(optional)",
+            "name" : "runtime_type",
+            "type" : "String",
+            "ui_data" : {
+              "inputType" : "SELECT_RESOURCE",
+              "inputTypes" : {
+                "selected-node-values-runtime_type-input" : "SELECT_RESOURCE"
+              }
+            },
+            "value" : "shared"
+          }, {
+            "description" : "Optional. An action taken when the run has failed.",
+            "human_name" : "Error Policy",
+            "name" : "error_policy",
+            "type" : "ErrorPolicy",
+            "ui_data" : {
+              "inputType" : "SELECT_RESOURCE"
+            },
+            "value" : "fail_on_error"
+          }, {
+            "group" : "env_variables",
+            "human_name" : "Environment variable for #TMP_DIR#",
+            "name" : "TMP_DIR",
+            "value_from" : {
+              "pipeline_input" : {
+                "param_name" : "TMP_DIR"
+              }
+            }
+          }, {
+            "group" : "env_variables",
+            "human_name" : "Environment variable for #FIDINIT#",
+            "name" : "FIDINIT",
+            "value_from" : {
+              "pipeline_input" : {
+                "param_name" : "FIDINIT"
+              }
+            }
+          }, {
+            "group" : "env_variables",
+            "human_name" : "Environment variable for #FILE_LST#",
+            "name" : "FILE_LST",
+            "value_from" : {
+              "pipeline_input" : {
+                "param_name" : "FILE_LST"
+              }
+            }
+          }, {
+            "current_scope" : true,
+            "default" : "b128f957-581d-46d0-95b6-8af5cd5be580",
+            "name" : "hardware_specification",
+            "related_asset_type" : "orchestration_flow",
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "hardware_specification",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            },
+            "value" : "abfde4f8-88a7-57c7-bee4-e047a481f7cb"
+          } ],
+          "name" : "exec4",
+          "outputs" : [ {
+            "description" : "Return value from the script",
+            "human_name" : "Return Value",
+            "name" : "return_value",
+            "type" : "Integer"
+          }, {
+            "description" : "Command name of the inline script",
+            "group" : "output_variables",
+            "human_name" : "Command Name",
+            "name" : "command_name",
+            "size_estimation" : 10,
+            "type" : "String"
+          }, {
+            "description" : "Standard Output from the script",
+            "human_name" : "Standard Output",
+            "name" : "standard_output",
+            "pass_style" : "file",
+            "size_estimation" : 250,
+            "type" : "String"
+          }, {
+            "name" : "standard_error",
+            "pass_style" : "file",
+            "type" : "String"
+          }, {
+            "description" : "The status of the job. One of: \"Completed\", \"CompletedWithWarnings\", \"CompletedWithErrors\", \"Failed\", \"Canceled\"",
+            "human_name" : "Execution Status",
+            "name" : "status",
+            "type" : "ExecutionStatus"
+          }, {
+            "description" : "Message associated with the status.",
+            "human_name" : "Status Message",
+            "name" : "status_message",
+            "type" : "String"
+          } ]
+        },
+        "ui_data" : {
+          "decorations" : [ {
+            "class_name" : "oflow-node-type-label",
+            "id" : "exec4_type_label",
+            "label" : "Run Bash script",
+            "position" : "middleCenter",
+            "x_pos" : -63,
+            "y_pos" : 13
+          } ],
+          "image" : "/pipelines/graphics/orchestration-flows/nodes/run/bash_script.svg",
+          "label" : "EC_RM_FileLists",
+          "x_pos" : 768,
+          "y_pos" : 288
+        },
+        "validators" : { }
+      },
+      "id" : "exec4",
+      "inputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "label" : ""
+          }
+        },
+        "id" : "inPort",
+        "links" : [ {
+          "app_data" : {
+            "pipeline_data" : {
+              "condition" : {
+                "operands" : [ {
+                  "value_from" : {
+                    "node_output" : {
+                      "node_id_ref" : "loop1",
+                      "param_name" : "control_break_node_id"
+                    }
+                  }
+                }, {
+                  "value" : ""
+                } ],
+                "operator" : "=="
+              },
+              "condition_name" : "loop_completed",
+              "condition_type" : "simple"
+            },
+            "ui_data" : {
+              "decorations" : [ {
+                "class_name" : "condition-decorator-add",
+                "height" : 16,
+                "hotspot" : true,
+                "id" : "assocDecAdd",
+                "image" : "/pipelines/graphics/orchestration-flows/add-condition.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 16,
+                "x_pos" : -8,
+                "y_pos" : -8
+              }, {
+                "class_name" : "condition-decorator-add-hover",
+                "height" : 40,
+                "hotspot" : true,
+                "id" : "assocDecAddPill",
+                "image" : "/pipelines/graphics/orchestration-flows/link/add-condition-pill.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 150,
+                "x_pos" : -75,
+                "y_pos" : -20
+              }, {
+                "class_name" : "condition-decorator-add-hover",
+                "height" : 16,
+                "id" : "assocDecAddText",
+                "label" : "Add condition",
+                "position" : "middle",
+                "width" : 84,
+                "x_pos" : -59,
+                "y_pos" : -12
+              } ],
+              "style" : {
+                "line" : {
+                  "default" : "stroke: var(--link-col-complex)",
+                  "hover" : "stroke: var(--link-col-complex); stroke-width: 3"
+                }
+              }
+            }
+          },
+          "id" : "b40bfc62-7fff-4ed1-a14c-752d6e18f773",
+          "node_id_ref" : "loop1",
+          "port_id_ref" : "outPort"
+        } ]
+      } ],
+      "op" : "run_container",
+      "outputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "cardinality" : {
+              "max" : -1,
+              "min" : 0
+            },
+            "class_name" : "oflow-node-port",
+            "label" : "Output Port"
+          }
+        },
+        "id" : "outPort"
+      } ],
+      "type" : "execution_node"
+    }, {
+      "app_data" : {
+        "componentGroup" : "wait",
+        "componentLabelRef" : "Nested condition",
+        "groups" : {
+          "inputs" : { },
+          "outputs" : { }
+        },
+        "pipeline_data" : {
+          "config" : {
+            "link" : {
+              "component_id_ref" : "wait-sequencer-all",
+              "component_version_id_ref" : "wait-sequencer-all-1"
+            }
+          },
+          "inputs" : [ ],
+          "name" : "cond1",
+          "outputs" : [ ]
+        },
+        "ui_data" : {
+          "decorations" : [ {
+            "class_name" : "oflow-node-type-label",
+            "id" : "cond1_type_label",
+            "label" : "Nested condition",
+            "position" : "middleCenter",
+            "x_pos" : -63,
+            "y_pos" : 13
+          } ],
+          "image" : "/pipelines/graphics/orchestration-flows/nodes/wait/wait_for_all_result.svg",
+          "label" : "EMAIL_FLG",
+          "x_pos" : 384,
+          "y_pos" : 720
+        },
+        "validators" : { }
+      },
+      "id" : "cond1",
+      "inputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "label" : ""
+          }
+        },
+        "id" : "inPort",
+        "links" : [ {
+          "app_data" : {
+            "ui_data" : {
+              "decorations" : [ {
+                "class_name" : "condition-decorator-add",
+                "height" : 16,
+                "hotspot" : true,
+                "id" : "assocDecAdd",
+                "image" : "/pipelines/graphics/orchestration-flows/add-condition.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 16,
+                "x_pos" : -8,
+                "y_pos" : -8
+              }, {
+                "class_name" : "condition-decorator-add-hover",
+                "height" : 40,
+                "hotspot" : true,
+                "id" : "assocDecAddPill",
+                "image" : "/pipelines/graphics/orchestration-flows/link/add-condition-pill.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 150,
+                "x_pos" : -75,
+                "y_pos" : -20
+              }, {
+                "class_name" : "condition-decorator-add-hover",
+                "height" : 16,
+                "id" : "assocDecAddText",
+                "label" : "Add condition",
+                "position" : "middle",
+                "width" : 84,
+                "x_pos" : -59,
+                "y_pos" : -12
+              } ]
+            }
+          },
+          "id" : "1f966293-6c8a-44e1-a0e6-3aca7ac3dbf3",
+          "node_id_ref" : "seq1",
+          "port_id_ref" : "outPort"
+        } ]
+      } ],
+      "op" : "run_container",
+      "outputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "label" : ""
+          }
+        },
+        "id" : "outPort"
+      } ],
+      "type" : "execution_node"
+    }, {
+      "app_data" : {
+        "componentGroup" : "send",
+        "componentLabelRef" : "Send email",
+        "emptyImage" : "/pipelines/graphics/orchestration-flows/nodes/default/empty.svg",
+        "groups" : {
+          "inputs" : {
+            "template_variables" : {
+              "description" : "Additional variables used to render the email body template.",
+              "descriptive_name" : "Body Template Variables",
+              "human_name" : "Body Template Variables",
+              "name" : "template_variables",
+              "optional" : true,
+              "type" : "DynamicParamSet"
+            }
+          },
+          "outputs" : { }
+        },
+        "pipeline_data" : {
+          "cache_mode" : "on_failure",
+          "config" : {
+            "link" : {
+              "component_id_ref" : "send-email-datastage",
+              "component_version_id_ref" : "send-email-datastage-1"
+            }
+          },
+          "inputs" : [ {
+            "descriptive_name" : "Recipients email addresses",
+            "name" : "recipients_addr",
+            "type" : "Encrypted",
+            "ui_data" : {
+              "inputType" : "EXPRESSION",
+              "inputTypes" : {
+                "selected-node-values-recipients_addr-input" : "EXPRESSION"
+              },
+              "scopeType" : "project"
+            },
+            "value_from" : {
+              "expression" : "params.EMAIL_ADR"
+            }
+          }, {
+            "descriptive_name" : "Recipients email addresses file",
+            "extensions" : [ "txt" ],
+            "name" : "recipients_file",
+            "type" : {
+              "CPDPath" : {
+                "path_type" : "file"
+              }
+            }
+          }, {
+            "description" : "Subject of the email.",
+            "human_name" : "Email subject",
+            "name" : "subject",
+            "type" : "String",
+            "ui_data" : {
+              "inputType" : "EXPRESSION",
+              "inputTypes" : {
+                "selected-node-values-subject-input" : "EXPRESSION"
+              }
+            },
+            "validators" : {
+              "maxLength" : 998,
+              "minLength" : 1
+            },
+            "value_from" : {
+              "expression" : "\"IIP job failed: JS_IIP_InterimLoad \"+params.FIDINIT"
+            }
+          }, {
+            "descriptive_name" : "Predefined mail body template text",
+            "name" : "body",
+            "type" : "String",
+            "ui_data" : {
+              "inputType" : "RAW",
+              "inputTypes" : {
+                "selected-node-values-body-input" : "RAW"
+              },
+              "scopeType" : "project"
+            },
+            "value" : ""
+          }, {
+            "descriptive_name" : "Predefined mail body template text file",
+            "extensions" : [ "txt" ],
+            "name" : "body_template",
+            "type" : {
+              "CPDPath" : {
+                "path_type" : "file"
+              }
+            }
+          }, {
+            "name" : "attachments",
+            "type" : {
+              "List" : {
+                "items" : {
+                  "CPDPath" : {
+                    "path_type" : "file"
+                  }
+                }
+              }
+            },
+            "ui_data" : {
+              "inputTypes" : { },
+              "scopeType" : "project"
+            }
+          }, {
+            "default" : true,
+            "name" : "compress_attachements",
+            "type" : "Bool",
+            "ui_data" : {
+              "inputType" : "SELECT_RESOURCE",
+              "inputTypes" : {
+                "selected-node-values-compress_attachements-input" : "SELECT_RESOURCE"
+              }
+            },
+            "value" : true
+          }, {
+            "group" : "template_variables",
+            "name" : "project_name",
+            "type" : "String",
+            "value_from" : {
+              "expression" : "ctx.scope.name"
+            }
+          }, {
+            "group" : "template_variables",
+            "name" : "job_name",
+            "type" : "String",
+            "value_from" : {
+              "expression" : "ctx.pipeline.name"
+            }
+          }, {
+            "group" : "template_variables",
+            "name" : "start_timestamp",
+            "type" : "String",
+            "value_from" : {
+              "expression" : "ctx.job_run.started_at"
+            }
+          }, {
+            "group" : "template_variables",
+            "name" : "start_date",
+            "type" : "String",
+            "value_from" : {
+              "expression" : "timestamp(ctx.job_run.started_at).format(\"%Y-%m-%d\")"
+            }
+          }, {
+            "group" : "template_variables",
+            "name" : "start_time",
+            "type" : "String",
+            "value_from" : {
+              "expression" : "timestamp(ctx.job_run.started_at).format(\"%H:%M:%S\")"
+            }
+          }, {
+            "description" : "Optional. An action taken when the run has failed.",
+            "human_name" : "Error Policy",
+            "name" : "error_policy",
+            "type" : "ErrorPolicy",
+            "ui_data" : {
+              "inputType" : "SELECT_RESOURCE"
+            },
+            "value" : "fail_on_error"
+          }, {
+            "allowed_scopes" : [ "project" ],
+            "description" : "A predefined text file that consists of sender email address.",
+            "extensions" : [ "txt" ],
+            "human_name" : "Sender email address file",
+            "name" : "sender_file",
+            "optional" : true,
+            "type" : {
+              "CPDPath" : {
+                "path_type" : "file"
+              }
+            }
+          }, {
+            "description" : "Sender email address.",
+            "human_name" : "Sender email address",
+            "name" : "sender_addr",
+            "optional" : true,
+            "type" : "Encrypted",
+            "validators" : {
+              "maxLength" : 998,
+              "minLength" : 1
+            }
+          }, {
+            "default" : false,
+            "name" : "include_status",
+            "type" : "Bool"
+          } ],
+          "name" : "notify1",
+          "outputs" : [ {
+            "description" : "The status of the job. One of: \"Completed\", \"CompletedWithWarnings\", \"CompletedWithErrors\", \"Failed\", \"Canceled\"",
+            "human_name" : "Execution Status",
+            "name" : "status",
+            "type" : "ExecutionStatus"
+          }, {
+            "description" : "Message associated with the status.",
+            "human_name" : "Status Message",
+            "name" : "status_message",
+            "type" : "String"
+          } ]
+        },
+        "ui_data" : {
+          "decorations" : [ {
+            "class_name" : "oflow-node-type-label",
+            "id" : "notify1_type_label",
+            "label" : "Send email",
+            "position" : "middleCenter",
+            "x_pos" : -63,
+            "y_pos" : 13
+          } ],
+          "image" : "/pipelines/graphics/orchestration-flows/nodes/send/send_e-mail.svg",
+          "label" : "Notification_Activity",
+          "x_pos" : 600,
+          "y_pos" : 720
+        },
+        "validators" : {
+          "excluding_groups" : [ {
+            "human_name" : "Recipients input type",
+            "name" : "recipients_input_type",
+            "variants" : [ {
+              "human_name" : "Recipients addresses",
+              "members" : [ "recipients_addr" ],
+              "name" : "direct_input",
+              "required" : [ "recipients_addr" ],
+              "selected" : true
+            }, {
+              "human_name" : "File",
+              "members" : [ "recipients_file" ],
+              "name" : "text_file",
+              "required" : [ "recipients_file" ],
+              "selected" : false
+            } ]
+          }, {
+            "human_name" : "Body input type",
+            "name" : "body_input_type",
+            "variants" : [ {
+              "human_name" : "Body Text",
+              "members" : [ "body" ],
+              "name" : "body_txt",
+              "required" : [ "body" ],
+              "selected" : true
+            }, {
+              "human_name" : "Body template file",
+              "members" : [ "body_template" ],
+              "name" : "body_template_file",
+              "required" : [ "body_template" ],
+              "selected" : false
+            } ]
+          }, {
+            "human_name" : "Sender input type",
+            "name" : "sender_input_type",
+            "optional" : true,
+            "variants" : [ {
+              "human_name" : "Sender address",
+              "members" : [ "sender_addr" ],
+              "name" : "sender_direct_input",
+              "required" : [ ]
+            }, {
+              "human_name" : "Sender File",
+              "members" : [ "sender_file" ],
+              "name" : "sender_text_file",
+              "required" : [ ]
+            } ]
+          } ]
+        }
+      },
+      "id" : "notify1",
+      "inputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "label" : ""
+          }
+        },
+        "id" : "inPort",
+        "links" : [ {
+          "app_data" : {
+            "pipeline_data" : {
+              "condition" : {
+                "expression" : "params.EMAIL_FLG == 1"
+              },
+              "condition_name" : "DSLink269",
+              "condition_type" : "advanced"
+            },
+            "ui_data" : {
+              "decorations" : [ {
+                "class_name" : "condition-decorator-simple",
+                "height" : 40,
+                "hotspot" : true,
+                "id" : "assocDecSimplePill",
+                "image" : "/pipelines/graphics/orchestration-flows/link/edit-condition-pill.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 150,
+                "x_pos" : -75,
+                "y_pos" : -20
+              }, {
+                "class_name" : "condition-decorator-simple-text",
+                "height" : 16,
+                "id" : "assocDecSimpleText",
+                "label" : "DSLink269",
+                "position" : "middle",
+                "width" : 84,
+                "x_pos" : -59,
+                "y_pos" : -8
+              } ],
+              "style" : {
+                "line" : {
+                  "default" : "stroke: var(--link-col-complex)",
+                  "hover" : "stroke: var(--link-col-complex); stroke-width: 3"
+                }
+              }
+            }
+          },
+          "id" : "09a49685-f62d-46c6-a15e-3400cc5df217",
+          "node_id_ref" : "cond1",
+          "port_id_ref" : "outPort"
+        } ]
+      } ],
+      "op" : "run_container",
+      "outputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "cardinality" : {
+              "max" : -1,
+              "min" : 0
+            },
+            "class_name" : "oflow-node-port",
+            "label" : "Output Port"
+          }
+        },
+        "id" : "outPort"
+      } ],
+      "type" : "execution_node"
+    }, {
+      "app_data" : {
+        "componentGroup" : "run",
+        "componentLabelRef" : "node_IIPGetJobResult1",
+        "emptyImage" : "/pipelines/graphics/orchestration-flows/nodes/run/empty.svg",
+        "groups" : {
+          "inputs" : {
+            "env_variables" : {
+              "description" : "Optional. Additional environment variables passed to the shell in form of multiline string (e.g. `VAR1=value1\\nVAR2=value2`).",
+              "human_name" : "Environment Variables",
+              "name" : "env_variables",
+              "optional" : true,
+              "type" : "DynamicParamSet"
+            }
+          },
+          "outputs" : {
+            "output_variables" : {
+              "description" : "Custom outputs variables",
+              "human_name" : "Output Variables",
+              "name" : "output_variables",
+              "type" : "DynamicParamSet"
+            }
+          }
+        },
+        "pipeline_data" : {
+          "config" : {
+            "link" : {
+              "component_id_ref" : "run-bash-script",
+              "component_version_id_ref" : "run-bash-script-1"
+            }
+          },
+          "inputs" : [ {
+            "allowed_scopes" : [ "project" ],
+            "description" : "Run selected bash script asset",
+            "human_name" : "Bash Script Asset",
+            "name" : "script_asset",
+            "optional" : true,
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "script",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            }
+          }, {
+            "human_name" : "Dummy expression variables",
+            "name" : "script",
+            "type" : "String",
+            "ui_data" : {
+              "inputType" : "SELECT_RESOURCE",
+              "inputTypes" : {
+                "selected-node-values-script-input" : "SELECT_RESOURCE"
+              }
+            },
+            "value" : "\n#Provide script to evaluate the following expression and replace undefined(...) with the result.\n#IIPGetJobResult(\"\",\"\")\necho '1' > $var_IIPGetJobResult1_PATH\n\n\nexit 'Error This function is just a stub and needs to be replaced'\n"
+          }, {
+            "default" : "standalone",
+            "description" : "The runtime type for a bash script execution",
+            "human_name" : "Runtime type(optional)",
+            "name" : "runtime_type",
+            "type" : "String",
+            "ui_data" : {
+              "inputType" : "SELECT_RESOURCE",
+              "inputTypes" : {
+                "selected-node-values-runtime_type-input" : "SELECT_RESOURCE"
+              }
+            },
+            "value" : "shared"
+          }, {
+            "human_name" : "Fail on error",
+            "name" : "error_policy",
+            "type" : "ErrorPolicy",
+            "ui_data" : {
+              "inputType" : "SELECT_RESOURCE",
+              "inputTypes" : {
+                "selected-node-values-error_policy-input" : "SELECT_RESOURCE"
+              }
+            },
+            "value" : "fail_on_error"
+          }, {
+            "current_scope" : true,
+            "default" : "b128f957-581d-46d0-95b6-8af5cd5be580",
+            "name" : "hardware_specification",
+            "related_asset_type" : "orchestration_flow",
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "hardware_specification",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            },
+            "value" : "abfde4f8-88a7-57c7-bee4-e047a481f7cb"
+          } ],
+          "name" : "node_IIPGetJobResult1",
+          "outputs" : [ {
+            "description" : "Return value from the script",
+            "human_name" : "Return Value",
+            "name" : "return_value",
+            "type" : "Integer"
+          }, {
+            "description" : "Command name of the inline script",
+            "group" : "output_variables",
+            "human_name" : "Command Name",
+            "name" : "command_name",
+            "size_estimation" : 10,
+            "type" : "String"
+          }, {
+            "description" : "Output variable for an unsupported expression",
+            "group" : "output_variables",
+            "human_name" : "Output variable var_IIPGetJobResult1",
+            "name" : "var_IIPGetJobResult1",
+            "type" : "String"
+          }, {
+            "description" : "Standard Output from the script",
+            "human_name" : "Standard Output",
+            "name" : "standard_output",
+            "pass_style" : "file",
+            "size_estimation" : 250,
+            "type" : "String"
+          }, {
+            "name" : "standard_error",
+            "pass_style" : "file",
+            "type" : "String"
+          }, {
+            "description" : "The status of the job. One of: \"Completed\", \"CompletedWithWarnings\", \"CompletedWithErrors\", \"Failed\", \"Canceled\"",
+            "human_name" : "Execution Status",
+            "name" : "status",
+            "type" : "ExecutionStatus"
+          }, {
+            "description" : "Message associated with the status.",
+            "human_name" : "Status Message",
+            "name" : "status_message",
+            "type" : "String"
+          } ]
+        },
+        "ui_data" : {
+          "decorations" : [ {
+            "class_name" : "oflow-node-type-label",
+            "id" : "node_IIPGetJobResult1_type_label",
+            "label" : "node_IIPGetJobResult1",
+            "position" : "middleCenter",
+            "x_pos" : -63,
+            "y_pos" : 13
+          } ],
+          "image" : "/pipelines/graphics/orchestration-flows/nodes/run/bash_script.svg",
+          "label" : "node_IIPGetJobResult1",
+          "x_pos" : -103.55797902243793,
+          "y_pos" : 37.3403786091406
+        },
+        "validators" : { }
+      },
+      "id" : "node_IIPGetJobResult1",
+      "inputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "cardinality" : {
+              "max" : -1,
+              "min" : 0
+            },
+            "class_name" : "oflow-node-port",
+            "label" : "Input Port"
+          }
+        },
+        "id" : "inPort"
+      } ],
+      "op" : "run_container",
+      "outputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "cardinality" : {
+              "max" : -1,
+              "min" : 0
+            },
+            "class_name" : "oflow-node-port",
+            "label" : "Output Port"
+          }
+        },
+        "id" : "outPort"
+      } ],
+      "type" : "execution_node"
+    } ],
+    "runtime_ref" : "kfp"
+  }, {
+    "app_data" : {
+      "ui_data" : {
+        "asset_metadata" : { },
+        "comments" : [ {
+          "associated_id_refs" : [ ],
+          "class_name" : "d3-comment-rect",
+          "content" : "for each file in list - LOOP",
+          "contentType" : "WYSIWYG",
+          "formats" : [ {
+            "type" : "fontType",
+            "value" : "font-arial"
+          }, {
+            "type" : "textSize",
+            "value" : "text-size-12"
+          }, {
+            "type" : "alignHorizontally",
+            "value" : "align-center"
+          }, {
+            "type" : "alignVertically",
+            "value" : "align-top"
+          }, {
+            "type" : "backgroundColor",
+            "value" : "#ffffc1"
+          }, {
+            "type" : "outlineStyle",
+            "value" : "outline-solid"
+          }, {
+            "type" : "line-height",
+            "value" : "1.2"
+          }, {
+            "type" : "padding",
+            "value" : "1px"
+          }, {
+            "type" : "border-color",
+            "value" : "#000000"
+          } ],
+          "height" : "142",
+          "width" : "100",
+          "x_pos" : "378.0",
+          "y_pos" : "220.0"
+        }, {
+          "associated_id_refs" : [ ],
+          "class_name" : "d3-comment-rect",
+          "content" : "for each file in list - END LOOP",
+          "contentType" : "WYSIWYG",
+          "formats" : [ {
+            "type" : "fontType",
+            "value" : "font-arial"
+          }, {
+            "type" : "textSize",
+            "value" : "text-size-12"
+          }, {
+            "type" : "alignHorizontally",
+            "value" : "align-center"
+          }, {
+            "type" : "alignVertically",
+            "value" : "align-top"
+          }, {
+            "type" : "backgroundColor",
+            "value" : "#ffffc1"
+          }, {
+            "type" : "outlineStyle",
+            "value" : "outline-solid"
+          }, {
+            "type" : "line-height",
+            "value" : "1.2"
+          }, {
+            "type" : "padding",
+            "value" : "1px"
+          }, {
+            "type" : "border-color",
+            "value" : "#000000"
+          } ],
+          "height" : "142",
+          "width" : "100",
+          "x_pos" : "565.0",
+          "y_pos" : "229.0"
+        } ],
+        "exception_handler_x_pos" : -80,
+        "exception_handler_y_pos" : -80,
+        "zoom" : {
+          "k" : 0.8,
+          "x" : -54.400000000000006,
+          "y" : -56
+        }
+      }
+    },
+    "id" : "5410ff0e-c438-4b53-9e95-eb04be70c443",
+    "name" : "LO_MV",
+    "nodes" : [ {
+      "app_data" : {
+        "componentGroup" : "run",
+        "componentLabelRef" : "Run Pipeline Job",
+        "emptyImage" : "/pipelines/graphics/orchestration-flows/nodes/run/empty.svg",
+        "groups" : {
+          "inputs" : {
+            "job_parameters" : {
+              "description" : "Optional. Additional job parameters passed to the pipeline run",
+              "human_name" : "Job Parameters",
+              "name" : "job_parameters",
+              "optional" : true,
+              "type" : "JobParameters"
+            },
+            "parameter_sets" : {
+              "description" : "Additional parameter sets passed to the job run.",
+              "descriptive_name" : "Parameter sets",
+              "human_name" : "Parameter sets",
+              "name" : "parameter_sets",
+              "optional" : true,
+              "pass_style" : "file",
+              "type" : "ParameterSets"
+            }
+          },
+          "outputs" : {
+            "output_variables" : {
+              "description" : "Custom outputs variables",
+              "human_name" : "Output Variables",
+              "name" : "output_variables",
+              "type" : "DynamicParamSet"
+            }
+          }
+        },
+        "notConfigured" : false,
+        "pipeline_data" : {
+          "cache_mode" : "never",
+          "config" : {
+            "link" : {
+              "component_id_ref" : "run-pipeline-job",
+              "component_version_id_ref" : "run-pipeline-job-1"
+            }
+          },
+          "inputs" : [ {
+            "descriptive_name" : "Pipeline Job",
+            "name" : "job",
+            "related_asset_type" : "orchestration_flow",
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "job",
+                "job_asset_type" : "orchestration_flow",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            },
+            "ui_data" : {
+              "assetInputType" : "exact",
+              "inputType" : "SELECT_RESOURCE",
+              "inputTypes" : {
+                "selected-node-values-job-input" : "SELECT_RESOURCE"
+              },
+              "scopeType" : "project"
+            },
+            "value" : ""
+          }, {
+            "description" : "Optional. An action taken when the run has failed.",
+            "human_name" : "Error Policy",
+            "name" : "error_policy",
+            "type" : "ErrorPolicy",
+            "ui_data" : {
+              "inputType" : "SELECT_RESOURCE"
+            },
+            "value" : "continue_on_error"
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter FIDINIT",
+            "name" : "FIDINIT",
+            "type" : "Integer",
+            "value_from" : {
+              "expression" : "params.FIDINIT"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter SRC_DIR",
+            "name" : "SRC_DIR",
+            "type" : {
+              "CPDPath" : {
+                "path_type" : "file"
+              }
+            },
+            "value_from" : {
+              "expression" : "params.SRC_DIR"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter MOV_DIR",
+            "name" : "MOV_DIR",
+            "type" : {
+              "CPDPath" : {
+                "path_type" : "file"
+              }
+            },
+            "value_from" : {
+              "expression" : "params.MOV_DIR"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter DS_DIR",
+            "name" : "DS_DIR",
+            "type" : {
+              "CPDPath" : {
+                "path_type" : "file"
+              }
+            },
+            "value_from" : {
+              "expression" : "params.DS_DIR"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter DTA_DIR",
+            "name" : "DTA_DIR",
+            "type" : {
+              "CPDPath" : {
+                "path_type" : "file"
+              }
+            },
+            "value_from" : {
+              "expression" : "params.DTA_DIR"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter TMP_DIR",
+            "name" : "TMP_DIR",
+            "type" : {
+              "CPDPath" : {
+                "path_type" : "file"
+              }
+            },
+            "value_from" : {
+              "expression" : "params.TMP_DIR"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter LOG_DIR",
+            "name" : "LOG_DIR",
+            "type" : {
+              "CPDPath" : {
+                "path_type" : "file"
+              }
+            },
+            "value_from" : {
+              "expression" : "params.LOG_DIR"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter REJ_DIR",
+            "name" : "REJ_DIR",
+            "type" : {
+              "CPDPath" : {
+                "path_type" : "file"
+              }
+            },
+            "value_from" : {
+              "expression" : "params.REJ_DIR"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter LAYOUT_DIR",
+            "name" : "LAYOUT_DIR",
+            "type" : {
+              "CPDPath" : {
+                "path_type" : "file"
+              }
+            },
+            "value_from" : {
+              "expression" : "params.LAYOUT_DIR"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter USER",
+            "name" : "USER",
+            "type" : "String",
+            "value_from" : {
+              "expression" : "params.USER"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter PWD",
+            "name" : "PWD",
+            "type" : "Encrypted",
+            "value_from" : {
+              "expression" : "params[\"$OraclePW\"]"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter RMT_SERV",
+            "name" : "RMT_SERV",
+            "type" : "String",
+            "value_from" : {
+              "expression" : "params.RMT_SERV"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter ORA_TBL_JOB_SCHED",
+            "name" : "ORA_TBL_JOB_SCHED",
+            "type" : "String",
+            "value_from" : {
+              "expression" : "params.ORA_TBL_JOB_SCHED"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter FILE_LST",
+            "name" : "FILE_LST",
+            "type" : "String",
+            "value_from" : {
+              "expression" : "params.FILE_LST"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter FILE_DETAILS",
+            "name" : "FILE_DETAILS",
+            "type" : "String",
+            "value_from" : {
+              "expression" : "params.FILE_DETAILS"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter DEBUG",
+            "name" : "DEBUG",
+            "type" : "Integer",
+            "value_from" : {
+              "expression" : "params.DEBUG"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter SORTMEM",
+            "name" : "SORTMEM",
+            "type" : "Integer",
+            "value_from" : {
+              "expression" : "params.SORTMEM"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter $APT_STRING_PADCHAR",
+            "name" : "$APT_STRING_PADCHAR",
+            "type" : "String",
+            "value_from" : {
+              "expression" : "params[\"$APT_STRING_PADCHAR\"]"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter APT_ONE_NODE",
+            "name" : "APT_ONE_NODE",
+            "type" : {
+              "CPDPath" : {
+                "path_type" : "file"
+              }
+            },
+            "value_from" : {
+              "expression" : "params.APT_ONE_NODE"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter RepExt",
+            "name" : "RepExt",
+            "type" : "String",
+            "value_from" : {
+              "expression" : "params.RepExt"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter Counter",
+            "name" : "Counter",
+            "type" : "String",
+            "value_from" : {
+              "expression" : "tasks.loop1.loop.item"
+            }
+          }, {
+            "group" : "job_parameters",
+            "human_name" : "Job Parameter DSJobInvocationId",
+            "name" : "DSJobInvocationId",
+            "type" : "String",
+            "value_from" : {
+              "expression" : "string(params.FIDINIT)"
+            }
+          } ],
+          "name" : "job2",
+          "outputs" : [ {
+            "descriptive_name" : "Job",
+            "human_name" : "Job",
+            "name" : "job",
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "job",
+                "job_asset_type" : "orchestration_flow",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            }
+          }, {
+            "human_name" : "Job Run",
+            "name" : "job_run",
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "job_run",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            }
+          }, {
+            "human_name" : "Pipeline Job Name",
+            "name" : "job_name",
+            "type" : "String"
+          }, {
+            "descriptive_name" : "Execution Status",
+            "human_name" : "Execution Status",
+            "name" : "status",
+            "type" : "ExecutionStatus"
+          }, {
+            "descriptive_name" : "Status Message",
+            "human_name" : "Status Message",
+            "name" : "status_message",
+            "type" : "String"
+          }, {
+            "annotations" : {
+              "human_name" : "Job Run Name"
+            },
+            "name" : "job_run_name",
+            "type" : "String"
+          } ]
+        },
+        "ui_data" : {
+          "decorations" : [ {
+            "class_name" : "oflow-node-type-label",
+            "id" : "job2_type_label",
+            "label" : "Run Pipeline",
+            "position" : "middleCenter",
+            "x_pos" : -63,
+            "y_pos" : 13
+          } ],
+          "description" : "Run the pipeline job in the project",
+          "image" : "/pipelines/graphics/orchestration-flows/nodes/run/pipeline.svg",
+          "label" : "JB_InterimLoad_Loop",
+          "x_pos" : 504,
+          "y_pos" : 456
+        }
+      },
+      "id" : "job2",
+      "inputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "cardinality" : {
+              "max" : -1,
+              "min" : 0
+            },
+            "class_name" : "oflow-node-port",
+            "label" : "Input Port"
+          }
+        },
+        "id" : "inPort"
+      } ],
+      "op" : "run_container",
+      "outputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "label" : ""
+          }
+        },
+        "id" : "outPort"
+      } ],
+      "type" : "execution_node"
+    }, {
+      "app_data" : {
+        "componentGroup" : "wait",
+        "componentLabelRef" : "dummy1",
+        "groups" : {
+          "inputs" : { },
+          "outputs" : { }
+        },
+        "pipeline_data" : {
+          "cache_mode" : "never",
+          "config" : {
+            "link" : {
+              "component_id_ref" : "wait-sequencer-all",
+              "component_version_id_ref" : "wait-sequencer-all-1"
+            }
+          },
+          "inputs" : [ ],
+          "name" : "dummy1",
+          "outputs" : [ ]
+        },
+        "ui_data" : {
+          "decorations" : [ {
+            "class_name" : "oflow-node-type-label",
+            "id" : "dummy1_type_label",
+            "label" : "dummy1",
+            "position" : "middleCenter",
+            "x_pos" : -63,
+            "y_pos" : 13
+          } ],
+          "image" : "/pipelines/graphics/orchestration-flows/nodes/wait/wait_for_all_result.svg",
+          "label" : "dummy1",
+          "x_pos" : 324,
+          "y_pos" : 636
+        },
+        "validators" : { }
+      },
+      "id" : "dummy1",
+      "inputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "label" : ""
+          }
+        },
+        "id" : "inPort",
+        "links" : [ {
+          "app_data" : {
+            "pipeline_data" : {
+              "condition" : {
+                "operands" : [ {
+                  "value_from" : {
+                    "node_output" : {
+                      "node_id_ref" : "job2",
+                      "param_name" : "status"
+                    }
+                  }
+                }, {
+                  "value" : "Completed"
+                } ],
+                "operator" : "=="
+              },
+              "condition_name" : "LN_LO_End",
+              "condition_type" : "node_status"
+            },
+            "ui_data" : {
+              "decorations" : [ {
+                "class_name" : "condition-decorator-simple",
+                "height" : 40,
+                "hotspot" : true,
+                "id" : "assocDecSimplePill",
+                "image" : "/pipelines/graphics/orchestration-flows/link/edit-condition-pill.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 150,
+                "x_pos" : -75,
+                "y_pos" : -20
+              }, {
+                "class_name" : "condition-decorator-simple-text",
+                "height" : 16,
+                "id" : "assocDecSimpleText",
+                "label" : "LN_LO_End",
+                "position" : "middle",
+                "width" : 84,
+                "x_pos" : -59,
+                "y_pos" : -8
+              } ],
+              "style" : {
+                "line" : {
+                  "default" : "stroke: var(--link-col-success)",
+                  "hover" : "stroke: var(--link-col-success); stroke-width: 3"
+                }
+              }
+            }
+          },
+          "id" : "4d3913f1-7915-47df-99f7-83d6ce610e86",
+          "node_id_ref" : "job2",
+          "port_id_ref" : "outPort"
+        } ]
+      } ],
+      "op" : "run_container",
+      "outputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "cardinality" : {
+              "max" : -1,
+              "min" : 0
+            },
+            "class_name" : "oflow-node-port",
+            "label" : "Output Port"
+          }
+        },
+        "id" : "outPort"
+      } ],
+      "type" : "execution_node"
+    }, {
+      "app_data" : {
+        "componentGroup" : "control",
+        "componentLabelRef" : "term_loop1",
+        "emptyImage" : "/pipelines/graphics/orchestration-flows/nodes/control/empty.svg",
+        "groups" : {
+          "inputs" : { },
+          "outputs" : { }
+        },
+        "pipeline_data" : {
+          "config" : {
+            "link" : {
+              "component_id_ref" : "control-break",
+              "component_version_id_ref" : "control-break-1"
+            }
+          },
+          "inputs" : [ {
+            "default" : "Completed",
+            "name" : "loop_status",
+            "type" : "ExecutionStatus",
+            "value" : "Completed"
+          } ],
+          "name" : "term_loop1",
+          "outputs" : [ ]
+        },
+        "ui_data" : {
+          "decorations" : [ {
+            "class_name" : "oflow-node-type-label",
+            "id" : "term_loop1_type_label",
+            "label" : "term_loop1",
+            "position" : "middleCenter",
+            "x_pos" : -63,
+            "y_pos" : 13
+          } ],
+          "description" : "Terminate loop run",
+          "image" : "/pipelines/graphics/orchestration-flows/nodes/control/loop_break.svg",
+          "label" : "term_loop1",
+          "x_pos" : 168,
+          "y_pos" : 720
+        },
+        "validators" : { }
+      },
+      "id" : "term_loop1",
+      "inputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "cardinality" : {
+              "max" : -1,
+              "min" : 0
+            },
+            "class_name" : "oflow-node-port",
+            "label" : "Input Port"
+          }
+        },
+        "id" : "inPort",
+        "links" : [ {
+          "app_data" : {
+            "pipeline_data" : {
+              "condition" : {
+                "operands" : [ {
+                  "value_from" : {
+                    "node_output" : {
+                      "node_id_ref" : "job2",
+                      "param_name" : "status"
+                    }
+                  }
+                }, {
+                  "value" : "Failed"
+                } ],
+                "operator" : "=="
+              },
+              "condition_name" : "LN_Aborted_2",
+              "condition_type" : "node_status"
+            },
+            "ui_data" : {
+              "decorations" : [ {
+                "class_name" : "condition-decorator-simple",
+                "height" : 40,
+                "hotspot" : true,
+                "id" : "assocDecSimplePill",
+                "image" : "/pipelines/graphics/orchestration-flows/link/edit-condition-pill.svg",
+                "outline" : false,
+                "position" : "middle",
+                "width" : 150,
+                "x_pos" : -75,
+                "y_pos" : -20
+              }, {
+                "class_name" : "condition-decorator-simple-text",
+                "height" : 16,
+                "id" : "assocDecSimpleText",
+                "label" : "LN_Aborted_2",
+                "position" : "middle",
+                "width" : 84,
+                "x_pos" : -59,
+                "y_pos" : -8
+              } ],
+              "style" : {
+                "line" : {
+                  "default" : "stroke: var(--link-col-failed)",
+                  "hover" : "stroke: var(--link-col-failed); stroke-width: 3"
+                }
+              }
+            }
+          },
+          "id" : "fe3d38b6-e8bd-41a7-a6bc-1912daff6834",
+          "node_id_ref" : "job2",
+          "port_id_ref" : "outPort"
+        } ]
+      } ],
+      "op" : "run_container",
+      "outputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "cardinality" : {
+              "max" : -1,
+              "min" : 0
+            },
+            "class_name" : "oflow-node-port",
+            "label" : "Output Port"
+          }
+        },
+        "id" : "outPort"
+      } ],
+      "type" : "execution_node"
+    } ],
+    "runtime_ref" : "kfp"
+  } ],
+  "primary_pipeline" : "f797a0c2-229d-4cb1-aa11-6e54405d49aa",
+  "schemas" : [ ],
+  "version" : "3.0"
+}

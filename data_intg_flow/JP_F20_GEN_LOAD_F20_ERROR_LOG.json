@@ -1,0 +1,1031 @@
+{
+  "primary_pipeline" : "8e6e1cd6-370e-459e-b9bb-7757ab4e9f7b",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "fd015868-6d9a-435a-85a5-c11377a81016",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "5a05ecb1-197f-4ce1-b445-ade65d59926b"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "Reject" : false,
+          "RowLimit" : 0,
+          "valueDerivation" : [ {
+            "parsedExpression" : "Convert ( MapIn , MapOut , rea_Files.ErrorAdditionalInfo)",
+            "stageVars" : "MapIn;MapOut",
+            "columnName" : "ERRORADDITIONALINFO",
+            "sourceColumn" : "rea_Files.ErrorAdditionalInfo"
+          } ],
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "5e7adabf-63d9-4207-9c01-e004ba5dae7f"
+      } ],
+      "op" : "CTransformerStage",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "d148d622-de48-4f71-91d8-824a1cfd201a",
+          "type_attr" : "PRIMARY",
+          "id" : "ef4d3fdf-df1d-492e-8a75-3be2a8dc0da9",
+          "link_name" : "rea_Files",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "rea_Files",
+                "label" : "rea_Files",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "24f27634-ecbb-4eb6-839d-c683903486d8"
+        } ],
+        "id" : "c50e7593-48ee-428b-bf56-6b7f2a281df5",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "e9e5de22-d895-4301-aebf-53c72d7d1952"
+      } ],
+      "id" : "6bcd0014-8f7e-4a17-9c76-689a86f88ac3",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/CTransformerStage.svg",
+          "x_pos" : 288.0,
+          "label" : "BFM_Mapping",
+          "y_pos" : 264.0
+        }
+      },
+      "parameters" : {
+        "MaxLoopIterations" : 0,
+        "output_count" : 1,
+        "BlockSizeSelectedType" : "systemSelected",
+        "StageVariables" : [ {
+          "Precision" : 255,
+          "InitialValue" : "UniChar ( XTD ( \"F9\" ) ) : UniChar ( XTD ( \"FA\" ) )",
+          "SqlType" : "VARCHAR",
+          "Scale" : 0,
+          "Name" : "MapIn"
+        }, {
+          "Precision" : 45,
+          "InitialValue" : "Char ( XTD ( \"22\" ) ) : Char ( XTD ( \"2C\" ) )",
+          "SqlType" : "DECIMAL",
+          "Scale" : 0,
+          "Name" : "MapOut"
+        } ],
+        "input_count" : 1,
+        "BlockSize" : 0,
+        "SKKeySourceType" : "file"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "24f27634-ecbb-4eb6-839d-c683903486d8",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "ef4d3fdf-df1d-492e-8a75-3be2a8dc0da9"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2
+            }
+          }
+        },
+        "parameters" : {
+          "final_delim" : "end",
+          "firstLineColumnNames" : " ",
+          "buf_free_run" : 50,
+          "keepPartitions" : " ",
+          "disk_write_inc" : 1048576,
+          "rejects" : "continue",
+          "quote" : "double",
+          "selection" : "pattern",
+          "queue_upper_size" : 0,
+          "filepattern" : [ "#PS_ENV.$DIR_ERR#/#PM_RUN_ID#.*.err" ],
+          "max_mem_buf_size" : 3145728,
+          "reportProgress" : "yes",
+          "delim" : "','"
+        },
+        "schema_ref" : "e9e5de22-d895-4301-aebf-53c72d7d1952"
+      } ],
+      "op" : "PxSequentialFile",
+      "id" : "d148d622-de48-4f71-91d8-824a1cfd201a",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 120.0,
+          "label" : "SQF_F20_Files",
+          "y_pos" : 264.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "op" : "ODBCConnectorPX",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "6bcd0014-8f7e-4a17-9c76-689a86f88ac3",
+          "type_attr" : "PRIMARY",
+          "id" : "5a05ecb1-197f-4ce1-b445-ade65d59926b",
+          "link_name" : "ins_F20_ERROR_LOG",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "ins_F20_ERROR_LOG",
+                "label" : "ins_F20_ERROR_LOG",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "fd015868-6d9a-435a-85a5-c11377a81016"
+        } ],
+        "id" : "adf64f16-7c8b-47c0-9215-fb9f6d74a2af",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "5e7adabf-63d9-4207-9c01-e004ba5dae7f"
+      } ],
+      "connection" : {
+        "ref" : "app_defined",
+        "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+        "properties" : {
+          "session.schema_reconciliation.fail_on_code_page_mismatch" : false,
+          "session.isolation_level" : "read_uncommitted",
+          "session.schema_reconciliation.fail_on_size_mismatch" : true,
+          "session.array_size" : 2000,
+          "table_name" : "#PS_DB_F20.$DB_F20_SCHEMA#.F20_ERROR_LOG",
+          "session.schema_reconciliation.drop_unmatched_fields" : true,
+          "session.autocommit_mode" : "off",
+          "session.fail_on_row_error_px" : true,
+          "logging.log_column_values" : false,
+          "write_mode" : "insert",
+          "session.schema_reconciliation.fail_on_type_mismatch" : true,
+          "session.code_page" : "default",
+          "before_after" : false,
+          "generate_sql" : true,
+          "transaction.record_count" : 2000,
+          "enable_quoted_i_ds" : false,
+          "table_action" : "append"
+        }
+      },
+      "id" : "20a4e80b-7f10-491b-bcf9-ab71385ad463",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/ODBCConnectorPX.svg",
+          "x_pos" : 504.0,
+          "label" : "F20_ERROR_LOG",
+          "y_pos" : 264.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    } ],
+    "description" : "Short description: Load error logs from sequential files using file pattern into F20_EXCP_LOG table. Long description: Load error logs from sequential files using file pattern into F20_EXCP_LOG table.\r\n\r\nCreated by: Marcin Szablewski\r\nCreation date: 2013-02-15\r\n\r\nModified by: SEDC\r\nModification date: 2014-05-13\r\n\r\nV0.1 (Marcin Szablewski) : Loads process logs from sequential files into  F20_EXCP_LOG using pattern. Logs are created by the error handling component.\r\n\r\nV0.2 (Denis Leroy) :\r\nChange into a Parallel job.\r\nSeq file set to \"pattern\"\r\nTransformer is BASIC transformer\r\n\r\nV1.0 (SEDC) :\r\nAlignment with the new EH version.\r\nColumns datatypes.\r\nNew parameter PM_RUN_ID.\r\n\r\nV1.1 (SEDC) :\r\nPrecision alignment with the database.\r\nValidation of PM_RUN_ID parameter.\r\n\r\nV1.2 (SEDC) :\r\nMapping of invalid characters.\r\n\r\nV1.3 (SEDC) :\r\nUpdate ErrorAdditionalInfo column length.\r\n",
+    "id" : "8e6e1cd6-370e-459e-b9bb-7757ab4e9f7b",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "external_paramsets" : [ {
+    "ref" : "app_defined",
+    "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+    "name" : "PS_DB_F20"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "5e7adabf-63d9-4207-9c01-e004ba5dae7f",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "rea_Files.ErrorCode",
+        "max_length" : 30,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "ERRORCODE",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 1,
+        "column_reference" : "ERRORCODE",
+        "native_type" : "VARCHAR2",
+        "odbc_type" : "WVARCHAR",
+        "table_def" : "Relational-AAINFA-DIL_EGS_ADD.F20_ERROR_LOG",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 2000,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "ERRORADDITIONALINFO",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 3,
+        "column_reference" : "ERRORADDITIONALINFO",
+        "native_type" : "VARCHAR2",
+        "odbc_type" : "WVARCHAR",
+        "table_def" : "Relational-AAINFA-DIL_EGS_ADD.F20_ERROR_LOG",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "rea_Files.ErrorSourceId",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "ERRORSOURCEID",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 2,
+        "column_reference" : "ERRORSOURCEID",
+        "native_type" : "VARCHAR2",
+        "odbc_type" : "WVARCHAR",
+        "table_def" : "Relational-AAINFA-DIL_EGS_ADD.F20_ERROR_LOG",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 10,
+        "source_field_id" : "rea_Files.RunId",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "RUNID",
+      "type" : "double",
+      "app_data" : {
+        "has_sign_indicator" : true,
+        "sequence" : 4,
+        "column_reference" : "RUNID",
+        "native_type" : "NUMBER",
+        "odbc_type" : "DECIMAL",
+        "sign_option" : 0,
+        "table_def" : "Relational-AAINFA-DIL_EGS_ADD.F20_ERROR_LOG",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "rea_Files.Severity",
+        "max_length" : 1,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "SEVERITY",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 5,
+        "column_reference" : "SEVERITY",
+        "native_type" : "VARCHAR2",
+        "odbc_type" : "WVARCHAR",
+        "table_def" : "Relational-AAINFA-DIL_EGS_ADD.F20_ERROR_LOG",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "rea_Files.ErrorType",
+        "max_length" : 30,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "ERRORTYPE",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 6,
+        "column_reference" : "ERRORTYPE",
+        "native_type" : "VARCHAR2",
+        "odbc_type" : "WVARCHAR",
+        "table_def" : "Relational-AAINFA-DIL_EGS_ADD.F20_ERROR_LOG",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "rea_Files.ErrorClass",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "ERRORCLASS",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 7,
+        "column_reference" : "ERRORCLASS",
+        "native_type" : "VARCHAR2",
+        "odbc_type" : "WVARCHAR",
+        "table_def" : "Relational-AAINFA-DIL_EGS_ADD.F20_ERROR_LOG",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "rea_Files.ErrorDesc",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "ERRORDESC",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 8,
+        "column_reference" : "ERRORDESC",
+        "native_type" : "VARCHAR2",
+        "odbc_type" : "WVARCHAR",
+        "table_def" : "Relational-AAINFA-DIL_EGS_ADD.F20_ERROR_LOG",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 6,
+        "decimal_precision" : 0,
+        "source_field_id" : "rea_Files.ErrorDate",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "ERRORDATE",
+      "type" : "timestamp",
+      "app_data" : {
+        "sequence" : 9,
+        "column_reference" : "ERRORDATE",
+        "native_type" : "TIMESTAMP",
+        "time_scale" : 6,
+        "odbc_type" : "TIMESTAMP",
+        "sign_option" : 0,
+        "table_def" : "Relational-AAINFA-DIL_EGS_ADD.F20_ERROR_LOG",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DATETIME"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "rea_Files.HostName",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "HOSTNAME",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 10,
+        "column_reference" : "HOSTNAME",
+        "native_type" : "VARCHAR2",
+        "odbc_type" : "WVARCHAR",
+        "table_def" : "Relational-AAINFA-DIL_EGS_ADD.F20_ERROR_LOG",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "rea_Files.ProjectName",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "PROJECTNAME",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 11,
+        "column_reference" : "PROJECTNAME",
+        "native_type" : "VARCHAR2",
+        "odbc_type" : "WVARCHAR",
+        "table_def" : "Relational-AAINFA-DIL_EGS_ADD.F20_ERROR_LOG",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "rea_Files.JobController",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "JOBCONTROLLER",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 12,
+        "column_reference" : "JOBCONTROLLER",
+        "native_type" : "VARCHAR2",
+        "odbc_type" : "WVARCHAR",
+        "table_def" : "Relational-AAINFA-DIL_EGS_ADD.F20_ERROR_LOG",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "rea_Files.JobName",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "JOBNAME",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 13,
+        "column_reference" : "JOBNAME",
+        "native_type" : "VARCHAR2",
+        "odbc_type" : "WVARCHAR",
+        "table_def" : "Relational-AAINFA-DIL_EGS_ADD.F20_ERROR_LOG",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "rea_Files.InvocationId",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "INVOCATIONID",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 14,
+        "column_reference" : "INVOCATIONID",
+        "native_type" : "VARCHAR2",
+        "odbc_type" : "WVARCHAR",
+        "table_def" : "Relational-AAINFA-DIL_EGS_ADD.F20_ERROR_LOG",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 6,
+        "decimal_precision" : 0,
+        "source_field_id" : "rea_Files.JobStartTime",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "JOBSTARTTIME",
+      "type" : "timestamp",
+      "app_data" : {
+        "sequence" : 15,
+        "column_reference" : "JOBSTARTTIME",
+        "native_type" : "TIMESTAMP",
+        "time_scale" : 6,
+        "odbc_type" : "TIMESTAMP",
+        "sign_option" : 0,
+        "table_def" : "Relational-AAINFA-DIL_EGS_ADD.F20_ERROR_LOG",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DATETIME"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "rea_Files.RCPColumnList",
+        "max_length" : 4000,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "RCPCOLUMNLIST",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 16,
+        "column_reference" : "RCPCOLUMNLIST",
+        "native_type" : "VARCHAR2",
+        "odbc_type" : "WVARCHAR",
+        "table_def" : "Relational-AAINFA-DIL_EGS_ADD.F20_ERROR_LOG",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  }, {
+    "id" : "e9e5de22-d895-4301-aebf-53c72d7d1952",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 30,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "ErrorCode",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "WVARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 2000,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "ErrorAdditionalInfo",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "WVARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "ErrorSourceId",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "WVARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 20,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "JobId",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "WVARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 10,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "RunId",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "WVARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 1,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "Severity",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "WVARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 30,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "ErrorType",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "WVARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "ErrorClass",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "WVARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "ErrorDesc",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "WVARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "ErrorDate",
+      "type" : "timestamp",
+      "app_data" : {
+        "time_scale" : 6,
+        "odbc_type" : "TIMESTAMP",
+        "sign_option" : 0,
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DATETIME"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "HostName",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "WVARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "ProjectName",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "WVARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "JobController",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "WVARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "JobName",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "WVARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "InvocationId",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "WVARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "JobStartTime",
+      "type" : "timestamp",
+      "app_data" : {
+        "time_scale" : 6,
+        "odbc_type" : "TIMESTAMP",
+        "sign_option" : 0,
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DATETIME"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 4000,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "RCPColumnList",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "WVARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "40c7b4e0-5bed-451e-bcc0-ad822014a849",
+  "app_data" : {
+    "datastage" : {
+      "subroutines" : {
+        "function_calls" : [ {
+          "call_context" : "AFTER",
+          "function_name" : "ExecSH",
+          "input_value" : "\n# The original, untranslated routine source code (written in IBM InfoSphere DataStage BASIC language)\n# and migration service generated dummy script is saved to the following invoked script file.\nsh /ds-storage/projects/DATASTAGE test project/scripts/DSU.rbaJobAfterLoadErrors.sh  '#PS_ENV.$DIR_ERR#,#PM_RUN_ID#'\n"
+        } ],
+        "run_after_routine_if_job_success" : true
+      },
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "isDefineParameterToggled" : true
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ {
+      "name" : "PM_RUN_ID",
+      "description" : "Single Run ID or an asterisk for all Run ID",
+      "type" : "string",
+      "prompt" : "PM_RUN_ID"
+    }, {
+      "name" : "DSJobInvocationId",
+      "type" : "string",
+      "prompt" : "Job invocation ID"
+    } ]
+  }
+}

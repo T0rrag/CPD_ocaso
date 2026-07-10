@@ -1,0 +1,161 @@
+{
+  "primary_pipeline" : "3bc71cab-0026-4282-9114-8f11ae171d0f",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "6451f30f-9849-43ab-8049-ba686c8f3e21",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "8669bc92-4c9f-4afc-a46c-4cd3ea7011a2"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "template_data_area" : "Sheet1!A1:F1001",
+          "source_column_header" : 0,
+          "skip_null_row" : false,
+          "hidden_columns" : 0,
+          "buf_free_run" : 50,
+          "area_expression" : "Sheet1!A1:F1001",
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576,
+          "area_type" : 0,
+          "col_map" : [ ]
+        }
+      } ],
+      "op" : "UnstructuredDataConnectorPX",
+      "id" : "f3a69585-90f9-430e-99e4-f6a8ad2eca90",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/UnstructuredDataConnectorPX.svg",
+          "x_pos" : 240.0,
+          "label" : "input_customers",
+          "y_pos" : 144.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "file_name" : "/opt/workshops/files/DATASTAGE/sectionD/input_customers.xls",
+        "doc_type" : 0,
+        "allow_column_mapping" : false,
+        "error_action" : 0
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxSequentialFile",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "f3a69585-90f9-430e-99e4-f6a8ad2eca90",
+          "type_attr" : "PRIMARY",
+          "id" : "8669bc92-4c9f-4afc-a46c-4cd3ea7011a2",
+          "link_name" : "DSLink2",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "DSLink2",
+                "label" : "DSLink2",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "6451f30f-9849-43ab-8049-ba686c8f3e21"
+        } ],
+        "id" : "8390aec1-a13a-44a4-9f7c-bb7b67d2c68f",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "append-overwrite" : "overwrite",
+          "final_delim" : "end",
+          "rejects" : "continue",
+          "file" : [ "/opt/workshops/files/DATASTAGE/sectionD/output_customers_excel.txt" ],
+          "quote" : "double",
+          "firstLineColumnNames" : "firstLineColumnNames",
+          "nocleanup" : " ",
+          "writemethod" : " ",
+          "part_coll" : "none",
+          "runtime_column_propagation" : 1,
+          "registerDataAsset" : false,
+          "delim" : "','"
+        }
+      } ],
+      "id" : "4e2d3b57-49a0-46a9-93d0-d31617b95865",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 528.0,
+          "label" : "input_customers_output_txt",
+          "y_pos" : 144.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    } ],
+    "id" : "3bc71cab-0026-4282-9114-8f11ae171d0f",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ ],
+  "doc_type" : "pipeline",
+  "id" : "83cbc20c-1699-4898-83c4-185fd93be803",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "isDefineParameterToggled" : true
+    }
+  },
+  "version" : "3.0"
+}

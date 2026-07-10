@@ -1,0 +1,165 @@
+{
+  "app_data" : {
+    "pipeline_data" : {
+      "caching_conditions" : [ "retry_on_failure", "inputs_unchanged", "pipeline_unchanged" ],
+      "caching_method" : "automatic",
+      "default_cache_mode" : "never",
+      "default_error_policy" : "continue_on_error",
+      "settings" : {
+        "propagate_completed_with_warnings_status" : true
+      },
+      "validation" : {
+        "valid" : false,
+        "validated_at" : "2026-07-10 08:18:04.971520165 +0000 UTC"
+      },
+      "version" : "12.0"
+    },
+    "ui_data" : {
+      "raw_allowed" : false,
+      "settings" : {
+        "autosave" : true,
+        "autosave_freq" : 1000,
+        "enable_ds_funcs" : true
+      }
+    }
+  },
+  "doc_type" : "pipeline",
+  "id" : "646587f1-44f1-49a4-9fd9-a910cc9c76a2",
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "pipelines" : [ {
+    "app_data" : {
+      "ui_data" : {
+        "comments" : [ ],
+        "exception_handler_x_pos" : 483,
+        "exception_handler_y_pos" : 537,
+        "node_prev_unique_idx" : {
+          "action_error_handling" : 0,
+          "copy_assets" : 0,
+          "copy_export" : 0,
+          "copy_import" : 0,
+          "create_data_file" : 0,
+          "run_bash_script" : 0,
+          "run_datastage_job" : 0,
+          "run_pipeline_job" : 0,
+          "run_pipelines_component" : 0,
+          "send_email" : 0,
+          "wait_file" : 0,
+          "wait_sequencer_any" : 0
+        },
+        "zoom" : {
+          "k" : 1,
+          "x" : -24,
+          "y" : -96
+        }
+      }
+    },
+    "id" : "51b2d68c-e5c4-40dd-962a-c54bca80ab74",
+    "nodes" : [ {
+      "app_data" : {
+        "annotations" : {
+          "cache_supported" : "true",
+          "component_group" : "copy",
+          "component_type" : "import",
+          "component_type_name" : "Import"
+        },
+        "componentGroup" : "copy",
+        "componentLabelRef" : "Import assets",
+        "emptyImage" : "/pipelines/graphics/orchestration-flows/nodes/copy/empty.svg",
+        "groups" : {
+          "inputs" : { },
+          "outputs" : { }
+        },
+        "notConfigured" : true,
+        "pipeline_data" : {
+          "cache_mode" : "never",
+          "config" : {
+            "link" : {
+              "component_id_ref" : "copy-import",
+              "component_version_id_ref" : "copy-import-1"
+            }
+          },
+          "descriptive_name" : "Import assets",
+          "inputs" : [ {
+            "name" : "target_cpd_scope",
+            "type" : {
+              "CPDPath" : {
+                "path_type" : "scope"
+              }
+            }
+          }, {
+            "name" : "file",
+            "type" : {
+              "CPDPath" : {
+                "path_type" : "file"
+              }
+            }
+          } ],
+          "name" : "copy_import",
+          "outputs" : [ ]
+        },
+        "ui_data" : {
+          "class_name" : "unconfigured-node",
+          "decorations" : [ {
+            "class_name" : "oflow-node-type-label",
+            "id" : "copy_import_type_label",
+            "label" : "Import assets",
+            "position" : "middleCenter",
+            "x_pos" : -73,
+            "y_pos" : 13
+          }, {
+            "class_name" : "oflow-node-validation-error hiddenDec",
+            "height" : 16,
+            "hotspot" : true,
+            "id" : "opa_validation_error_31",
+            "image" : "/pipelines/graphics/orchestration-flows/status/error--filled.svg",
+            "outline" : false,
+            "position" : "topRight",
+            "severity" : "error",
+            "tooltip" : "This node requires additional configuration before it can run. Open the configuration panel to correct missing or invalid options.",
+            "width" : 24,
+            "x_pos" : -18,
+            "y_pos" : -3
+          } ],
+          "description" : "Import assets from a location in file storage to space",
+          "image" : "/pipelines/graphics/orchestration-flows/nodes/copy/import.svg",
+          "label" : "Import assets",
+          "x_pos" : 39,
+          "y_pos" : 106
+        }
+      },
+      "id" : "copy_import",
+      "inputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "cardinality" : {
+              "max" : -1,
+              "min" : 0
+            },
+            "class_name" : "oflow-node-port",
+            "label" : "Input Port"
+          }
+        },
+        "id" : "inPort"
+      } ],
+      "op" : "run_container",
+      "outputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "cardinality" : {
+              "max" : -1,
+              "min" : 0
+            },
+            "class_name" : "oflow-node-port",
+            "label" : "Output Port"
+          }
+        },
+        "id" : "outPort"
+      } ],
+      "type" : "execution_node"
+    } ],
+    "runtime_ref" : "kfp"
+  } ],
+  "primary_pipeline" : "51b2d68c-e5c4-40dd-962a-c54bca80ab74",
+  "schemas" : [ ],
+  "version" : "3.0"
+}

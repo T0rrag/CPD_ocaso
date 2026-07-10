@@ -1,0 +1,882 @@
+{
+  "primary_pipeline" : "77f88df9-1bf9-438c-b9ae-833372dc86a6",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "2cbdf1c0-bc4d-43bc-a757-e730443df12b",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "373ad68a-0eaf-47b1-8706-e9c84ae4ba37"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          },
+          "additionalProperties" : {
+            "enableAcp" : true
+          }
+        },
+        "schema_ref" : "c9e0155f-2917-40cf-8473-306b540da851",
+        "parameters" : {
+          "records" : 10,
+          "buf_mode" : "default",
+          "enableSchemalessDesign" : false
+        }
+      } ],
+      "op" : "PxRowGenerator",
+      "id" : "1bf5b35c-3ad9-469b-ba2a-8acbce6337db",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxRowGenerator.svg",
+          "x_pos" : 63.36,
+          "label" : "Row_Generator_1",
+          "y_pos" : 174.24
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "output_count" : 1,
+        "input_count" : 0,
+        "execmode" : "default_seq",
+        "preserve" : -3
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "d6223ed4-e433-413b-a7ef-90354827507e",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "c707a52f-021f-420e-a871-bd86b903df0f"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          },
+          "additionalProperties" : {
+            "enableAcp" : true
+          }
+        },
+        "schema_ref" : "17970b05-9110-4f92-b399-48f8c32c9450",
+        "parameters" : {
+          "buf_mode" : "default"
+        }
+      }, {
+        "id" : "0763b101-f5d1-449d-863c-79e9dd6d9644",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "5da0668a-e62a-4a15-9076-f6faf781b581"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          },
+          "additionalProperties" : {
+            "enableAcp" : true
+          }
+        },
+        "schema_ref" : "35be4903-2d8f-4905-b0f0-b1575acead26",
+        "parameters" : {
+          "buf_mode" : "default"
+        }
+      }, {
+        "id" : "e78a6711-acd4-41c6-8643-c8fb4d2eae4c",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "d4784788-9d7b-4b4f-9fbc-8f60545cbbdd"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          },
+          "additionalProperties" : {
+            "enableAcp" : true
+          }
+        },
+        "schema_ref" : "bd43499a-f469-46ee-ad13-3fce0495a772",
+        "parameters" : {
+          "buf_mode" : "default"
+        }
+      }, {
+        "id" : "e0be7f39-fd29-4006-b490-5aa9309a442c",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "aba0f284-a199-4594-8a9b-e1c7901db7d6"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          },
+          "additionalProperties" : {
+            "enableAcp" : true
+          }
+        },
+        "schema_ref" : "f0d6e082-bf62-48e6-9684-ddb5d4e5a185",
+        "parameters" : {
+          "buf_mode" : "default"
+        }
+      } ],
+      "op" : "PxCopy",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "1bf5b35c-3ad9-469b-ba2a-8acbce6337db",
+          "type_attr" : "PRIMARY",
+          "id" : "373ad68a-0eaf-47b1-8706-e9c84ae4ba37",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/link-marking--specific-partitioning.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 50,
+                "tooltip" : "Specific partition",
+                "x_pos" : -15,
+                "id" : "dec-9C",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_1",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_1",
+          "port_id_ref" : "2cbdf1c0-bc4d-43bc-a757-e730443df12b"
+        } ],
+        "id" : "177f27b6-06e7-4fff-bf44-5feabe50ab18",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "c9e0155f-2917-40cf-8473-306b540da851",
+        "parameters" : {
+          "runtime_column_propagation" : 0
+        }
+      } ],
+      "id" : "eff7868a-74f1-4b12-8d86-006bebd112ec",
+      "type" : "execution_node",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxCopy.svg",
+          "x_pos" : 190.07999999999998,
+          "label" : "Copy_1",
+          "y_pos" : 142.56
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "showPartType" : true,
+        "inputcolProperties" : [ {
+          "Unicode" : false,
+          "Description" : "",
+          "Signed" : true,
+          "Metadata" : "CHAR(100)",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN_1",
+          "TempOldColumnName" : "COLUMN_1",
+          "ColumnName" : "COLUMN_1",
+          "Length" : 100,
+          "MisFieldProperties" : "",
+          "DataType" : "CHAR",
+          "Key" : false,
+          "Nullable" : false
+        } ],
+        "output_count" : 4,
+        "execmode" : "default_par",
+        "showCollType" : false,
+        "input_count" : 1,
+        "force" : " ",
+        "enableSchemalessDesign" : false,
+        "preserve" : -3,
+        "inputName" : "Link_1",
+        "showSortOptions" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxSequentialFile",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "eff7868a-74f1-4b12-8d86-006bebd112ec",
+          "type_attr" : "PRIMARY",
+          "id" : "c707a52f-021f-420e-a871-bd86b903df0f",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/link-marking--collection.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 50,
+                "tooltip" : "Collection",
+                "x_pos" : -15,
+                "id" : "dec-9M",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_2",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_2",
+          "port_id_ref" : "d6223ed4-e433-413b-a7ef-90354827507e"
+        } ],
+        "id" : "465acdbc-c893-4e34-b8a7-a76c3090981a",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "17970b05-9110-4f92-b399-48f8c32c9450",
+        "parameters" : {
+          "final_delim" : "none",
+          "showPartType" : false,
+          "null_field_sep_flag" : false,
+          "null_field" : "\"\"",
+          "file_location" : "file_system",
+          "firstLineColumnNames" : " ",
+          "showCollType" : true,
+          "enableFlowAcpControl" : true,
+          "record_delim" : "'\\n'",
+          "inputName" : "Link_2",
+          "showSortOptions" : false,
+          "append-overwrite" : "overwrite",
+          "rejects" : "continue",
+          "inputcolProperties" : [ {
+            "Unicode" : false,
+            "Description" : "",
+            "Signed" : true,
+            "Metadata" : "CHAR(100)",
+            "Scale" : 0,
+            "TimeScale" : 0,
+            "OldColumnName" : "COLUMN_1",
+            "TempOldColumnName" : "COLUMN_1",
+            "ColumnName" : "COLUMN_1",
+            "Length" : 100,
+            "MisFieldProperties" : "",
+            "DataType" : "CHAR",
+            "Key" : false,
+            "Nullable" : false
+          } ],
+          "file" : [ "FlowTestWriteFiles.txt" ],
+          "quote" : "double",
+          "connection_asset_id" : "",
+          "writemethod" : " ",
+          "nocleanup" : " ",
+          "previewDataInAB" : true,
+          "file_format" : "sequential",
+          "registerDataAsset" : false,
+          "delim" : "','"
+        }
+      } ],
+      "id" : "1e985f9f-c786-4b51-b25c-0750efe28430",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 332.64,
+          "label" : "Sequential_file_1",
+          "y_pos" : 47.519999999999996
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "output_count" : 0,
+        "nls_map_name" : "UTF-8",
+        "input_count" : 1,
+        "execmode" : "default_seq"
+      }
+    }, {
+      "op" : "PxDataSet",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "eff7868a-74f1-4b12-8d86-006bebd112ec",
+          "type_attr" : "PRIMARY",
+          "id" : "5da0668a-e62a-4a15-9076-f6faf781b581",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/link-marking--auto-partitioning.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 2,
+                "width" : 50,
+                "tooltip" : "Auto-partition",
+                "x_pos" : -15,
+                "id" : "dec-6R",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_3",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_3",
+          "port_id_ref" : "0763b101-f5d1-449d-863c-79e9dd6d9644"
+        } ],
+        "id" : "3870a63e-f070-4847-adc3-84b06bf83754",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "35be4903-2d8f-4905-b0f0-b1575acead26",
+        "parameters" : {
+          "currentOutputLinkType" : "PRIMARY",
+          "showPartType" : true,
+          "inputcolProperties" : [ {
+            "Unicode" : false,
+            "Description" : "",
+            "Signed" : true,
+            "Metadata" : "CHAR(100)",
+            "Scale" : 0,
+            "TimeScale" : 0,
+            "OldColumnName" : "COLUMN_1",
+            "TempOldColumnName" : "COLUMN_1",
+            "ColumnName" : "COLUMN_1",
+            "Length" : 100,
+            "MisFieldProperties" : "",
+            "DataType" : "CHAR",
+            "Key" : false,
+            "Nullable" : false
+          } ],
+          "datasetmode" : ">| [ds",
+          "showCollType" : false,
+          "outputAcpShouldHide" : false,
+          "enableFlowAcpControl" : true,
+          "dataAssetName" : "FlowTestWriteFiles.ds",
+          "dataset" : "FlowTestWriteFiles.ds",
+          "inputName" : "Link_3",
+          "showSortOptions" : false,
+          "registerDataAsset" : true
+        }
+      } ],
+      "id" : "487d1edc-060f-4e53-a636-722559bae168",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxDataSet.svg",
+          "x_pos" : 332.64,
+          "label" : "Data_set_1",
+          "y_pos" : 126.72
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "output_count" : 0,
+        "input_count" : 1,
+        "execmode" : "default_par"
+      }
+    }, {
+      "op" : "UnstructuredDataConnectorPX",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "eff7868a-74f1-4b12-8d86-006bebd112ec",
+          "type_attr" : "PRIMARY",
+          "id" : "d4784788-9d7b-4b4f-9fbc-8f60545cbbdd",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/link-marking--collection.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 50,
+                "tooltip" : "Collection",
+                "x_pos" : -15,
+                "id" : "dec-9M",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_4",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_4",
+          "port_id_ref" : "e78a6711-acd4-41c6-8643-c8fb4d2eae4c"
+        } ],
+        "id" : "71ce7c19-8624-42b5-b99b-770de34114de",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "schema_ref" : "bd43499a-f469-46ee-ad13-3fce0495a772",
+        "parameters" : {
+          "showPartType" : true,
+          "write_mode_create_sheet_name" : "Sheet1",
+          "showCollType" : false,
+          "sheet_number" : 1,
+          "heap_size" : 256,
+          "target_write_mode_create_column_header" : 0,
+          "auto_size_columns" : false,
+          "runtime_column_propagation" : 0,
+          "showSortOptions" : false
+        }
+      } ],
+      "id" : "c447bd5d-7717-44bb-9683-ee351af054c3",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "71ce7c19-8624-42b5-b99b-770de34114de",
+          "outputs_order" : ""
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/UnstructuredDataConnectorPX.svg",
+          "x_pos" : 332.64,
+          "label" : "Excel_1",
+          "y_pos" : 205.92
+        }
+      },
+      "parameters" : {
+        "file_name" : "FlowTestWriteFiles.xls",
+        "data_asset_id" : "6adad18e-d901-47f9-b5d3-c3377a839902",
+        "preserve" : -3,
+        "doc_type" : 0,
+        "file_update_mode" : 1,
+        "allow_column_mapping" : false,
+        "combinability" : "auto",
+        "OutputlinkOrderingList" : [ ],
+        "write_mode" : 1,
+        "InputlinkOrderingList" : [ {
+          "link_label" : "0",
+          "link_name" : "Link_4"
+        } ],
+        "output_count" : 0,
+        "input_count" : 1,
+        "execmode" : "default_seq",
+        "write_method" : 0,
+        "heap_size" : 256,
+        "registerDataAsset" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxExternalTarget",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "eff7868a-74f1-4b12-8d86-006bebd112ec",
+          "type_attr" : "PRIMARY",
+          "id" : "aba0f284-a199-4594-8a9b-e1c7901db7d6",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/link-marking--auto-partitioning.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 2,
+                "width" : 50,
+                "tooltip" : "Auto-partition",
+                "x_pos" : -15,
+                "id" : "dec-6R",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_5",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_5",
+          "port_id_ref" : "e0be7f39-fd29-4006-b490-5aa9309a442c"
+        } ],
+        "id" : "3f8886d6-cd98-46dd-990b-430be948fbfd",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "f0d6e082-bf62-48e6-9684-ddb5d4e5a185",
+        "parameters" : {
+          "stringOption" : [ ],
+          "showPartType" : true,
+          "showCollType" : false,
+          "numericOption" : [ ],
+          "dateOption" : "none",
+          "destination" : [ "cat - > FlowTestWriteFiles.et" ],
+          "inputName" : "Link_5",
+          "showSortOptions" : false,
+          "recLevelOption" : [ ],
+          "inputcolProperties" : [ {
+            "Unicode" : false,
+            "Description" : "",
+            "Signed" : true,
+            "Metadata" : "CHAR(100)",
+            "Scale" : 0,
+            "TimeScale" : 0,
+            "OldColumnName" : "COLUMN_1",
+            "TempOldColumnName" : "COLUMN_1",
+            "ColumnName" : "COLUMN_1",
+            "Length" : 100,
+            "MisFieldProperties" : "",
+            "DataType" : "CHAR",
+            "Key" : false,
+            "Nullable" : false
+          } ],
+          "fieldOption" : [ ],
+          "selection" : "program",
+          "generalOption" : [ ],
+          "timestampOption" : "none",
+          "runtime_column_propagation" : 0,
+          "decimalOption" : [ ],
+          "timeOption" : "none"
+        }
+      } ],
+      "id" : "3cf07dfd-db05-45e9-93e7-23b41a52d164",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxExternalTarget.svg",
+          "x_pos" : 332.64,
+          "label" : "External_Target_1",
+          "y_pos" : 285.12
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "nls_map_name" : "UTF-8",
+        "output_count" : 0,
+        "execmode" : "default_par",
+        "input_count" : 1
+      }
+    } ],
+    "description" : "",
+    "id" : "77f88df9-1bf9-438c-b9ae-833372dc86a6",
+    "app_data" : {
+      "datastage" : {
+        "nls_map_name" : "",
+        "nls_locale" : "OFF"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "external_paramsets" : [ ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "c9e0155f-2917-40cf-8473-306b540da851",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_1",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    } ]
+  }, {
+    "id" : "17970b05-9110-4f92-b399-48f8c32c9450",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_1.COLUMN_1",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_1",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    } ]
+  }, {
+    "id" : "35be4903-2d8f-4905-b0f0-b1575acead26",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_1.COLUMN_1",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_1",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    } ]
+  }, {
+    "id" : "bd43499a-f469-46ee-ad13-3fce0495a772",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_1.COLUMN_1",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_1",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    } ]
+  }, {
+    "id" : "f0d6e082-bf62-48e6-9684-ddb5d4e5a185",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_1.COLUMN_1",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_1",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "0634ddba-2db3-4c46-a764-249c8940eb51",
+  "app_data" : {
+    "datastage" : {
+      "timestamp_format" : "",
+      "decimal_separator" : "",
+      "flowRunPriorityQueue" : "Medium",
+      "time_format" : "",
+      "date_format" : "",
+      "message_handlers" : [ ],
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "transInputLinkMapper" : { },
+      "ELTDropdown" : {
+        "id" : "nesting",
+        "label" : "Generate nested SQL",
+        "value" : "NESTED_QUERY"
+      },
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "disableParamsCacheOnFlow" : false,
+      "rcpLinkList" : [ ],
+      "globalAcp" : true,
+      "enableRCP" : false,
+      "isNewTransActive" : false,
+      "isDefineParameterToggled" : true,
+      "enableSchemaLessDesign" : false,
+      "runMode" : "ETL"
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ ]
+  }
+}

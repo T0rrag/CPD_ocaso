@@ -1,0 +1,4706 @@
+{
+  "primary_pipeline" : "2290fac7-8f67-47d4-a2f5-1aea489cf26f",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "d1cf2173-a4ae-4511-8fd1-52bd77e358fe",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "95fafe04-f9f7-47c6-afb6-435e5dc03125"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2
+            }
+          }
+        },
+        "parameters" : {
+          "final_delim" : "end",
+          "null_field_sep_flag" : false,
+          "null_field" : "'NULL'",
+          "file_location" : "file_system",
+          "firstLineColumnNames" : " ",
+          "buf_mode" : "default",
+          "read_file_as_one_column" : false,
+          "keepPartitions" : " ",
+          "enableSchemalessDesign" : false,
+          "file +" : [ ],
+          "rejects" : "continue",
+          "quote" : "double",
+          "selection" : "file",
+          "connection_asset_id" : "",
+          "missingFile" : " ",
+          "reportProgress" : "yes",
+          "file_format" : "sequential",
+          "delim" : "','"
+        }
+      } ],
+      "op" : "PxSequentialFile",
+      "inputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "id" : "03e2d9eb-bdde-4490-b820-c047176bc52a",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 47.519999999999996,
+          "label" : "Sequential_file_1",
+          "y_pos" : 31.68
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "output_count" : 1,
+        "nls_map_name" : "",
+        "input_count" : 0,
+        "execmode" : "default_seq",
+        "preserve" : -1,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxSequentialFile",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "03e2d9eb-bdde-4490-b820-c047176bc52a",
+          "type_attr" : "PRIMARY",
+          "id" : "95fafe04-f9f7-47c6-afb6-435e5dc03125",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_1",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_1",
+          "port_id_ref" : "d1cf2173-a4ae-4511-8fd1-52bd77e358fe"
+        } ],
+        "id" : "e8b5ca32-3f55-4c37-ac14-dd83576c00e0",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "final_delim" : "end",
+          "null_field_sep_flag" : false,
+          "firstLineColumnNames" : " ",
+          "numericOption" : [ ],
+          "recLevelOption" : [ "final_delimiter" ],
+          "rejects" : "continue",
+          "file" : [ ],
+          "quote" : "double",
+          "fieldOption" : [ "delimiter", "quote", "null_field" ],
+          "generalOption" : [ ],
+          "timestampOption" : "none",
+          "nocleanup" : " ",
+          "file_format" : "sequential",
+          "registerDataAsset" : false,
+          "delim" : "','",
+          "timeOption" : "none",
+          "stringOption" : [ ],
+          "showPartType" : true,
+          "null_field" : "NULL",
+          "file_location" : "file_system",
+          "showCollType" : false,
+          "dateOption" : "none",
+          "enableFlowAcpControl" : true,
+          "part_type" : "auto",
+          "showSortOptions" : false,
+          "append-overwrite" : "overwrite",
+          "inputcolProperties" : [ ],
+          "writemethod" : " ",
+          "decimalOption" : [ ],
+          "runtime_column_propagation" : 0
+        }
+      } ],
+      "id" : "87880acf-29cb-4089-ba53-65d5a47dbd9e",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 158.4,
+          "label" : "Sequential_file_2",
+          "y_pos" : 31.68
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "execmode" : "default_seq"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "4170ec63-8f30-4f14-90e6-e3606d13877f",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "4d21e972-72f1-4dff-8b34-8a8e85ecce96"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        }
+      } ],
+      "op" : "PxCFF",
+      "inputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "id" : "6af13153-64b5-437f-bb1c-4b74cb3cda1d",
+      "type" : "execution_node",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxCFF.svg",
+          "x_pos" : 47.519999999999996,
+          "label" : "Complex_Flat_File_1",
+          "y_pos" : 126.72
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "op" : "PxCFF",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "6af13153-64b5-437f-bb1c-4b74cb3cda1d",
+          "type_attr" : "PRIMARY",
+          "id" : "4d21e972-72f1-4dff-8b34-8a8e85ecce96",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/noMeta-auto-noACP.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 70,
+                "tooltip" : "No columns\nAuto-partition\nAutomatic column propagation is disabled for this link",
+                "x_pos" : -26,
+                "id" : "dec-6Q",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_2",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_2",
+          "port_id_ref" : "4170ec63-8f30-4f14-90e6-e3606d13877f"
+        } ],
+        "id" : "0814e4bb-6467-4b97-98cd-85739d54ea9a",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : { }
+      } ],
+      "id" : "d411047c-8faa-4964-8fe2-35b6862a2196",
+      "type" : "execution_node",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxCFF.svg",
+          "x_pos" : 174.24,
+          "label" : "Complex_Flat_File_2",
+          "y_pos" : 126.72
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "ec1ce987-9979-4064-97b4-d5d5c16562ad",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "7c6c5ec5-17db-4648-8b01-59050bb0851a"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxDataSet",
+      "id" : "00f2a755-1663-469e-af72-b2b02365197a",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxDataSet.svg",
+          "x_pos" : 47.519999999999996,
+          "label" : "Data_set_1",
+          "y_pos" : 221.76
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "execmode" : "default_par"
+      }
+    }, {
+      "op" : "PxDataSet",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "00f2a755-1663-469e-af72-b2b02365197a",
+          "type_attr" : "PRIMARY",
+          "id" : "7c6c5ec5-17db-4648-8b01-59050bb0851a",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/noMeta-auto-noACP.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 70,
+                "tooltip" : "No columns\nAuto-partition\nAutomatic column propagation is disabled for this link",
+                "x_pos" : -26,
+                "id" : "dec-6Q",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_3",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_3",
+          "port_id_ref" : "ec1ce987-9979-4064-97b4-d5d5c16562ad"
+        } ],
+        "id" : "c6cb16aa-1efb-4e2b-8f7e-be519df47db9",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "currentOutputLinkType" : "PRIMARY",
+          "showPartType" : true,
+          "inputcolProperties" : [ ],
+          "datasetmode" : ">| [ds",
+          "showCollType" : false,
+          "outputAcpShouldHide" : false,
+          "enableFlowAcpControl" : true,
+          "part_type" : "auto",
+          "showSortOptions" : false,
+          "registerDataAsset" : false
+        }
+      } ],
+      "id" : "353498a8-9e69-4523-885b-064ff9f7c0ad",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxDataSet.svg",
+          "x_pos" : 174.24,
+          "label" : "Data_set_2",
+          "y_pos" : 221.76
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "execmode" : "default_par"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "a3150d7d-1847-4b20-b4d6-055938267895",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "cff6f45c-563f-4068-955f-f30b508884c0"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "outputName" : "Link_4"
+        }
+      } ],
+      "op" : "ftp",
+      "connection" : { },
+      "id" : "a05b3318-20dc-4086-a0d0-64daed31b6b1",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "",
+          "outputs_order" : "a3150d7d-1847-4b20-b4d6-055938267895"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/ftp.svg",
+          "x_pos" : 47.519999999999996,
+          "label" : "FTP_1",
+          "y_pos" : 332.64
+        }
+      },
+      "parameters" : {
+        "OutputlinkOrderingList" : [ {
+          "link_label" : "0",
+          "link_name" : "Link_4"
+        } ],
+        "InputlinkOrderingList" : [ ],
+        "output_count" : 1,
+        "input_count" : 0,
+        "execmode" : "default_seq"
+      }
+    }, {
+      "op" : "ftp",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "a05b3318-20dc-4086-a0d0-64daed31b6b1",
+          "type_attr" : "PRIMARY",
+          "id" : "cff6f45c-563f-4068-955f-f30b508884c0",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_4",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_4",
+          "port_id_ref" : "a3150d7d-1847-4b20-b4d6-055938267895"
+        } ],
+        "id" : "a985fb19-33bc-4891-8b88-cdd4c8856f07",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type"
+        }
+      } ],
+      "connection" : { },
+      "id" : "666d7c31-b9dc-4fdb-818e-c0921d112891",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "a985fb19-33bc-4891-8b88-cdd4c8856f07",
+          "outputs_order" : ""
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/ftp.svg",
+          "x_pos" : 174.24,
+          "label" : "FTP_2",
+          "y_pos" : 332.64
+        }
+      },
+      "parameters" : {
+        "OutputlinkOrderingList" : [ ],
+        "InputlinkOrderingList" : [ {
+          "link_label" : "0",
+          "link_name" : "Link_4"
+        } ],
+        "output_count" : 0,
+        "input_count" : 1,
+        "execmode" : "default_seq"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "0ebae358-f257-47d6-88f4-4bd0aec400a0",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "3ccb5585-f320-452a-ac40-dd6ea6ba4105"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "db2",
+      "inputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "connection" : {
+        "properties" : {
+          "startCountAfter_rows" : 1,
+          "reject_uses" : "Rows",
+          "reject_number" : 0
+        }
+      },
+      "id" : "94eae801-e07f-4b54-8f80-50bf9d9a00b7",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/db2.svg",
+          "x_pos" : 316.8,
+          "label" : "IBM_Db2_1",
+          "y_pos" : 31.68
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "execmode" : "default_par"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "db2",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "94eae801-e07f-4b54-8f80-50bf9d9a00b7",
+          "type_attr" : "PRIMARY",
+          "id" : "3ccb5585-f320-452a-ac40-dd6ea6ba4105",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/noMeta-auto-noACP.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 70,
+                "tooltip" : "No columns\nAuto-partition\nAutomatic column propagation is disabled for this link",
+                "x_pos" : -26,
+                "id" : "dec-6Q",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_5",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_5",
+          "port_id_ref" : "0ebae358-f257-47d6-88f4-4bd0aec400a0"
+        } ],
+        "id" : "c1a771b3-996a-46cd-8c45-e3eaa231c2ab",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type"
+        }
+      } ],
+      "connection" : {
+        "properties" : {
+          "startCountAfter_rows" : 1,
+          "reject_uses" : "Rows",
+          "reject_number" : 0
+        }
+      },
+      "id" : "9d538ea0-99f8-4704-b247-95fd658b0822",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/db2.svg",
+          "x_pos" : 443.52,
+          "label" : "IBM_Db2_2",
+          "y_pos" : 31.68
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "execmode" : "default_par"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "f8e23295-ba1b-471a-a857-57848840202a",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "99c1aae7-97fe-4961-8a05-c8d389488ffe"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "bigqueryPX",
+      "inputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "connection" : { },
+      "id" : "bbb54b87-2c62-4c04-a632-1ab05399707a",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/bigqueryPX.svg",
+          "x_pos" : 316.8,
+          "label" : "Google_BigQuery_1",
+          "y_pos" : 221.76
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "execmode" : "default_par"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "bigqueryPX",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "bbb54b87-2c62-4c04-a632-1ab05399707a",
+          "type_attr" : "PRIMARY",
+          "id" : "99c1aae7-97fe-4961-8a05-c8d389488ffe",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/noMeta-auto-noACP.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 70,
+                "tooltip" : "No columns\nAuto-partition\nAutomatic column propagation is disabled for this link",
+                "x_pos" : -26,
+                "id" : "dec-6Q",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_7",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_7",
+          "port_id_ref" : "f8e23295-ba1b-471a-a857-57848840202a"
+        } ],
+        "id" : "3aae55c5-a8df-4e95-99cd-096f474067ba",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type"
+        }
+      } ],
+      "connection" : { },
+      "id" : "a57278cc-9856-4e3f-b04f-7038b8c9d485",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/bigqueryPX.svg",
+          "x_pos" : 443.52,
+          "label" : "Google_BigQuery_2",
+          "y_pos" : 221.76
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "execmode" : "default_par"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "dcf7ee36-3a6a-494c-93b0-cbb37885fcb7",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "7a81216e-c751-4bf7-895b-e9628f0e3281"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "http",
+      "connection" : { },
+      "id" : "7298509b-f869-4e3d-b335-7394594b9e72",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/http.svg",
+          "x_pos" : 586.08,
+          "label" : "HTTP_1",
+          "y_pos" : 126.72
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "execmode" : "default_par"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "5a973350-c514-4518-b2d0-d9d6860d78da",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "aedc07da-7297-4bbb-8d33-970bba33cb7e"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483648
+            }
+          }
+        },
+        "parameters" : {
+          "buf_mode" : "default"
+        }
+      } ],
+      "op" : "DB2ConnectorPX",
+      "inputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type"
+        }
+      } ],
+      "connection" : {
+        "ref" : "local",
+        "properties" : {
+          "currentOutputLinkType" : "PRIMARY",
+          "session.isolation_level" : "cursor_stability",
+          "lock_wait_mode" : "use_the_lock_timeout_database_configuration_parameter",
+          "transaction.end_of_wave" : "none",
+          "advanced.ssl_connection" : false,
+          "keep_conductor_connection_alive" : false,
+          "outputAcpShouldHide" : true,
+          "enableSchemalessDesign" : false,
+          "authentication_type" : "username_and_password",
+          "session.autocommit_mode" : "off",
+          "node_number" : 0,
+          "password" : "{dsmenc}KCAbrCfUGi+ccg8JMH9Oo3iywgvuafwNARmxFl5u9F0=",
+          "node_count" : 1,
+          "session.pass_lob_locator" : false,
+          "limit_rows" : false,
+          "session.schema_reconciliation.fail_on_size_mismatch" : true,
+          "enableFlowAcpControl" : false,
+          "sql.select_statement.read_from_file_select" : false,
+          "session.array_size" : 2000,
+          "sql.enable_partitioning" : false,
+          "prefix_for_expression_columns" : "EXPR",
+          "session.schema_reconciliation.fail_on_type_mismatch" : true,
+          "re_optimization" : "none",
+          "before_after" : false,
+          "advanced.port" : 50000,
+          "generate_sql" : false,
+          "transaction.record_count" : 2000,
+          "enable_quoted_i_ds" : true,
+          "session.use_external_tables" : false,
+          "username" : "admin"
+        }
+      },
+      "id" : "ed0c5f6c-eff9-44c5-ad87-d0c529d3b0c3",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "",
+          "outputs_order" : "5a973350-c514-4518-b2d0-d9d6860d78da|"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/DB2ConnectorPX.svg",
+          "x_pos" : 316.8,
+          "label" : "IBM_Db2_for_DataStage_1",
+          "y_pos" : 126.72
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "output_count" : 1,
+        "input_count" : 0,
+        "execmode" : "default_par",
+        "preserve" : -3
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483648
+            }
+          }
+        }
+      } ],
+      "op" : "DB2ConnectorPX",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "ed0c5f6c-eff9-44c5-ad87-d0c529d3b0c3",
+          "type_attr" : "PRIMARY",
+          "id" : "aedc07da-7297-4bbb-8d33-970bba33cb7e",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/noMeta-auto-noACP.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 70,
+                "tooltip" : "No columns\nAuto-partition\nAutomatic column propagation is disabled for this link",
+                "x_pos" : -26,
+                "id" : "dec-6Q",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_6",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_6",
+          "port_id_ref" : "5a973350-c514-4518-b2d0-d9d6860d78da"
+        } ],
+        "id" : "4393104a-0036-4219-a768-df7747aba2c0",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        }
+      } ],
+      "connection" : {
+        "properties" : {
+          "startCountAfter_rows" : 1,
+          "reject_uses" : "Rows",
+          "reject_number" : 0
+        }
+      },
+      "id" : "bfee5f33-9fe4-4d09-a917-387dab82c17c",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "4393104a-0036-4219-a768-df7747aba2c0",
+          "outputs_order" : ""
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/DB2ConnectorPX.svg",
+          "x_pos" : 443.52,
+          "label" : "IBM_Db2_for_DataStage_2",
+          "y_pos" : 126.72
+        }
+      },
+      "parameters" : {
+        "InputlinkOrderingList" : [ {
+          "link_label" : "0",
+          "link_name" : "Link_6"
+        } ],
+        "output_count" : 0,
+        "input_count" : 1,
+        "execmode" : "default_par"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "68c1c35a-0390-46d4-951a-ea4514a7090f",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "bfa01b27-f8b9-4b6e-a6a1-b26f2ce04bff"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "sqlserver",
+      "inputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "connection" : {
+        "properties" : {
+          "startCountAfter_rows" : 1,
+          "reject_uses" : "Rows",
+          "reject_number" : 0
+        }
+      },
+      "id" : "924a9af9-ae53-4010-b9dd-fbe05139125c",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/sqlserver.svg",
+          "x_pos" : 316.8,
+          "label" : "Microsoft_SQL_Server_1",
+          "y_pos" : 332.64
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "execmode" : "default_par"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "sqlserver",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "924a9af9-ae53-4010-b9dd-fbe05139125c",
+          "type_attr" : "PRIMARY",
+          "id" : "bfa01b27-f8b9-4b6e-a6a1-b26f2ce04bff",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/noMeta-auto-noACP.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 70,
+                "tooltip" : "No columns\nAuto-partition\nAutomatic column propagation is disabled for this link",
+                "x_pos" : -26,
+                "id" : "dec-6Q",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_8",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_8",
+          "port_id_ref" : "68c1c35a-0390-46d4-951a-ea4514a7090f"
+        } ],
+        "id" : "1a3db629-c468-47b6-b8aa-14da9ff13f50",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type"
+        }
+      } ],
+      "connection" : {
+        "properties" : {
+          "startCountAfter_rows" : 1,
+          "reject_uses" : "Rows",
+          "reject_number" : 0
+        }
+      },
+      "id" : "8e9e2ee5-e6da-4c2f-a9ac-d9427459f44d",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/sqlserver.svg",
+          "x_pos" : 443.52,
+          "label" : "Microsoft_SQL_Server_2",
+          "y_pos" : 332.64
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "execmode" : "default_par"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "d11eb757-bac8-4249-98f5-a553b41616f4",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "8df83e41-dbdf-47c6-aefd-438df2cf0e0d"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "skip_sheet_name" : "",
+          "template_data_area" : "",
+          "skip_null_row" : false,
+          "source_column_header" : 0,
+          "hidden_columns" : 0,
+          "buf_mode" : "default",
+          "area_expression" : "Sheet1!A1:A1",
+          "outputcolProperties" : [ ],
+          "area_type" : 0,
+          "col_map" : [ ]
+        }
+      } ],
+      "op" : "UnstructuredDataConnectorPX",
+      "id" : "d963f533-cca4-4523-bcaa-dd9289707989",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "",
+          "outputs_order" : "d11eb757-bac8-4249-98f5-a553b41616f4"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/UnstructuredDataConnectorPX.svg",
+          "x_pos" : 586.08,
+          "label" : "Excel_1",
+          "y_pos" : 31.68
+        }
+      },
+      "parameters" : {
+        "use_template_file_for_design_time" : false,
+        "file_name" : "test.xls",
+        "data_asset_id" : "f1eb4bb0-034d-42bc-94af-5b489bc8c902",
+        "preserve" : -3,
+        "doc_type" : 0,
+        "allow_column_mapping" : false,
+        "combinability" : "auto",
+        "OutputlinkOrderingList" : [ {
+          "link_label" : "0",
+          "link_name" : "Link_17"
+        } ],
+        "InputlinkOrderingList" : [ ],
+        "output_count" : 1,
+        "input_count" : 0,
+        "execmode" : "default_seq",
+        "heap_size" : 256,
+        "error_action" : 0
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "68614de5-2415-4d94-9823-ab85e5138d9a",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "e9b14614-ee66-490f-8f37-88e8f8212ece"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        }
+      } ],
+      "inputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "id" : "fe0b0a92-bee9-4250-8bdf-61b464f075a0",
+      "type" : "super_node",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/XMLStagePX.svg",
+          "expanded_height" : 200,
+          "is_expanded" : false,
+          "expanded_width" : 200,
+          "x_pos" : 586.08,
+          "label" : "Hierarchical_Data_1",
+          "y_pos" : 332.64
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "stage_type" : "XMLStage",
+        "input_count" : 0,
+        "execmode" : "default_seq",
+        "isXMLStage" : true
+      },
+      "subflow_ref" : {
+        "pipeline_id_ref" : "86bf9451-081c-49d8-b733-81c2da325c03"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "fe0b0a92-bee9-4250-8bdf-61b464f075a0",
+          "type_attr" : "PRIMARY",
+          "id" : "e9b14614-ee66-490f-8f37-88e8f8212ece",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_10",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_10",
+          "port_id_ref" : "68614de5-2415-4d94-9823-ab85e5138d9a"
+        } ],
+        "id" : "52756c0c-0b06-4222-a0ac-b45d25e9d679",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        }
+      } ],
+      "id" : "e3dd4f38-8d87-4965-a957-1bb5e5ca8dbd",
+      "type" : "super_node",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/XMLStagePX.svg",
+          "expanded_height" : 200,
+          "is_expanded" : false,
+          "expanded_width" : 200,
+          "x_pos" : 712.8,
+          "label" : "Hierarchical_Data_2",
+          "y_pos" : 332.64
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "stage_type" : "XMLStage",
+        "input_count" : 1,
+        "execmode" : "default_seq",
+        "isXMLStage" : true
+      },
+      "subflow_ref" : {
+        "pipeline_id_ref" : "9d0cf55a-b792-4e56-9bd9-6aa63caa44d5"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "op" : "PxPeek",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "7298509b-f869-4e3d-b335-7394594b9e72",
+          "type_attr" : "PRIMARY",
+          "id" : "7a81216e-c751-4bf7-895b-e9628f0e3281",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/noMeta-auto-noACP.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 70,
+                "tooltip" : "No columns\nAuto-partition\nAutomatic column propagation is disabled for this link",
+                "x_pos" : -26,
+                "id" : "dec-6Q",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_11",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_11",
+          "port_id_ref" : "dcf7ee36-3a6a-494c-93b0-cbb37885fcb7"
+        } ],
+        "id" : "b97bcfa9-d34f-44ca-90c1-fd39b101458d",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "id" : "bdcdf9f1-14bd-4da2-a3ae-3bb605c86999",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "b97bcfa9-d34f-44ca-90c1-fd39b101458d",
+          "outputs_order" : ""
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxPeek.svg",
+          "x_pos" : 712.8,
+          "label" : "Peek_1",
+          "y_pos" : 126.72
+        }
+      },
+      "parameters" : {
+        "all" : " ",
+        "columns" : " ",
+        "enableFlowAcpControl" : true,
+        "part_type" : "auto",
+        "combinability" : "auto",
+        "OutputlinkOrderingList" : [ ],
+        "nrecs" : 10,
+        "selection" : " ",
+        "InputlinkOrderingList" : [ {
+          "link_label" : "0",
+          "link_name" : "Link_11"
+        } ],
+        "output_count" : 0,
+        "execmode" : "default_par",
+        "input_count" : 1,
+        "name" : "name",
+        "dataset" : " "
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "5d9c4678-2ac5-4eb9-878a-76f8aa5940fe",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "b79c892e-b068-426e-92d5-328799c94fda"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 2147483647
+            }
+          }
+        }
+      } ],
+      "op" : "PxRest",
+      "inputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "id" : "6a29ff63-abd7-48aa-b30e-91d405f6f2f3",
+      "type" : "execution_node",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/REST.svg",
+          "x_pos" : 586.08,
+          "label" : "Rest_1",
+          "y_pos" : 221.76
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "output_count" : 1,
+        "input_count" : 0,
+        "execmode" : "default_seq",
+        "preserve" : -3
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "op" : "PxPeek",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "6a29ff63-abd7-48aa-b30e-91d405f6f2f3",
+          "type_attr" : "PRIMARY",
+          "id" : "b79c892e-b068-426e-92d5-328799c94fda",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/noMeta-specific-noACP.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 70,
+                "tooltip" : "No columns\nSpecific partition\nAutomatic column propagation is disabled for this link",
+                "x_pos" : -25,
+                "id" : "dec-6J",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_12",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_12",
+          "port_id_ref" : "5d9c4678-2ac5-4eb9-878a-76f8aa5940fe"
+        } ],
+        "id" : "d59d5e50-faa0-49b5-9c32-b77bd076f7d7",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "id" : "58b760a6-529f-49a7-a937-e6b27ff56302",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "d59d5e50-faa0-49b5-9c32-b77bd076f7d7",
+          "outputs_order" : ""
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxPeek.svg",
+          "x_pos" : 712.8,
+          "label" : "Peek_2",
+          "y_pos" : 221.76
+        }
+      },
+      "parameters" : {
+        "all" : " ",
+        "columns" : " ",
+        "enableFlowAcpControl" : true,
+        "part_type" : "auto",
+        "combinability" : "auto",
+        "OutputlinkOrderingList" : [ ],
+        "nrecs" : 10,
+        "selection" : " ",
+        "InputlinkOrderingList" : [ {
+          "link_label" : "0",
+          "link_name" : "Link_12"
+        } ],
+        "output_count" : 0,
+        "execmode" : "default_par",
+        "input_count" : 1,
+        "name" : "name",
+        "dataset" : " "
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "2535a900-7300-4ce5-87b1-a70564b38e7a",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "f0294c82-3c9c-4371-bd1b-226dfe106cdb"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          },
+          "additionalProperties" : {
+            "enableAcp" : true
+          }
+        },
+        "schema_ref" : "906be698-c45c-45c2-bb45-a7fb9d328727",
+        "parameters" : {
+          "records" : 10,
+          "buf_mode" : "default",
+          "enableSchemalessDesign" : false
+        }
+      } ],
+      "op" : "PxRowGenerator",
+      "id" : "76cc7569-fedc-4c18-b5b4-a9defed3e972",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxRowGenerator.svg",
+          "x_pos" : 47.519999999999996,
+          "label" : "Row_Generator_1",
+          "y_pos" : 443.52
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "output_count" : 1,
+        "input_count" : 0,
+        "execmode" : "default_seq",
+        "preserve" : -3
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "c68657b9-a957-49c2-b7e1-ac194b627c6c",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "6645fc29-61b4-4476-8348-be5feb7dd26e"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 2147483647
+            }
+          },
+          "additionalProperties" : {
+            "enableAcp" : true
+          }
+        },
+        "schema_ref" : "54ceb7a4-ef88-48a8-8051-89591beb9dfc",
+        "parameters" : {
+          "outputName" : "Link_16",
+          "buf_mode" : "default",
+          "description" : ""
+        }
+      } ],
+      "op" : "CTransformerStage",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "76cc7569-fedc-4c18-b5b4-a9defed3e972",
+          "type_attr" : "PRIMARY",
+          "id" : "f0294c82-3c9c-4371-bd1b-226dfe106cdb",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/specific-noACP.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 70,
+                "tooltip" : "Specific partition\nAutomatic column propagation is disabled for this link",
+                "x_pos" : -23,
+                "id" : "dec-6F",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_15",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_15",
+          "port_id_ref" : "2535a900-7300-4ce5-87b1-a70564b38e7a"
+        } ],
+        "id" : "b1740b8d-628d-44db-8b90-bee8082f43b8",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "906be698-c45c-45c2-bb45-a7fb9d328727",
+        "parameters" : { }
+      } ],
+      "id" : "c8735a4a-6313-45f1-ab4f-cfe9de5bb5c8",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "b1740b8d-628d-44db-8b90-bee8082f43b8",
+          "outputs_order" : "c68657b9-a957-49c2-b7e1-ac194b627c6c"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/CTransformerStage.svg",
+          "x_pos" : 174.24,
+          "label" : "Transformer_1",
+          "y_pos" : 443.52
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "OutputlinkOrderingList" : [ {
+          "link_label" : "0",
+          "link_name" : "Link_16"
+        } ],
+        "InputlinkOrderingList" : [ {
+          "link_label" : "0",
+          "link_name" : "Link_15"
+        } ],
+        "output_count" : 1,
+        "BlockSizeSelectedType" : "systemSelected",
+        "StageVariables" : [ ],
+        "input_count" : 1,
+        "execmode" : "default_par",
+        "Triggers" : [ ],
+        "preserve" : -3,
+        "LoopVariables" : [ ],
+        "SKKeySourceType" : "file"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "fa798a47-eaea-467c-b891-838d66e11ed3",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "ca068135-f318-402d-bf1a-13548e3dc5e0"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2
+            }
+          }
+        }
+      } ],
+      "op" : "WSTransformerPX",
+      "inputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "id" : "d302ba0f-18fc-42d9-a88f-b0e304917398",
+      "type" : "execution_node",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/WSTransformerPX.svg",
+          "x_pos" : 586.08,
+          "label" : "Web_Service_1",
+          "y_pos" : 443.52
+        }
+      },
+      "parameters" : {
+        "wsdl_operation_style" : "",
+        "wsdl_service_name" : "",
+        "input_col" : [ ],
+        "rejectLinkName" : "",
+        "is_authentication_required" : false,
+        "wsdl_port_address" : "",
+        "is_certificate_required" : false,
+        "wsdl_soap_action" : "",
+        "output_col" : [ ],
+        "output_count" : 1,
+        "wsdl_input_message_namespace" : "",
+        "input_count" : 0,
+        "wsdl_document_uri" : "",
+        "wsdl_port_name" : "",
+        "hasReferenceOutput" : false,
+        "is_proxy_required" : false,
+        "responseName" : "",
+        "enableFlowAcpControl" : true,
+        "part_type" : "auto",
+        "error_handling" : 6,
+        "requestName" : "",
+        "combinability" : "auto",
+        "rejectLinkIndex" : -1,
+        "operation_timeout" : 0,
+        "wsdl_document_xml" : "",
+        "execmode" : "default_seq",
+        "wsdl_operation_name" : ""
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "op" : "WSTransformerPX",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "d302ba0f-18fc-42d9-a88f-b0e304917398",
+          "type_attr" : "PRIMARY",
+          "id" : "ca068135-f318-402d-bf1a-13548e3dc5e0",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_13",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_13",
+          "port_id_ref" : "fa798a47-eaea-467c-b891-838d66e11ed3"
+        } ],
+        "id" : "d6149502-de1c-4a1d-991a-f38ef9e80dd3",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "id" : "13aa236e-32d5-47a9-8d5a-c310a98e6345",
+      "type" : "execution_node",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/WSTransformerPX.svg",
+          "x_pos" : 712.8,
+          "label" : "Web_Service_2",
+          "y_pos" : 443.52
+        }
+      },
+      "parameters" : {
+        "wsdl_operation_style" : "",
+        "wsdl_service_name" : "",
+        "input_col" : [ ],
+        "rejectLinkName" : "",
+        "is_authentication_required" : false,
+        "wsdl_port_address" : "",
+        "is_certificate_required" : false,
+        "wsdl_soap_action" : "",
+        "output_col" : [ ],
+        "output_count" : 0,
+        "wsdl_input_message_namespace" : "",
+        "input_count" : 1,
+        "wsdl_document_uri" : "",
+        "wsdl_port_name" : "",
+        "hasReferenceOutput" : false,
+        "is_proxy_required" : false,
+        "responseName" : "",
+        "enableFlowAcpControl" : true,
+        "part_type" : "auto",
+        "error_handling" : 6,
+        "requestName" : "",
+        "combinability" : "auto",
+        "rejectLinkIndex" : -1,
+        "operation_timeout" : 0,
+        "wsdl_document_xml" : "",
+        "execmode" : "default_seq",
+        "wsdl_operation_name" : ""
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "c6c0b7b8-49b0-4be6-afe6-223d344733b2",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "99ea136d-c380-49de-9e78-06b540a7181d"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2
+            }
+          }
+        }
+      } ],
+      "op" : "PxXMLOutput",
+      "inputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "runtime_column_propagation" : 0
+        }
+      } ],
+      "id" : "00bc336d-033c-4007-8128-0272e0ad0a2b",
+      "type" : "execution_node",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/XMLOutputPX.svg",
+          "x_pos" : 586.08,
+          "label" : "XML_Output_1",
+          "y_pos" : 538.56
+        }
+      },
+      "parameters" : {
+        "xml_chunk_text" : "text",
+        "header_text" : "text",
+        "document_type_text" : "text",
+        "xml_chunk" : "",
+        "generate_full_document" : true,
+        "indentation_character" : "\\\\s",
+        "output_count" : 1,
+        "input_count" : 0,
+        "validate_output" : false,
+        "indentation_length" : 2,
+        "heap_size" : 256,
+        "empty_element_style" : "use single tag",
+        "new_line_style" : "MAC",
+        "document_type" : "",
+        "isIcp4d" : false,
+        "enableFlowAcpControl" : true,
+        "generate_comment" : true,
+        "part_type" : "auto",
+        "output_file" : "",
+        "output_row_generation" : "use column",
+        "output_row_trigger_column" : "",
+        "write_to_file" : false,
+        "combinability" : "auto",
+        "include_xml_chunk" : false,
+        "replace_nulls" : false,
+        "isRemoteEngine" : false,
+        "namespace_declaration" : "",
+        "multi_line_output" : false,
+        "execmode" : "default_seq",
+        "discard_empty_values" : false,
+        "header" : "",
+        "include_namespaces" : false,
+        "include_document" : false,
+        "include_header" : false,
+        "xml_encoding" : "UTF-8"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "op" : "PxXMLInput",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "00bc336d-033c-4007-8128-0272e0ad0a2b",
+          "type_attr" : "PRIMARY",
+          "id" : "99ea136d-c380-49de-9e78-06b540a7181d",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_14",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_14",
+          "port_id_ref" : "c6c0b7b8-49b0-4be6-afe6-223d344733b2"
+        } ],
+        "id" : "a0317886-b9ae-408f-93e6-1f41d115324d",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "id" : "38d1a845-b8a6-4a28-bd71-a1d6bd88d800",
+      "type" : "execution_node",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/XMLInputPX.svg",
+          "x_pos" : 712.8,
+          "label" : "XML_Input_1",
+          "y_pos" : 538.56
+        }
+      },
+      "parameters" : {
+        "isIcp4d" : false,
+        "xslt_stylesheet" : "",
+        "enableFlowAcpControl" : true,
+        "accept_nulls" : false,
+        "part_type" : "auto",
+        "log_reject_errors" : false,
+        "xslt_source" : "property",
+        "xslt_warning_mapping" : "DS_WARNING",
+        "use_custom_xslt" : false,
+        "format_serialized_chunks" : false,
+        "xslt_fatal_mapping" : "DS_REJECT",
+        "combinability" : "auto",
+        "validate_input" : false,
+        "replace_nulls" : false,
+        "namespace_declaration" : "",
+        "output_count" : 0,
+        "enable_grammar_caching" : false,
+        "xslt_text" : "URL",
+        "execmode" : "default_seq",
+        "input_count" : 1,
+        "discard_empty_values" : false,
+        "heap_size" : 256,
+        "include_namespaces" : false,
+        "xslt_error_mapping" : "DS_FATAL"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "op" : "PxCopy",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "c8735a4a-6313-45f1-ab4f-cfe9de5bb5c8",
+          "type_attr" : "PRIMARY",
+          "id" : "6645fc29-61b4-4476-8348-be5feb7dd26e",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/autoParition-noACP.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 5,
+                "width" : 70,
+                "tooltip" : "Auto-partition\nAutomatic column propagation is disabled for this link",
+                "x_pos" : -27,
+                "id" : "dec-6E",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_16",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_16",
+          "port_id_ref" : "c68657b9-a957-49c2-b7e1-ac194b627c6c"
+        } ],
+        "id" : "0ebf0fbb-beb7-4078-958a-c251c1ce52ff",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "54ceb7a4-ef88-48a8-8051-89591beb9dfc"
+      } ],
+      "id" : "9322eebd-d644-4c12-a31a-6d7693c63084",
+      "type" : "execution_node",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxCopy.svg",
+          "x_pos" : 316.8,
+          "label" : "Copy_1",
+          "y_pos" : 443.52
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "output_count" : 0,
+        "execmode" : "default_par",
+        "input_count" : 1,
+        "enableFlowAcpControl" : true,
+        "force" : " ",
+        "part_type" : "auto"
+      }
+    }, {
+      "op" : "UnstructuredDataConnectorPX",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "d963f533-cca4-4523-bcaa-dd9289707989",
+          "type_attr" : "PRIMARY",
+          "id" : "8df83e41-dbdf-47c6-aefd-438df2cf0e0d",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_17",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_17",
+          "port_id_ref" : "d11eb757-bac8-4249-98f5-a553b41616f4"
+        } ],
+        "id" : "6029ebfe-0ce0-42e4-adf4-beeadad73345",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "showPartType" : true,
+          "write_mode_create_sheet_name" : "Sheet1",
+          "deletedInputColumns" : [ {
+            "Unicode" : false,
+            "Description" : " ",
+            "Signed" : true,
+            "Metadata" : "CHAR(100)",
+            "Scale" : 0,
+            "TimeScale" : 0,
+            "OldColumnName" : "COLUMN_1",
+            "TempOldColumnName" : "COLUMN_1",
+            "ColumnName" : "COLUMN_1",
+            "Length" : 100,
+            "MisFieldProperties" : "",
+            "DataType" : "CHAR",
+            "Key" : false,
+            "Nullable" : false
+          } ],
+          "showCollType" : false,
+          "sheet_number" : 1,
+          "perform_sort" : false,
+          "heap_size" : 256,
+          "target_write_mode_create_column_header" : 0,
+          "auto_size_columns" : false,
+          "part_coll" : "none",
+          "showSortOptions" : false
+        }
+      } ],
+      "id" : "0e7d9141-6a42-42b5-b4ec-cd1c2c83c4f0",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "6029ebfe-0ce0-42e4-adf4-beeadad73345",
+          "outputs_order" : ""
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/UnstructuredDataConnectorPX.svg",
+          "x_pos" : 712.8,
+          "label" : "Excel_2",
+          "y_pos" : 31.68
+        }
+      },
+      "parameters" : {
+        "data_asset_id" : "f1eb4bb0-034d-42bc-94af-5b489bc8c902",
+        "preserve" : -3,
+        "doc_type" : 0,
+        "file_update_mode" : 1,
+        "allow_column_mapping" : false,
+        "combinability" : "auto",
+        "OutputlinkOrderingList" : [ ],
+        "write_mode" : 1,
+        "InputlinkOrderingList" : [ {
+          "link_label" : "0",
+          "link_name" : "Link_17"
+        } ],
+        "output_count" : 0,
+        "input_count" : 1,
+        "execmode" : "default_seq",
+        "write_method" : 0,
+        "heap_size" : 256,
+        "registerDataAsset" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "07e3daec-1efe-4913-9f17-48781b74f0aa",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "f991d425-e966-448e-b53d-0ce5d3fbf7ff"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 2
+            }
+          }
+        },
+        "schema_ref" : "aa5902ef-63b3-490f-ba2e-2807aa90191a",
+        "parameters" : {
+          "valueDerivation" : [ {
+            "Description" : "Investigate pattern report: input column name(s) being investigated",
+            "parsedExpression" : "Investigate(qsInvColumnName)",
+            "Length" : 20,
+            "DataType" : "VARCHAR",
+            "columnName" : "qsInvColumnName",
+            "sourceColumn" : "Link_21.qsInvColumnName"
+          }, {
+            "Description" : "Investigate pattern report: generated format pattern",
+            "parsedExpression" : "Investigate(qsInvPattern)",
+            "Length" : 20,
+            "DataType" : "VARCHAR",
+            "columnName" : "qsInvPattern",
+            "sourceColumn" : "Link_21.qsInvPattern"
+          }, {
+            "Description" : "Investigate pattern report: sample data value",
+            "parsedExpression" : "Investigate(qsInvSample)",
+            "Length" : 20,
+            "DataType" : "VARCHAR",
+            "columnName" : "qsInvSample",
+            "sourceColumn" : "Link_21.qsInvSample"
+          }, {
+            "Description" : "Investigate pattern token reports: frequency count of occurrences",
+            "parsedExpression" : "Investigate(qsInvCount)",
+            "Length" : 5,
+            "DataType" : "DOUBLE",
+            "columnName" : "qsInvCount",
+            "sourceColumn" : "Link_21.qsInvCount"
+          }, {
+            "Description" : "Investigate pattern report: frequency count of occurrences expressed as percentage of whole",
+            "parsedExpression" : "Investigate(qsInvPercent)",
+            "Length" : 5,
+            "DataType" : "FLOAT",
+            "columnName" : "qsInvPercent",
+            "sourceColumn" : "Link_21.qsInvPercent"
+          } ],
+          "buf_mode" : "default"
+        }
+      } ],
+      "op" : "Investigate",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "39924bc4-1d50-40f1-80aa-20b240400203",
+          "type_attr" : "PRIMARY",
+          "id" : "f5f92ca4-ec24-4909-b8a1-e0c82fb7a1a6",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/noMeta-specific-noACP.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 70,
+                "tooltip" : "No columns\nSpecific partition\nAutomatic column propagation is disabled for this link",
+                "x_pos" : -25,
+                "id" : "dec-6J",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_20",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_20",
+          "port_id_ref" : "15c1c22c-a83c-45cd-9004-4761e669da7c"
+        } ],
+        "id" : "4febb0fb-bdbd-4a0b-b2d4-835f4e328dcb",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : { }
+      } ],
+      "id" : "b8a3af0e-a1f3-4913-add1-c7ae16e119e7",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "4febb0fb-bdbd-4a0b-b2d4-835f4e328dcb",
+          "outputs_order" : "07e3daec-1efe-4913-9f17-48781b74f0aa"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/Investigate.svg",
+          "x_pos" : 174.24,
+          "label" : "Investigate_1",
+          "y_pos" : 538.56
+        }
+      },
+      "parameters" : {
+        "showPartType" : true,
+        "charDiscrete" : true,
+        "showCollType" : false,
+        "pattern" : [ ],
+        "maskProperties" : [ ],
+        "minFreq" : 1,
+        "enableSchemalessDesign" : false,
+        "preserve" : -3,
+        "inputName" : "Link_20",
+        "showSortOptions" : false,
+        "combinability" : "auto",
+        "OutputlinkOrderingList" : [ {
+          "link_label" : "PatternRpt",
+          "link_name" : "Link_21"
+        } ],
+        "inputcolProperties" : [ ],
+        "workdir" : "",
+        "field" : [ ],
+        "output_count" : 1,
+        "execmode" : "default_par",
+        "input_count" : 1,
+        "pttnRpt" : 1,
+        "traceProperties" : [ ],
+        "chooseCharConcate" : false,
+        "word" : " "
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "15c1c22c-a83c-45cd-9004-4761e669da7c",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "f5f92ca4-ec24-4909-b8a1-e0c82fb7a1a6"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "records" : 10,
+          "buf_mode" : "default"
+        }
+      } ],
+      "op" : "PxRowGenerator",
+      "id" : "39924bc4-1d50-40f1-80aa-20b240400203",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxRowGenerator.svg",
+          "x_pos" : 47.519999999999996,
+          "label" : "Row_Generator_2",
+          "y_pos" : 538.56
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "output_count" : 1,
+        "input_count" : 0,
+        "execmode" : "default_seq",
+        "preserve" : -3
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "op" : "PxPeek",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "b8a3af0e-a1f3-4913-add1-c7ae16e119e7",
+          "type_attr" : "PRIMARY",
+          "id" : "f991d425-e966-448e-b53d-0ce5d3fbf7ff",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/autoParition-noACP.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 5,
+                "width" : 70,
+                "tooltip" : "Auto-partition\nAutomatic column propagation is disabled for this link",
+                "x_pos" : -27,
+                "id" : "dec-6E",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_21",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_21",
+          "port_id_ref" : "07e3daec-1efe-4913-9f17-48781b74f0aa"
+        } ],
+        "id" : "b4605cc3-da52-4ebe-801a-fc1f50441907",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "aa5902ef-63b3-490f-ba2e-2807aa90191a",
+        "parameters" : {
+          "runtime_column_propagation" : 0
+        }
+      } ],
+      "id" : "17a08565-7b2e-4657-b385-3b8f64ec6486",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "b4605cc3-da52-4ebe-801a-fc1f50441907",
+          "outputs_order" : ""
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxPeek.svg",
+          "x_pos" : 316.8,
+          "label" : "Peek_3",
+          "y_pos" : 538.56
+        }
+      },
+      "parameters" : {
+        "all" : " ",
+        "columns" : " ",
+        "enableFlowAcpControl" : true,
+        "part_type" : "auto",
+        "combinability" : "auto",
+        "OutputlinkOrderingList" : [ ],
+        "nrecs" : 10,
+        "selection" : " ",
+        "InputlinkOrderingList" : [ {
+          "link_label" : "0",
+          "link_name" : "Link_21"
+        } ],
+        "output_count" : 0,
+        "execmode" : "default_par",
+        "input_count" : 1,
+        "name" : "name",
+        "dataset" : " "
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "f0b8b221-c521-4d26-95f2-8c1515ab6233",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "179bcec1-f05b-4b79-8ac6-166d9bc84703"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "valueDerivation" : [ ]
+        }
+      } ],
+      "op" : "Standardize",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "56b0e0cc-cafc-4ddd-a7d8-251a60eb2484",
+          "type_attr" : "PRIMARY",
+          "id" : "a73c821a-fc55-4b35-b267-fdab80d298df",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/noMeta-specific-noACP.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 70,
+                "tooltip" : "No columns\nSpecific partition\nAutomatic column propagation is disabled for this link",
+                "x_pos" : -25,
+                "id" : "dec-6J",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_22",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_22",
+          "port_id_ref" : "4a473b21-f9ed-4f8f-a6a2-fe1e53298a28"
+        } ],
+        "id" : "9f1459ff-3ee6-4715-b4f4-bd031ce64808",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "id" : "4f134685-0f4c-4229-a47e-32f80d7c197e",
+      "type" : "execution_node",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/Standardize.svg",
+          "x_pos" : 174.24,
+          "label" : "Standardize_1",
+          "y_pos" : 633.6
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "workdir" : "",
+        "output_count" : 1,
+        "execmode" : "default_par",
+        "input_count" : 1,
+        "ruleset" : "",
+        "traceProperties" : [ ],
+        "rulesetProperties" : [ ],
+        "part_type" : "auto",
+        "preserve" : -3,
+        "case" : "UPPERALL"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "4a473b21-f9ed-4f8f-a6a2-fe1e53298a28",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "a73c821a-fc55-4b35-b267-fdab80d298df"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "records" : 10,
+          "buf_mode" : "default"
+        }
+      } ],
+      "op" : "PxRowGenerator",
+      "id" : "56b0e0cc-cafc-4ddd-a7d8-251a60eb2484",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxRowGenerator.svg",
+          "x_pos" : 47.519999999999996,
+          "label" : "Row_Generator_3",
+          "y_pos" : 633.6
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "output_count" : 1,
+        "input_count" : 0,
+        "execmode" : "default_seq",
+        "preserve" : -3
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "op" : "PxPeek",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "4f134685-0f4c-4229-a47e-32f80d7c197e",
+          "type_attr" : "PRIMARY",
+          "id" : "179bcec1-f05b-4b79-8ac6-166d9bc84703",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/noMeta-auto-noACP.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 70,
+                "tooltip" : "No columns\nAuto-partition\nAutomatic column propagation is disabled for this link",
+                "x_pos" : -26,
+                "id" : "dec-6Q",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_23",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_23",
+          "port_id_ref" : "f0b8b221-c521-4d26-95f2-8c1515ab6233"
+        } ],
+        "id" : "1dcacde3-649a-48c1-b44b-887de2e5b255",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "id" : "4fc68539-d6ee-41cd-8384-f389f31c45a6",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "1dcacde3-649a-48c1-b44b-887de2e5b255",
+          "outputs_order" : ""
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxPeek.svg",
+          "x_pos" : 316.8,
+          "label" : "Peek_4",
+          "y_pos" : 633.6
+        }
+      },
+      "parameters" : {
+        "all" : " ",
+        "columns" : " ",
+        "enableFlowAcpControl" : true,
+        "part_type" : "auto",
+        "combinability" : "auto",
+        "OutputlinkOrderingList" : [ ],
+        "nrecs" : 10,
+        "selection" : " ",
+        "InputlinkOrderingList" : [ {
+          "link_label" : "0",
+          "link_name" : "Link_23"
+        } ],
+        "output_count" : 0,
+        "execmode" : "default_par",
+        "input_count" : 1,
+        "name" : "name",
+        "dataset" : " "
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "a30991af-1eae-4b31-85c4-ace49150c3d4",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "1ab32a31-4168-4b11-9a60-74dbd17d6dbe"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 5
+            }
+          }
+        },
+        "schema_ref" : "61c26cf8-c82f-4332-82d2-601fd965f8f2",
+        "parameters" : {
+          "outputName" : "Link_29",
+          "valueDerivation" : [ ]
+        }
+      } ],
+      "op" : "UnduplicateMatch",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "030101c2-ae1c-4d11-ace4-4f97c2df99a9",
+          "type_attr" : "PRIMARY",
+          "id" : "25baad06-3cea-4532-b0ee-b3f87f711477",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/noMeta-specific-noACP.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 70,
+                "tooltip" : "No columns\nSpecific partition\nAutomatic column propagation is disabled for this link",
+                "x_pos" : -25,
+                "id" : "dec-6J",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_25",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_25",
+          "port_id_ref" : "caa38734-f5be-4cde-a86f-499851feecde"
+        } ],
+        "id" : "d6801c83-c27c-4c80-84ee-75abad8be5cb",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 2
+            }
+          }
+        }
+      } ],
+      "id" : "1f6109dd-6678-415c-b119-03323a5727bb",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "d6801c83-c27c-4c80-84ee-75abad8be5cb",
+          "outputs_order" : "a30991af-1eae-4b31-85c4-ace49150c3d4"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/UnduplicateMatch.svg",
+          "x_pos" : 174.24,
+          "label" : "Onesource_Match_1",
+          "y_pos" : 823.68
+        }
+      },
+      "parameters" : {
+        "specCutoff" : "",
+        "showPartType" : true,
+        "matchType" : "Undup",
+        "showCollType" : false,
+        "part_type" : "auto",
+        "preserve" : -3,
+        "showSortOptions" : false,
+        "combinability" : "auto",
+        "inputcolProperties" : [ ],
+        "OutputlinkOrderingList" : [ {
+          "link_label" : "<Unnamed>",
+          "link_name" : "Link_29"
+        } ],
+        "InputlinkOrderingList" : [ {
+          "link_label" : "Data",
+          "link_name" : "Link_25"
+        }, {
+          "link_label" : "DataFreq",
+          "link_name" : "<Undefined>"
+        } ],
+        "output_count" : 1,
+        "execmode" : "default_par",
+        "input_count" : 1,
+        "traceProperties" : [ ]
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "3b536b96-42a2-4677-ac93-6444a062ff76",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "119c0aab-6eb3-42f9-a42d-e0cebd2141e9"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 7
+            }
+          }
+        },
+        "schema_ref" : "82d3f8ba-6b14-42bc-af15-6b73b29408ce",
+        "parameters" : {
+          "outputName" : "Link_30",
+          "valueDerivation" : [ ]
+        }
+      } ],
+      "op" : "ReferenceMatch",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "27d12355-fd4d-498f-8923-e7deeee127b2",
+          "type_attr" : "PRIMARY",
+          "id" : "c7d73c11-538b-4128-ae16-6295fc736ed4",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/noMeta-specific-noACP.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 70,
+                "tooltip" : "No columns\nSpecific partition\nAutomatic column propagation is disabled for this link",
+                "x_pos" : -25,
+                "id" : "dec-6J",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_26",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_26",
+          "port_id_ref" : "25168d50-eeae-42a2-9b5c-bf3127b2bcc8"
+        } ],
+        "id" : "15ce8196-b344-401a-ac6e-1b248970a886",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 4
+            }
+          }
+        }
+      } ],
+      "id" : "aa63ce1f-d201-4c46-a820-1bdb4f9f43e2",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "15ce8196-b344-401a-ac6e-1b248970a886",
+          "outputs_order" : "3b536b96-42a2-4677-ac93-6444a062ff76"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/ReferenceMatch.svg",
+          "x_pos" : 174.24,
+          "label" : "Twosource_Match_1",
+          "y_pos" : 918.72
+        }
+      },
+      "parameters" : {
+        "specCutoff" : "",
+        "showPartType" : true,
+        "matchType" : "Match",
+        "showCollType" : false,
+        "part_type" : "auto",
+        "preserve" : -3,
+        "showSortOptions" : false,
+        "combinability" : "auto",
+        "inputcolProperties" : [ ],
+        "OutputlinkOrderingList" : [ {
+          "link_label" : "<Unnamed>",
+          "link_name" : "Link_30"
+        } ],
+        "InputlinkOrderingList" : [ {
+          "link_label" : "Data",
+          "link_name" : "Link_26"
+        }, {
+          "link_label" : "Reference",
+          "link_name" : "<Undefined>"
+        }, {
+          "link_label" : "DataFreq",
+          "link_name" : "<Undefined>"
+        }, {
+          "link_label" : "RefFreq",
+          "link_name" : "<Undefined>"
+        } ],
+        "output_count" : 1,
+        "execmode" : "default_par",
+        "input_count" : 1,
+        "traceProperties" : [ ]
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "536c41e2-d8c1-4cc6-83a8-bf4c41e753b5",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "a8bf69a2-2578-4f73-bd30-a865d1ea6f5f"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "buf_mode" : "default"
+        }
+      } ],
+      "op" : "Survive",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "fd0b0e0c-1dc4-4d9e-ab55-dee62505069b",
+          "type_attr" : "PRIMARY",
+          "id" : "11dca3d6-6059-4b90-acf9-c46c3f5c1c6e",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/noMeta-specific-noACP.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 70,
+                "tooltip" : "No columns\nSpecific partition\nAutomatic column propagation is disabled for this link",
+                "x_pos" : -25,
+                "id" : "dec-6J",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_27",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_27",
+          "port_id_ref" : "3ed74d16-0535-4731-9260-c4d6db219c01"
+        } ],
+        "id" : "1f256ea6-e0ca-4ed7-acd7-5db4394bfdd6",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : { }
+      } ],
+      "id" : "bfac2464-7f23-4325-836c-27f1074f651d",
+      "type" : "execution_node",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/Survive.svg",
+          "x_pos" : 174.24,
+          "label" : "Survive_1",
+          "y_pos" : 1013.76
+        }
+      },
+      "parameters" : {
+        "showPartType" : true,
+        "f" : "Survive_1.txt",
+        "showCollType" : false,
+        "QSXML" : "<STAGE><TYPE>SUR</TYPE><FIELD><NAME>Select a column</NAME><FROM>IN_DATA</FROM></FIELD><NOSORT>FALSE</NOSORT></STAGE>",
+        "enableSchemalessDesign" : false,
+        "sort" : "sort",
+        "preserve" : -3,
+        "inputName" : "Link_27",
+        "showSortOptions" : false,
+        "ruleColumnProperties" : [ ],
+        "cfdefn" : ";QualityStage v8.0\r\n<<record def>>\r\n \r\n<<group key>>\r\nSelect a column\r\n \r\n<<rules>>\r\n",
+        "combinability" : "auto",
+        "inputcolProperties" : [ ],
+        "output_count" : 1,
+        "execmode" : "default_par",
+        "input_count" : 1,
+        "traceProperties" : [ ],
+        "groupColumn" : "Select a column"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "caa38734-f5be-4cde-a86f-499851feecde",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "25baad06-3cea-4532-b0ee-b3f87f711477"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "records" : 10,
+          "buf_mode" : "default"
+        }
+      } ],
+      "op" : "PxRowGenerator",
+      "id" : "030101c2-ae1c-4d11-ace4-4f97c2df99a9",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxRowGenerator.svg",
+          "x_pos" : 47.519999999999996,
+          "label" : "Row_Generator_4",
+          "y_pos" : 823.68
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "output_count" : 1,
+        "input_count" : 0,
+        "execmode" : "default_seq",
+        "preserve" : -3
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "25168d50-eeae-42a2-9b5c-bf3127b2bcc8",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "c7d73c11-538b-4128-ae16-6295fc736ed4"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "records" : 10,
+          "buf_mode" : "default"
+        }
+      } ],
+      "op" : "PxRowGenerator",
+      "id" : "27d12355-fd4d-498f-8923-e7deeee127b2",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxRowGenerator.svg",
+          "x_pos" : 47.519999999999996,
+          "label" : "Row_Generator_5",
+          "y_pos" : 918.72
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "output_count" : 1,
+        "input_count" : 0,
+        "execmode" : "default_seq",
+        "preserve" : -3
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "3ed74d16-0535-4731-9260-c4d6db219c01",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "11dca3d6-6059-4b90-acf9-c46c3f5c1c6e"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "records" : 10,
+          "buf_mode" : "default"
+        }
+      } ],
+      "op" : "PxRowGenerator",
+      "id" : "fd0b0e0c-1dc4-4d9e-ab55-dee62505069b",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxRowGenerator.svg",
+          "x_pos" : 47.519999999999996,
+          "label" : "Row_Generator_6",
+          "y_pos" : 1013.76
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "output_count" : 1,
+        "input_count" : 0,
+        "execmode" : "default_seq",
+        "preserve" : -3
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "op" : "PxPeek",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "1f6109dd-6678-415c-b119-03323a5727bb",
+          "type_attr" : "PRIMARY",
+          "id" : "1ab32a31-4168-4b11-9a60-74dbd17d6dbe",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/noMeta-auto-noACP.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 70,
+                "tooltip" : "No columns\nAuto-partition\nAutomatic column propagation is disabled for this link",
+                "x_pos" : -26,
+                "id" : "dec-6Q",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_29",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_29",
+          "port_id_ref" : "a30991af-1eae-4b31-85c4-ace49150c3d4"
+        } ],
+        "id" : "28403f61-9f28-4f85-b980-de59af6dbb83",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "61c26cf8-c82f-4332-82d2-601fd965f8f2"
+      } ],
+      "id" : "27b5aa50-cff2-490b-b866-9439a8a50b64",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "28403f61-9f28-4f85-b980-de59af6dbb83",
+          "outputs_order" : ""
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxPeek.svg",
+          "x_pos" : 316.8,
+          "label" : "Peek_5",
+          "y_pos" : 823.68
+        }
+      },
+      "parameters" : {
+        "all" : " ",
+        "columns" : " ",
+        "enableFlowAcpControl" : true,
+        "part_type" : "auto",
+        "combinability" : "auto",
+        "OutputlinkOrderingList" : [ ],
+        "nrecs" : 10,
+        "selection" : " ",
+        "InputlinkOrderingList" : [ {
+          "link_label" : "0",
+          "link_name" : "Link_29"
+        } ],
+        "output_count" : 0,
+        "execmode" : "default_par",
+        "input_count" : 1,
+        "name" : "name",
+        "dataset" : " "
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "op" : "PxPeek",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "aa63ce1f-d201-4c46-a820-1bdb4f9f43e2",
+          "type_attr" : "PRIMARY",
+          "id" : "119c0aab-6eb3-42f9-a42d-e0cebd2141e9",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/noMeta-auto-noACP.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 70,
+                "tooltip" : "No columns\nAuto-partition\nAutomatic column propagation is disabled for this link",
+                "x_pos" : -26,
+                "id" : "dec-6Q",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_30",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_30",
+          "port_id_ref" : "3b536b96-42a2-4677-ac93-6444a062ff76"
+        } ],
+        "id" : "1185d25c-9bc6-482c-b911-a3e9c016860e",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "82d3f8ba-6b14-42bc-af15-6b73b29408ce"
+      } ],
+      "id" : "2136b2b7-3937-4e74-b1cf-b98db060833f",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "1185d25c-9bc6-482c-b911-a3e9c016860e",
+          "outputs_order" : ""
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxPeek.svg",
+          "x_pos" : 316.8,
+          "label" : "Peek_6",
+          "y_pos" : 918.72
+        }
+      },
+      "parameters" : {
+        "all" : " ",
+        "columns" : " ",
+        "enableFlowAcpControl" : true,
+        "part_type" : "auto",
+        "combinability" : "auto",
+        "OutputlinkOrderingList" : [ ],
+        "nrecs" : 10,
+        "selection" : " ",
+        "InputlinkOrderingList" : [ {
+          "link_label" : "0",
+          "link_name" : "Link_30"
+        } ],
+        "output_count" : 0,
+        "execmode" : "default_par",
+        "input_count" : 1,
+        "name" : "name",
+        "dataset" : " "
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "op" : "PxPeek",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "bfac2464-7f23-4325-836c-27f1074f651d",
+          "type_attr" : "PRIMARY",
+          "id" : "a8bf69a2-2578-4f73-bd30-a865d1ea6f5f",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/noMeta-auto-noACP.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 70,
+                "tooltip" : "No columns\nAuto-partition\nAutomatic column propagation is disabled for this link",
+                "x_pos" : -26,
+                "id" : "dec-6Q",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_31",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_31",
+          "port_id_ref" : "536c41e2-d8c1-4cc6-83a8-bf4c41e753b5"
+        } ],
+        "id" : "efbcec73-f459-4fef-911a-13428e732764",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "runtime_column_propagation" : 0
+        }
+      } ],
+      "id" : "b58e8d01-563d-484c-969e-63f1f86a3573",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "efbcec73-f459-4fef-911a-13428e732764",
+          "outputs_order" : ""
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxPeek.svg",
+          "x_pos" : 316.8,
+          "label" : "Peek_7",
+          "y_pos" : 1013.76
+        }
+      },
+      "parameters" : {
+        "all" : " ",
+        "columns" : " ",
+        "enableFlowAcpControl" : true,
+        "part_type" : "auto",
+        "combinability" : "auto",
+        "OutputlinkOrderingList" : [ ],
+        "nrecs" : 10,
+        "selection" : " ",
+        "InputlinkOrderingList" : [ {
+          "link_label" : "0",
+          "link_name" : "Link_31"
+        } ],
+        "output_count" : 0,
+        "execmode" : "default_par",
+        "input_count" : 1,
+        "name" : "name",
+        "dataset" : " "
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "116ece75-a5e7-4445-a832-094e7b9e3188",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "8da3e26b-f9c0-4718-b6a4-15634613d1b7"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "6383ed5a-9523-4ae0-941e-91259c471067",
+        "parameters" : {
+          "valueDerivation" : [ {
+            "parsedExpression" : "MatchFrequency(qsFreqValue)",
+            "columnName" : "qsFreqValue",
+            "sourceColumn" : "Link_28.qsFreqValue"
+          }, {
+            "parsedExpression" : "MatchFrequency(qsFreqCounts)",
+            "columnName" : "qsFreqCounts",
+            "sourceColumn" : "Link_28.qsFreqCounts"
+          }, {
+            "parsedExpression" : "MatchFrequency(qsFreqColumnID)",
+            "columnName" : "qsFreqColumnID",
+            "sourceColumn" : "Link_28.qsFreqColumnID"
+          }, {
+            "parsedExpression" : "MatchFrequency(qsFreqHeaderFlag)",
+            "columnName" : "qsFreqHeaderFlag",
+            "sourceColumn" : "Link_28.qsFreqHeaderFlag"
+          } ]
+        }
+      } ],
+      "op" : "MatchFrequency",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "085dc7e8-7d1c-4657-93bf-4423aa0a8949",
+          "type_attr" : "PRIMARY",
+          "id" : "c58db394-40a7-4e85-a9a3-881b4148668b",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/noMeta-specific-noACP.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 70,
+                "tooltip" : "No columns\nSpecific partition\nAutomatic column propagation is disabled for this link",
+                "x_pos" : -25,
+                "id" : "dec-6J",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_24",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_24",
+          "port_id_ref" : "fbc826cc-34ea-48b0-ab2c-cdf2bcb11c0a"
+        } ],
+        "id" : "83d03824-3ebb-40ab-9e20-ac00181d493b",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "id" : "ceb7f5b0-4ebc-4e85-a50c-22d3c36b8a12",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "83d03824-3ebb-40ab-9e20-ac00181d493b",
+          "outputs_order" : "116ece75-a5e7-4445-a832-094e7b9e3188"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/MatchFrequency.svg",
+          "x_pos" : 174.24,
+          "label" : "Match_Frequency_1",
+          "y_pos" : 728.64
+        }
+      },
+      "parameters" : {
+        "showPartType" : true,
+        "pgmtype" : "dependent",
+        "maxfreq" : 100,
+        "matchType" : "Undup",
+        "showCollType" : false,
+        "specfile" : "",
+        "part_type" : "auto",
+        "notUseSpecfile" : false,
+        "preserve" : -3,
+        "showSortOptions" : false,
+        "combinability" : "auto",
+        "inputcolProperties" : [ ],
+        "workdir" : "Match_Frequency_1",
+        "output_count" : 1,
+        "execmode" : "default_par",
+        "input_count" : 1,
+        "traceProperties" : [ ]
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "fbc826cc-34ea-48b0-ab2c-cdf2bcb11c0a",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "c58db394-40a7-4e85-a9a3-881b4148668b"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "records" : 10,
+          "buf_mode" : "default"
+        }
+      } ],
+      "op" : "PxRowGenerator",
+      "id" : "085dc7e8-7d1c-4657-93bf-4423aa0a8949",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxRowGenerator.svg",
+          "x_pos" : 47.519999999999996,
+          "label" : "Row_Generator_7",
+          "y_pos" : 728.64
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "output_count" : 1,
+        "input_count" : 0,
+        "execmode" : "default_seq",
+        "preserve" : -3
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "op" : "PxPeek",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "ceb7f5b0-4ebc-4e85-a50c-22d3c36b8a12",
+          "type_attr" : "PRIMARY",
+          "id" : "8da3e26b-f9c0-4718-b6a4-15634613d1b7",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/autoParition-noACP.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 5,
+                "width" : 70,
+                "tooltip" : "Auto-partition\nAutomatic column propagation is disabled for this link",
+                "x_pos" : -27,
+                "id" : "dec-6E",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_28",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_28",
+          "port_id_ref" : "116ece75-a5e7-4445-a832-094e7b9e3188"
+        } ],
+        "id" : "90775d5b-4e78-4891-a991-149ed0a388b1",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "6383ed5a-9523-4ae0-941e-91259c471067"
+      } ],
+      "id" : "71aaca85-0a34-4eb0-bb8c-7e15e687c246",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "90775d5b-4e78-4891-a991-149ed0a388b1",
+          "outputs_order" : ""
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxPeek.svg",
+          "x_pos" : 316.8,
+          "label" : "Peek_8",
+          "y_pos" : 728.64
+        }
+      },
+      "parameters" : {
+        "all" : " ",
+        "columns" : " ",
+        "enableFlowAcpControl" : true,
+        "part_type" : "auto",
+        "combinability" : "auto",
+        "OutputlinkOrderingList" : [ ],
+        "nrecs" : 10,
+        "selection" : " ",
+        "InputlinkOrderingList" : [ {
+          "link_label" : "0",
+          "link_name" : "Link_28"
+        } ],
+        "output_count" : 0,
+        "execmode" : "default_par",
+        "input_count" : 1,
+        "name" : "name",
+        "dataset" : " "
+      }
+    } ],
+    "description" : "",
+    "id" : "2290fac7-8f67-47d4-a2f5-1aea489cf26f",
+    "app_data" : {
+      "datastage" : {
+        "nls_map_name" : "",
+        "nls_locale" : "OFF"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  }, {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "1d89a5c2-15d1-43f8-a89d-9c8389fc9671",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "4545154a-a39f-4e65-bb0e-55ea189fba8a"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "XMLInputPX",
+      "id" : "8f7cf0f6-ba4e-4019-a172-1762819a29c4",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/Input.svg",
+          "x_pos" : 95.03999999999999,
+          "label" : "Input step",
+          "y_pos" : 47.519999999999996
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 1
+      }
+    }, {
+      "op" : "XMLOutputPX",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "8f7cf0f6-ba4e-4019-a172-1762819a29c4",
+          "type_attr" : "PRIMARY",
+          "id" : "1417376e-278c-4028-bba2-66909944d70e",
+          "app_data" : {
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "lineStartImage"
+              }, {
+                "path" : "M -25 -10 L -25 10 L 25 10 L 25 -10 Z",
+                "temporary" : false,
+                "id" : "dec-7",
+                "position" : "middle",
+                "class_name" : "linkMiddleImage"
+              }, {
+                "temporary" : false,
+                "x_pos" : -20,
+                "id" : "dec-8",
+                "label" : "Link\n",
+                "position" : "middle",
+                "y_pos" : 5
+              } ],
+              "class_name" : "undefined"
+            }
+          },
+          "link_name" : "Link",
+          "port_id_ref" : "1d89a5c2-15d1-43f8-a89d-9c8389fc9671"
+        } ],
+        "id" : "64643c17-4898-415f-8fcc-ca398419c9a4",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "id" : "8af52505-5d5d-4bbb-8a2e-f1c93d175dec",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/Output.svg",
+          "x_pos" : 396,
+          "label" : "Output step",
+          "y_pos" : 47.519999999999996
+        }
+      }
+    } ],
+    "name" : "Hierarchical Data",
+    "id" : "86bf9451-081c-49d8-b733-81c2da325c03",
+    "app_data" : {
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "subcanvas_runtime"
+  }, {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "e6215c42-a6bf-4914-9478-8e344c471a74",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "6febe912-68ed-49e3-bda8-f12280352972"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "XMLInputPX",
+      "id" : "5d3039ff-0a1d-4ac8-97d6-9aebf797482a",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/Input.svg",
+          "x_pos" : 95.03999999999999,
+          "label" : "Input step",
+          "y_pos" : 47.519999999999996
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 1
+      }
+    }, {
+      "op" : "XMLOutputPX",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "5d3039ff-0a1d-4ac8-97d6-9aebf797482a",
+          "type_attr" : "PRIMARY",
+          "id" : "60bfb8a8-32e4-470f-86c4-6d36d65181e0",
+          "app_data" : {
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "lineStartImage"
+              }, {
+                "path" : "M -25 -10 L -25 10 L 25 10 L 25 -10 Z",
+                "temporary" : false,
+                "id" : "dec-7",
+                "position" : "middle",
+                "class_name" : "linkMiddleImage"
+              }, {
+                "temporary" : false,
+                "x_pos" : -20,
+                "id" : "dec-8",
+                "label" : "Link\n",
+                "position" : "middle",
+                "y_pos" : 5
+              } ],
+              "class_name" : "undefined"
+            }
+          },
+          "link_name" : "Link",
+          "port_id_ref" : "e6215c42-a6bf-4914-9478-8e344c471a74"
+        } ],
+        "id" : "ecfc3dba-274b-4ac9-bc95-4419342ebff7",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "id" : "96fec51a-574d-48b6-9da9-4d7552c468f5",
+      "type" : "binding",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/Output.svg",
+          "x_pos" : 396,
+          "label" : "Output step",
+          "y_pos" : 47.519999999999996
+        }
+      }
+    } ],
+    "name" : "Hierarchical Data",
+    "id" : "9d0cf55a-b792-4e56-9bd9-6aa63caa44d5",
+    "app_data" : {
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "subcanvas_runtime"
+  } ],
+  "external_paramsets" : [ ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "3b3bfc1f-2f9f-43d9-8f9f-99970f3a99f8",
+    "fields" : [ ]
+  }, {
+    "id" : "f002b11d-14cf-4025-840d-ef6b944d6fb3",
+    "fields" : [ ]
+  }, {
+    "id" : "26b543bd-6734-40ce-9da5-d2afca9b4008",
+    "fields" : [ ]
+  }, {
+    "id" : "906be698-c45c-45c2-bb45-a7fb9d328727",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_1",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_2",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_3",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_4",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_5",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    } ]
+  }, {
+    "id" : "54ceb7a4-ef88-48a8-8051-89591beb9dfc",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_15.COLUMN_1",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_1",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_15.COLUMN_2",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_2",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_15.COLUMN_3",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_3",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_15.COLUMN_4",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_4",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 100,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "",
+        "source_field_id" : "Link_15.COLUMN_5",
+        "max_length" : 100,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "COLUMN_5",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "CHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    } ]
+  }, {
+    "id" : "aa5902ef-63b3-490f-ba2e-2807aa90191a",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "Investigate pattern report: input column name(s) being investigated",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "qsInvColumnName",
+      "type" : "string",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "VARCHAR",
+        "is_unicode_string" : true,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "Investigate pattern report: generated format pattern",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "qsInvPattern",
+      "type" : "string",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "VARCHAR",
+        "is_unicode_string" : true,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "Investigate pattern report: sample data value",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "qsInvSample",
+      "type" : "string",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "VARCHAR",
+        "is_unicode_string" : true,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "Investigate pattern token reports: frequency count of occurrences",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "qsInvCount",
+      "type" : "double",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "DOUBLE",
+        "is_unicode_string" : true,
+        "type_code" : "DFLOAT"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "Investigate pattern report: frequency count of occurrences expressed as percentage of whole",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "qsInvPercent",
+      "type" : "double",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "FLOAT",
+        "is_unicode_string" : true,
+        "type_code" : "SFLOAT"
+      }
+    } ]
+  }, {
+    "id" : "0a0cb70b-ae25-4a5f-9f9e-f1ac333c8b93",
+    "fields" : [ ]
+  }, {
+    "id" : "6383ed5a-9523-4ae0-941e-91259c471067",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "Frequency output: variable name or value",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "qsFreqValue",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "is_unicode_string" : true,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "Frequency output: frequency counts",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "qsFreqCounts",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "is_unicode_string" : true,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "Frequency output: variable numeric identifier",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "qsFreqColumnID",
+      "type" : "integer",
+      "app_data" : {
+        "odbc_type" : "INTEGER",
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "Frequency output: flag to indicate variable header record, or regular record",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "qsFreqHeaderFlag",
+      "type" : "integer",
+      "app_data" : {
+        "odbc_type" : "TINYINT",
+        "is_unicode_string" : false,
+        "type_code" : "INT8"
+      }
+    } ]
+  }, {
+    "id" : "61c26cf8-c82f-4332-82d2-601fd965f8f2",
+    "fields" : [ ]
+  }, {
+    "id" : "82d3f8ba-6b14-42bc-af15-6b73b29408ce",
+    "fields" : [ ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "1a8c208e-3936-461c-b4c6-f289b585c827",
+  "app_data" : {
+    "datastage" : {
+      "timestamp_format" : "",
+      "decimal_separator" : "",
+      "parameterSetListRuntime" : [ ],
+      "flowRunPriorityQueue" : "Medium",
+      "time_format" : "",
+      "runArtifactRetentionJob" : {
+        "enabled" : false
+      },
+      "valueSetSelected" : { },
+      "date_format" : "",
+      "message_handlers" : [ ],
+      "version" : "3.0.5",
+      "localParameterListRuntime" : [ ]
+    },
+    "additionalProperties" : {
+      "transInputLinkMapper" : {
+        "c8735a4a-6313-45f1-ab4f-cfe9de5bb5c8" : "Link_15"
+      },
+      "ELTDropdown" : {
+        "id" : "nesting",
+        "label" : "Generate nested SQL",
+        "value" : "NESTED_QUERY"
+      },
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "disableParamsCacheOnFlow" : false,
+      "rcpLinkList" : [ ],
+      "globalAcp" : false,
+      "enableRCP" : false,
+      "isNewTransActive" : true,
+      "isDefineParameterToggled" : true,
+      "enableSchemaLessDesign" : false,
+      "runMode" : "ETL"
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ ]
+  }
+}

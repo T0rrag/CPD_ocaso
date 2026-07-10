@@ -1,0 +1,28 @@
+{
+  "metadata" : {
+    "name" : "JS_ExecuteSH",
+    "asset_id" : "e0db6600-5d5d-4a85-add3-2e8fa9ee88f1",
+    "owner_id" : "1000331001",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "7db72aef-7927-4d88-9012-636400168d49",
+      "schedule_id" : "",
+      "project_name" : "GITHUB integrado",
+      "configuration" : {
+        "env_type" : "",
+        "env_variables" : [ ]
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "orchestration_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "JS_ExecuteSH"
+    }
+  }
+}

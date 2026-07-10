@@ -1,0 +1,180 @@
+{
+  "primary_pipeline" : "28b3b93f-712d-4e40-89ca-0fb32fe59432",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 0
+            }
+          }
+        }
+      } ],
+      "op" : "ftp",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "285f7c08-fd65-4160-b48f-921983d05d0f",
+          "type_attr" : "PRIMARY",
+          "id" : "04976373-6da1-405c-a6cb-beb81cc332e5",
+          "link_name" : "DSLink2",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "DSLink2",
+                "label" : "DSLink2",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "bb814e47-69b9-4583-afac-e14581f9dd42"
+        } ],
+        "id" : "6243f256-1b35-4f36-ac97-8a84b966bd05",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "interaction" : {
+            "file_name" : "<file_name>",
+            "file_format" : "delimited"
+          },
+          "part_coll" : "none",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "514d30e1-d901-446f-966f-0c5eb13aa41f"
+      } ],
+      "connection" : {
+        "ref" : "app_defined",
+        "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+        "properties" : { }
+      },
+      "id" : "8131a8e3-a6c0-4d8b-a8b5-d8952b2b9886",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxFTP.svg",
+          "x_pos" : 264.0,
+          "label" : "FTP_Enterprise_0",
+          "y_pos" : 120.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "bb814e47-69b9-4583-afac-e14581f9dd42",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "04976373-6da1-405c-a6cb-beb81cc332e5"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "records" : 10,
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "514d30e1-d901-446f-966f-0c5eb13aa41f"
+      } ],
+      "op" : "PxRowGenerator",
+      "id" : "285f7c08-fd65-4160-b48f-921983d05d0f",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxRowGenerator.svg",
+          "x_pos" : 120.0,
+          "label" : "Row_Generator_9",
+          "y_pos" : 120.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    } ],
+    "id" : "28b3b93f-712d-4e40-89ca-0fb32fe59432",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "external_paramsets" : [ {
+    "ref" : "app_defined",
+    "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+    "name" : "ConnParamSet_FTP"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "514d30e1-d901-446f-966f-0c5eb13aa41f",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "COLUMN",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "16ce4352-d635-4b2b-843c-e1ea0abfe86e",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "isDefineParameterToggled" : true
+    }
+  },
+  "version" : "3.0"
+}

@@ -1,0 +1,376 @@
+{
+  "primary_pipeline" : "789e250e-4171-44bb-8bae-fc8390c9d233",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "9be4e4a6-7acc-4b87-a4db-83ea12e66f6f",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "545c0e2e-dbf7-45a1-82a8-944aed22409e"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          },
+          "additionalProperties" : {
+            "enableAcp" : true
+          }
+        },
+        "schema_ref" : "e592fa4e-d5d2-48ba-a9cb-813bc7b5422a",
+        "parameters" : {
+          "outputName" : "Link_1",
+          "xmlSchemaNodeName" : {
+            "srcNodeId" : "d96bb52e-b423-41ee-9b5d-1c064f6cf6a6",
+            "parentRenamed" : false,
+            "displayXPath" : "top/XML_parser_1:result/ArrayOftContinent/tContinent",
+            "name" : "tContinent",
+            "id" : "parser_result_0_ArrayOftContinent/tContinent",
+            "label" : "top/XML_parser_1:result/ArrayOftContinent/tContinent",
+            "labelName" : "tContinent",
+            "pathVal" : "top/XML_parser_1:result/ArrayOftContinent/tContinent"
+          },
+          "buf_mode" : "default"
+        }
+      } ],
+      "op" : "XMLStagePX",
+      "inputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "id" : "42e56942-fd9f-4e62-980c-0aa171e8dae1",
+      "type" : "execution_node",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/XMLStagePX.svg",
+          "x_pos" : 47.519999999999996,
+          "label" : "Hierarchical_Data_1",
+          "y_pos" : 47.519999999999996
+        }
+      },
+      "parameters" : {
+        "OtherOptions" : "",
+        "enable_split_data_into_batches" : false,
+        "enable_disk_based" : true,
+        "enableSchemalessDesign" : false,
+        "isXMLStage" : true,
+        "e2_assembly" : "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",
+        "security_info" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><AdministrationBean/>",
+        "schema_libraries" : [ {
+          "name" : "XML example 1",
+          "asset_id" : "app_defined"
+        } ],
+        "output_count" : 1,
+        "input_count" : 0,
+        "Classpath" : "",
+        "maximum_stack_size" : 256,
+        "heap_size" : 256,
+        "limit_output_rows" : false,
+        "openSubCanvas" : false,
+        "stage_type" : "XMLStage",
+        "AdministrationBean" : {
+          "MappingSuggestionConfigurationBean" : {
+            "commonKeyID" : [ ],
+            "_attributes" : {
+              "useDescriptionField" : "true",
+              "allowedConversionAccuracy" : "LOSSY",
+              "returnedResults" : "5",
+              "automateOptionalVectors" : "true",
+              "automateOptionalScalars" : "true"
+            }
+          },
+          "itemDefConfig" : {
+            "_attributes" : {
+              "maxExpandedNodes" : "1000",
+              "strictMaxExpandedNodes" : "3000"
+            }
+          },
+          "typeDefaults" : {
+            "dateTimeDefault" : {
+              "_text" : "1970-01-01T00:00:00"
+            },
+            "decimalDefault" : {
+              "_text" : "0"
+            },
+            "longDefault" : {
+              "_text" : "0"
+            },
+            "intDefault" : {
+              "_text" : "0"
+            },
+            "doubleDefault" : {
+              "_text" : "0"
+            },
+            "stringDefault" : {
+              "_text" : ""
+            },
+            "base64BinaryDefault" : {
+              "_text" : ""
+            },
+            "byteDefault" : {
+              "_text" : "0"
+            },
+            "xmlDefault" : {
+              "_text" : ""
+            },
+            "booleanDefault" : {
+              "_text" : "false"
+            },
+            "durationDefault" : {
+              "_text" : "P0Y0M0DT0H0M0S"
+            },
+            "shortDefault" : {
+              "_text" : "0"
+            },
+            "floatDefault" : {
+              "_text" : "0"
+            },
+            "integerDefault" : {
+              "_text" : "0"
+            },
+            "hexBinaryDefault" : {
+              "_text" : ""
+            }
+          }
+        },
+        "log_level" : "warning",
+        "preserve" : -3,
+        "enable_output_trigger_columns" : false,
+        "params" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><!DOCTYPE properties SYSTEM \"http://java.sun.com/dtd/properties.dtd\"><properties></properties>",
+        "combinability" : "auto",
+        "e2_assembly_errors" : 1,
+        "execmode" : "default_seq",
+        "enable_logging" : true
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        },
+        "parameters" : { }
+      } ],
+      "op" : "PxPeek",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "42e56942-fd9f-4e62-980c-0aa171e8dae1",
+          "type_attr" : "PRIMARY",
+          "id" : "545c0e2e-dbf7-45a1-82a8-944aed22409e",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/link-marking--specific-partitioning.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 50,
+                "tooltip" : "Specific partition",
+                "x_pos" : -15,
+                "id" : "dec-9C",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_1",
+                "y_pos" : -20,
+                "height" : 80
+              }, {
+                "temporary" : false,
+                "width" : 200,
+                "x_pos" : -20,
+                "id" : "dec-9",
+                "position" : "middle",
+                "label" : "6 rows\n6 rows/sec",
+                "y_pos" : 28,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "Link_1",
+          "port_id_ref" : "9be4e4a6-7acc-4b87-a4db-83ea12e66f6f"
+        } ],
+        "id" : "d2ef5440-3079-4e94-8da0-e5a07cc3ece6",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "e592fa4e-d5d2-48ba-a9cb-813bc7b5422a",
+        "parameters" : {
+          "runtime_column_propagation" : 0
+        }
+      } ],
+      "id" : "c736a701-def9-4a7e-b70e-47fad3ea74f1",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "d2ef5440-3079-4e94-8da0-e5a07cc3ece6",
+          "outputs_order" : ""
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxPeek.svg",
+          "x_pos" : 237.6,
+          "label" : "Peek_1",
+          "y_pos" : 47.519999999999996
+        }
+      },
+      "parameters" : {
+        "all" : "all",
+        "showPartType" : true,
+        "columns" : " ",
+        "showCollType" : false,
+        "inputName" : "Link_1",
+        "showSortOptions" : false,
+        "combinability" : "auto",
+        "OutputlinkOrderingList" : [ ],
+        "inputcolProperties" : [ ],
+        "selection" : " ",
+        "output_count" : 0,
+        "execmode" : "default_par",
+        "input_count" : 1,
+        "name" : "name",
+        "dataset" : " "
+      }
+    } ],
+    "description" : "",
+    "id" : "789e250e-4171-44bb-8bae-fc8390c9d233",
+    "app_data" : {
+      "datastage" : {
+        "nls_map_name" : "",
+        "nls_locale" : "OFF"
+      },
+      "ui_data" : {
+        "comments" : [ {
+          "associated_id_refs" : [ ],
+          "width" : 237.6,
+          "x_pos" : 63.36,
+          "id" : "8c3905b7-ee30-4c25-b6ea-1f0d2e82a3e1",
+          "y_pos" : 142.56,
+          "content" : "This is the XML content:\n<ArrayOftContinent>\n<tContinent>\n<sCode>AF</sCode>\n<sName>Africa</sName>\n</tContinent>\n<tContinent>\n<sCode>AN</sCode>\n<sName>Antarctica</sName>\n</tContinent>\n<tContinent>\n<sCode>AS</sCode>\n<sName>Asia</sName>\n</tContinent>\n<tContinent>\n<sCode>EU</sCode>\n<sName>Europe</sName>\n</tContinent>\n<tContinent>\n<sCode>OC</sCode>\n<sName>Ocenania</sName>\n</tContinent>\n<tContinent>\n<sCode>AM</sCode>\n<sName>The Americas</sName>\n</tContinent>\n</ArrayOftContinent>",
+          "height" : 412
+        } ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "external_paramsets" : [ ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "e592fa4e-d5d2-48ba-a9cb-813bc7b5422a",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "description" : "top/XML_parser_1:result/ArrayOftContinent/tContinent/sCode%SCHEMA_NODE_ID%parser_result_0_ArrayOftContinent/tContinent/sCode%SCHEMA_NODE_ID%top/XML_parser_1:result/ArrayOftContinent/tContinent/sCode",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "sCode",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "VARCHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "description" : "top/XML_parser_1:result/ArrayOftContinent/tContinent/sName%SCHEMA_NODE_ID%parser_result_0_ArrayOftContinent/tContinent/sName%SCHEMA_NODE_ID%top/XML_parser_1:result/ArrayOftContinent/tContinent/sName",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "sName",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "VARCHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "e506b7ab-641c-445e-9e2c-3b989654068f",
+  "app_data" : {
+    "datastage" : {
+      "timestamp_format" : "",
+      "decimal_separator" : "",
+      "flowRunPriorityQueue" : "Medium",
+      "time_format" : "",
+      "date_format" : "",
+      "message_handlers" : [ ],
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "transInputLinkMapper" : { },
+      "ELTDropdown" : {
+        "id" : "nesting",
+        "label" : "Generate nested SQL",
+        "value" : "NESTED_QUERY"
+      },
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "disableParamsCacheOnFlow" : false,
+      "rcpLinkList" : [ ],
+      "globalAcp" : true,
+      "enableRCP" : false,
+      "isNewTransActive" : false,
+      "isDefineParameterToggled" : true,
+      "enableSchemaLessDesign" : false,
+      "runMode" : "ETL"
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ ]
+  }
+}

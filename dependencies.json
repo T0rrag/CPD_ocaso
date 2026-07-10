@@ -1,0 +1,774 @@
+{
+  "data_intg_flow" : {
+    "CharsetOnFiles" : [ ],
+    "FLOW_TEST_AGGREGATOR" : [ ],
+    "FlowRunShellStatement" : [ ],
+    "FlowTestAllRunnable" : [ {
+      "id" : "0d27a51f-8009-4dfa-83b8-1a1afa3ae212",
+      "name" : "ConnectionTestHTTP",
+      "asset_type" : "connection"
+    } ],
+    "FlowTestAllSample" : [ ],
+    "FlowTestBuildOperator" : [ {
+      "id" : "5bd30e5a-43c4-485f-a557-6f6556bc53b6",
+      "name" : "SubflowBuildOperator",
+      "asset_type" : "data_intg_subflow"
+    } ],
+    "FlowTestEnvironments" : [ ],
+    "FlowTestExecute" : [ ],
+    "FlowTestExternalSource" : [ ],
+    "FlowTestExternalTarget" : [ ],
+    "FlowTestFunction" : [ {
+      "id" : "6ad9090c-b043-41bf-91fb-96dcb8baa5c6",
+      "name" : "FunctionLibraryTest"
+    } ],
+    "FlowTestLookup" : [ ],
+    "FlowTestMapping" : [ ],
+    "FlowTestModify" : [ ],
+    "FlowTestOptimization" : [ ],
+    "FlowTestParameters" : [ {
+      "id" : "cc404669-8375-4f7a-a6dd-e83accf31cbc",
+      "name" : "ParameterSetTest",
+      "asset_type" : "parameter_set"
+    } ],
+    "FlowTestPartitioning" : [ ],
+    "FlowTestPivot" : [ ],
+    "FlowTestPropagation" : [ {
+      "id" : "86340145-7b7f-442c-bfab-35ff378d2f90",
+      "name" : "FlowTestWriteFiles.ds"
+    } ],
+    "FlowTestPushdownDB2" : [ {
+      "id" : "6ad9090c-b043-41bf-91fb-96dcb8baa5c6",
+      "name" : "FunctionLibraryTest"
+    } ],
+    "FlowTestPushdownDB2Warehouse" : [ ],
+    "FlowTestQuality" : [ ],
+    "FlowTestREST1" : [ ],
+    "FlowTestREST2" : [ ],
+    "FlowTestRESTCompleto1" : [ ],
+    "FlowTestRESTCompleto2" : [ ],
+    "FlowTestReadDB2" : [ {
+      "id" : "5d290f6d-fbad-468e-8dc0-647742a28eb0",
+      "name" : "ConnectionTestDB2",
+      "asset_type" : "connection"
+    } ],
+    "FlowTestReadFiles" : [ {
+      "id" : "86340145-7b7f-442c-bfab-35ff378d2f90",
+      "name" : "FlowTestWriteFiles.ds"
+    } ],
+    "FlowTestSOAP" : [ ],
+    "FlowTestSOAP_corregido" : [ ],
+    "FlowTestSalesforce" : [ ],
+    "FlowTestSalesforceOptimizedProxyParameters" : [ ],
+    "FlowTestSalesforceOptimizedProxyValues" : [ ],
+    "FlowTestStages" : [ ],
+    "FlowTestSubflow" : [ ],
+    "FlowTestWriteDB2" : [ {
+      "id" : "5d290f6d-fbad-468e-8dc0-647742a28eb0",
+      "name" : "ConnectionTestDB2",
+      "asset_type" : "connection"
+    } ],
+    "FlowTestWriteFiles" : [ ],
+    "FlowTestXMCURL" : [ ],
+    "FlowTestXMLGet" : [ ],
+    "FlowTestXMLInput" : [ ],
+    "FlowTestXMLOutput" : [ ],
+    "InformeProveedores" : [ {
+      "id" : "3e3aa042-f913-46ae-8134-c586b1f94cdd",
+      "name" : "ConnParamSet_ODBC",
+      "asset_type" : "parameter_set"
+    } ],
+    "JP_ExecuteSQL" : [ {
+      "id" : "4c2e8099-9737-4ad8-a572-9fee4f43b2a0",
+      "name" : "ConnParamSet_DB2__PM_IISREP_Database",
+      "asset_type" : "parameter_set"
+    } ],
+    "JP_F00_RCO_DIMENSION_DS" : [ {
+      "id" : "5bbc0611-4bd7-4971-a65f-8be396b6d79e",
+      "name" : "ConnParamSet_ODBC_PM_CHK_SERVER",
+      "asset_type" : "parameter_set"
+    }, {
+      "id" : "87a881d3-4b03-456f-bb9a-85f58851d0d0",
+      "name" : "ConnParamSet_ODBC_PM_APP_SERVER",
+      "asset_type" : "parameter_set"
+    } ],
+    "JP_F20_GEN_LOAD_F20_ERROR_LOG" : [ ],
+    "RCP_db_connector" : [ {
+      "id" : "a3c04721-d0db-49bd-b732-54de3fd64874",
+      "name" : "ConnParamSet_DB2_XMETA",
+      "asset_type" : "parameter_set"
+    } ],
+    "RCP_db_connector_parameter" : [ {
+      "id" : "a3c04721-d0db-49bd-b732-54de3fd64874",
+      "name" : "ConnParamSet_DB2_XMETA",
+      "asset_type" : "parameter_set"
+    } ],
+    "RCP_multi_test" : [ ],
+    "RCPtest_1" : [ ],
+    "RESTDemo" : [ ],
+    "SAMPLE flow" : [ ],
+    "SCD1_FactsCreate" : [ ],
+    "SCD1_FactsLoad" : [ ],
+    "SCD1_FactsLoadRef" : [ ],
+    "SCD1_Reset" : [ ],
+    "SCD2_Dims" : [ {
+      "id" : "568a88a7-0c1a-4bea-8259-12f783df16e9",
+      "name" : "ConnParamSet_SCD",
+      "asset_type" : "parameter_set"
+    }, {
+      "id" : "a0805d6b-7d23-4943-9c8f-abd18c1d3b53",
+      "name" : "ConnParamSet_DB2_DSDB",
+      "asset_type" : "parameter_set"
+    } ],
+    "SCD2_Facts" : [ {
+      "id" : "a0805d6b-7d23-4943-9c8f-abd18c1d3b53",
+      "name" : "ConnParamSet_DB2_DSDB",
+      "asset_type" : "parameter_set"
+    } ],
+    "SCD2_Reset" : [ {
+      "id" : "a2ab0964-6335-4932-8669-514e9adc2d28",
+      "name" : "ConnParamSet_ODBC_DSDB",
+      "asset_type" : "parameter_set"
+    } ],
+    "SCD2_SKG" : [ {
+      "id" : "2f07fb67-d7a5-49b4-93cc-47865c67e02d",
+      "name" : "ConnParamSet_SurrogateKeyGeneratorN",
+      "asset_type" : "parameter_set"
+    } ],
+    "SKG_CreateDatabaseSequence" : [ {
+      "id" : "2f07fb67-d7a5-49b4-93cc-47865c67e02d",
+      "name" : "ConnParamSet_SurrogateKeyGeneratorN",
+      "asset_type" : "parameter_set"
+    } ],
+    "SKG_CreateFileKeySource" : [ ],
+    "SKG_GeneratorByDatabaseSequence" : [ {
+      "id" : "2f07fb67-d7a5-49b4-93cc-47865c67e02d",
+      "name" : "ConnParamSet_SurrogateKeyGeneratorN",
+      "asset_type" : "parameter_set"
+    } ],
+    "SKG_GeneratorByFileKey" : [ ],
+    "SKG_Transformer" : [ ],
+    "TEST flow" : [ ],
+    "XMLInput" : [ ],
+    "XMLOutput" : [ ],
+    "XMLTransformer" : [ ],
+    "charset_conversion_Examples" : [ ],
+    "charset_prevalence_job" : [ ],
+    "excel2test" : [ ],
+    "excel2testRCP" : [ ],
+    "ftpDemo" : [ ],
+    "hierarchical_data" : [ ],
+    "jpFTPRead" : [ ],
+    "jpFTPWrite" : [ ],
+    "jpWrappedSource" : [ {
+      "id" : "cb32fc57-fdb7-4292-93dc-66d1d58f75db",
+      "name" : "woSource"
+    } ],
+    "jpWrappedTarget" : [ {
+      "id" : "48a4afbd-edfc-4e2e-a030-5034c92308c9",
+      "name" : "woTarget"
+    } ],
+    "jp_STPRead" : [ {
+      "id" : "d7a4113b-8a75-4ba5-b64a-1e69e5b51378",
+      "name" : "ConnParamSet_DB2",
+      "asset_type" : "parameter_set"
+    } ],
+    "text2excel" : [ ],
+    "webDemo" : [ ],
+    "xml_hjoin_example" : [ ],
+    "xml_hpivot_example" : [ ],
+    "xml_parser_example" : [ ],
+    "xml_regroup_example" : [ ],
+    "xml_switch_example" : [ ],
+    "xml_union_example" : [ ]
+  },
+  "orchestration_flow" : {
+    "JS_02_DQC_ExecuteRules" : [ ],
+    "JS_ExecuteSH" : [ ],
+    "JS_IIP_InterimLoad" : [ ],
+    "JS_IIP_InterimLoad_Loop" : [ ],
+    "PipelineRunShellStatement" : [ ],
+    "PipelineTestAllSample" : [ {
+      "id" : "f21bc770-3f90-4b2f-be46-fcfe78ed2bdf",
+      "name" : "FlowTestAllSample.DataStage job",
+      "asset_type" : "job"
+    } ],
+    "PipelineTestNodes" : [ ],
+    "PipelineTestNodesExport" : [ ],
+    "PipelineTestNodesImport" : [ ],
+    "PipelineTestNodesSendEmail" : [ ],
+    "PipelineTestParameters" : [ {
+      "id" : "53e6fc0c-17a9-4d7a-9652-6df95a3fa916",
+      "name" : "FlowTestParameters.DataStage job",
+      "asset_type" : "job"
+    }, {
+      "id" : "cc404669-8375-4f7a-a6dd-e83accf31cbc",
+      "name" : "ParameterSetTest",
+      "asset_type" : "parameter_set"
+    } ],
+    "PipelineTestVariables" : [ ],
+    "SAMPLE pipeline" : [ ],
+    "SCD1_Run" : [ ],
+    "SCD2_Run" : [ ],
+    "SQ_10_REPLICAR_TABLAS" : [ ],
+    "TEST pipeline" : [ ]
+  },
+  "data_intg_subflow" : {
+    "SubflowBuildOperator" : [ {
+      "id" : "cd642ab4-065e-4139-a6db-1bfec74b4801",
+      "name" : "boF20ErrorHandling"
+    } ],
+    "SubflowTest" : [ ]
+  },
+  "job" : {
+    "CharsetOnFiles" : [ {
+      "id" : "b4ac3152-9003-45d6-a854-efb1b8c9aa03",
+      "name" : "CharsetOnFiles",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FLOW_TEST_AGGREGATOR" : [ {
+      "id" : "c5312675-acb8-4c08-8a0e-f1e47a1d50ad",
+      "name" : "FLOW_TEST_AGGREGATOR",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowRunShellStatement.DataStage job" : [ {
+      "id" : "e90d8585-85fc-4b97-ac3b-49765287bd1b",
+      "name" : "FlowRunShellStatement",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestAllRunnable.DataStage job" : [ {
+      "id" : "af2c32b9-0165-4899-be95-b5a2853d6f4f",
+      "name" : "FlowTestAllRunnable",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestAllSample.DataStage job" : [ {
+      "id" : "18dfcf08-e8d4-475a-ad90-cd019aac5487",
+      "name" : "FlowTestAllSample",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestBuildOperator" : [ {
+      "id" : "7b672059-e63a-4cc9-8d5e-e3798179e9b2",
+      "name" : "FlowTestBuildOperator",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestEnvironments.DataStage job" : [ {
+      "id" : "2519c64c-dac8-4265-9c9a-46c6fac50f5d",
+      "name" : "FlowTestEnvironments",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestExecute.DataStage job" : [ {
+      "id" : "13501f44-c5d3-4506-bb5b-a4f3f0ff21ad",
+      "name" : "FlowTestExecute",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestExternalSource.DataStage job" : [ {
+      "id" : "a279eb03-f97d-4893-be14-ec2b39e69224",
+      "name" : "FlowTestExternalSource",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestExternalTarget" : [ {
+      "id" : "871d599d-cfc1-4a50-9094-e466012974d8",
+      "name" : "FlowTestExternalTarget",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestFunction.DataStage job" : [ {
+      "id" : "f4f3b7bb-2aca-4a38-963e-374f09d6d452",
+      "name" : "FlowTestFunction",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestLookup.DataStage job" : [ {
+      "id" : "46733a10-a42f-4047-89eb-114dbe6a0916",
+      "name" : "FlowTestLookup",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestMapping.DataStage job" : [ {
+      "id" : "c5ba788d-4c68-4d26-aca3-e7ad0d48a51f",
+      "name" : "FlowTestMapping",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestModify.DataStage job" : [ {
+      "id" : "b92d5a70-8be4-4b85-a5ee-edd085bec8c0",
+      "name" : "FlowTestModify",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestOptimization.DataStage job" : [ {
+      "id" : "2de034d9-633e-45b0-872c-d3513ec5b905",
+      "name" : "FlowTestOptimization",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestParameters.DataStage job" : [ {
+      "id" : "9e9786ba-30c2-4be2-87d4-0ce7bb083a82",
+      "name" : "FlowTestParameters",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestPartitioning.DataStage job" : [ {
+      "id" : "dd8157fd-b052-4b06-8607-2ccb5fdfb312",
+      "name" : "FlowTestPartitioning",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestPivot.DataStage job" : [ {
+      "id" : "5785d190-15be-4c66-bd78-a48fa437297e",
+      "name" : "FlowTestPivot",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestPropagation.DataStage job" : [ {
+      "id" : "3ac60720-3799-482b-ba8f-1382e7b2a9fe",
+      "name" : "FlowTestPropagation",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestPushdown.DataStage job" : [ {
+      "id" : "3b33e015-1d8b-4a4e-9317-6228a7caed2a",
+      "name" : "FlowTestPushdownDB2",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestPushdownDB2.DataStage job" : [ {
+      "id" : "3b33e015-1d8b-4a4e-9317-6228a7caed2a",
+      "name" : "FlowTestPushdownDB2",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestPushdownDB2Warehouse.DataStage job" : [ {
+      "id" : "44497039-ad9b-49f1-8eee-f2a7d8239b26",
+      "name" : "FlowTestPushdownDB2Warehouse",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestQuality" : [ {
+      "id" : "c5250f4d-ddc2-45df-aa18-1941f76b4eea",
+      "name" : "FlowTestQuality",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestREST.DataStage job" : [ {
+      "id" : "9c6d4a9d-3297-42f9-90a5-80143fe38244",
+      "name" : "FlowTestREST1",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestREST1.DataStage job" : [ {
+      "id" : "9c6d4a9d-3297-42f9-90a5-80143fe38244",
+      "name" : "FlowTestREST1",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestREST2.DataStage job" : [ {
+      "id" : "7ed1fef4-b696-44c7-b209-7878e9acfe83",
+      "name" : "FlowTestREST2",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestRESTCompleto.DataStage job" : [ {
+      "id" : "73d75a25-a527-4953-8318-bdf35ddd65f0",
+      "name" : "FlowTestRESTCompleto1",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestRESTCompleto1.DataStage job" : [ {
+      "id" : "73d75a25-a527-4953-8318-bdf35ddd65f0",
+      "name" : "FlowTestRESTCompleto1",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestRESTCompleto2.DataStage job" : [ {
+      "id" : "c45edd07-5e4b-4ec2-9339-0850311f56ac",
+      "name" : "FlowTestRESTCompleto2",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestReadDB2" : [ {
+      "id" : "de70d7f5-73cb-438f-8516-f449bc70830d",
+      "name" : "FlowTestReadDB2",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestReadFiles.DataStage job" : [ {
+      "id" : "996148e6-fd98-4120-a095-ec2598d7ff07",
+      "name" : "FlowTestReadFiles",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestSOAP.DataStage job" : [ {
+      "id" : "3df85d35-45a4-40b2-9522-a7fc0a2d8ddf",
+      "name" : "FlowTestSOAP",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestSOAP_copy_1721756938741.DataStage job" : [ {
+      "id" : "d43c016c-5c07-4553-a418-6c479dcdf4a1",
+      "name" : "FlowTestSOAP_corregido",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestSOAP_corregido.DataStage job" : [ {
+      "id" : "d43c016c-5c07-4553-a418-6c479dcdf4a1",
+      "name" : "FlowTestSOAP_corregido",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestSalesforce" : [ {
+      "id" : "523b46bf-ee9c-4e8a-94af-d46174b6be50",
+      "name" : "FlowTestSalesforce",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestSalesforceOptimizedProxy.DataStage job" : [ {
+      "id" : "b5658ca6-d5a1-4ad1-b78d-5d6ccb945220",
+      "name" : "FlowTestSalesforceOptimizedProxyParameters",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestSalesforceOptimizedProxyParameters.DataStage job" : [ {
+      "id" : "b5658ca6-d5a1-4ad1-b78d-5d6ccb945220",
+      "name" : "FlowTestSalesforceOptimizedProxyParameters",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestSalesforceOptimizedProxyValues.DataStage job" : [ {
+      "id" : "0d931750-7ab2-4e1d-804e-31f49fd83a0c",
+      "name" : "FlowTestSalesforceOptimizedProxyValues",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestStages.DataStage job" : [ {
+      "id" : "5fdd2859-e061-4985-b9c7-facdd8916396",
+      "name" : "FlowTestStages",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestSubflow" : [ {
+      "id" : "206c858e-ace8-4394-9119-6e15e7f1d888",
+      "name" : "FlowTestSubflow",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestWriteDB2" : [ {
+      "id" : "ad2c56df-bdb8-4657-a5c6-705d0c85bed4",
+      "name" : "FlowTestWriteDB2",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestWriteFiles.DataStage job" : [ {
+      "id" : "25c738af-0af2-4958-9fa5-fc3765a7a633",
+      "name" : "FlowTestWriteFiles",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestXMCURL.DataStage job" : [ {
+      "id" : "e92731d2-c33a-4571-be65-28499e8ee607",
+      "name" : "FlowTestXMCURL",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestXML.DataStage job" : [ {
+      "id" : "e3d1211a-8ed0-4eb9-95d3-80a1cb36d093",
+      "name" : "FlowTestXMLGet",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestXML1.DataStage job" : [ {
+      "id" : "e3d1211a-8ed0-4eb9-95d3-80a1cb36d093",
+      "name" : "FlowTestXMLGet",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestXMLInput.DataStage job" : [ {
+      "id" : "bc5056a2-ca2d-47ea-8842-dc4833240bdc",
+      "name" : "FlowTestXMLInput",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "FlowTestXMLOutput.DataStage job" : [ {
+      "id" : "f01498e7-2d70-4d19-8c6f-4a3da7f5c0d1",
+      "name" : "FlowTestXMLOutput",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "InformeProveedores" : [ {
+      "id" : "725bfc1f-d8ad-4cba-be5d-14602d4ae2da",
+      "name" : "InformeProveedores",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "JP_ExecuteSQL" : [ {
+      "id" : "7be24318-11f9-4b94-9792-9ac04dbf84e2",
+      "name" : "JP_ExecuteSQL",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "JP_F00_RCO_DIMENSION_DS" : [ {
+      "id" : "916fadea-ba15-4ccd-bd64-55730b639b70",
+      "name" : "JP_F00_RCO_DIMENSION_DS",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "JP_F20_GEN_LOAD_F20_ERROR_LOG" : [ {
+      "id" : "205797c6-2f2d-494a-bb91-5763eee4150b",
+      "name" : "JP_F20_GEN_LOAD_F20_ERROR_LOG",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "JS_02_DQC_ExecuteRules" : [ {
+      "id" : "35a455ce-e289-49a3-baaf-c3b8f6bcdcea",
+      "name" : "JS_02_DQC_ExecuteRules"
+    } ],
+    "JS_ExecuteSH" : [ {
+      "id" : "7db72aef-7927-4d88-9012-636400168d49",
+      "name" : "JS_ExecuteSH"
+    } ],
+    "JS_IIP_InterimLoad" : [ {
+      "id" : "b464f5dc-eae3-4078-be04-8908665af94d",
+      "name" : "JS_IIP_InterimLoad"
+    } ],
+    "JS_IIP_InterimLoad_Loop" : [ {
+      "id" : "59e21266-103d-4b6b-806a-de6aab6cc99c",
+      "name" : "JS_IIP_InterimLoad_Loop"
+    } ],
+    "PipelineRunShellStatement.DataStage job" : [ {
+      "id" : "1edc60a9-eb36-4c88-a7c0-b11ff04abd6e",
+      "name" : "PipelineRunShellStatement"
+    } ],
+    "PipelineTestAllSample" : [ {
+      "id" : "4b350349-9bf4-4dbc-9ab9-13853ac9d3bf",
+      "name" : "PipelineTestAllSample"
+    } ],
+    "PipelineTestNodes" : [ {
+      "id" : "f4007afc-ed60-48f3-b9c8-3735b5cd2ef9",
+      "name" : "PipelineTestNodes"
+    } ],
+    "PipelineTestNodesImport" : [ {
+      "id" : "7fc695ae-2003-486c-b94b-01122f9b134e",
+      "name" : "PipelineTestNodesImport"
+    } ],
+    "PipelineTestParameters.DataStage job" : [ {
+      "id" : "ff9f9fff-05f2-419f-8894-12a11b802e0a",
+      "name" : "PipelineTestParameters"
+    } ],
+    "PipelineTestVariables" : [ {
+      "id" : "463f6a31-698b-490f-8d5a-e0dc12fc6563",
+      "name" : "PipelineTestVariables"
+    } ],
+    "RCP_db_connector" : [ {
+      "id" : "8a7fbc83-f3fd-4cda-ab03-5a0a9776e631",
+      "name" : "RCP_db_connector",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "RCP_db_connector_parameter" : [ {
+      "id" : "faff3b01-1288-4fc8-82ac-32f0599102c2",
+      "name" : "RCP_db_connector_parameter",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "RCP_multi_test" : [ {
+      "id" : "2c6a4893-b402-4e9f-91d6-20ca6b767629",
+      "name" : "RCP_multi_test",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "RCPtest_1" : [ {
+      "id" : "fe7cc0fe-81a7-479e-8607-042e27a5325a",
+      "name" : "RCPtest_1",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "RESTDemo" : [ {
+      "id" : "72ea8bfa-1dd1-4b86-8035-76b050674a53",
+      "name" : "RESTDemo",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "SAMPLE flow" : [ {
+      "id" : "af2442f0-87db-4f72-8349-6572a62a5d4f",
+      "name" : "SAMPLE flow",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "SAMPLEpipeline" : [ {
+      "id" : "761cf7ae-1e71-4ea3-8674-6125d7823c19",
+      "name" : "SAMPLE pipeline"
+    } ],
+    "SCD1_FactsCreate" : [ {
+      "id" : "76d4b696-0c42-42bb-b5a1-8a4334aca6df",
+      "name" : "SCD1_FactsCreate",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "SCD1_FactsLoad" : [ {
+      "id" : "e41ffac2-d5e0-447a-a5ec-22e500fa81dd",
+      "name" : "SCD1_FactsLoad",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "SCD1_FactsLoadRef" : [ {
+      "id" : "ffe115ba-bb54-4111-b8f8-b373456cffd5",
+      "name" : "SCD1_FactsLoadRef",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "SCD1_Reset" : [ {
+      "id" : "7eec78ec-5172-4bfb-9d80-caf9b068637b",
+      "name" : "SCD1_Reset",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "SCD1_Run" : [ {
+      "id" : "d0a1a4e5-9c2b-490b-b980-4147609b4771",
+      "name" : "SCD1_Run"
+    } ],
+    "SCD2_Dims" : [ {
+      "id" : "fc18f116-e7ef-444f-82b2-ef5aa301e132",
+      "name" : "SCD2_Dims",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "SCD2_Facts" : [ {
+      "id" : "565c84c2-4dca-4a13-8b51-6de8317262bd",
+      "name" : "SCD2_Facts",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "SCD2_Reset" : [ {
+      "id" : "1f2d714c-ec02-4c12-a1dc-9aa38524a127",
+      "name" : "SCD2_Reset",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "SCD2_Run" : [ {
+      "id" : "de57f0b7-bf57-45ba-906c-a912b136476d",
+      "name" : "SCD2_Run"
+    } ],
+    "SCD2_SKG" : [ {
+      "id" : "811d5dac-9cc4-420e-950e-3a49725daef2",
+      "name" : "SCD2_SKG",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "SKG_CreateDatabaseSequence" : [ {
+      "id" : "d3451e36-f210-440c-a177-a779718d0eec",
+      "name" : "SKG_CreateDatabaseSequence",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "SKG_CreateFileKeySource" : [ {
+      "id" : "db4c14b4-ae59-45b5-8627-5ccf5f787b0e",
+      "name" : "SKG_CreateFileKeySource",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "SKG_GeneratorByDatabaseSequence" : [ {
+      "id" : "4a98fcd6-3eb6-4e95-bd93-e9d31715c66a",
+      "name" : "SKG_GeneratorByDatabaseSequence",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "SKG_GeneratorByFileKey" : [ {
+      "id" : "f53ced5d-9634-44a3-ad1c-eec1d99070d4",
+      "name" : "SKG_GeneratorByFileKey",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "SKG_Transformer" : [ {
+      "id" : "b5b5044a-7e40-4c79-a501-679f3a29d983",
+      "name" : "SKG_Transformer",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "SQ_10_REPLICAR_TABLAS" : [ {
+      "id" : "39222337-024a-460d-984b-c36f615d3b5f",
+      "name" : "SQ_10_REPLICAR_TABLAS"
+    } ],
+    "TEST flow" : [ {
+      "id" : "adbf7da6-42f5-43f6-b914-9612715abd33",
+      "name" : "TEST flow",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "TESTpipeline" : [ {
+      "id" : "a72a6154-2917-4600-84fb-73a6ba757483",
+      "name" : "TEST pipeline"
+    } ],
+    "Trial job - PipelineRunShellStatement" : [ {
+      "id" : "1edc60a9-eb36-4c88-a7c0-b11ff04abd6e",
+      "name" : "PipelineRunShellStatement"
+    } ],
+    "Trial job - PipelineTestNodesExport" : [ {
+      "id" : "e5f7183c-c0b4-42d6-a54c-9ee6f08f7570",
+      "name" : "PipelineTestNodesExport"
+    } ],
+    "Trial job - PipelineTestNodesSendEmail" : [ {
+      "id" : "23693e67-95d3-42f1-a0a2-215b4ec56db8",
+      "name" : "PipelineTestNodesSendEmail"
+    } ],
+    "Trial job - PipelineTestParameters" : [ {
+      "id" : "ff9f9fff-05f2-419f-8894-12a11b802e0a",
+      "name" : "PipelineTestParameters"
+    } ],
+    "XMLInput" : [ {
+      "id" : "448a5ee2-f7c7-4654-8239-6ddbc50d471b",
+      "name" : "XMLInput",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "XMLOutput" : [ {
+      "id" : "334ce30b-775f-41bf-8a75-52853b6ba634",
+      "name" : "XMLOutput",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "XMLTransformer" : [ {
+      "id" : "032fa7ca-1291-4f86-ab27-13bc88f42a11",
+      "name" : "XMLTransformer",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "charset_conversion_Examples" : [ {
+      "id" : "2013ea85-bfe0-43f1-b7ef-8d82d19e621f",
+      "name" : "charset_conversion_Examples",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "charset_prevalence_job" : [ {
+      "id" : "388a2474-1360-49fa-a868-15f47e208ad0",
+      "name" : "charset_prevalence_job",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "excel2test" : [ {
+      "id" : "ff38a15c-20ca-4039-b4d4-d26f375e1812",
+      "name" : "excel2test",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "excel2testRCP" : [ {
+      "id" : "d72d1dd8-dede-4d14-9269-0e8df1c9f31c",
+      "name" : "excel2testRCP",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "ftpDemo" : [ {
+      "id" : "bb59165d-51f5-40ed-988a-88da9b2966fd",
+      "name" : "ftpDemo",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "hierarchical_data" : [ {
+      "id" : "4bc5a103-63d7-44c3-880c-5a613e34a148",
+      "name" : "hierarchical_data",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "jpFTPRead" : [ {
+      "id" : "a6595b9f-7b61-44e5-85d1-90a4d4113ccc",
+      "name" : "jpFTPRead",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "jpFTPWrite" : [ {
+      "id" : "a7131f4d-4193-4212-a5da-b5c81e098fcc",
+      "name" : "jpFTPWrite",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "jpWrappedSource" : [ {
+      "id" : "ebc111e0-e2c1-4b00-be85-11fa63098b20",
+      "name" : "jpWrappedSource",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "jpWrappedTarget" : [ {
+      "id" : "d8dd769e-deeb-446e-b4bd-4e125eb33350",
+      "name" : "jpWrappedTarget",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "jp_STPRead" : [ {
+      "id" : "40b9fb8d-829b-41c4-9275-d02306ffade5",
+      "name" : "jp_STPRead",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "text2excel" : [ {
+      "id" : "1b786e14-ff01-40bb-a9a1-92d133942d47",
+      "name" : "text2excel",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "webDemo" : [ {
+      "id" : "91ff39f8-eb53-405a-af2c-b0f4bedf5d59",
+      "name" : "webDemo",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "xml_hjoin_example" : [ {
+      "id" : "d091d6a6-d7de-4f01-a7b0-a0fca2f06c47",
+      "name" : "xml_hjoin_example",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "xml_hpivot_example" : [ {
+      "id" : "fc879b17-d6ab-4219-99d3-72cd506fa966",
+      "name" : "xml_hpivot_example",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "xml_parser_example" : [ {
+      "id" : "a732c54a-892f-4740-92b8-acb4f6302844",
+      "name" : "xml_parser_example",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "xml_regroup_example" : [ {
+      "id" : "a18876ef-283f-4a33-8396-ebda2da88939",
+      "name" : "xml_regroup_example",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "xml_switch_example" : [ {
+      "id" : "533af251-de84-47d0-ad69-08fd15d9815f",
+      "name" : "xml_switch_example",
+      "asset_type" : "data_intg_flow"
+    } ],
+    "xml_union_example" : [ {
+      "id" : "25ab507e-7c15-4e14-a8f8-219cd73155b0",
+      "name" : "xml_union_example",
+      "asset_type" : "data_intg_flow"
+    } ]
+  },
+  "data_intg_parallel_function" : {
+    "FunctionLibraryTest" : [ {
+      "id" : "15bf722e-af1e-46e7-8fa5-3ca76e6ccf99",
+      "name" : "FunctionLibraryTest.so",
+      "asset_type" : "function_library"
+    } ]
+  },
+  "data_intg_custom_stage" : { }
+}

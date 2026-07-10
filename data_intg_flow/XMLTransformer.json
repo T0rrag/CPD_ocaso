@@ -1,0 +1,205 @@
+{
+  "primary_pipeline" : "ec0ba7e9-be52-4028-8900-fbf22158efe4",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 0
+            }
+          }
+        }
+      } ],
+      "op" : "XMLStagePX",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "78f62296-7bf7-41d0-823b-eaaa9d68e04d",
+          "type_attr" : "PRIMARY",
+          "id" : "d6273566-5701-481f-aca1-19d6e1270964",
+          "link_name" : "DSLink2",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "DSLink2",
+                "label" : "DSLink2",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "e1dd6c73-3c66-458d-bcc2-a7d957031469"
+        } ],
+        "id" : "d48ba080-f3bf-41e0-962c-07ca456805e5",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "xml_source_column" : "C1",
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "60538b9e-37e7-41ed-8ee7-ea5168740222"
+      } ],
+      "id" : "a9188f12-82b6-45eb-8e2b-13f01f964266",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/XMLStagePX.svg",
+          "x_pos" : 192.0,
+          "label" : "XML_Transformer_0",
+          "y_pos" : 48.0
+        }
+      },
+      "parameters" : {
+        "enable_split_data_into_batches" : false,
+        "enable_disk_based" : true,
+        "xslt_stylesheet" : "<?xml version=\"1.0\" encoding=\"WINDOWS-1252\"?>\r\n\r\n<xsl:stylesheet version=\"1.0\"\r\nxmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\"\r\nxmlns=\"urn:schemas-microsoft-com:office:spreadsheet\"\r\nxmlns:ss=\"urn:schemas-microsoft-com:office:spreadsheet\"\r\nxmlns:x=\"urn:schemas-microsoft-com:office:excel\">\r\n\r\n<xsl:template match=\"/\">\r\n    <xsl:processing-instruction name=\"mso-application\">progid=\"Excel.Sheet\"</xsl:processing-instruction>\r\n</xsl:template>\r\n\r\n<xsl:template match=\"/\">\r\n\r\n<Workbook>\r\n\r\n <DocumentProperties xmlns=\"urn:schemas-microsoft-com:office:office\">\r\n  <Author></Author>\r\n  <LastAuthor></LastAuthor>\r\n  <Created>2012-12-31T18:11:40Z</Created>\r\n  <LastSaved>2012-12-31T18:30:49Z</LastSaved>\r\n  <Company></Company>\r\n  <Version>14.00</Version>\r\n </DocumentProperties>\r\n\r\n <OfficeDocumentSettings xmlns=\"urn:schemas-microsoft-com:office:office\">\r\n  <AllowPNG/>\r\n </OfficeDocumentSettings>\r\n\r\n <ExcelWorkbook xmlns=\"urn:schemas-microsoft-com:office:excel\">\r\n  <WindowHeight>9975</WindowHeight>\r\n  <WindowWidth>9195</WindowWidth>\r\n  <WindowTopX>480</WindowTopX>\r\n  <WindowTopY>105</WindowTopY>\r\n  <ProtectStructure>False</ProtectStructure>\r\n  <ProtectWindows>False</ProtectWindows>\r\n </ExcelWorkbook>\r\n\r\n <Styles>\r\n  <Style ss:ID=\"Default\" ss:Name=\"Normal\">\r\n   <Alignment ss:Vertical=\"Bottom\"/>\r\n   <Borders/>\r\n   <Font ss:FontName=\"Calibri\" x:Family=\"Swiss\" ss:Size=\"11\" ss:Color=\"#000000\"/>\r\n   <Interior/>\r\n   <NumberFormat/>\r\n   <Protection/>\r\n  </Style>\r\n  <Style ss:ID=\"Estilo\">\r\n   <Alignment ss:Vertical=\"Bottom\"/>\r\n   <Borders/>\r\n   <Font ss:FontName=\"Calibri\" x:Family=\"Swiss\" ss:Size=\"10\" ss:Color=\"#000000\" ss:Bold=\"1\"/>\r\n   <Interior/>\r\n   <NumberFormat/>\r\n   <Protection/>\r\n  </Style>\r\n </Styles>\r\n\r\n <Worksheet ss:Name=\"Hoja1\">\r\n  <Table x:FullColumns=\"1\" x:FullRows=\"1\" ss:DefaultColumnWidth=\"60\" ss:DefaultRowHeight=\"15\">\r\n\r\n      <xsl:attribute name=\"ss:ExpandedColumnCount\">\r\n        <xsl:value-of select=\"count(/DATOS/PAGINA/REGISTRO[1]/*)\"/>\r\n      </xsl:attribute>\r\n\r\n      <xsl:attribute name=\"ss:ExpandedRowCount\">\r\n        <xsl:value-of select=\"count(/DATOS/PAGINA/*)\"/>\r\n      </xsl:attribute>\r\n\r\n    <xsl:for-each select=\"/DATOS/PAGINA/REGISTRO\">\r\n    <Row>\r\n\r\n        <xsl:for-each select=\"./DATO\">\r\n        <Cell ss:StyleID=\"Estilo\">\r\n        <Data ss:Type=\"String\">\r\n            <xsl:value-of select=\".\"/>\r\n        </Data>\r\n        </Cell>\r\n        </xsl:for-each>\r\n\r\n    </Row>\r\n    </xsl:for-each>\r\n\r\n  </Table>\r\n\r\n  <WorksheetOptions xmlns=\"urn:schemas-microsoft-com:office:excel\">\r\n   <PageSetup>\r\n    <Header x:Margin=\"0.3\"/>\r\n    <Footer x:Margin=\"0.3\"/>\r\n    <PageMargins x:Bottom=\"0.75\" x:Left=\"0.7\" x:Right=\"0.7\" x:Top=\"0.75\"/>\r\n   </PageSetup>\r\n   <Print>\r\n    <ValidPrinterInfo/>\r\n    <PaperSizeIndex>9</PaperSizeIndex>\r\n    <HorizontalResolution>600</HorizontalResolution>\r\n    <VerticalResolution>600</VerticalResolution>\r\n   </Print>\r\n   <Selected/>\r\n   <ProtectObjects>False</ProtectObjects>\r\n   <ProtectScenarios>False</ProtectScenarios>\r\n  </WorksheetOptions>\r\n\r\n </Worksheet>\r\n\r\n</Workbook>\r\n\r\n</xsl:template>\r\n\r\n</xsl:stylesheet>\r\n",
+        "isXMLStage" : true,
+        "log_reject_errors" : "0",
+        "allow_column_mapping" : false,
+        "e2_assembly" : "H4sIAAAAAAAA/+1da3OizBL+vr+C4vOLAprLUnGriJKs9eKlFPdyvlgEJ4ZaYDhckvjvTzOAgiKQiLc9bm1t1oF5uueZnpnu6XFyh3gB8YztYA25LjNDz7qlezq2qHfTsFx41qJfPM8W6vW3t7ea/mTWNGzWEV+X+GFYiY5eHdgMx7jIedU1NFQd1UQecnqq3aJ9xxKgJoAJ2EaO6mGHvC2AWPjsLYSMaglYntGwZSEN6nUt2/fG2gsy1a24/Ao3q1428MD3PoecrJiAbnxM50ZpnRsf1DkLeYvOzQ91X7NU9727KQN6a9SwM6/zLMvVf/XkWIVX5LhgdC2aqzXob1+o6A/5zx3I9RY2csPyu3r6c+o9U7Vt3ZonX00Xpd6OrJ6y0LvHxE1j9Blj+WaLvqIp39L/6yMoadHQYDahWQorgUf4oOL/MBbw0aLVmalb90i1MgA2gAiYGNTQXQ80AlqCqttrZiIQlKi/AcENIOqfwQiY7qBn1Tc8t7j+VhyC9bTwYqxv7F09+XFHZN3yEsCJTzviui/YSSKnPu+IPcP+k7Hiowbw6aId8Z8NrHop+FTJjugGtuYJYpIfd+Xcc/QVWH8iy8B7qmxXM8TYgOEQoz2rhovAGtOlu3Yu0nRTNRIMrZXsbvBojpy00SdLdtVf9ZCim0tb5L7esAzLwV+FZQXyF5q09tKuMv1wuovhhuxvtsd2FPY7/BiDuLXnu5qB6qLr5r1uqc4igiwxQ+ZjvqD3agFhEf0Y1OYMXv/YFL4JoHvIhPptbD3rc8pU36V3W7VmaNbHMwTLOyzmLE0FQ1TzehtPr4Knn1p6euHKPfbnc+QGHR9q4K8WRUo1DPyGZvAg8iBETYPn2qJFd/s/RLnboSnV97AJljqwg2qqMdZUQ3VAM8/x0ebjH8RDWj52kAf+D5qNkBvwBx4KuAUu8Olqjk6qPOjImEWv79rd4Fub2PoXLbqdb3/Q4q6eLKgQW599AjrDtIq7KB867fXUy7o9K6+rnnC7Crwz6DWH2eaizXTXNtRFHz6UdtImADiM8TQwoTl2iOE9DEY9UekO+jQVuI5JbEp3h4Gluh6yvNjGXlXDBx0Gr4Ebjd62jZZ0q1PN2aXpkU+ztOfK278hII+EAzdecxAoPhtU3+oVcl5zeZaHRbXJ8JzCfRWaTaHJ1hrXTYphb7ZPm/vl4n6xLy4AOY8L3SWB0oFbbeKZ/qzvxQQS0MU28JVheWIDN8LVdY37en0UG4hV3oMRJKBPzwqeHPzmIll/clRHR25HVw0835WCSXc6HA2G0kj5HVKQLSXXNprsP1yT/4et3VyRfw7MC3IccIb2REcKvJiFq6Ox4IFzsycOEtC5DHDAQONmnwzMHdV+Kdu8xF4gFcQXMN5NG5b59T0zroRLvOlX5u2lPQXuoeaF4iDWgH+HDhr5lgeRaMx4wWZboQZECzFD1CBqdFIQZcf7nq5kIBM67zs2ZsjpE4XJLq6sW3/cMlFQNh/5Xm5x/Rw+dTNksELeQr4ymQI/AIhpG6oLkRQEICShgPjacme6NlM91fXUOappWq3dnkp8B0rGQcmIVD4qi/mOtIdsJhgMjAah7840Zq6pijTqi3LkV6fl5U0f0eDcibqCuaQYpJoYrFAOkVV1bEZG8Ynz94FArlAYEXjQAK+4/QchsUxAWCiFSNpDoMjxDM8qbFPgr4TGbe2a4yBIuC23v5ZNxyE5zY0pCqUQSQcNOIsbfhD2SgWohWKIqH0Ermdqk6UC3UIxRNRhA+DiplfF3zN2TNVgXJKjD/b9B8HmOjhuvvWE/WCLn6ZA0biUozcWpKxjAQ56DiODrMMGwj3Gf4pavrZpnAhFPh+9/OrJ4RK/Fr/wn41f1Jlqe2Qbm4lPIFCBDxa73aGwmAyeIQXMqlapaOFDnj40EagG0sXwSMDOdr8GKIM1n2KEE+T5wr6tosEOftUhComjm/sYnIQ3pBM7WPODIHCEsdePOnvqaqATTWFy8GbzDSiPX4Hgx0PPvtGiSWL6JIPGZbgWTXs6qsCaxrLS3sSl3l0DZsgPwOeKIaKWFpEpLzq2pBefW4JBC71ladBr8L6wnEnG5LTCNgllezSfrvoWvk7QWkKjDzODO5vJWPz109FhtUhlGqm3oEz0POen7r1Eye4f4XoaLq7kheQDNx5g4SPJtL1F2HHRJk6qZl830sWnOCztCkdjtB6mWX7WDWBeCe0c7I8OZ7wwdd6ix8qo238MjwJY8zH2HS3gH9v11SZYvTMOfvL1dpmtwVLKhgpXPX0UiiRiz2sqKWzTjtNKLv5dPdOoTnAcQb/BFKHPiH6hcVcyolagga9UqfUnwSlVC8dj97E/GEl0vEEvy9KjKE9/iPJEmkJsMu2Iiqj8HkqfMaOqdXkQ25IyPp4mY0mZ9rvyIRRQRpOl+MlYmj7Kg3vQoCM9iBOYUw+gwYMoj5cqwKTdm0ZT98Hpn/T/7Q9+9gP5k7YyGR3BFid96ddQaitSZ6qIj0cwwV53PAbyp5Is9aS+MoXRICrQH/cT5Qh09Lr9aU/8NR2025PRQdjoDNoT0nB58PhIHIhIE1EOdlCgX6De4YnoTIZyty0q0rTbqcpn/9wacEllJbbHljs1R98fO9tkFlA4DXduTpzES0arBMgZZ7R4cvSRVVhe4Fnh6mutyXL5x96K6bhktE4hd3C+GS0+Oo7L3gj8rcAFZ60KjmIWE3LJaJ2BVb4uPTNXdFDbdz1s7ovJjWOAmcLzON19E3KvKUKuIDWY/SXnVTos67nwbhqlXb89qZv+5nSGvskXBE99Mgp7KZ2arCydGSqyns9sHCaf2bjkM//ifOYsKplq2DDCL5j/NanNS7Iq2YBzyyHHCZNB3IsbORndlQf3SzYhzvONGemj8AueCpbxPH5c5Y5TaFcPwQIUWRelvQSzTTRMJsoDc0tTyAqWjKV+ujWDXpSRNfdeWnSTpiz0JusWGnuL4K3OYExTwbn3/2DrA4HoRzT+Hp7YDjWeIyuYJtCDo84D83LXiOwgzVAdBN3wMcPLVYZsmxV06wnad7XJ2EFiWsrKxvYHfSmeg9fSsfuy4nOy3yNabkbPnaC1XlKeh9fl/yjleToJx78p2XbJMqXEVZxligLoo++xnHWaqY1NG18STZdEU1kpRNKe7thgg/sVGpzAcTX+mj2LTf1LoikP5KwTTWdrk5dEUz7I/vIi2ZfKlksz7FHX7KTIlotqBYdstDHhIfFjJEfCmxzWMyPNw2RGmgfIjJziHRno3UOOpRrSKwzbbrArFAxop0WjqDdyL9EIDeh0b9FA75XfopHD5VuYU/jcLRphQuJyi8YngsJo4jj66nK2EeFZhNSXWLAEyFnHgmd6ZcElFswDOfNY8Ext8hIL5oPs/RqNzN/ZIYRfsr3lqg6vvqTe3XJj4OqlIDpyNCpyD6LmlL5CMeDOwSYVq8Qsrw6hSYAVH9bJa+QGooc38fgYT887XZhuO7TrCC3nK25542xa3qi45c0qWv5l+cgOf5VM+PgLKcr8tUrfvvwPymfBJnJpAAA=",
+        "xslt_warning_mapping" : "DS_WARNING",
+        "security_info" : "{dsnextenc}aeYuMlKMjAdpqhGu7znZXJX01E7UxE/Zp/NaHzAcy/7QfKyZo8rG1aJ56RLueBD445QM284nfHwASS6PiaTujuVl2CCME6LpbGpNR0VaZG7m8Tqh2CWti7m+2hUu5h1ynl+n3lvDlYtDY9ijlEZ7CWDhOeTiGFMhhXhaV+dsVAOLN052Zi6VuwF7Ye/uXo7NTc+pZzCfW7ClnuKcEcqsqV7/wBBwK+SmxseVByr4IQ27uw7Xl9x8KaZ/SjBuU7GztTumj1/KouS++s0+yuNU/waQXd4bSV580S0qXxx1oaRt3kttYGX4+YpQI6MC/xSO+iohHac+8L5W/me4aGwwRP1VCgXk1ffS+0fWCBUrCukoOuMJikknnK2MQc8V9G1xGO5tUpQ2buXW6MzC4YiisjAaUemzlrzjtzWXiIFfKTAvZ6j4MLjL3D0SVocZqunaTDgdfnKqs1ORDudr6n7665yVhWA0ATU068AB/oAcsvidYZIA8QdIDiXF4mDM1Tdknqo36eyb2502W7qBsEguc5gpktKfk7S1/1E5W5ykICiWSTu0IRbJhg12U+CLjRP/bIMTtVdUteSMA707MZT1FDcWtqGUD17tYe2wcwE4kHZTvgJ+YTL4tGmV15HLwc3kQuPqM1h/JE71TdTgzE1NY4GNrDkX18gAAXeusxAQ2j9CvlkUSBlCZYkmMbv1lW2KB7xLgCy4pGgkgWpdtFh7q9VBCQIIoxlZ2paA7XpPnrLyeB5KQL918kyheq42/D3REbIAfKB3iNRN45GrNWVrKaxN1lHBA55XLGROZrXUgG+IVS2sn+zKvFLSjdvZHA/WxZgnxHEzpw3MiE7YL219Pogt+0KgvIVhbSRoypyqQW8EtOGWNktGZGVtj4pkqpvQSoYAeKLq3wcrnH7OBp94PAEH+dwtZbIk+95+YBMu1BNI5MMfmoELBVjmJ2WkJUmrHGKxUBnV9dkaaA83orkBYm9tUu1BSqsswO836Qk0PPXhKuag4f0prI+y/Bm90wJdTcpFUv5NLGiBsfbpcGIukJIIBOgpBOmpdy0kf5adfq3q061KCsoB9mhm0c8PTydGG8044qmGARtO7udIF1uwSTD9p5Ef7wIwGjeRLBNY/zOrp2lAXKAZc4VpkUazHmYG8K+EacuOBggwVVmhWLeQi4OuYs9X1QNwamnjf0jBuK/8JZBhtH7XR5sunmS7+/7alRX7sappz21R33CpjSVpGwF2uQlxvVGba/teuCkVnTnFzhSx/DRV55P/X0qD+MBBRt37WXqaZdeazAV/N6PpZNDBLn4+VBZfPksEdVkfxlU=",
+        "xslt_fatal_mapping" : "DS_REJECT",
+        "validate_input" : "0",
+        "column_properties" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><extendedAttributesList/>",
+        "output_count" : 0,
+        "input_count" : 1,
+        "xslt_text" : "text",
+        "enable_grammar_caching" : "0",
+        "maximum_stack_size" : 256,
+        "limit_output_rows" : false,
+        "heap_size" : 256,
+        "num_assembly_threads" : 256,
+        "stage_type" : "XMLStage",
+        "log_level" : "warning",
+        "params" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><!DOCTYPE properties SYSTEM \"http://java.sun.com/dtd/properties.dtd\"><properties></properties>",
+        "output_file" : "C:\\tmp\\Resultado.xml",
+        "e2_assembly_errors" : 0,
+        "orgStageOp" : "XMLTransformerPX",
+        "enable_logging" : true,
+        "xml_validation_level" : "0",
+        "xslt_error_mapping" : "DS_REJECT",
+        "debug_test_data" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DebugTestValues/>"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "e1dd6c73-3c66-458d-bcc2-a7d957031469",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "d6273566-5701-481f-aca1-19d6e1270964"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "records" : 1,
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "60538b9e-37e7-41ed-8ee7-ea5168740222"
+      } ],
+      "op" : "PxRowGenerator",
+      "id" : "78f62296-7bf7-41d0-823b-eaaa9d68e04d",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxRowGenerator.svg",
+          "x_pos" : 48.0,
+          "label" : "Row_Generator_6",
+          "y_pos" : 48.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    } ],
+    "id" : "ec0ba7e9-be52-4028-8900-fbf22158efe4",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ {
+          "associated_id_refs" : [ {
+            "node_ref" : "a9188f12-82b6-45eb-8e2b-13f01f964266"
+          } ],
+          "width" : 275,
+          "x_pos" : 23.76,
+          "id" : "2fe5de36-7df9-4016-8ea0-7ad6cc4e3c58",
+          "y_pos" : 23.76,
+          "content" : "Lack of schema when migrate to Hierarchical Data. Edit its assembly to complete configuration of XML Parser,XML Composer and Output steps.",
+          "height" : 70
+        } ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "60538b9e-37e7-41ed-8ee7-ea5168740222",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "C1",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "apt_field_properties" : "cycle={value='C:\\tmp\\InformeProveedores.xml'}",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "0dea2e6f-6bfd-424a-a9c0-74c02fd08317",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "isDefineParameterToggled" : true
+    }
+  },
+  "version" : "3.0"
+}

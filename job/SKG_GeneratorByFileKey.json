@@ -1,0 +1,29 @@
+{
+  "metadata" : {
+    "name" : "SKG_GeneratorByFileKey",
+    "asset_id" : "30a4e09a-884f-4cb3-83b0-db966f036aed",
+    "owner_id" : "1000331001",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "f53ced5d-9634-44a3-ad1c-eec1d99070d4",
+      "schedule_id" : "",
+      "project_name" : "GITHUB integrado",
+      "configuration" : {
+        "env_type" : "",
+        "env_variables" : [ ],
+        "runPriorityQueue" : "Low"
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "data_intg_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "SKG_GeneratorByFileKey"
+    }
+  }
+}

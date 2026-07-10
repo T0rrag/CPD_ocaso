@@ -1,0 +1,610 @@
+{
+  "primary_pipeline" : "f266858f-1736-468d-aba4-bd85445e9a4b",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "de0e7f37-3b35-4eb5-92ed-fae19d431af4",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "cb6ac54e-3c0f-40ef-b4ec-91f201f6a243"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          },
+          "additionalProperties" : {
+            "enableAcp" : true
+          }
+        },
+        "schema_ref" : "f6a6c29f-3206-49fc-8fee-b19af1381fa9",
+        "parameters" : {
+          "xmlSchemaNodeName" : {
+            "srcNodeId" : "83d0afaf-db17-40a1-919f-f14402a4cf4e",
+            "parentRenamed" : false,
+            "displayXPath" : "top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0",
+            "name" : "stations_anon_choice_0",
+            "id" : "parser_result_0_root/data/stations/stations_anon_choice_0",
+            "label" : "top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0",
+            "labelName" : "stations_anon_choice_0",
+            "pathVal" : "top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0"
+          },
+          "buf_mode" : "default"
+        }
+      } ],
+      "op" : "XMLStagePX",
+      "inputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "id" : "4689efef-62ae-491d-a65a-21026e68856b",
+      "type" : "execution_node",
+      "app_data" : {
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/XMLStagePX.svg",
+          "x_pos" : 47.52,
+          "label" : "Hierarchical_Data_1",
+          "y_pos" : 47.52
+        }
+      },
+      "parameters" : {
+        "OtherOptions" : "",
+        "enable_split_data_into_batches" : false,
+        "enable_disk_based" : true,
+        "enableSchemalessDesign" : false,
+        "isXMLStage" : true,
+        "e2_assembly" : "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",
+        "security_info" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><AdministrationBean><typeDefaults><byteDefault>0</byteDefault><intDefault>0</intDefault><shortDefault>0</shortDefault><doubleDefault>0</doubleDefault><floatDefault>0</floatDefault><longDefault>0</longDefault><stringDefault></stringDefault><booleanDefault>false</booleanDefault><decimalDefault>0</decimalDefault><integerDefault>0</integerDefault><dateTimeDefault>1970-01-01T00:00:00</dateTimeDefault><durationDefault>P0Y0M0DT0H0M0S</durationDefault><base64BinaryDefault></base64BinaryDefault><hexBinaryDefault></hexBinaryDefault><xmlDefault></xmlDefault></typeDefaults><itemDefConfig maxExpandedNodes=\"1000\" strictMaxExpandedNodes=\"3000\"/><MappingSuggestionConfigurationBean allowedConversionAccuracy=\"LOSSY\" automateOptionalScalars=\"true\" automateOptionalVectors=\"true\" returnedResults=\"5\" useDescriptionField=\"true\"></MappingSuggestionConfigurationBean></AdministrationBean>",
+        "schema_libraries" : [ {
+          "name" : "REST example",
+          "asset_id" : "app_defined"
+        } ],
+        "output_count" : 1,
+        "input_count" : 0,
+        "Classpath" : "",
+        "maximum_stack_size" : 256,
+        "heap_size" : 256,
+        "limit_output_rows" : false,
+        "openSubCanvas" : false,
+        "stage_type" : "XMLStage",
+        "AdministrationBean" : {
+          "MappingSuggestionConfigurationBean" : {
+            "commonKeyID" : [ ],
+            "_attributes" : {
+              "useDescriptionField" : "true",
+              "allowedConversionAccuracy" : "LOSSY",
+              "returnedResults" : "5",
+              "automateOptionalVectors" : "true",
+              "automateOptionalScalars" : "true"
+            }
+          },
+          "itemDefConfig" : {
+            "_attributes" : {
+              "maxExpandedNodes" : "1000",
+              "strictMaxExpandedNodes" : "3000"
+            }
+          },
+          "typeDefaults" : {
+            "dateTimeDefault" : {
+              "_text" : "1970-01-01T00:00:00"
+            },
+            "decimalDefault" : {
+              "_text" : "0"
+            },
+            "longDefault" : {
+              "_text" : "0"
+            },
+            "intDefault" : {
+              "_text" : "0"
+            },
+            "doubleDefault" : {
+              "_text" : "0"
+            },
+            "stringDefault" : {
+              "_text" : ""
+            },
+            "base64BinaryDefault" : {
+              "_text" : ""
+            },
+            "byteDefault" : {
+              "_text" : "0"
+            },
+            "xmlDefault" : {
+              "_text" : ""
+            },
+            "booleanDefault" : {
+              "_text" : "false"
+            },
+            "durationDefault" : {
+              "_text" : "P0Y0M0DT0H0M0S"
+            },
+            "shortDefault" : {
+              "_text" : "0"
+            },
+            "floatDefault" : {
+              "_text" : "0"
+            },
+            "integerDefault" : {
+              "_text" : "0"
+            },
+            "hexBinaryDefault" : {
+              "_text" : ""
+            }
+          }
+        },
+        "log_level" : "warning",
+        "preserve" : -3,
+        "enable_output_trigger_columns" : false,
+        "params" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><!DOCTYPE properties SYSTEM \"http://java.sun.com/dtd/properties.dtd\"><properties></properties>",
+        "combinability" : "auto",
+        "e2_assembly_errors" : 1,
+        "execmode" : "default_seq",
+        "enable_logging" : true
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        },
+        "parameters" : { }
+      } ],
+      "op" : "PxPeek",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "4689efef-62ae-491d-a65a-21026e68856b",
+          "type_attr" : "PRIMARY",
+          "id" : "cb6ac54e-3c0f-40ef-b4ec-91f201f6a243",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "path" : "M -15 -15 L -15 15 15 15 15 -15 Z",
+                "temporary" : false,
+                "distance" : -50,
+                "tooltip" : "Specific partition",
+                "x_pos" : 5,
+                "id" : "dec-4",
+                "position" : "target"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/link-marking--specific-partitioning.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : -50,
+                "width" : 12,
+                "tooltip" : "Specific partition",
+                "x_pos" : -2,
+                "id" : "dec-5",
+                "position" : "target",
+                "y_pos" : -6,
+                "height" : 12
+              }, {
+                "path" : "M -25 -20 L -25 20 25 20 25 -20 Z",
+                "temporary" : false,
+                "id" : "dec-7",
+                "position" : "middle",
+                "class_name" : "linkMiddleImage"
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -20,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_1",
+                "y_pos" : -8,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkFinishedStyle___QBKP8"
+            }
+          },
+          "link_name" : "Link_1",
+          "port_id_ref" : "de0e7f37-3b35-4eb5-92ed-fae19d431af4"
+        } ],
+        "id" : "1d3e32ff-cf9c-4d89-9275-75a086a3061f",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "f6a6c29f-3206-49fc-8fee-b19af1381fa9",
+        "parameters" : {
+          "runtime_column_propagation" : 0
+        }
+      } ],
+      "id" : "b89fe6c2-3261-4a46-be92-8f2248d0ecd7",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "1d3e32ff-cf9c-4d89-9275-75a086a3061f",
+          "outputs_order" : ""
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxPeek.svg",
+          "x_pos" : 261.36,
+          "label" : "Peek_1",
+          "y_pos" : 47.52
+        }
+      },
+      "parameters" : {
+        "all" : "all",
+        "showPartType" : true,
+        "columns" : " ",
+        "showCollType" : false,
+        "inputName" : "Link_1",
+        "showSortOptions" : false,
+        "combinability" : "auto",
+        "OutputlinkOrderingList" : [ ],
+        "inputcolProperties" : [ ],
+        "selection" : " ",
+        "output_count" : 0,
+        "execmode" : "default_par",
+        "input_count" : 1,
+        "name" : "name",
+        "dataset" : " "
+      }
+    } ],
+    "description" : "",
+    "id" : "f266858f-1736-468d-aba4-bd85445e9a4b",
+    "app_data" : {
+      "datastage" : {
+        "nls_map_name" : "",
+        "nls_locale" : "OFF"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "external_paramsets" : [ ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "f6a6c29f-3206-49fc-8fee-b19af1381fa9",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "description" : "top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/capacity%SCHEMA_NODE_ID%parser_result_0_root/data/stations/stations_anon_choice_0/objectValue/capacity%SCHEMA_NODE_ID%top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/capacity",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "capacity",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "VARCHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "description" : "top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/station_type%SCHEMA_NODE_ID%parser_result_0_root/data/stations/stations_anon_choice_0/objectValue/station_type%SCHEMA_NODE_ID%top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/station_type",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "station_type",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "VARCHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "description" : "top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/external_id%SCHEMA_NODE_ID%parser_result_0_root/data/stations/stations_anon_choice_0/objectValue/external_id%SCHEMA_NODE_ID%top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/external_id",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "external_id",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "VARCHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "description" : "top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/short_name%SCHEMA_NODE_ID%parser_result_0_root/data/stations/stations_anon_choice_0/objectValue/short_name%SCHEMA_NODE_ID%top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/short_name",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "short_name",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "VARCHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "description" : "top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/eightd_has_key_dispenser%SCHEMA_NODE_ID%parser_result_0_root/data/stations/stations_anon_choice_0/objectValue/eightd_has_key_dispenser%SCHEMA_NODE_ID%top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/eightd_has_key_dispenser",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "eightd_has_key_dispenser",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "VARCHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "description" : "top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/lon%SCHEMA_NODE_ID%parser_result_0_root/data/stations/stations_anon_choice_0/objectValue/lon%SCHEMA_NODE_ID%top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/lon",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "lon",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "VARCHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "description" : "top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/has_kiosk%SCHEMA_NODE_ID%parser_result_0_root/data/stations/stations_anon_choice_0/objectValue/has_kiosk%SCHEMA_NODE_ID%top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/has_kiosk",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "has_kiosk",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "VARCHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "description" : "top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/lat%SCHEMA_NODE_ID%parser_result_0_root/data/stations/stations_anon_choice_0/objectValue/lat%SCHEMA_NODE_ID%top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/lat",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "lat",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "VARCHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "description" : "top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/station_id%SCHEMA_NODE_ID%parser_result_0_root/data/stations/stations_anon_choice_0/objectValue/station_id%SCHEMA_NODE_ID%top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/station_id",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "station_id",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "VARCHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "description" : "top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/region_id%SCHEMA_NODE_ID%parser_result_0_root/data/stations/stations_anon_choice_0/objectValue/region_id%SCHEMA_NODE_ID%top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/region_id",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "region_id",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "VARCHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "description" : "top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/name%SCHEMA_NODE_ID%parser_result_0_root/data/stations/stations_anon_choice_0/objectValue/name%SCHEMA_NODE_ID%top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/name",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "name",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "VARCHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "description" : "top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/rental_uris/ios%SCHEMA_NODE_ID%parser_result_0_root/data/stations/stations_anon_choice_0/objectValue/rental_uris/ios%SCHEMA_NODE_ID%top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/rental_uris/ios",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "ios",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "VARCHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "description" : "top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/rental_uris/android%SCHEMA_NODE_ID%parser_result_0_root/data/stations/stations_anon_choice_0/objectValue/rental_uris/android%SCHEMA_NODE_ID%top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/rental_uris/android",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "android",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "VARCHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 0,
+        "description" : "top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/electric_bike_surcharge_waiver%SCHEMA_NODE_ID%parser_result_0_root/data/stations/stations_anon_choice_0/objectValue/electric_bike_surcharge_waiver%SCHEMA_NODE_ID%top/JSON_parser_1:result/root/data/stations/stations_anon_choice_0/objectValue/electric_bike_surcharge_waiver",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "electric_bike_surcharge_waiver",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "VARCHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      },
+      "type" : "string"
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "44fc4c9d-ea1c-4d7c-b0dd-fb007ac75327",
+  "app_data" : {
+    "datastage" : {
+      "timestamp_format" : "",
+      "decimal_separator" : "",
+      "flowRunPriorityQueue" : "Medium",
+      "time_format" : "",
+      "date_format" : "",
+      "message_handlers" : [ ],
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "transInputLinkMapper" : { },
+      "ELTDropdown" : {
+        "id" : "nesting",
+        "label" : "Generate nested SQL",
+        "value" : "NESTED_QUERY"
+      },
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "rcpLinkList" : [ ],
+      "globalAcp" : true,
+      "enableRCP" : false,
+      "isDefineParameterToggled" : true,
+      "enableSchemaLessDesign" : false,
+      "runMode" : "ETL"
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ ]
+  }
+}

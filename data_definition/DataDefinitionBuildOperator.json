@@ -1,0 +1,89 @@
+{
+  "metadata" : {
+    "name" : "DataDefinitionBuildOperator",
+    "asset_type" : "data_definition",
+    "description" : null
+  },
+  "entity" : {
+    "data_asset" : {
+      "mime_type" : "application/json",
+      "dataset" : true,
+      "columns" : [ {
+        "name" : "AllData",
+        "type" : {
+          "nullable" : true,
+          "length" : 0,
+          "signed" : false,
+          "type" : "NVARCHAR"
+        },
+        "properties" : {
+          "extended_precision" : 0,
+          "nullable" : true,
+          "ustring" : false,
+          "display_size" : 0,
+          "level_no" : 0,
+          "primary_key" : false
+        }
+      } ],
+      "additionalProperties" : {
+        "seq_delimiter" : ",",
+        "seq_col_space" : 0,
+        "seq_col_headers" : false,
+        "seq_omit_newline" : false,
+        "multivalued" : false,
+        "sp_error_codes" : ";",
+        "seq_quote_char" : "\"",
+        "seq_fixed_width" : false,
+        "locator" : {
+          "DataSchema" : "",
+          "SoftwareProduct" : "",
+          "TableType" : "Generic",
+          "DataCollection" : "ErrorAllData",
+          "DataStore" : "",
+          "Computer" : ""
+        },
+        "allow_column_mapping" : false
+      }
+    },
+    "column_info" : {
+      "AllData" : {
+        "column_terms" : [ ],
+        "column_tags" : [ ]
+      }
+    },
+    "data_definition" : { },
+    "ds_info" : {
+      "data_types" : [ ],
+      "record_level" : {
+        "final_delim" : "end",
+        "intact" : {
+          "check_intact" : false
+        }
+      },
+      "field_defaults" : {
+        "quote" : "double",
+        "print_field" : false,
+        "delim" : "|"
+      },
+      "type_defaults" : {
+        "general" : { },
+        "string" : {
+          "import_ascii_as_ebcdic" : false,
+          "export_ebcdic_as_ascii" : false
+        },
+        "decimal" : {
+          "packed_signed" : false,
+          "packed_check" : false
+        },
+        "numeric" : { },
+        "date" : {
+          "julian" : false
+        },
+        "time" : {
+          "midnight_seconds" : false
+        },
+        "timestamp" : { }
+      }
+    }
+  }
+}

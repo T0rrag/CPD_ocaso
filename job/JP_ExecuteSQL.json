@@ -1,0 +1,29 @@
+{
+  "metadata" : {
+    "name" : "JP_ExecuteSQL",
+    "asset_id" : "a478d1a0-7219-4161-aa5a-1998af739ee4",
+    "owner_id" : "1000331001",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "7be24318-11f9-4b94-9792-9ac04dbf84e2",
+      "schedule_id" : "",
+      "project_name" : "GITHUB integrado",
+      "configuration" : {
+        "env_type" : "",
+        "env_variables" : [ ],
+        "runPriorityQueue" : "Low"
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "data_intg_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "JP_ExecuteSQL"
+    }
+  }
+}

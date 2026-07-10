@@ -1,0 +1,28 @@
+{
+  "metadata" : {
+    "name" : "SCD1_Run",
+    "asset_id" : "db66031e-937f-42da-9478-7cadd3c6b4fe",
+    "owner_id" : "1000331001",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "d0a1a4e5-9c2b-490b-b980-4147609b4771",
+      "schedule_id" : "",
+      "project_name" : "GITHUB integrado",
+      "configuration" : {
+        "env_type" : "",
+        "env_variables" : [ ]
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "orchestration_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "SCD1_Run"
+    }
+  }
+}

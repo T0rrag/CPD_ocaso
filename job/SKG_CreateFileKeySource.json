@@ -1,0 +1,29 @@
+{
+  "metadata" : {
+    "name" : "SKG_CreateFileKeySource",
+    "asset_id" : "b140481f-2241-48a2-802f-25826a8999ee",
+    "owner_id" : "1000331001",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "db4c14b4-ae59-45b5-8627-5ccf5f787b0e",
+      "schedule_id" : "",
+      "project_name" : "GITHUB integrado",
+      "configuration" : {
+        "env_type" : "",
+        "env_variables" : [ ],
+        "runPriorityQueue" : "Low"
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "data_intg_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "SKG_CreateFileKeySource"
+    }
+  }
+}

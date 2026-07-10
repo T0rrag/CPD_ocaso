@@ -1,0 +1,37 @@
+{
+  "metadata" : {
+    "name" : "FlowTestXMCURL.DataStage job",
+    "asset_id" : "9e7589e3-d9ff-431f-aead-52a2554f07c0",
+    "owner_id" : "1000331001",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "e92731d2-c33a-4571-be65-28499e8ee607",
+      "schedule_id" : "",
+      "project_name" : "GITHUB integrado",
+      "configuration" : {
+        "env_type" : "",
+        "flow_limits" : {
+          "warn_limit" : 100
+        },
+        "env_variables" : [ ],
+        "runPriorityQueue" : "Medium"
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "data_intg_flow",
+      "job_parameters" : [ {
+        "name" : "$APT_IMPEXP_INFER_EOL_RECORD_DELIM",
+        "value" : "False"
+      } ],
+      "last_run_status" : "deprecated field",
+      "retention_policy" : { },
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "FlowTestXMCURL"
+    }
+  }
+}

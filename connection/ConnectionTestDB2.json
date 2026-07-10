@@ -1,0 +1,24 @@
+{
+  "datasource_type" : "8c1a4480-1c29-4b33-9086-9cb799d7b157",
+  "name" : "ConnectionTestDB2",
+  "flags" : [ "personal_credentials" ],
+  "rov" : {
+    "mode" : 0,
+    "member_roles" : {
+      "1000331001" : {
+        "roles" : [ "OWNER" ],
+        "user_iam_id" : "1000331001"
+      }
+    }
+  },
+  "properties" : {
+    "database" : "DATABASE",
+    "port" : "50000",
+    "username_password_security" : "{dsmenc}jS0RjfyDzsKshBAnXfFb1A==",
+    "host" : "{dsmenc}/LLTC/ObJASowAtVwYZeDQ==",
+    "ssl" : "false",
+    "username_password_encryption" : "{dsmenc}MgMYkdvSJmnI06bs6isAoA=="
+  },
+  "data_source_definition_searchable" : "HOSTNAME|50000|DATABASE",
+  "origin_country" : "us"
+}

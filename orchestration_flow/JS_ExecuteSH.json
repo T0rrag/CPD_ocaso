@@ -1,0 +1,241 @@
+{
+  "app_data" : {
+    "pipeline_data" : {
+      "caching_method" : "automatic",
+      "default_cache_mode" : "never",
+      "default_error_policy" : "continue_on_error",
+      "parameter_sets" : [ ],
+      "validation" : {
+        "valid" : true,
+        "validated_at" : "2026-07-10 08:18:13.469692145 +0000 UTC"
+      },
+      "variables" : [ ],
+      "version" : "12.0"
+    },
+    "ui_data" : {
+      "settings" : {
+        "auto_link_color" : true,
+        "autosave" : false,
+        "enable_ds_funcs" : true,
+        "limit_ab_jobs_scope" : true,
+        "shape_nodes" : true
+      }
+    }
+  },
+  "doc_type" : "pipeline",
+  "id" : "75b489fd-f67c-40c1-9aa0-6ef64b87f6b9",
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "pipelines" : [ {
+    "app_data" : {
+      "pipeline_data" : {
+        "inputs" : [ {
+          "description" : "Statement",
+          "name" : "Statement",
+          "type" : "String"
+        } ]
+      },
+      "ui_data" : {
+        "asset_metadata" : {
+          "086bc8c3-15ab-4b1a-adad-7743a7c864e3" : {
+            "name" : "DATASTAGE test project"
+          }
+        },
+        "comments" : [ ],
+        "exception_handler_x_pos" : -80,
+        "exception_handler_y_pos" : -80,
+        "zoom" : {
+          "k" : 0.8,
+          "x" : 3.1999999999999886,
+          "y" : 62.4
+        }
+      }
+    },
+    "id" : "26a0f987-2b87-4932-b20e-6ba35d419fc9",
+    "nodes" : [ {
+      "app_data" : {
+        "componentGroup" : "run",
+        "componentLabelRef" : "Run bash script",
+        "emptyImage" : "/pipelines/graphics/orchestration-flows/nodes/run/empty.svg",
+        "groups" : {
+          "inputs" : {
+            "env_variables" : {
+              "description" : "Optional. Additional environment variables passed to the shell in form of multiline string (e.g. `VAR1=value1\\nVAR2=value2`).",
+              "human_name" : "Environment Variables",
+              "name" : "env_variables",
+              "optional" : true,
+              "pass_style" : "file",
+              "type" : "DynamicParamSet"
+            }
+          },
+          "outputs" : {
+            "output_variables" : {
+              "description" : "Custom outputs variables",
+              "human_name" : "Output Variables",
+              "name" : "output_variables",
+              "pass_style" : "file",
+              "type" : "DynamicParamSet"
+            }
+          }
+        },
+        "pipeline_data" : {
+          "cache_mode" : "never",
+          "config" : {
+            "link" : {
+              "component_id_ref" : "run-bash-script",
+              "component_version_id_ref" : "run-bash-script-1"
+            }
+          },
+          "inputs" : [ {
+            "allowed_scopes" : [ "project" ],
+            "description" : "Run selected bash script asset",
+            "human_name" : "Bash Script Asset",
+            "name" : "script_asset",
+            "optional" : true,
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "script",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            }
+          }, {
+            "description" : "Body of the script.",
+            "human_name" : "Inline script code",
+            "name" : "script",
+            "pass_style" : "file",
+            "type" : "String",
+            "ui_data" : { },
+            "value" : "echo \"#Statement#\" > $command_name_PATH\neval \"${Statement}\""
+          }, {
+            "default" : "standalone",
+            "description" : "The runtime type for a bash script execution",
+            "human_name" : "Runtime type(optional)",
+            "name" : "runtime_type",
+            "type" : "String",
+            "ui_data" : {
+              "inputType" : "SELECT_RESOURCE",
+              "inputTypes" : {
+                "selected-node-values-runtime_type-input" : "SELECT_RESOURCE"
+              }
+            },
+            "value" : "shared"
+          }, {
+            "description" : "Optional. An action taken when the run has failed.",
+            "human_name" : "Error Policy",
+            "name" : "error_policy",
+            "type" : "ErrorPolicy",
+            "ui_data" : {
+              "inputType" : "SELECT_RESOURCE"
+            },
+            "value" : "continue_on_error"
+          }, {
+            "group" : "env_variables",
+            "human_name" : "Environment variable for #Statement#",
+            "name" : "Statement",
+            "value_from" : {
+              "pipeline_input" : {
+                "param_name" : "Statement"
+              }
+            }
+          }, {
+            "current_scope" : true,
+            "default" : "b128f957-581d-46d0-95b6-8af5cd5be580",
+            "name" : "hardware_specification",
+            "related_asset_type" : "orchestration_flow",
+            "type" : {
+              "CPDPath" : {
+                "asset_type" : "hardware_specification",
+                "path_type" : "resource",
+                "resource_type" : "asset"
+              }
+            },
+            "value" : "abfde4f8-88a7-57c7-bee4-e047a481f7cb"
+          } ],
+          "name" : "exec1",
+          "outputs" : [ {
+            "description" : "Return value from the script",
+            "human_name" : "Return Value",
+            "name" : "return_value",
+            "type" : "Integer"
+          }, {
+            "description" : "Command name of the inline script",
+            "group" : "output_variables",
+            "human_name" : "Command Name",
+            "name" : "command_name",
+            "size_estimation" : 10,
+            "type" : "String"
+          }, {
+            "description" : "Standard Output from the script",
+            "human_name" : "Standard Output",
+            "name" : "standard_output",
+            "pass_style" : "file",
+            "size_estimation" : 250,
+            "type" : "String"
+          }, {
+            "name" : "standard_error",
+            "pass_style" : "file",
+            "type" : "String"
+          }, {
+            "description" : "The status of the job. One of: \"Completed\", \"CompletedWithWarnings\", \"CompletedWithErrors\", \"Failed\", \"Canceled\"",
+            "human_name" : "Execution Status",
+            "name" : "status",
+            "type" : "ExecutionStatus"
+          }, {
+            "description" : "Message associated with the status.",
+            "human_name" : "Status Message",
+            "name" : "status_message",
+            "type" : "String"
+          } ]
+        },
+        "ui_data" : {
+          "decorations" : [ {
+            "class_name" : "oflow-node-type-label",
+            "id" : "exec1_type_label",
+            "label" : "Run Bash script",
+            "position" : "middleCenter",
+            "x_pos" : -63,
+            "y_pos" : 13
+          } ],
+          "image" : "/pipelines/graphics/orchestration-flows/nodes/run/bash_script.svg",
+          "label" : "Execute_Command",
+          "x_pos" : 96,
+          "y_pos" : 72
+        },
+        "validators" : { }
+      },
+      "id" : "exec1",
+      "inputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "cardinality" : {
+              "max" : -1,
+              "min" : 0
+            },
+            "class_name" : "oflow-node-port",
+            "label" : "Input Port"
+          }
+        },
+        "id" : "inPort"
+      } ],
+      "op" : "run_container",
+      "outputs" : [ {
+        "app_data" : {
+          "ui_data" : {
+            "cardinality" : {
+              "max" : -1,
+              "min" : 0
+            },
+            "class_name" : "oflow-node-port",
+            "label" : "Output Port"
+          }
+        },
+        "id" : "outPort"
+      } ],
+      "type" : "execution_node"
+    } ],
+    "runtime_ref" : "kfp"
+  } ],
+  "primary_pipeline" : "26a0f987-2b87-4932-b20e-6ba35d419fc9",
+  "schemas" : [ ],
+  "version" : "3.0"
+}

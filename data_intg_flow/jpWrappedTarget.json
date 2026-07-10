@@ -1,0 +1,157 @@
+{
+  "primary_pipeline" : "4af76886-6976-458b-a449-4fd0a3df8c38",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "58694700-9a07-41cf-9eeb-aab30e1250e0",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "9570cc0d-c0ad-4d4d-8fdb-39aaf2f26d59"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "records" : 10,
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "cd1a08b5-52d6-4694-a1b7-aa1798f08510"
+      } ],
+      "op" : "PxRowGenerator",
+      "id" : "9c3da6ed-5c94-47c7-8620-93625185adce",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxRowGenerator.svg",
+          "x_pos" : 48.0,
+          "label" : "Row_Generator",
+          "y_pos" : 48.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "op" : "woTarget",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "9c3da6ed-5c94-47c7-8620-93625185adce",
+          "type_attr" : "PRIMARY",
+          "id" : "9570cc0d-c0ad-4d4d-8fdb-39aaf2f26d59",
+          "link_name" : "Input",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Input",
+                "label" : "Input",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "58694700-9a07-41cf-9eeb-aab30e1250e0"
+        } ],
+        "id" : "926c5741-403e-4383-b098-8ae8c37d03a8",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "cd1a08b5-52d6-4694-a1b7-aa1798f08510"
+      } ],
+      "id" : "54f268af-4a82-4582-bc65-6a1ed0a73fcb",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "custom_op_asset_id" : "48a4afbd-edfc-4e2e-a030-5034c92308c9",
+          "custom_optype" : 2
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/WrappedAsset.svg",
+          "x_pos" : 192.0,
+          "label" : "woTarget",
+          "y_pos" : 48.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "operator" : "wsTarget"
+      }
+    } ],
+    "id" : "4af76886-6976-458b-a449-4fd0a3df8c38",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "cd1a08b5-52d6-4694-a1b7-aa1798f08510",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "Column",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "89fae618-1a12-4764-8b63-55ea78767f73",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "isDefineParameterToggled" : true
+    }
+  },
+  "version" : "3.0"
+}

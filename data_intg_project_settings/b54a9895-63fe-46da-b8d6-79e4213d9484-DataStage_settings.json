@@ -1,0 +1,55 @@
+{
+  "project" : {
+    "jobNameSuffix" : ".DataStage job",
+    "runEnvironmentId" : "",
+    "runPriorityQueue" : "Low",
+    "runRemoteEngineEnforcement" : false,
+    "testDataProperties" : {
+      "testCaseJobNameSuffix" : ".DataStageTestCase Job",
+      "testDataConnectionType" : ""
+    },
+    "saveFrequency" : "save_changes_automatically",
+    "formatTimeString" : "%hh:%nn:%ss",
+    "flowLimits" : {
+      "warnLimit" : 100
+    },
+    "testDataConnectionId" : "",
+    "nlsCollate" : "OFF",
+    "disableParamsRefreshCache" : false,
+    "runMessageHandlerId" : "",
+    "formatDecimalSeparator" : ".",
+    "testDataBasePath" : "",
+    "allowDuplicate" : false,
+    "sequenceNameSuffix" : ".DataStage sequence",
+    "defineParameters" : false,
+    "optimizedSequenceNameSuffix" : ".DataStage sequence job",
+    "runIsolatedEngineEnforcement" : false,
+    "runArtifactRetention" : { },
+    "aiFeatures" : { },
+    "gitIntegration" : {
+      "gitCertKey" : "{dsnextenc}aq2NyN7TWVpXhX+t9+FKog==",
+      "enableGit" : true,
+      "gitProvider" : "git",
+      "gitCert" : "",
+      "gitFolder" : "",
+      "gitToken" : "{dsnextenc}KGkzN4oLyBDTNgdo6gm15S8t2dnUz9aL37TGCqCjaXMKsYizK3RUkje1uCEwdJQY",
+      "gitOwner" : "",
+      "dsUser" : "cpadmin",
+      "gitURL" : "https://github.com/T0rrag/CPD_ocaso.git",
+      "gitBranch" : "main"
+    },
+    "thresholdLimits" : { },
+    "formatDateString" : "%yyyy-%mm-%dd",
+    "flowAcpControl" : true,
+    "metricsRepository" : {
+      "enableMetrics" : false,
+      "metricsRetention" : { },
+      "connection" : {
+        "datasource_type" : "e1c23729-99d8-4407-b3df-336e33ffdc82"
+      },
+      "enableAdvancedFind" : false
+    },
+    "nlsMap" : "UTF-8",
+    "formatTimestampString" : "%yyyy-%mm-%dd %hh:%nn:%ss"
+  }
+}

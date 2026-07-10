@@ -1,0 +1,37 @@
+{
+  "metadata" : {
+    "name" : "FlowTestREST2.DataStage job",
+    "asset_id" : "acf336ef-4db7-4830-a9d8-b20d8a97040b",
+    "owner_id" : "1000331001",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "7ed1fef4-b696-44c7-b209-7878e9acfe83",
+      "schedule_id" : "",
+      "project_name" : "GITHUB integrado",
+      "configuration" : {
+        "env_type" : "",
+        "flow_limits" : {
+          "warn_limit" : 100
+        },
+        "env_variables" : [ ],
+        "runPriorityQueue" : "Medium"
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "data_intg_flow",
+      "job_parameters" : [ {
+        "name" : "$APT_DEFAULT_TRANSPORT_BLOCK_SIZE",
+        "value" : "10000000"
+      } ],
+      "last_run_status" : "deprecated field",
+      "retention_policy" : { },
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "FlowTestREST2"
+    }
+  }
+}

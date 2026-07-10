@@ -1,0 +1,184 @@
+{
+  "name" : "boF20ErrorHandling",
+  "description" : "Short description: Error Handling build operator. Long description: Error Handling build operator\r\n\r\nVersion Number: 1.0\r\nDate: 26/01/2009\r\nAuthor: John Campbell         \r\n\r\nDescription\r\n------------------\r\n\r\nThis operator takes input data consisting of the error handling columns: pscErrorCode and pscErrorInfo plus RCP data fed into the error handling shared container.\r\n\r\nThe supplied error code is used to look up an in-memory copy of the \"errors.csv\" (converted to null-separated values) format by the job JP_F20_CreateErrorsNSV_010 as a memory-mapped file, to get user-defined error categorisations/description.\r\n\r\nThe input and error data is augmented by standard DataStage macro and other log data (current timestamp) and is appended to an error log file named according to the framework standards:\r\n\r\n   RunId.HostName.ProjectName.JobName.InvocationId.StageName.YYYYMMDDHHMMSS.err\r\n\r\nIf the supplied error code is defined as severity 1, the operator will abort the job once the log is written.\r\n\r\nIf the supplied error code does not exist or is empty, the operator will contrive an error code, DS_ERR_0 that is severity 1. Such a scenario will result in the job to stop processing and fail.\r\n\r\nPlease check the details in error handling shared container for further information.\r\n\r\nNOTE 1: The C++ functions can not be called twice within a statement. For this reason many statements have been split into several lines.\r\n\r\nNOTE 2: The RCP data columns may appear in a different order within the log file, and this happens if their names have been automatically generated (by appending _1, _2, etc) within the transformer stage.\r\n\r\nModification History (most recent first)\r\n-----------------------------------------------------------\r\n\r\nVsn        Date              Issue#      Author             Doc#       Description\r\n------        ------------------    -----------     ---------------------   --------        ------------------\r\n0.1         2009-01-26    N/A         John Campbell                  Initial build.\r\n0.2         2013-02-13    N/A         Marcin Szablewski           Added new 'Number Of Warnings To Log' property and enabled writting specifed number of warnings to a log.\r\n0.3         2013-02-15    N/A         Marcin Szablewski           Added new columns Process Id and Run Source Id\r\n0.4         2013-03-01    N/A         Marcin Szablewski           Added new properties pscPcsId, pscPcsIdColumn, pscRunSrcId and pscRunSrcIdColumn\r\n1.0         2013-10-07    N/A         SEDC                               Properties and parameters simplified and renamed according naming conventions\r\n1.1         2013-11-05    N/A         SEDC                               Metadata and error file binding with the load job\r\n1.2         2014-02-05    N/A         SEDC                               Avoid to write the error file if there are no rows\r\n1.3         2014-04-29    N/A         SEDC                               Map special characters: ASCII 10, ASCII 27, ASCII 34, ASCII 44\r\n",
+  "tags" : [ "show_on_palette", "is_compiled" ],
+  "asset_type" : "data_intg_build_stage",
+  "entity" : {
+    "general" : {
+      "operator_name" : "boF20ErrorHandling",
+      "execmode" : "seq",
+      "class_name" : "boF20ErrorHandling",
+      "node_type_name" : "boF20ErrorHandling"
+    },
+    "creator" : {
+      "author" : "SEDC",
+      "vendor" : "ING BE",
+      "version" : "0.0.0"
+    },
+    "build" : {
+      "interfaces" : {
+        "output" : [ {
+          "port_name" : "Output",
+          "alias" : "",
+          "auto_write" : false,
+          "id" : "42645d17-4bb3-4800-8f59-de168bf4767d",
+          "runtime_column_propagation" : 1
+        } ],
+        "input" : [ {
+          "port_name" : "Input",
+          "auto_read" : true,
+          "alias" : "",
+          "id" : "4dc66d64-4ad0-430b-bb8c-cac23aff5996",
+          "table_name" : "Generic-ErrorHandling-ErrorAllData",
+          "runtime_column_propagation" : 0
+        } ],
+        "transfer" : [ {
+          "output" : "Output",
+          "input" : "Input",
+          "separate" : false,
+          "auto_transfer" : false
+        } ],
+        "inputs_order" : "4dc66d64-4ad0-430b-bb8c-cac23aff5996",
+        "outputs_order" : "42645d17-4bb3-4800-8f59-de168bf4767d"
+      },
+      "logic" : {
+        "pre_loop" : "// Initialise once\r\n\r\n    gErrorDir = pErrorsDir;\r\n    gLookupDir = pLookupsDir;\r\n    gOutputRCP = GetRCPStatus(pErrorData);\r\n    gInitialised = CreateMemoryMapping();\r\n    CreateKeyTable();\r\n\r\n    gNrbOfLoops = 0;\r\n    gPcsIdSearch = \"\";\r\n    gPcsIdParam = pPcsId;\r\n    gSrcIdParam = pSrcId;\r\n    gRunIdParam = pRunId;\r\n    gPcsIdSearch = \"\";\r\n    gSrcIdSearch = \"\";\r\n    gRunIdSearch = \"\";\r\n\r\n// Construct the Job audit data and file name from DataStage 'macros' (passed in a 'parameters', or arguments here)\r\n\r\n   gJobInfo  = DQuote(pHostName);\r\n   gJobInfo += \",\" + DQuote(pProjectName);\r\n   gJobInfo += \",\" + DQuote(pJobController);\r\n   gJobInfo += \",\" + DQuote(pJobName);\r\n   gJobInfo += \",\" + DQuote(pJobInvocationId);\r\n   gJobInfo += \",\" + DQuote(pJobStartTimestamp);\r\n\r\n   gJobStartTimestamp = Convert(\" :-\", \"\", pJobStartTimestamp);\r\n\r\n   gFileName = pRunId + \".\" + pHostName + \".\" + pProjectName + \".\" + pJobName + \".\" + pJobInvocationId + \".\" + pSrcId + \".\" + gJobStartTimestamp;\r\n\r\n   gCurName  = gErrorDir + \"/\" + gFileName + \".tmp\";\r\n   gNewName  = gErrorDir + \"/\" + gFileName + \".err\";\r\n\r\n// Open the error log file using the file name constructed above\r\n// Note. The failstep on failure to open will abort the job\r\n \r\n   gLogHandle = fopen(gErrorDir + \"/\" + gFileName + \".tmp\", \"a\");\r\n   if ( ! gLogHandle ) {\r\n      fprintf(stderr, \"Unable to open log file (%s/%s.tmp)\\n\", gErrorDir.data(), gFileName.data());\r\n      failStep();\r\n   }\r\n\r\n// If we failed initialisation, log it as an error\r\n\r\n   if ( gInitialised < 0 ) {\r\n       gErrorCode = \"DS_ERR_0\";\r\n       gErrorSeverity = \"1\";\r\n       gErrorData  = DQuote(\"ERROR\");\r\n       gErrorData += \",\" + DQuote(\"FAILED\");\r\n       gErrorData += \",\" + DQuote(\"Initialisation failure mapping errors file\");\r\n       LogIt(gNrbOfLoops, pNbrOfWarnToLog);\r\n       failStep();\r\n   }\r\n",
+        "post_loop" : "// Close the file\r\n\r\n   if ( gLogHandle )\r\n      fclose(gLogHandle);\r\n\r\n// Delete the file\r\n\r\n   if ( gNrbOfLoops == 0 )\r\n      {\r\n      iResult = remove(gCurName);\r\n\r\n      if ( iResult == 0 )\r\n         {\r\n         fprintf(stdout, \"Log file (%s) has been deleted\\n\", gCurName.data());\r\n         }\r\n      else\r\n         {\r\n         fprintf(stderr, \"Unable to delete log file (%s)\\n\", gCurName.data());\r\n         failStep();\r\n         }\r\n      }\r\n   else\r\n      {\r\n\r\n      // Rename the file\r\n\r\n      iResult = rename(gCurName, gNewName);\r\n\r\n      if ( iResult == 0 )\r\n         {\r\n         fprintf(stdout, \"Log file (%s) has been renamed\\n\", gCurName.data());\r\n         }\r\n      else\r\n         {\r\n         fprintf(stderr, \"Unable to rename log file (%s)\\n\", gCurName.data());\r\n         failStep();\r\n         }\r\n\r\n      // If we have a severity 1 error, the job must fail\r\n      // If severity is 1 all erroneous records are first written to a file and then a job fails\r\n\r\n      if ( gErrorSeverity == \"1\" ) {\r\n         fprintf(stderr,\"Severity 1 error (%s) encountered (%s). Aborting Job.\\n\", gErrorCode.data(), gErrorData.data());\r\n         failStep();\r\n         }\r\n      }\r\n",
+        "definitions" : "// Include files\r\n\r\n    #include <stdio.h>\r\n    #include <unistd.h>\r\n    #include <sys/mman.h>\r\n    #include <fcntl.h>\r\n    #include <sys/stat.h>\r\n    #include <sys/types.h>\r\n    #include <map>\r\n    #include <apt_framework/tfmop_functions.h>\r\n    #include <apt_util/time.h>\r\n\r\n    using namespace std;\r\n\r\n// Expose the functions as BASIC function names\r\n\r\n    #define Dcount(aString, aDelim)              APT_TOFunctions::get().dcount_substring(aString, aDelim);\r\n    #define Trim(aString)                        APT_TOFunctions::get().trimc_string(aString);\r\n    #define Field(aString,aDelim,aInstance)      APT_TOFunctions::get().substring_by_delimiter(aString, aDelim, aInstance);\r\n    #define Fields(aString,aDelim,aStart,aCount) APT_TOFunctions::get().substring_by_delimiter(aString, aDelim,aStart,aCount);\r\n    #define Convert(aReplace, aWith, aInString)  APT_TOFunctions::get().replace_substring(aReplace, aWith, aInString);\r\n    #define DQuote(aString)                      APT_TOFunctions::get().double_quote_string(aString);\r\n    #define UstringToString(auString)            APT_TOFunctions::get().string_from_ustring(auString);\r\n    #define CurrentTimeStamp()                   APT_TimeStamp::localTimeStamp().asString(\"%yyyy-%mm-%dd %hh:%nn:%ss\");\r\n\r\n// Global variable declarations\r\n\r\n    APT_String gErrorSeverity;  // Global variable referencing the Error Severity within ErrorData\r\n    APT_String gErrorData;      // Global variable referencing looked-up Error Data. used in the output Log\r\n\r\n    FILE *gLogHandle;           // A handle for the file stream, opened against FileName(see below) \r\n    APT_String gLogData;        // A string containing the pipe ('|') delimited log data (See Interfaces 'Output')\r\n\r\n    int gNrbOfLoops;            // Number of warnings to be written to a log\r\n\r\n// Input Data\r\n\r\n    APT_String gInData;          // Used to convert from ustring (Source data) because the peek stage insists on ustring\r\n\r\n// Input data 'columns'\r\n\r\n    APT_String gErrorCode;      // The Error Code from the Errors.nsv file\r\n    APT_String gAdditionalInfo; // Additional (context) information provided by the developer\r\n    APT_String gRCPData = \"\";   // The run-time propogated data from the primary input link and/or output links of the Stage raising the exception\r\n\r\n// PcsId related\r\n\r\n    APT_String gPcsId;          // The PcsId which will be computed as pscErrorPcsId or else from the pPcsId parameter\r\n    APT_String gPcsIdParam;     // The PcsId parameter passed in as a property\r\n    APT_String gPcsIdSearch;    // To hold the search string containing ' ||PcsIdColumn:' that will be used to locate the PcsId from the input data\r\n\r\n// SrcId related\r\n\r\n    APT_String gSrcId;          // The SrcId which will be computed as pscErrorSrcId or else from the pSrcId parameter\r\n    APT_String gSrcIdParam;     // The SrcId parameter passed in as a property\r\n    APT_String gSrcIdSearch;    // To hold the search string containing ' ||RunSrcIdColumn:' that will be used to locate the RunSrcId from the input data\r\n\r\n// RunId related\r\n\r\n    APT_String gRunId;          // The RunId which will be computed as pscErrorRunId or else from the pRunId parameter\r\n    APT_String gRunIdParam;     // The RunId parameter passed in as a property\r\n    APT_String gRunIdSearch;    // To hold the search string containing ' ||RunIdColumn:' that will be used to locate the RunId from the input data\r\n\r\n// Log file\r\n\r\n    APT_String gFileName;      // For opening/creating a filename in append mode. Same as JobInfo, but with '.' delimiters.\r\n\r\n// Log data\r\n\r\n    APT_String gJobInfo;       // For recording the constant Job 'macro' informationthat is output to the log ('|' delimited)\r\n    APT_String gNow;           // For recording the variable timestamp at this point in time\r\n    APT_String gJobStartTimestamp; // Cleaned value of the pJobStartTimestamp property\r\n\r\n// File names\r\n\r\n    APT_String gLookupDir;     // Error list file location and name\r\n    APT_String gErrorDir;      // Error log file location and name\r\n\r\n// Rename file\r\n\r\n   int iResult;\r\n   APT_String gCurName;\r\n   APT_String gNewName;\r\n\r\n// Environment Variables\r\n\r\n    APT_String gRCPDataEnv     = getenv(\"ERROR_DATA\");\r\n\r\n// RCP Output control\r\n\r\n    APT_Int8 gOutputRCP;       // Controls whether RCP data capture is required\r\n\r\n// Comparison function for the map class functions that find matches and insert elements\r\n\r\n    struct KeyLess { bool operator() (const APT_String s,const APT_String t) \r\n                      const { return s < t; } };\r\n\r\n// Type definitions - to simplify things elsewhere\r\n\r\n    struct gErrorStruct { \r\n       APT_String ErrorCode;\r\n       APT_String ErrorSeverity;\r\n       APT_String ErrorData;\r\n    };\r\n    typedef map <APT_String, gErrorStruct, KeyLess> KM;\r\n    typedef KM::iterator KMI;\r\n    typedef pair<KMI,KMI> KP;\r\n\r\n// Global static variables (retained bwetween calls)\r\n\r\n     static KM    gKeyMap;\r\n     static KMI   gKeyMapI;\r\n\r\n     static KP    gKeyPair;\r\n     static char *gData;\r\n     static int   gInitialised = 0;\r\n\r\n// Mapping characters\r\n\r\n    APT_String gMapIn  = \"\\x0A\\x1B\\x22\\x2C\";\r\n    APT_String gMapOut = \"\\x20\\x20\\xF9\\xFA\";\r\n\r\n// Create a memory map to the Scheme/Classification extract file\r\n\r\n     int CreateMemoryMapping() {\r\n        int FV;\r\n        struct stat FileInfo;\r\n\r\n        if ( gLookupDir == \"\" ) {\r\n           fprintf(stderr, \"Errors lookup file directory is missing\\n\");\r\n           return -1;\r\n           }\r\n\r\n        gLookupDir += \"/errors.nsv\";\r\n\r\n        if ( (FV = open(gLookupDir.data(),O_RDONLY)) == -1 ) {\r\n           fprintf(stderr, \"open(): Errors file errors.nsv is missing\\n\");\r\n           return -2;\r\n           }\r\n\r\n        if ( fstat(FV,&FileInfo) == -1 ) {\r\n           fprintf(stderr, \"fstat(): Errors file errors.nsv is missing\\n\");\r\n           return -3;\r\n           }\r\n\r\n        if ( ! FileInfo.st_size ) {\r\n           fprintf(stderr, \"Errors file errors.nsv is empty\\n\");\r\n           return -4;\r\n           }\r\n\r\n        gData = (caddr_t) mmap(0, FileInfo.st_size, PROT_READ, MAP_SHARED, FV, 0);\r\n\r\n        if ( gData == (caddr_t) -1 ) {\r\n           fprintf(stderr, \"Can not read errors file errors.nsv\\n\");\r\n           return -5;\r\n           }\r\n\r\n        close(FV);\r\n        return 0;\r\n     }\r\n\r\n// Create a Key-Data in-memory table pointing to the contents of the \r\n// memory-mapped file. Note, that we are talking POINTERS here, not\r\n// copies of the data.\r\n\r\n     void CreateKeyTable() {\r\n        char *pKey;\r\n        char *pData;\r\n\r\n        for ( pKey = gData ; strcmp(pKey,\"EOF.\"); pKey = strchr(pData,'\\0') + 1 ) {\r\n           gKeyMap[pKey].ErrorCode = pKey;\r\n           pData = strchr(pKey,'\\0') + 1;\r\n           gKeyMap[pKey].ErrorSeverity = pData;\r\n           pData = strchr(pData, '\\0') + 1;\r\n           gKeyMap[pKey].ErrorData = pData;\r\n        }\r\n     }\r\n\r\n// Determine if RCP data is to be output\r\n\r\n     APT_Int8 GetRCPStatus(APT_String aErrorData) {\r\n        APT_String ErrorData;\r\n\r\n        if ( aErrorData == \"\" )\r\n           ErrorData = gRCPDataEnv;\r\n        else\r\n           ErrorData = aErrorData;\r\n        return ( toupper(*(ErrorData.data())) != 'N');\r\n     }\r\n\r\n/// Seek out the PcsId if possible and/or necessary\r\n\r\n     void GetPcsId() {\r\n        gPcsId = gPcsIdParam;\r\n        return;\r\n    }\r\n\r\n// Seek out the SrcId if possible and/or necessary\r\n\r\n     void GetSrcId() {\r\n        gSrcId = gSrcIdParam;\r\n        return;\r\n    }\r\n\r\n// Seek out the RunId if possible and/or necessary\r\n\r\n     void GetRunId() {\r\n        gRunId = gRunIdParam;\r\n        return;\r\n    }\r\n\r\n// Get Error reference data for ErrorCode  - create a severity 1 error if not found (will abort the Job)\r\n\r\n     void GetErrorKey(APT_String aErrorId) {\r\n        if ( aErrorId == \"\" ) {\r\n           gErrorCode     = \"DS_ERR_0\";\r\n           gErrorSeverity = \"1\";\r\n           gErrorData     = DQuote(\"ERROR\");\r\n           gErrorData    += \",\" + DQuote(\"UNKNOWN\");\r\n           gErrorData    += \",\" + DQuote(\"Empty error code requested\");\r\n           return;\r\n        }\r\n\r\n        gKeyMapI = gKeyMap.find(aErrorId);\r\n\r\n        if ( gKeyMapI == gKeyMap.end() ) {\r\n           gErrorCode     = \"DS_ERR_0\";\r\n           gErrorSeverity = \"1\";\r\n           gErrorData     = DQuote(\"ERROR\");\r\n           gErrorData    += \",\" + DQuote(\"UNKNOWN\");\r\n           gErrorData    += \",\" + DQuote(\"Unknown error [\" + aErrorId + \"]\");\r\n           return;\r\n        }\r\n\r\n        gErrorSeverity = (*gKeyMapI).second.ErrorSeverity;\r\n        gErrorData     = (*gKeyMapI).second.ErrorData;\r\n     }\r\n\r\n// Log the error\r\n\r\n     APT_Status LogIt(int gNrbOfLoops, int pNbrOfWarnToLog) {\r\n\r\n   // Get the current time\r\n\r\n        gNow = CurrentTimeStamp();\r\n\r\n   // Construct the error log record\r\n\r\n        gLogData  = DQuote(gErrorCode);\r\n        gLogData += \",\" + DQuote(gAdditionalInfo);\r\n        gLogData += \",\" + DQuote(gSrcId);\r\n        gLogData += \",\" + DQuote(gPcsId);\r\n        gLogData += \",\" + DQuote(gRunId);\r\n        gLogData += \",\" + DQuote(gErrorSeverity);\r\n        gLogData += \",\" + gErrorData;\r\n        gLogData += \",\" + DQuote(gNow);\r\n        gLogData += \",\" + gJobInfo;\r\n        gLogData += \",\" + DQuote(gRCPData);\r\n        gLogData += \"\\n\";\r\n\r\n   // ... and write it away with immediate flush (remember it is opened in append mode so no need to seek to end)\r\n\r\n        fwrite(gLogData.data(), 1, gLogData.length(), gLogHandle);\r\n        fflush(gLogHandle);\r\n\r\n   // Now write to a data stage log if needed. \r\n   // If pNbrOfWarnToLog is 0 then do not log any warnings if it is set to -1 log all. Otherwise write number of warnings specified.\r\n\r\n        if ( gNrbOfLoops <= pNbrOfWarnToLog) {\r\n           fprintf(stderr, \"%s\\n\", gLogData.data());\r\n        }\r\n        else if (pNbrOfWarnToLog + 1 == gNrbOfLoops && pNbrOfWarnToLog != 0) {\r\n            fprintf(stdout, \"%i rows written to the log. No more warnings will be issued from this link.\\n\", pNbrOfWarnToLog);\r\n        }\r\n        else if (pNbrOfWarnToLog == -1) {\r\n            fprintf(stderr, \"%s\\n\", gLogData.data());\r\n        }\r\n\r\n        return (APT_Status) 0;\r\n     }\r\n",
+        "per_record" : "// Convert incoming data from ustring to string\r\n\r\n    gInData = UstringToString(Input.AllData);\r\n\r\n// Parse the input data\r\n\r\n    gErrorCode      = Field(gInData, \"||\", 1);\r\n    gErrorCode      = Trim(gErrorCode);\r\n    gAdditionalInfo = Field(gInData, \"||\", 2);\r\n    gAdditionalInfo = Convert(gMapIn, gMapOut, gAdditionalInfo);\r\n    gRCPData        = Fields(gInData, \"||\", 3, 99999);\r\n\r\n// Get the PcsId if possible\r\n\r\n    GetPcsId();\r\n\r\n// Get the SrcId if possible\r\n\r\n    GetSrcId();\r\n\r\n// Get the RunId if possible\r\n\r\n    GetRunId();\r\n\r\n// ... and lose the RCPData if not required\r\n\r\n    if ( ! gOutputRCP )\r\n       gRCPData = \"\";\r\n\r\n// Now, get rid of the 'column name' for fields 1-5 (inserted by the peek operator)\r\n\r\n    gErrorCode      = Fields(gErrorCode, ':', 2, 99999);\r\n    gAdditionalInfo = Fields(gAdditionalInfo, ':', 2, 99999);\r\n    \r\n// Lookup the error code\r\n\r\n    GetErrorKey(gErrorCode);\r\n\r\n// and log the error\r\n\r\n   gNrbOfLoops = gNrbOfLoops + 1;\r\n   if ( LogIt(gNrbOfLoops, pNbrOfWarnToLog))\r\n         failStep();\r\n"
+      }
+    },
+    "schemas" : [ {
+      "id" : "Generic-ErrorHandling-ErrorAllData",
+      "fields" : [ {
+        "metadata" : {
+          "item_index" : 0,
+          "is_key" : false,
+          "min_length" : 0,
+          "decimal_scale" : 0,
+          "decimal_precision" : 0,
+          "max_length" : 0,
+          "is_signed" : false
+        },
+        "nullable" : true,
+        "name" : "AllData",
+        "type" : "string",
+        "app_data" : {
+          "odbc_type" : "WVARCHAR",
+          "is_unicode_string" : false,
+          "type_code" : "STRING"
+        }
+      } ]
+    } ],
+    "ui_data" : {
+      "show_on_palette" : true,
+      "description" : "Error Handling build operator"
+    },
+    "type" : "buildop",
+    "properties" : [ {
+      "hidden" : "false",
+      "data_type" : "STRING",
+      "description" : "Job ID",
+      "default_value" : "#PM_JOB_ID#",
+      "prompt" : "Process ID",
+      "property_name" : "pPcsId",
+      "conversion" : "-Name Value"
+    }, {
+      "hidden" : "false",
+      "data_type" : "STRING",
+      "description" : "Source ID",
+      "default_value" : "#PM_SOURCE_ID#",
+      "prompt" : "Source ID",
+      "property_name" : "pSrcId",
+      "conversion" : "-Name Value"
+    }, {
+      "hidden" : "false",
+      "data_type" : "STRING",
+      "description" : "Run ID",
+      "default_value" : "#PM_RUN_ID#",
+      "prompt" : "Run ID",
+      "property_name" : "pRunId",
+      "conversion" : "-Name Value"
+    }, {
+      "hidden" : "false",
+      "data_type" : "STRING",
+      "description" : "Directory containing the file with the list of all error codes and additional information",
+      "default_value" : "#PS_ENV.$DIR_LKP#",
+      "prompt" : "Lookups directory",
+      "property_name" : "pLookupsDir",
+      "conversion" : "-Name Value"
+    }, {
+      "hidden" : "false",
+      "data_type" : "STRING",
+      "description" : "Directory that will contain the error files that are created by every job",
+      "default_value" : "#PS_ENV.$DIR_ERR#",
+      "prompt" : "Errors directory",
+      "property_name" : "pErrorsDir",
+      "conversion" : "-Name Value"
+    }, {
+      "hidden" : "false",
+      "data_type" : "STRING",
+      "description" : "Yes or No determines if RCP data is written to the error log",
+      "default_value" : "#PS_CONST.$CONST_ERR_OUTPUT_DATA#",
+      "prompt" : "Include RCP data in error log",
+      "property_name" : "pErrorData",
+      "conversion" : "-Name Value"
+    }, {
+      "hidden" : "false",
+      "data_type" : "INTEGER",
+      "description" : "Number of warnings to log. 0 to do not log any warnings. -1 to log all warnings, otherwise write number of warning specified",
+      "default_value" : "#PS_CONST.$CONST_NBR_OF_WARNINGS#",
+      "prompt" : "Number Of warnings to log",
+      "property_name" : "pNbrOfWarnToLog",
+      "conversion" : "-Name Value"
+    }, {
+      "hidden" : "false",
+      "data_type" : "STRING",
+      "description" : "Host name",
+      "default_value" : "#DSHostName#",
+      "prompt" : "Host name",
+      "property_name" : "pHostName",
+      "conversion" : "-Name Value"
+    }, {
+      "hidden" : "false",
+      "data_type" : "STRING",
+      "description" : "Project name",
+      "default_value" : "#DSProjectName#",
+      "prompt" : "Project name",
+      "property_name" : "pProjectName",
+      "conversion" : "-Name Value"
+    }, {
+      "hidden" : "false",
+      "data_type" : "STRING",
+      "description" : "Job controller",
+      "default_value" : "#DSJobController#",
+      "prompt" : "Job controller",
+      "property_name" : "pJobController",
+      "conversion" : "-Name Value"
+    }, {
+      "hidden" : "false",
+      "data_type" : "STRING",
+      "description" : "Job name",
+      "default_value" : "#DSJobName#",
+      "prompt" : "Job name",
+      "property_name" : "pJobName",
+      "conversion" : "-Name Value"
+    }, {
+      "hidden" : "false",
+      "data_type" : "STRING",
+      "description" : "Job invocation id",
+      "default_value" : "#DSJobInvocationId#",
+      "prompt" : "Job invocation ID",
+      "property_name" : "pJobInvocationId",
+      "conversion" : "-Name Value"
+    }, {
+      "hidden" : "false",
+      "data_type" : "STRING",
+      "description" : "Job start time",
+      "default_value" : "#DSJobStartTimestamp#",
+      "prompt" : "Job start timestamp",
+      "property_name" : "pJobStartTimestamp",
+      "conversion" : "-Name Value"
+    } ]
+  }
+}

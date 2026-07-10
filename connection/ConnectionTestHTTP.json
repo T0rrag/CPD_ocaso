@@ -1,0 +1,18 @@
+{
+  "datasource_type" : "4210c294-8b0f-46b4-bcdc-1c6ada2b7e6b",
+  "name" : "ConnectionTestHTTP",
+  "flags" : [ "parameterized" ],
+  "rov" : {
+    "mode" : 0,
+    "member_roles" : {
+      "1000331001" : {
+        "roles" : [ "OWNER" ],
+        "user_iam_id" : "1000331001"
+      }
+    }
+  },
+  "properties" : {
+    "url" : "https://www.w3schools.com/xml/note.xml"
+  },
+  "origin_country" : "us"
+}

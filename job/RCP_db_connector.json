@@ -1,0 +1,29 @@
+{
+  "metadata" : {
+    "name" : "RCP_db_connector",
+    "asset_id" : "365eb7db-9737-4de6-b37e-e21b24cda2bc",
+    "owner_id" : "1000331001",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "8a7fbc83-f3fd-4cda-ab03-5a0a9776e631",
+      "schedule_id" : "",
+      "project_name" : "GITHUB integrado",
+      "configuration" : {
+        "env_type" : "",
+        "env_variables" : [ ],
+        "runPriorityQueue" : "Low"
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "data_intg_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "RCP_db_connector"
+    }
+  }
+}

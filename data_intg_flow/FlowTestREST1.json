@@ -1,0 +1,401 @@
+{
+  "primary_pipeline" : "bcd9f05e-bae0-4c54-b1fd-d84e6aad938b",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "7ab1a2bf-bb26-4130-acf1-4cb88761e55e",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "41fd3e7a-f2bd-44b6-a103-4c0eb85750a3"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 2147483647
+            }
+          }
+        },
+        "schema_ref" : "a837277c-4f8a-40d9-9553-4b69a3cb61db",
+        "parameters" : {
+          "outputName" : "Link_1",
+          "buf_mode" : "default"
+        }
+      } ],
+      "op" : "PxRest",
+      "inputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "id" : "4cc3f6e8-340b-4c6a-8b32-f7f206b95f32",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/REST.svg",
+          "x_pos" : 47.519999999999996,
+          "label" : "Rest_1",
+          "y_pos" : 47.519999999999996
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "variables" : [ ],
+        "output_count" : 1,
+        "input_count" : 0,
+        "execmode" : "default_seq",
+        "preserve" : -3,
+        "requests" : [ {
+          "request" : {
+            "headers" : [ {
+              "description" : "",
+              "default_value" : "application/x-www-form-urlencoded",
+              "derivation" : {
+                "expression" : "'application/x-www-form-urlencoded'"
+              },
+              "id" : 0,
+              "key" : "content-type"
+            }, {
+              "description" : "",
+              "default_value" : "UTF-8",
+              "derivation" : {
+                "expression" : "'UTF-8'"
+              },
+              "id" : 1,
+              "key" : "charset"
+            } ],
+            "inherit" : false,
+            "params" : [ ],
+            "body" : {
+              "content" : {
+                "charset" : "UTF-8",
+                "content_type" : "application/json",
+                "data" : [ {
+                  "description" : "",
+                  "default_value" : "password",
+                  "derivation" : {
+                    "expression" : "'password'"
+                  },
+                  "id" : 0,
+                  "key" : "grant_type"
+                }, {
+                  "description" : "",
+                  "default_value" : "",
+                  "derivation" : {
+                    "expression" : "username"
+                  },
+                  "id" : 1,
+                  "key" : "username"
+                }, {
+                  "description" : "",
+                  "default_value" : "",
+                  "derivation" : {
+                    "expression" : "password"
+                  },
+                  "id" : 2,
+                  "key" : "password"
+                }, {
+                  "description" : "",
+                  "default_value" : "openid",
+                  "derivation" : {
+                    "expression" : "'openid'"
+                  },
+                  "id" : 3,
+                  "key" : "scope"
+                } ],
+                "compress" : false,
+                "source" : "TEXT",
+                "type" : "X_WWW_FORM_URLENCODED"
+              }
+            },
+            "cookies" : [ ]
+          },
+          "settings" : {
+            "proxy" : {
+              "password" : "",
+              "port" : "",
+              "host" : "",
+              "username" : ""
+            },
+            "verify_host" : false,
+            "timeout_duration" : 180000,
+            "inherit" : false,
+            "certificate" : "",
+            "http_version" : "http1.1",
+            "use_proxy" : false,
+            "abort_on_error" : false,
+            "enable_ssl" : true,
+            "accept_self_signed_certificate" : true,
+            "retry_on_failure" : 5
+          },
+          "endpoint" : {
+            "method" : "GET",
+            "expression_endpoint_on" : false,
+            "url" : {
+              "expression" : "`https://cpd-cpd.apps.67b484e4fa78d0d7ddf4eec2.eu1.techzone.ibm.com/v2/catalogs/heartbeat?dependencyChk=true`"
+            }
+          },
+          "response" : {
+            "headers" : [ ],
+            "inherit" : false,
+            "body" : {
+              "charset" : "UTF-8",
+              "content_type" : "application/json",
+              "decompress" : false,
+              "content" : {
+                "data" : {
+                  "expression" : ""
+                },
+                "target" : "TEXT"
+              }
+            },
+            "cookies" : [ ],
+            "status" : [ ]
+          },
+          "control" : {
+            "pre_action" : {
+              "expression" : ""
+            },
+            "output_type" : "PER_ITERATION",
+            "write_output_per_iteration" : true,
+            "inherit" : false,
+            "prerequisite" : {
+              "expression" : ""
+            },
+            "iteration" : false,
+            "post_action" : {
+              "expression" : ""
+            }
+          },
+          "id" : 0,
+          "label" : "Request 0",
+          "authentication" : {
+            "inherit" : false,
+            "body" : {
+              "password" : {
+                "expression" : "{dsnextenc}feDVCP7gx426AGKT1sjtMofvWdGNpPR7ZROyjf96tKTyLoeMbE1sJDXOlUZd3sOt"
+              },
+              "type" : "NoAuth",
+              "value" : {
+                "expression" : "`WFYmYJUv6nfe1hOZyx7MsYTCaCPnOVOkqYgc8kiL`"
+              },
+              "key" : {
+                "expression" : "`cpadmin`"
+              },
+              "add_to" : "HEADER",
+              "username" : {
+                "expression" : "cpadmin"
+              }
+            }
+          }
+        } ],
+        "runtime_column_propagation" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        },
+        "parameters" : { }
+      } ],
+      "op" : "PxPeek",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "4cc3f6e8-340b-4c6a-8b32-f7f206b95f32",
+          "type_attr" : "PRIMARY",
+          "id" : "41fd3e7a-f2bd-44b6-a103-4c0eb85750a3",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/link-marking--specific-partitioning.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "width" : 50,
+                "tooltip" : "Specific partition",
+                "x_pos" : -15,
+                "id" : "dec-9C",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_allow_return_key" : "save",
+                "label_single_line" : true,
+                "width" : 100,
+                "label_editable" : true,
+                "x_pos" : -18,
+                "id" : "dec-8",
+                "position" : "middle",
+                "label" : "Link_1",
+                "y_pos" : -20,
+                "height" : 80
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkFailedStyle___OURzp"
+            }
+          },
+          "link_name" : "Link_1",
+          "port_id_ref" : "7ab1a2bf-bb26-4130-acf1-4cb88761e55e"
+        } ],
+        "id" : "794b5f7d-d113-4248-8f53-0ce082252689",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "a837277c-4f8a-40d9-9553-4b69a3cb61db",
+        "parameters" : {
+          "runtime_column_propagation" : 0
+        }
+      } ],
+      "id" : "bb6798ce-0b57-438a-a4f2-582c062d8e08",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "794b5f7d-d113-4248-8f53-0ce082252689",
+          "outputs_order" : ""
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxPeek.svg",
+          "x_pos" : 253.44,
+          "label" : "Peek_1",
+          "y_pos" : 47.519999999999996
+        }
+      },
+      "parameters" : {
+        "all" : "all",
+        "showPartType" : true,
+        "columns" : " ",
+        "showCollType" : false,
+        "inputName" : "Link_1",
+        "showSortOptions" : false,
+        "combinability" : "auto",
+        "OutputlinkOrderingList" : [ ],
+        "inputcolProperties" : [ {
+          "Unicode" : false,
+          "Description" : "RESPONSE_BODY",
+          "Signed" : false,
+          "Metadata" : "VARCHAR",
+          "Scale" : 0,
+          "TimeScale" : 0,
+          "OldColumnName" : "COLUMN",
+          "TempOldColumnName" : "COLUMN",
+          "ColumnName" : "COLUMN",
+          "Length" : 0,
+          "MisFieldProperties" : "",
+          "DataType" : "VARCHAR",
+          "Key" : false,
+          "Nullable" : false
+        } ],
+        "selection" : " ",
+        "output_count" : 0,
+        "execmode" : "default_par",
+        "input_count" : 1,
+        "name" : "name",
+        "dataset" : " "
+      }
+    } ],
+    "description" : "",
+    "id" : "bcd9f05e-bae0-4c54-b1fd-d84e6aad938b",
+    "app_data" : {
+      "datastage" : {
+        "nls_map_name" : "",
+        "nls_locale" : "OFF"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "external_paramsets" : [ ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "a837277c-4f8a-40d9-9553-4b69a3cb61db",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 6,
+        "description" : "RESPONSE_BODY",
+        "source_field_id" : "",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COLUMN",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "b4234b3b-e1d9-4818-8c6e-36f39853eb11",
+  "app_data" : {
+    "datastage" : {
+      "timestamp_format" : "",
+      "decimal_separator" : "",
+      "flowRunPriorityQueue" : "Medium",
+      "time_format" : "",
+      "date_format" : "",
+      "message_handlers" : [ ],
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "transInputLinkMapper" : { },
+      "ELTDropdown" : {
+        "id" : "nesting",
+        "label" : "Generate nested SQL",
+        "value" : "NESTED_QUERY"
+      },
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "disableParamsCacheOnFlow" : false,
+      "rcpLinkList" : [ ],
+      "globalAcp" : true,
+      "enableRCP" : false,
+      "isNewTransActive" : false,
+      "isDefineParameterToggled" : true,
+      "enableSchemaLessDesign" : false,
+      "runMode" : "ETL"
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ ]
+  }
+}

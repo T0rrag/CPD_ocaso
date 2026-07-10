@@ -1,0 +1,28 @@
+{
+  "metadata" : {
+    "name" : "SQ_10_REPLICAR_TABLAS",
+    "asset_id" : "cf75e991-7f43-494c-a5b7-6220133b3996",
+    "owner_id" : "1000331001",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "39222337-024a-460d-984b-c36f615d3b5f",
+      "schedule_id" : "",
+      "project_name" : "GITHUB integrado",
+      "configuration" : {
+        "env_type" : "",
+        "env_variables" : [ ]
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "orchestration_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "SQ_10_REPLICAR_TABLAS"
+    }
+  }
+}

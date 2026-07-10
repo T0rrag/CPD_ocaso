@@ -1,0 +1,3909 @@
+{
+  "primary_pipeline" : "5721cd24-6e0b-4b02-9ad9-1734cf80e267",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "7a90d1ab-a75d-4745-8fb0-d2939e4e2002",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "34191b2e-3526-4bac-8b08-99cb770ec0d9"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2
+            }
+          }
+        },
+        "parameters" : {
+          "final_delim" : "end",
+          "firstLineColumnNames" : " ",
+          "buf_free_run" : 50,
+          "keepPartitions" : " ",
+          "record_delim" : "'\\n'",
+          "disk_write_inc" : 1048576,
+          "file +" : [ "#SalesPath#Facts.txt" ],
+          "rejects" : "continue",
+          "quote" : "none",
+          "selection" : "file",
+          "missingFile" : " ",
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "reportProgress" : "yes",
+          "delim" : "'\\t'"
+        },
+        "schema_ref" : "924e1e4e-6987-4c0c-9e43-7bb9367fac8e"
+      } ],
+      "op" : "PxSequentialFile",
+      "id" : "2624fd89-c169-4fb7-911f-e19c7d83fcbd",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 48.0,
+          "label" : "SF_Facts",
+          "y_pos" : 264.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "77ddb79b-9f48-4ef7-ba64-a9c5db30302e",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "00ed1463-0c4f-47c9-a454-e38a67fdcf02"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "dimUpdate" : [ {
+            "parsedExpression" : "NextSurrogateKey()",
+            "SCDPurpose" : "1",
+            "columnName" : "ID_CUSTOMER"
+          }, {
+            "parsedExpression" : "Lnk_In_Hechos.CustKey",
+            "SCDPurpose" : "2",
+            "columnName" : "KB_CUSTOMER"
+          }, {
+            "parsedExpression" : "Lnk_In_Hechos.CustName",
+            "SCDPurpose" : "3",
+            "columnName" : "CUSTOMER"
+          }, {
+            "parsedExpression" : "Lnk_In_Hechos.CustCont",
+            "columnName" : "CONTINENT"
+          }, {
+            "parsedExpression" : "Lnk_In_Hechos.CustCtry",
+            "SCDPurpose" : "4",
+            "columnName" : "COUNTRY"
+          }, {
+            "parsedExpression" : "\"S\"",
+            "SCDPurpose" : "5",
+            "expire" : "\"N\"",
+            "columnName" : "SCD2_CURRENT"
+          }, {
+            "parsedExpression" : "CurrentDate()",
+            "SCDPurpose" : "6",
+            "columnName" : "SCD2_EFFECTIVE"
+          }, {
+            "parsedExpression" : "SetNull()",
+            "SCDPurpose" : "7",
+            "expire" : "CurrentDate()",
+            "columnName" : "SCD2_EXPIRATION"
+          } ],
+          "valueDerivation" : [ {
+            "parsedExpression" : "NextSurrogateKey()",
+            "columnName" : "ID_CUSTOMER"
+          }, {
+            "parsedExpression" : "\"S\"",
+            "columnName" : "SCD2_CURRENT"
+          }, {
+            "parsedExpression" : "CurrentDate()",
+            "columnName" : "SCD2_EFFECTIVE"
+          }, {
+            "parsedExpression" : "SetNull()",
+            "columnName" : "SCD2_EXPIRATION"
+          } ],
+          "outputlink" : "D",
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "15cc7be5-fa0a-4577-bc82-093d7ebb17f4"
+      }, {
+        "id" : "a4100541-10d2-4f0e-b41c-448988b318d1",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "a22dbb3d-4cf7-46d1-9277-990c8568b716"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "outputlink" : "O",
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "ffa0211d-bd7b-4776-9fc7-547353031b3e"
+      } ],
+      "op" : "PxSCD",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "2624fd89-c169-4fb7-911f-e19c7d83fcbd",
+          "type_attr" : "PRIMARY",
+          "id" : "34191b2e-3526-4bac-8b08-99cb770ec0d9",
+          "link_name" : "Lnk_In_Hechos",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_In_Hechos",
+                "label" : "Lnk_In_Hechos",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "7a90d1ab-a75d-4745-8fb0-d2939e4e2002"
+        } ],
+        "id" : "82663687-5555-45eb-a58f-73e045078229",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "keyColsPart" : [ {
+            "sorting" : false,
+            "partitioning" : true,
+            "keyCol" : "CustKey"
+          } ],
+          "lookupDerivation" : [ {
+            "isKey" : false,
+            "columnName" : "CustKey"
+          }, {
+            "isKey" : false,
+            "columnName" : "CustName"
+          }, {
+            "isKey" : false,
+            "columnName" : "CustCont"
+          }, {
+            "isKey" : false,
+            "columnName" : "CustCtry"
+          }, {
+            "isKey" : false,
+            "columnName" : "ProdKey"
+          }, {
+            "isKey" : false,
+            "columnName" : "ProdBrand"
+          }, {
+            "isKey" : false,
+            "columnName" : "ProdType"
+          }, {
+            "isKey" : false,
+            "columnName" : "ProdModel"
+          }, {
+            "isKey" : false,
+            "columnName" : "ProdCost"
+          }, {
+            "isKey" : false,
+            "columnName" : "DealKey"
+          }, {
+            "isKey" : false,
+            "columnName" : "DealName"
+          }, {
+            "isKey" : false,
+            "columnName" : "DealCont"
+          }, {
+            "isKey" : false,
+            "columnName" : "DealCtry"
+          }, {
+            "isKey" : false,
+            "columnName" : "FactFec"
+          }, {
+            "isKey" : false,
+            "columnName" : "Units"
+          }, {
+            "isKey" : false,
+            "columnName" : "Price"
+          } ],
+          "part_type" : "hash",
+          "part_coll_sort_columns" : "CustKey",
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "924e1e4e-6987-4c0c-9e43-7bb9367fac8e"
+      }, {
+        "links" : [ {
+          "node_id_ref" : "5c7aa9b1-b7c5-454c-9c75-cb8124a53860",
+          "type_attr" : "REFERENCE",
+          "id" : "fa3eda27-7f57-4a6a-9bef-eeac990569f5",
+          "link_name" : "Lnk_Ref_Cust",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Ref_Cust",
+                "label" : "Lnk_Ref_Cust",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "6b2fff26-9d64-439e-897d-b7a681868f38"
+        } ],
+        "id" : "107bc46e-7997-4da6-bd85-cca962ef8c8c",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "keyColsPart" : [ {
+            "sorting" : false,
+            "partitioning" : true,
+            "keyCol" : "KB_CUSTOMER"
+          } ],
+          "lookupDerivation" : [ {
+            "SCDPurpose" : "1",
+            "isKey" : false,
+            "columnName" : "ID_CUSTOMER"
+          }, {
+            "parsedExpression" : "Lnk_In_Hechos.CustKey",
+            "SCDPurpose" : "2",
+            "isKey" : true,
+            "columnName" : "KB_CUSTOMER"
+          }, {
+            "SCDPurpose" : "3",
+            "isKey" : false,
+            "columnName" : "CUSTOMER"
+          }, {
+            "isKey" : false,
+            "columnName" : "CONTINENT"
+          }, {
+            "SCDPurpose" : "4",
+            "isKey" : false,
+            "columnName" : "COUNTRY"
+          }, {
+            "SCDPurpose" : "5",
+            "isKey" : false,
+            "columnName" : "SCD2_CURRENT"
+          }, {
+            "SCDPurpose" : "6",
+            "isKey" : false,
+            "columnName" : "SCD2_EFFECTIVE"
+          }, {
+            "SCDPurpose" : "7",
+            "isKey" : false,
+            "columnName" : "SCD2_EXPIRATION"
+          } ],
+          "part_type" : "hash",
+          "part_coll_sort_columns" : "KB_CUSTOMER",
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "f7868638-9bf5-4cc0-a32b-7d6935e8c5a4"
+      } ],
+      "id" : "3a863d91-ef4c-4d30-bcd8-057951d2dbd1",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "82663687-5555-45eb-a58f-73e045078229|107bc46e-7997-4da6-bd85-cca962ef8c8c",
+          "outputs_order" : "77ddb79b-9f48-4ef7-ba64-a9c5db30302e|a4100541-10d2-4f0e-b41c-448988b318d1"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSCD.svg",
+          "x_pos" : 216.0,
+          "label" : "SCD_Cust",
+          "y_pos" : 264.0
+        }
+      },
+      "parameters" : {
+        "retrievekeys" : "0",
+        "output_count" : 2,
+        "keysourcetype" : "dbsequence",
+        "input_count" : 2,
+        "keyfile" : "SKG_Cust",
+        "dbtype" : "db2",
+        "connection" : {
+          "ref" : "app_defined",
+          "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+          "properties" : { }
+        },
+        "preserve" : 0,
+        "allow_column_mapping" : false,
+        "client_instance" : "db2inst1"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "6b2fff26-9d64-439e-897d-b7a681868f38",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "fa3eda27-7f57-4a6a-9bef-eeac990569f5"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "lookup_type" : "pxbridge",
+          "has_ref_output" : true,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "f7868638-9bf5-4cc0-a32b-7d6935e8c5a4"
+      } ],
+      "op" : "DB2ConnectorPX",
+      "connection" : {
+        "ref" : "app_defined",
+        "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+        "properties" : {
+          "session.schema_reconciliation.fail_on_code_page_mismatch" : false,
+          "sql.select_statement.tables.table" : "SCD2.TD_CUSTOMERS",
+          "session.isolation_level" : "cursor_stability",
+          "sql.select_statement.columns.column" : "ID_CUSTOMER,ID_CUSTOMER,TD_CUSTOMERS",
+          "lock_wait_mode" : "use_the_lock_timeout_database_configuration_parameter",
+          "session.pass_lob_locator" : false,
+          "transaction.end_of_wave" : "none",
+          "session.schema_reconciliation.fail_on_size_mismatch" : true,
+          "xml_column_as_lob" : false,
+          "sql.select_statement.read_from_file_select" : false,
+          "sql.select_statement" : "SELECT ID_CUSTOMER,KB_CUSTOMER,CUSTOMER,CONTINENT,COUNTRY,SCD2_CURRENT,SCD2_EFFECTIVE,SCD2_EXPIRATION FROM SCD2.TD_CUSTOMERS WHERE SCD2_CURRENT = 'S'",
+          "session.array_size" : 2000,
+          "session.autocommit_mode" : "off",
+          "prefix_for_expression_columns" : "EXPR",
+          "session.schema_reconciliation.fail_on_type_mismatch" : true,
+          "re_optimization" : "none",
+          "migrated_job" : false,
+          "before_after" : false,
+          "generate_sql" : false,
+          "transaction.record_count" : 2000,
+          "enable_quoted_i_ds" : false,
+          "sql.select_statement.where_clause" : "SCD2_CURRENT = 'S'"
+        }
+      },
+      "id" : "5c7aa9b1-b7c5-454c-9c75-cb8124a53860",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : {
+          "outputs_order" : "6b2fff26-9d64-439e-897d-b7a681868f38"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/DB2ConnectorPX.svg",
+          "x_pos" : 48.0,
+          "label" : "DB2_Ref_Cust",
+          "y_pos" : 72.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "DB2ConnectorPX",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "3a863d91-ef4c-4d30-bcd8-057951d2dbd1",
+          "type_attr" : "PRIMARY",
+          "id" : "00ed1463-0c4f-47c9-a454-e38a67fdcf02",
+          "link_name" : "Lnk_Dim_Cust",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Dim_Cust",
+                "label" : "Lnk_Dim_Cust",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "77ddb79b-9f48-4ef7-ba64-a9c5db30302e"
+        } ],
+        "id" : "ee4312c9-b223-41d3-99f6-ab9322e08fc0",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "15cc7be5-fa0a-4577-bc82-093d7ebb17f4"
+      } ],
+      "connection" : {
+        "ref" : "app_defined",
+        "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+        "properties" : {
+          "session.schema_reconciliation.fail_on_code_page_mismatch" : false,
+          "session.isolation_level" : "cursor_stability",
+          "lock_wait_mode" : "use_the_lock_timeout_database_configuration_parameter",
+          "transaction.time_interval" : 0,
+          "session.schema_reconciliation.fail_on_size_mismatch" : true,
+          "xml_column_as_lob" : false,
+          "session.array_size" : 2000,
+          "table_name" : "SCD2.TD_CUSTOMERS",
+          "session.schema_reconciliation.drop_unmatched_fields" : true,
+          "session.autocommit_mode" : "off",
+          "session.fail_on_row_error_px" : true,
+          "logging.log_column_values" : false,
+          "write_mode" : "update_then_insert",
+          "prefix_for_expression_columns" : "EXPR",
+          "session.schema_reconciliation.fail_on_type_mismatch" : true,
+          "re_optimization" : "none",
+          "migrated_job" : false,
+          "before_after" : false,
+          "sql.direct_insert" : true,
+          "generate_sql" : true,
+          "transaction.record_count" : 2000,
+          "enable_quoted_i_ds" : false,
+          "table_action" : "append"
+        }
+      },
+      "id" : "3064e851-4ac9-468f-af9d-3229ae6d27fd",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "ee4312c9-b223-41d3-99f6-ab9322e08fc0"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/DB2ConnectorPX.svg",
+          "x_pos" : 288.0,
+          "label" : "DB2_Dim_Cust",
+          "y_pos" : 72.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "ef9692dc-7be1-4db4-aebf-44f8494205dd",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "e9ad8812-909b-4153-9ab4-39ec6f6d0157"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "outputlink" : "O",
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "b457d36d-f00c-4520-86db-ce61c7077d3b"
+      }, {
+        "id" : "b99a741d-db48-4be4-8b89-21121a559f11",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "2abeb2bd-ce64-45cc-8a2f-928366f914ff"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "dimUpdate" : [ {
+            "parsedExpression" : "NextSurrogateKey()",
+            "SCDPurpose" : "1",
+            "columnName" : "ID_PRODUCT"
+          }, {
+            "parsedExpression" : "Link_Out_Facts_Cust.ProdKey",
+            "SCDPurpose" : "2",
+            "columnName" : "KB_PRODUCT"
+          }, {
+            "parsedExpression" : "Link_Out_Facts_Cust.ProdBrand",
+            "SCDPurpose" : "3",
+            "columnName" : "BRAND"
+          }, {
+            "parsedExpression" : "Link_Out_Facts_Cust.ProdType",
+            "columnName" : "TYPE"
+          }, {
+            "parsedExpression" : "Link_Out_Facts_Cust.ProdModel",
+            "SCDPurpose" : "4",
+            "columnName" : "MODEL"
+          }, {
+            "parsedExpression" : "Link_Out_Facts_Cust.ProdCost",
+            "SCDPurpose" : "4",
+            "columnName" : "COST"
+          }, {
+            "parsedExpression" : "'S'",
+            "SCDPurpose" : "5",
+            "expire" : "'N'",
+            "columnName" : "SCD2_CURRENT"
+          }, {
+            "parsedExpression" : "CurrentDate()",
+            "SCDPurpose" : "6",
+            "columnName" : "SCD2_EFFECTIVE"
+          }, {
+            "parsedExpression" : "SetNull()",
+            "SCDPurpose" : "7",
+            "expire" : "CurrentDate()",
+            "columnName" : "SCD2_EXPIRATION"
+          } ],
+          "valueDerivation" : [ {
+            "parsedExpression" : "NextSurrogateKey()",
+            "columnName" : "ID_PRODUCT"
+          }, {
+            "parsedExpression" : "'S'",
+            "columnName" : "SCD2_CURRENT"
+          }, {
+            "parsedExpression" : "CurrentDate()",
+            "columnName" : "SCD2_EFFECTIVE"
+          }, {
+            "parsedExpression" : "SetNull()",
+            "columnName" : "SCD2_EXPIRATION"
+          } ],
+          "outputlink" : "D",
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "0885df87-a995-4ad0-a8cc-29bf236176a9"
+      } ],
+      "op" : "PxSCD",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "3a863d91-ef4c-4d30-bcd8-057951d2dbd1",
+          "type_attr" : "PRIMARY",
+          "id" : "a22dbb3d-4cf7-46d1-9277-990c8568b716",
+          "link_name" : "Link_Out_Facts_Cust",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Link_Out_Facts_Cust",
+                "label" : "Link_Out_Facts_Cust",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "a4100541-10d2-4f0e-b41c-448988b318d1"
+        } ],
+        "id" : "0d3e1ced-78cb-4c0b-9900-7bef31bd351c",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "keyColsPart" : [ {
+            "sorting" : false,
+            "partitioning" : true,
+            "keyCol" : "ProdKey"
+          } ],
+          "lookupDerivation" : [ {
+            "isKey" : true,
+            "columnName" : "ID_CUSTOMER"
+          }, {
+            "isKey" : false,
+            "columnName" : "ProdKey"
+          }, {
+            "isKey" : false,
+            "columnName" : "ProdBrand"
+          }, {
+            "isKey" : false,
+            "columnName" : "ProdType"
+          }, {
+            "isKey" : false,
+            "columnName" : "ProdModel"
+          }, {
+            "isKey" : false,
+            "columnName" : "ProdCost"
+          }, {
+            "isKey" : false,
+            "columnName" : "DealKey"
+          }, {
+            "isKey" : false,
+            "columnName" : "DealName"
+          }, {
+            "isKey" : false,
+            "columnName" : "DealCont"
+          }, {
+            "isKey" : false,
+            "columnName" : "DealCtry"
+          }, {
+            "isKey" : false,
+            "columnName" : "FactFec"
+          }, {
+            "isKey" : false,
+            "columnName" : "Units"
+          }, {
+            "isKey" : false,
+            "columnName" : "Price"
+          } ],
+          "part_type" : "hash",
+          "part_coll_sort_columns" : "ProdKey",
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "ffa0211d-bd7b-4776-9fc7-547353031b3e"
+      }, {
+        "links" : [ {
+          "node_id_ref" : "228e887d-0bb7-4609-86b3-31f94090572e",
+          "type_attr" : "REFERENCE",
+          "id" : "4b03c16f-0d68-4353-9405-30c2b1ffae94",
+          "link_name" : "Lnk_Ref_Prod",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Ref_Prod",
+                "label" : "Lnk_Ref_Prod",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "ea29048f-ce56-4660-8e78-327d5affcd81"
+        } ],
+        "id" : "48ca6055-b25a-4517-82f3-41f4d06848bc",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "keyColsPart" : [ {
+            "sorting" : false,
+            "partitioning" : true,
+            "keyCol" : "KB_PRODUCT"
+          } ],
+          "lookupDerivation" : [ {
+            "SCDPurpose" : "1",
+            "isKey" : false,
+            "columnName" : "ID_PRODUCT"
+          }, {
+            "parsedExpression" : "Link_Out_Facts_Cust.ProdKey",
+            "SCDPurpose" : "2",
+            "isKey" : true,
+            "columnName" : "KB_PRODUCT"
+          }, {
+            "SCDPurpose" : "3",
+            "isKey" : false,
+            "columnName" : "BRAND"
+          }, {
+            "isKey" : false,
+            "columnName" : "TYPE"
+          }, {
+            "SCDPurpose" : "4",
+            "isKey" : false,
+            "columnName" : "MODEL"
+          }, {
+            "SCDPurpose" : "4",
+            "isKey" : false,
+            "columnName" : "COST"
+          }, {
+            "SCDPurpose" : "5",
+            "isKey" : false,
+            "columnName" : "SCD2_CURRENT"
+          }, {
+            "SCDPurpose" : "6",
+            "isKey" : false,
+            "columnName" : "SCD2_EFFECTIVE"
+          }, {
+            "SCDPurpose" : "7",
+            "isKey" : false,
+            "columnName" : "SCD2_EXPIRATION"
+          } ],
+          "part_type" : "hash",
+          "part_coll_sort_columns" : "KB_PRODUCT",
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "092cd9a3-494f-49f4-920a-302080d7daa6"
+      } ],
+      "id" : "8a483c04-65c8-4ac8-8894-c9e8d3da82ea",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "0d3e1ced-78cb-4c0b-9900-7bef31bd351c|48ca6055-b25a-4517-82f3-41f4d06848bc",
+          "outputs_order" : "ef9692dc-7be1-4db4-aebf-44f8494205dd|b99a741d-db48-4be4-8b89-21121a559f11"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSCD.svg",
+          "x_pos" : 528.0,
+          "label" : "SCD_Prod",
+          "y_pos" : 264.0
+        }
+      },
+      "parameters" : {
+        "retrievekeys" : "0",
+        "output_count" : 2,
+        "keysourcetype" : "dbsequence",
+        "input_count" : 2,
+        "keyfile" : "SKG_Prod",
+        "dbtype" : "db2",
+        "connection" : {
+          "ref" : "app_defined",
+          "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+          "properties" : { }
+        },
+        "preserve" : 0,
+        "allow_column_mapping" : false,
+        "client_instance" : "db2inst1"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "ea29048f-ce56-4660-8e78-327d5affcd81",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "4b03c16f-0d68-4353-9405-30c2b1ffae94"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "lookup_type" : "pxbridge",
+          "has_ref_output" : true,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "092cd9a3-494f-49f4-920a-302080d7daa6"
+      } ],
+      "op" : "DB2ConnectorPX",
+      "connection" : {
+        "ref" : "app_defined",
+        "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+        "properties" : {
+          "session.schema_reconciliation.fail_on_code_page_mismatch" : false,
+          "sql.select_statement.tables.table" : "SCD2.TD_PRODUCTS",
+          "session.isolation_level" : "cursor_stability",
+          "sql.select_statement.columns.column" : "ID_PRODUCT,ID_PRODUCT,TD_PRODUCTS",
+          "lock_wait_mode" : "use_the_lock_timeout_database_configuration_parameter",
+          "session.pass_lob_locator" : false,
+          "transaction.end_of_wave" : "none",
+          "session.schema_reconciliation.fail_on_size_mismatch" : true,
+          "xml_column_as_lob" : false,
+          "sql.select_statement.read_from_file_select" : false,
+          "sql.select_statement" : "SELECT ID_PRODUCT,KB_PRODUCT,BRAND,TYPE,MODEL,COST,SCD2_CURRENT,SCD2_EFFECTIVE,SCD2_EXPIRATION FROM SCD2.TD_PRODUCTS WHERE SCD2_CURRENT = 'S'",
+          "session.array_size" : 2000,
+          "session.autocommit_mode" : "off",
+          "prefix_for_expression_columns" : "EXPR",
+          "session.schema_reconciliation.fail_on_type_mismatch" : true,
+          "re_optimization" : "none",
+          "migrated_job" : false,
+          "before_after" : false,
+          "generate_sql" : false,
+          "transaction.record_count" : 2000,
+          "enable_quoted_i_ds" : false,
+          "sql.select_statement.where_clause" : "SCD2_CURRENT = 'S'"
+        }
+      },
+      "id" : "228e887d-0bb7-4609-86b3-31f94090572e",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : {
+          "outputs_order" : "ea29048f-ce56-4660-8e78-327d5affcd81"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/DB2ConnectorPX.svg",
+          "x_pos" : 408.0,
+          "label" : "DB2_Ref_Prod",
+          "y_pos" : 72.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "6ce4a9de-0820-431a-a30e-a3f018b68ff6",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "53470cb4-58b1-44b8-9b81-c82a7a130ff5"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "dimUpdate" : [ {
+            "parsedExpression" : "NextSurrogateKey()",
+            "SCDPurpose" : "1",
+            "columnName" : "ID_DEALER"
+          }, {
+            "parsedExpression" : "Lnk_Out_Prod.DealKey",
+            "SCDPurpose" : "2",
+            "columnName" : "BK_DEALER"
+          }, {
+            "parsedExpression" : "Lnk_Out_Prod.DealName",
+            "SCDPurpose" : "3",
+            "columnName" : "DEALER"
+          }, {
+            "parsedExpression" : "Lnk_Out_Prod.DealCont",
+            "columnName" : "CONTINENT"
+          }, {
+            "parsedExpression" : "Lnk_Out_Prod.DealCtry",
+            "SCDPurpose" : "4",
+            "columnName" : "COUNTRY"
+          }, {
+            "parsedExpression" : "'S'",
+            "SCDPurpose" : "5",
+            "expire" : "'N'",
+            "columnName" : "SCD2_CURRENT"
+          }, {
+            "parsedExpression" : "CurrentDate()",
+            "SCDPurpose" : "6",
+            "columnName" : "SCD2_EFFECTIVE"
+          }, {
+            "parsedExpression" : "SetNull()",
+            "SCDPurpose" : "7",
+            "expire" : "CurrentDate()",
+            "columnName" : "SCD2_EXPIRATION"
+          } ],
+          "valueDerivation" : [ {
+            "parsedExpression" : "NextSurrogateKey()",
+            "columnName" : "ID_DEALER"
+          }, {
+            "parsedExpression" : "'S'",
+            "columnName" : "SCD2_CURRENT"
+          }, {
+            "parsedExpression" : "CurrentDate()",
+            "columnName" : "SCD2_EFFECTIVE"
+          }, {
+            "parsedExpression" : "SetNull()",
+            "columnName" : "SCD2_EXPIRATION"
+          } ],
+          "outputlink" : "D",
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "598ee7c7-f7e9-4479-b9ae-0fa5e2b5386e"
+      }, {
+        "id" : "c4b9e44f-df93-42ee-b916-096ed7131833",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "0d5aa438-fbef-41e8-b914-2dafd20a7ad1"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "outputlink" : "O",
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "da7437f5-95ec-489e-99ab-d267ceef0d8a"
+      } ],
+      "op" : "PxSCD",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "8a483c04-65c8-4ac8-8894-c9e8d3da82ea",
+          "type_attr" : "PRIMARY",
+          "id" : "e9ad8812-909b-4153-9ab4-39ec6f6d0157",
+          "link_name" : "Lnk_Out_Prod",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Out_Prod",
+                "label" : "Lnk_Out_Prod",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "ef9692dc-7be1-4db4-aebf-44f8494205dd"
+        } ],
+        "id" : "e536e25d-2a3b-43df-9611-7c73400e46dd",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "keyColsPart" : [ {
+            "sorting" : false,
+            "partitioning" : true,
+            "keyCol" : "DealKey"
+          } ],
+          "lookupDerivation" : [ {
+            "SCDPurpose" : "1",
+            "isKey" : true,
+            "columnName" : "ID_CUSTOMER"
+          }, {
+            "SCDPurpose" : "1",
+            "isKey" : true,
+            "columnName" : "ID_PRODUCT"
+          }, {
+            "isKey" : false,
+            "columnName" : "ProdCost"
+          }, {
+            "isKey" : false,
+            "columnName" : "DealKey"
+          }, {
+            "isKey" : false,
+            "columnName" : "DealName"
+          }, {
+            "isKey" : false,
+            "columnName" : "DealCont"
+          }, {
+            "isKey" : false,
+            "columnName" : "DealCtry"
+          }, {
+            "isKey" : false,
+            "columnName" : "FactFec"
+          }, {
+            "isKey" : false,
+            "columnName" : "Units"
+          }, {
+            "isKey" : false,
+            "columnName" : "Price"
+          } ],
+          "part_type" : "hash",
+          "part_coll_sort_columns" : "DealKey",
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "b457d36d-f00c-4520-86db-ce61c7077d3b"
+      }, {
+        "links" : [ {
+          "node_id_ref" : "7ed94ece-a401-4f77-ae2f-14c4f9e0e136",
+          "type_attr" : "REFERENCE",
+          "id" : "ab00b276-b0dc-4852-9e36-439bb3464424",
+          "link_name" : "Lnk_Ref_Deal",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Ref_Deal",
+                "label" : "Lnk_Ref_Deal",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "a45361b8-ad56-4e2f-99ff-9625a5edc88e"
+        } ],
+        "id" : "7e6eb60a-4b50-4e11-9061-eaace2b97160",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "keyColsPart" : [ {
+            "sorting" : false,
+            "partitioning" : true,
+            "keyCol" : "BK_DEALER"
+          } ],
+          "lookupDerivation" : [ {
+            "SCDPurpose" : "1",
+            "isKey" : false,
+            "columnName" : "ID_DEALER"
+          }, {
+            "parsedExpression" : "Lnk_Out_Prod.DealKey",
+            "SCDPurpose" : "2",
+            "isKey" : true,
+            "columnName" : "BK_DEALER"
+          }, {
+            "SCDPurpose" : "3",
+            "isKey" : false,
+            "columnName" : "DEALER"
+          }, {
+            "isKey" : false,
+            "columnName" : "CONTINENT"
+          }, {
+            "SCDPurpose" : "4",
+            "isKey" : false,
+            "columnName" : "COUNTRY"
+          }, {
+            "SCDPurpose" : "5",
+            "isKey" : false,
+            "columnName" : "SCD2_CURRENT"
+          }, {
+            "SCDPurpose" : "6",
+            "isKey" : false,
+            "columnName" : "SCD2_EFFECTIVE"
+          }, {
+            "SCDPurpose" : "7",
+            "isKey" : false,
+            "columnName" : "SCD2_EXPIRATION"
+          } ],
+          "part_type" : "hash",
+          "part_coll_sort_columns" : "BK_DEALER",
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "7b0ce9ad-bdbb-4021-b586-0892a1cc3323"
+      } ],
+      "id" : "75c48ce8-db28-45ba-8c97-f43293d93a06",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "e536e25d-2a3b-43df-9611-7c73400e46dd|7e6eb60a-4b50-4e11-9061-eaace2b97160",
+          "outputs_order" : "6ce4a9de-0820-431a-a30e-a3f018b68ff6|c4b9e44f-df93-42ee-b916-096ed7131833"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSCD.svg",
+          "x_pos" : 864.0,
+          "label" : "SCD_Deal",
+          "y_pos" : 264.0
+        }
+      },
+      "parameters" : {
+        "retrievekeys" : "0",
+        "output_count" : 2,
+        "keysourcetype" : "dbsequence",
+        "input_count" : 2,
+        "keyfile" : "SKG_Deal",
+        "dbtype" : "db2",
+        "connection" : {
+          "ref" : "app_defined",
+          "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+          "properties" : { }
+        },
+        "preserve" : 0,
+        "allow_column_mapping" : false,
+        "client_instance" : "db2inst1"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "a45361b8-ad56-4e2f-99ff-9625a5edc88e",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "ab00b276-b0dc-4852-9e36-439bb3464424"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "lookup_type" : "pxbridge",
+          "has_ref_output" : true,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "7b0ce9ad-bdbb-4021-b586-0892a1cc3323"
+      } ],
+      "op" : "DB2ConnectorPX",
+      "connection" : {
+        "ref" : "app_defined",
+        "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+        "properties" : {
+          "session.schema_reconciliation.fail_on_code_page_mismatch" : false,
+          "sql.select_statement.tables.table" : "SCD2.TD_DEALERS",
+          "session.isolation_level" : "cursor_stability",
+          "sql.select_statement.columns.column" : "ID_DEALER,ID_DEALER,TD_DEALERS",
+          "lock_wait_mode" : "use_the_lock_timeout_database_configuration_parameter",
+          "session.pass_lob_locator" : false,
+          "transaction.end_of_wave" : "none",
+          "session.schema_reconciliation.fail_on_size_mismatch" : true,
+          "xml_column_as_lob" : false,
+          "sql.select_statement.read_from_file_select" : false,
+          "sql.select_statement" : "SELECT ID_DEALER,BK_DEALER,DEALER,CONTINENT,COUNTRY,SCD2_CURRENT,SCD2_EFFECTIVE,SCD2_EXPIRATION FROM SCD2.TD_DEALERS WHERE SCD2_CURRENT = 'S'",
+          "session.array_size" : 2000,
+          "session.autocommit_mode" : "off",
+          "prefix_for_expression_columns" : "EXPR",
+          "session.schema_reconciliation.fail_on_type_mismatch" : true,
+          "re_optimization" : "none",
+          "migrated_job" : false,
+          "before_after" : false,
+          "generate_sql" : false,
+          "transaction.record_count" : 2000,
+          "enable_quoted_i_ds" : false,
+          "sql.select_statement.where_clause" : "SCD2_CURRENT = 'S'"
+        }
+      },
+      "id" : "7ed94ece-a401-4f77-ae2f-14c4f9e0e136",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : {
+          "outputs_order" : "a45361b8-ad56-4e2f-99ff-9625a5edc88e"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/DB2ConnectorPX.svg",
+          "x_pos" : 744.0,
+          "label" : "DB2_Ref_Deal",
+          "y_pos" : 72.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "DB2ConnectorPX",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "75c48ce8-db28-45ba-8c97-f43293d93a06",
+          "type_attr" : "PRIMARY",
+          "id" : "53470cb4-58b1-44b8-9b81-c82a7a130ff5",
+          "link_name" : "Lnk_Dim_Deal",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Dim_Deal",
+                "label" : "Lnk_Dim_Deal",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "6ce4a9de-0820-431a-a30e-a3f018b68ff6"
+        } ],
+        "id" : "c221674e-52f5-46ba-b2a7-25521f7e7f4a",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "598ee7c7-f7e9-4479-b9ae-0fa5e2b5386e"
+      } ],
+      "connection" : {
+        "ref" : "app_defined",
+        "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+        "properties" : {
+          "session.schema_reconciliation.fail_on_code_page_mismatch" : false,
+          "session.isolation_level" : "cursor_stability",
+          "lock_wait_mode" : "use_the_lock_timeout_database_configuration_parameter",
+          "transaction.time_interval" : 0,
+          "session.schema_reconciliation.fail_on_size_mismatch" : true,
+          "xml_column_as_lob" : false,
+          "session.array_size" : 2000,
+          "table_name" : "SCD2.TD_DEALERS",
+          "session.schema_reconciliation.drop_unmatched_fields" : true,
+          "session.autocommit_mode" : "off",
+          "session.fail_on_row_error_px" : true,
+          "logging.log_column_values" : false,
+          "write_mode" : "update_then_insert",
+          "prefix_for_expression_columns" : "EXPR",
+          "session.schema_reconciliation.fail_on_type_mismatch" : true,
+          "re_optimization" : "none",
+          "migrated_job" : false,
+          "before_after" : false,
+          "sql.direct_insert" : true,
+          "generate_sql" : true,
+          "transaction.record_count" : 2000,
+          "enable_quoted_i_ds" : false,
+          "table_action" : "append"
+        }
+      },
+      "id" : "fba099dd-1666-4835-8f20-6b6d94e8705b",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "c221674e-52f5-46ba-b2a7-25521f7e7f4a"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/DB2ConnectorPX.svg",
+          "x_pos" : 960.0,
+          "label" : "DB2_Dim_Deal",
+          "y_pos" : 72.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxSequentialFile",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "75c48ce8-db28-45ba-8c97-f43293d93a06",
+          "type_attr" : "PRIMARY",
+          "id" : "0d5aa438-fbef-41e8-b914-2dafd20a7ad1",
+          "link_name" : "Lnk_Out_Facts",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Out_Facts",
+                "label" : "Lnk_Out_Facts",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "c4b9e44f-df93-42ee-b916-096ed7131833"
+        } ],
+        "id" : "679b244c-75fb-44be-9d6b-0b156a9ac27b",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "final_delim" : "end",
+          "firstLineColumnNames" : " ",
+          "record_delim" : "'\\n'",
+          "append-overwrite" : "overwrite",
+          "rejects" : "continue",
+          "file" : [ "#SalesPath#Sales.txt" ],
+          "quote" : "none",
+          "nocleanup" : " ",
+          "writemethod" : " ",
+          "part_coll" : "coll_type",
+          "runtime_column_propagation" : 0,
+          "registerDataAsset" : false,
+          "delim" : "'\\t'"
+        },
+        "schema_ref" : "da7437f5-95ec-489e-99ab-d267ceef0d8a"
+      } ],
+      "id" : "398efd1c-f1c1-4b74-bbb1-41f15c235a96",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 1128.0,
+          "label" : "SF_Sales",
+          "y_pos" : 264.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "DB2ConnectorPX",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "8a483c04-65c8-4ac8-8894-c9e8d3da82ea",
+          "type_attr" : "PRIMARY",
+          "id" : "2abeb2bd-ce64-45cc-8a2f-928366f914ff",
+          "link_name" : "Lnk_Dim_Prod",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "Lnk_Dim_Prod",
+                "label" : "Lnk_Dim_Prod",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "b99a741d-db48-4be4-8b89-21121a559f11"
+        } ],
+        "id" : "7342510c-98da-44f8-b973-f38603691c38",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "0885df87-a995-4ad0-a8cc-29bf236176a9"
+      } ],
+      "connection" : {
+        "ref" : "app_defined",
+        "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+        "properties" : {
+          "session.schema_reconciliation.fail_on_code_page_mismatch" : false,
+          "session.isolation_level" : "cursor_stability",
+          "lock_wait_mode" : "use_the_lock_timeout_database_configuration_parameter",
+          "transaction.time_interval" : 0,
+          "session.schema_reconciliation.fail_on_size_mismatch" : true,
+          "xml_column_as_lob" : false,
+          "session.array_size" : 2000,
+          "table_name" : "SCD2.TD_PRODUCTS",
+          "session.schema_reconciliation.drop_unmatched_fields" : true,
+          "session.autocommit_mode" : "off",
+          "session.fail_on_row_error_px" : true,
+          "logging.log_column_values" : false,
+          "write_mode" : "update_then_insert",
+          "prefix_for_expression_columns" : "EXPR",
+          "session.schema_reconciliation.fail_on_type_mismatch" : true,
+          "re_optimization" : "none",
+          "migrated_job" : false,
+          "before_after" : false,
+          "sql.direct_insert" : true,
+          "generate_sql" : true,
+          "transaction.record_count" : 2000,
+          "enable_quoted_i_ds" : false,
+          "table_action" : "append"
+        }
+      },
+      "id" : "f7191c8c-48a1-46cd-a15f-9a20710491e3",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "7342510c-98da-44f8-b973-f38603691c38"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/DB2ConnectorPX.svg",
+          "x_pos" : 624.0,
+          "label" : "DB2_Dim_Prod",
+          "y_pos" : 72.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    } ],
+    "id" : "5721cd24-6e0b-4b02-9ad9-1734cf80e267",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "external_paramsets" : [ {
+    "ref" : "a0805d6b-7d23-4943-9c8f-abd18c1d3b53",
+    "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+    "name" : "ConnParamSet_DB2_DSDB"
+  }, {
+    "ref" : "568a88a7-0c1a-4bea-8259-12f783df16e9",
+    "project_ref" : "b54a9895-63fe-46da-b8d6-79e4213d9484",
+    "name" : "ConnParamSet_SCD"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "924e1e4e-6987-4c0c-9e43-7bb9367fac8e",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "CustKey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "CustKey",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CustName",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CustName",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 255,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CustCont",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CustCont",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CustCtry",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "CustCtry",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ProdKey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "ProdKey",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 255,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "ProdBrand",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "ProdBrand",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 255,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "ProdType",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "ProdType",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 255,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "ProdModel",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "ProdModel",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ProdCost",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "ProdCost",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "DealKey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "DealKey",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 255,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "DealName",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "DealName",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 255,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "DealCont",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "DealCont",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 255,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "DealCtry",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "DealCtry",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 10,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "FactFec",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "FactFec",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "Units",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "Units",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "Price",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "Price",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    } ]
+  }, {
+    "id" : "15cc7be5-fa0a-4577-bc82-093d7ebb17f4",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 8,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "sequence" : 1,
+        "column_reference" : "ID_CUSTOMER",
+        "native_type" : "BIGINT",
+        "odbc_type" : "BIGINT",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_CUSTOMERS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_In_Hechos.CustKey",
+        "max_length" : 4,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "KB_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "sequence" : 2,
+        "column_reference" : "KB_CUSTOMER",
+        "native_type" : "INTEGER",
+        "odbc_type" : "INTEGER",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_CUSTOMERS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_In_Hechos.CustName",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CUSTOMER",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 3,
+        "column_reference" : "CUSTOMER",
+        "native_type" : "VARCHAR",
+        "odbc_type" : "VARCHAR",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_CUSTOMERS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_In_Hechos.CustCont",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CONTINENT",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 4,
+        "column_reference" : "CONTINENT",
+        "native_type" : "VARCHAR",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_CUSTOMERS",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_In_Hechos.CustCtry",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COUNTRY",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 5,
+        "column_reference" : "COUNTRY",
+        "native_type" : "VARCHAR",
+        "odbc_type" : "VARCHAR",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_CUSTOMERS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 1,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 1,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "SCD2_CURRENT",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 6,
+        "column_reference" : "SCD2_CURRENT",
+        "native_type" : "CHAR",
+        "odbc_type" : "CHAR",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_CUSTOMERS",
+        "flatten_depending_field" : "\"N\"",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 6,
+        "decimal_precision" : 26,
+        "max_length" : 26,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "SCD2_EFFECTIVE",
+      "type" : "timestamp",
+      "app_data" : {
+        "sequence" : 7,
+        "column_reference" : "SCD2_EFFECTIVE",
+        "native_type" : "TIMESTAMP",
+        "time_scale" : 6,
+        "odbc_type" : "TIMESTAMP",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_CUSTOMERS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DATETIME"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 6,
+        "decimal_precision" : 26,
+        "max_length" : 26,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "SCD2_EXPIRATION",
+      "type" : "timestamp",
+      "app_data" : {
+        "sequence" : 8,
+        "column_reference" : "SCD2_EXPIRATION",
+        "native_type" : "TIMESTAMP",
+        "time_scale" : 6,
+        "odbc_type" : "TIMESTAMP",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_CUSTOMERS",
+        "flatten_depending_field" : "CurrentDate()",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DATETIME"
+      }
+    } ]
+  }, {
+    "id" : "ffa0211d-bd7b-4776-9fc7-547353031b3e",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_Ref_Cust.ID_CUSTOMER",
+        "max_length" : 8,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "sequence" : 1,
+        "column_reference" : "ID_CUSTOMER",
+        "native_type" : "BIGINT",
+        "odbc_type" : "BIGINT",
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_CUSTOMERS",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_In_Hechos.ProdKey",
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ProdKey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "ProdKey",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_In_Hechos.ProdBrand",
+        "max_length" : 20,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "ProdBrand",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "ProdBrand",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_In_Hechos.ProdType",
+        "max_length" : 255,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "ProdType",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "ProdType",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_In_Hechos.ProdModel",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "ProdModel",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "ProdModel",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_In_Hechos.ProdCost",
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ProdCost",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "ProdCost",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_In_Hechos.DealKey",
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "DealKey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "DealKey",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_In_Hechos.DealName",
+        "max_length" : 255,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "DealName",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "DealName",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_In_Hechos.DealCont",
+        "max_length" : 255,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "DealCont",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "DealCont",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_In_Hechos.DealCtry",
+        "max_length" : 255,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "DealCtry",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "DealCtry",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_In_Hechos.FactFec",
+        "max_length" : 10,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "FactFec",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "FactFec",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_In_Hechos.Units",
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "Units",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "Units",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_In_Hechos.Price",
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "Price",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "Price",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    } ]
+  }, {
+    "id" : "f7868638-9bf5-4cc0-a32b-7d6935e8c5a4",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 8,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "sequence" : 1,
+        "column_reference" : "ID_CUSTOMER",
+        "native_type" : "BIGINT",
+        "odbc_type" : "BIGINT",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_CUSTOMERS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 4,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "KB_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "sequence" : 2,
+        "column_reference" : "KB_CUSTOMER",
+        "native_type" : "INTEGER",
+        "odbc_type" : "INTEGER",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_CUSTOMERS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CUSTOMER",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 3,
+        "column_reference" : "CUSTOMER",
+        "native_type" : "VARCHAR",
+        "odbc_type" : "VARCHAR",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_CUSTOMERS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CONTINENT",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 4,
+        "column_reference" : "CONTINENT",
+        "native_type" : "VARCHAR",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_CUSTOMERS",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COUNTRY",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 5,
+        "column_reference" : "COUNTRY",
+        "native_type" : "VARCHAR",
+        "odbc_type" : "VARCHAR",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_CUSTOMERS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 1,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 1,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "SCD2_CURRENT",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 6,
+        "column_reference" : "SCD2_CURRENT",
+        "native_type" : "CHAR",
+        "odbc_type" : "CHAR",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_CUSTOMERS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 26,
+        "max_length" : 26,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "SCD2_EFFECTIVE",
+      "type" : "timestamp",
+      "app_data" : {
+        "sequence" : 7,
+        "column_reference" : "SCD2_EFFECTIVE",
+        "native_type" : "TIMESTAMP",
+        "time_scale" : 6,
+        "odbc_type" : "TIMESTAMP",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_CUSTOMERS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DATETIME"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 26,
+        "max_length" : 26,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "SCD2_EXPIRATION",
+      "type" : "timestamp",
+      "app_data" : {
+        "sequence" : 8,
+        "column_reference" : "SCD2_EXPIRATION",
+        "native_type" : "TIMESTAMP",
+        "time_scale" : 6,
+        "odbc_type" : "TIMESTAMP",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_CUSTOMERS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DATETIME"
+      }
+    } ]
+  }, {
+    "id" : "b457d36d-f00c-4520-86db-ce61c7077d3b",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Link_Out_Facts_Cust.ID_CUSTOMER",
+        "max_length" : 8,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "sequence" : 1,
+        "column_reference" : "ID_CUSTOMER",
+        "native_type" : "BIGINT",
+        "odbc_type" : "BIGINT",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_CUSTOMERS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_Ref_Prod.ID_PRODUCT",
+        "max_length" : 8,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_PRODUCT",
+      "type" : "integer",
+      "app_data" : {
+        "sequence" : 1,
+        "column_reference" : "ID_PRODUCT",
+        "native_type" : "BIGINT",
+        "odbc_type" : "BIGINT",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_PRODUCTS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Link_Out_Facts_Cust.ProdCost",
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ProdCost",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "ProdCost",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Link_Out_Facts_Cust.DealKey",
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "DealKey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "DealKey",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Link_Out_Facts_Cust.DealName",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "DealName",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "DealName",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Link_Out_Facts_Cust.DealCont",
+        "max_length" : 255,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "DealCont",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "DealCont",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Link_Out_Facts_Cust.DealCtry",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "DealCtry",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "DealCtry",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Link_Out_Facts_Cust.FactFec",
+        "max_length" : 10,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "FactFec",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "FactFec",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Link_Out_Facts_Cust.Units",
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "Units",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "Units",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Link_Out_Facts_Cust.Price",
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "Price",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "Price",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Saved-Lnk_In_Facts-Facts",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    } ]
+  }, {
+    "id" : "0885df87-a995-4ad0-a8cc-29bf236176a9",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 8,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_PRODUCT",
+      "type" : "integer",
+      "app_data" : {
+        "sequence" : 1,
+        "column_reference" : "ID_PRODUCT",
+        "native_type" : "BIGINT",
+        "odbc_type" : "BIGINT",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_PRODUCTS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Link_Out_Facts_Cust.ProdKey",
+        "max_length" : 4,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "KB_PRODUCT",
+      "type" : "integer",
+      "app_data" : {
+        "sequence" : 2,
+        "column_reference" : "KB_PRODUCT",
+        "native_type" : "INTEGER",
+        "odbc_type" : "INTEGER",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_PRODUCTS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Link_Out_Facts_Cust.ProdBrand",
+        "max_length" : 20,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "BRAND",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 3,
+        "column_reference" : "BRAND",
+        "native_type" : "VARCHAR",
+        "odbc_type" : "VARCHAR",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_PRODUCTS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Link_Out_Facts_Cust.ProdType",
+        "max_length" : 30,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "TYPE",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 4,
+        "column_reference" : "TYPE",
+        "native_type" : "VARCHAR",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_PRODUCTS",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Link_Out_Facts_Cust.ProdModel",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MODEL",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 5,
+        "column_reference" : "MODEL",
+        "native_type" : "VARCHAR",
+        "odbc_type" : "VARCHAR",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_PRODUCTS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Link_Out_Facts_Cust.ProdCost",
+        "max_length" : 8,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COST",
+      "type" : "double",
+      "app_data" : {
+        "sequence" : 6,
+        "column_reference" : "COST",
+        "native_type" : "DOUBLE",
+        "odbc_type" : "DOUBLE",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_PRODUCTS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 1,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 1,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "SCD2_CURRENT",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 7,
+        "column_reference" : "SCD2_CURRENT",
+        "native_type" : "CHAR",
+        "odbc_type" : "CHAR",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_PRODUCTS",
+        "flatten_depending_field" : "'N'",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 6,
+        "decimal_precision" : 26,
+        "max_length" : 26,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "SCD2_EFFECTIVE",
+      "type" : "timestamp",
+      "app_data" : {
+        "sequence" : 8,
+        "column_reference" : "SCD2_EFFECTIVE",
+        "native_type" : "TIMESTAMP",
+        "time_scale" : 6,
+        "odbc_type" : "TIMESTAMP",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_PRODUCTS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DATETIME"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 6,
+        "decimal_precision" : 26,
+        "max_length" : 26,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "SCD2_EXPIRATION",
+      "type" : "timestamp",
+      "app_data" : {
+        "sequence" : 9,
+        "column_reference" : "SCD2_EXPIRATION",
+        "native_type" : "TIMESTAMP",
+        "time_scale" : 6,
+        "odbc_type" : "TIMESTAMP",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_PRODUCTS",
+        "flatten_depending_field" : "CurrentDate()",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DATETIME"
+      }
+    } ]
+  }, {
+    "id" : "092cd9a3-494f-49f4-920a-302080d7daa6",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 8,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_PRODUCT",
+      "type" : "integer",
+      "app_data" : {
+        "sequence" : 1,
+        "column_reference" : "ID_PRODUCT",
+        "native_type" : "BIGINT",
+        "odbc_type" : "BIGINT",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_PRODUCTS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 4,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "KB_PRODUCT",
+      "type" : "integer",
+      "app_data" : {
+        "sequence" : 2,
+        "column_reference" : "KB_PRODUCT",
+        "native_type" : "INTEGER",
+        "odbc_type" : "INTEGER",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_PRODUCTS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 20,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "BRAND",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 3,
+        "column_reference" : "BRAND",
+        "native_type" : "VARCHAR",
+        "odbc_type" : "VARCHAR",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_PRODUCTS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 30,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "TYPE",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 4,
+        "column_reference" : "TYPE",
+        "native_type" : "VARCHAR",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_PRODUCTS",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MODEL",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 5,
+        "column_reference" : "MODEL",
+        "native_type" : "VARCHAR",
+        "odbc_type" : "VARCHAR",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_PRODUCTS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 8,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COST",
+      "type" : "double",
+      "app_data" : {
+        "sequence" : 6,
+        "column_reference" : "COST",
+        "native_type" : "DOUBLE",
+        "odbc_type" : "DOUBLE",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_PRODUCTS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DFLOAT"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 1,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 1,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "SCD2_CURRENT",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 7,
+        "column_reference" : "SCD2_CURRENT",
+        "native_type" : "CHAR",
+        "odbc_type" : "CHAR",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_PRODUCTS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 6,
+        "decimal_precision" : 26,
+        "max_length" : 26,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "SCD2_EFFECTIVE",
+      "type" : "timestamp",
+      "app_data" : {
+        "sequence" : 8,
+        "column_reference" : "SCD2_EFFECTIVE",
+        "native_type" : "TIMESTAMP",
+        "time_scale" : 6,
+        "odbc_type" : "TIMESTAMP",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_PRODUCTS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DATETIME"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 6,
+        "decimal_precision" : 26,
+        "max_length" : 26,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "SCD2_EXPIRATION",
+      "type" : "timestamp",
+      "app_data" : {
+        "sequence" : 9,
+        "column_reference" : "SCD2_EXPIRATION",
+        "native_type" : "TIMESTAMP",
+        "time_scale" : 6,
+        "odbc_type" : "TIMESTAMP",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_PRODUCTS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DATETIME"
+      }
+    } ]
+  }, {
+    "id" : "598ee7c7-f7e9-4479-b9ae-0fa5e2b5386e",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 8,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_DEALER",
+      "type" : "integer",
+      "app_data" : {
+        "sequence" : 1,
+        "column_reference" : "ID_DEALER",
+        "native_type" : "BIGINT",
+        "odbc_type" : "BIGINT",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_DEALERS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_Out_Prod.DealKey",
+        "max_length" : 4,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "BK_DEALER",
+      "type" : "integer",
+      "app_data" : {
+        "sequence" : 2,
+        "column_reference" : "BK_DEALER",
+        "native_type" : "INTEGER",
+        "odbc_type" : "INTEGER",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_DEALERS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_Out_Prod.DealName",
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "DEALER",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 3,
+        "column_reference" : "DEALER",
+        "native_type" : "VARCHAR",
+        "odbc_type" : "VARCHAR",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_DEALERS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_Out_Prod.DealCont",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CONTINENT",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 4,
+        "column_reference" : "CONTINENT",
+        "native_type" : "VARCHAR",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_DEALERS",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_Out_Prod.DealCtry",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COUNTRY",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 5,
+        "column_reference" : "COUNTRY",
+        "native_type" : "VARCHAR",
+        "odbc_type" : "VARCHAR",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_DEALERS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 1,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 1,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "SCD2_CURRENT",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 6,
+        "column_reference" : "SCD2_CURRENT",
+        "native_type" : "CHAR",
+        "odbc_type" : "CHAR",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_DEALERS",
+        "flatten_depending_field" : "'N'",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 6,
+        "decimal_precision" : 26,
+        "max_length" : 26,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "SCD2_EFFECTIVE",
+      "type" : "timestamp",
+      "app_data" : {
+        "sequence" : 7,
+        "column_reference" : "SCD2_EFFECTIVE",
+        "native_type" : "TIMESTAMP",
+        "time_scale" : 6,
+        "odbc_type" : "TIMESTAMP",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_DEALERS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DATETIME"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 6,
+        "decimal_precision" : 26,
+        "max_length" : 26,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "SCD2_EXPIRATION",
+      "type" : "timestamp",
+      "app_data" : {
+        "sequence" : 8,
+        "column_reference" : "SCD2_EXPIRATION",
+        "native_type" : "TIMESTAMP",
+        "time_scale" : 6,
+        "odbc_type" : "TIMESTAMP",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_DEALERS",
+        "flatten_depending_field" : "CurrentDate()",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DATETIME"
+      }
+    } ]
+  }, {
+    "id" : "da7437f5-95ec-489e-99ab-d267ceef0d8a",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_Out_Prod.ID_CUSTOMER",
+        "max_length" : 8,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_CUSTOMER",
+      "type" : "integer",
+      "app_data" : {
+        "sequence" : 1,
+        "column_reference" : "ID_CUSTOMER",
+        "native_type" : "BIGINT",
+        "odbc_type" : "BIGINT",
+        "sign_option" : 0,
+        "table_def" : "Saved-Lnk_Out_Facts-FactsTmp",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_Out_Prod.ID_PRODUCT",
+        "max_length" : 8,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_PRODUCT",
+      "type" : "integer",
+      "app_data" : {
+        "sequence" : 1,
+        "column_reference" : "ID_PRODUCT",
+        "native_type" : "BIGINT",
+        "odbc_type" : "BIGINT",
+        "sign_option" : 0,
+        "table_def" : "Saved-Lnk_Out_Facts-FactsTmp",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_Ref_Deal.ID_DEALER",
+        "max_length" : 8,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_DEALER",
+      "type" : "integer",
+      "app_data" : {
+        "sequence" : 1,
+        "column_reference" : "ID_DEALER",
+        "native_type" : "BIGINT",
+        "odbc_type" : "BIGINT",
+        "sign_option" : 0,
+        "table_def" : "Saved-Lnk_Out_Facts-FactsTmp",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_Out_Prod.FactFec",
+        "max_length" : 10,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "FactFec",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "FactFec",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Saved-Lnk_Out_Facts-FactsTmp",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_Out_Prod.Units",
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "Units",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "Units",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Saved-Lnk_Out_Facts-FactsTmp",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_Out_Prod.Price",
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "Price",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "Price",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Saved-Lnk_Out_Facts-FactsTmp",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "Lnk_Out_Prod.ProdCost",
+        "max_length" : 15,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ProdCost",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "ProdCost",
+        "odbc_type" : "INTEGER",
+        "table_def" : "Saved-Lnk_Out_Facts-FactsTmp",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    } ]
+  }, {
+    "id" : "7b0ce9ad-bdbb-4021-b586-0892a1cc3323",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 8,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "ID_DEALER",
+      "type" : "integer",
+      "app_data" : {
+        "sequence" : 1,
+        "column_reference" : "ID_DEALER",
+        "native_type" : "BIGINT",
+        "odbc_type" : "BIGINT",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_DEALERS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT64"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 4,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "BK_DEALER",
+      "type" : "integer",
+      "app_data" : {
+        "sequence" : 2,
+        "column_reference" : "BK_DEALER",
+        "native_type" : "INTEGER",
+        "odbc_type" : "INTEGER",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_DEALERS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 100,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "DEALER",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 3,
+        "column_reference" : "DEALER",
+        "native_type" : "VARCHAR",
+        "odbc_type" : "VARCHAR",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_DEALERS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CONTINENT",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 4,
+        "column_reference" : "CONTINENT",
+        "native_type" : "VARCHAR",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_DEALERS",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "COUNTRY",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 5,
+        "column_reference" : "COUNTRY",
+        "native_type" : "VARCHAR",
+        "odbc_type" : "VARCHAR",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_DEALERS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 1,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 1,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "SCD2_CURRENT",
+      "type" : "string",
+      "app_data" : {
+        "sequence" : 6,
+        "column_reference" : "SCD2_CURRENT",
+        "native_type" : "CHAR",
+        "odbc_type" : "CHAR",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_DEALERS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 6,
+        "decimal_precision" : 26,
+        "max_length" : 26,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "SCD2_EFFECTIVE",
+      "type" : "timestamp",
+      "app_data" : {
+        "sequence" : 7,
+        "column_reference" : "SCD2_EFFECTIVE",
+        "native_type" : "TIMESTAMP",
+        "time_scale" : 6,
+        "odbc_type" : "TIMESTAMP",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_DEALERS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DATETIME"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 6,
+        "decimal_precision" : 26,
+        "max_length" : 26,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "SCD2_EXPIRATION",
+      "type" : "timestamp",
+      "app_data" : {
+        "sequence" : 8,
+        "column_reference" : "SCD2_EXPIRATION",
+        "native_type" : "TIMESTAMP",
+        "time_scale" : 6,
+        "odbc_type" : "TIMESTAMP",
+        "sign_option" : 0,
+        "table_def" : "Database-DS_FAQ-DB2INST1.TD_DEALERS",
+        "array_handling" : 0,
+        "sync_indicator" : false,
+        "is_unicode_string" : false,
+        "type_code" : "DATETIME"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "d5d0cd47-3a16-4781-8f5f-6ed428d248ff",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "isDefineParameterToggled" : true
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ {
+      "name" : "NumYears",
+      "type" : "int64",
+      "prompt" : "Número de años a tratar",
+      "value" : "5"
+    }, {
+      "name" : "NumFacts",
+      "type" : "int64",
+      "prompt" : "Número de filas a generar",
+      "value" : "15000"
+    }, {
+      "name" : "Ahora",
+      "type" : "string",
+      "prompt" : "Fecha y Hora",
+      "value" : "2013-05-07 12:53:04"
+    }, {
+      "name" : "SalesPath",
+      "type" : "string",
+      "prompt" : "SalesPath",
+      "value" : "/opt/workshops/files/DATASTAGE/sectionE/Ficheros/"
+    }, {
+      "name" : "APT_DBNAME",
+      "type" : "string",
+      "prompt" : "APT_DBNAME",
+      "value" : "DSDB"
+    } ]
+  }
+}

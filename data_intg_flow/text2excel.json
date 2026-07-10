@@ -1,0 +1,358 @@
+{
+  "primary_pipeline" : "e8db5faa-86f2-4a0c-9a11-132cda68ed19",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 0
+            }
+          }
+        }
+      } ],
+      "op" : "UnstructuredDataConnectorPX",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "864581a0-6e7c-46d4-adfb-d3af4d205461",
+          "type_attr" : "PRIMARY",
+          "id" : "48f26af3-8789-4118-9bab-a23326368dfc",
+          "link_name" : "DSLink2",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "DSLink2",
+                "label" : "DSLink2",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "bdebbecd-81f3-40bf-968c-f2f9c14b7e28"
+        } ],
+        "id" : "78dee390-ac7e-412d-8fab-36eff516243d",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "write_mode_create_sheet_name" : "Sheet1",
+          "sheet_number" : 1,
+          "target_write_mode_create_column_header" : 1,
+          "auto_size_columns" : false,
+          "part_coll" : "none",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "3db0d839-f162-4a59-81b7-ebaa74188064"
+      } ],
+      "id" : "a36ba42d-e3b3-4a36-a53b-d1eec207afc4",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/UnstructuredDataConnectorPX.svg",
+          "x_pos" : 384.0,
+          "label" : "input_customers_excel",
+          "y_pos" : 144.0
+        }
+      },
+      "parameters" : {
+        "write_mode" : 1,
+        "output_count" : 0,
+        "input_count" : 1,
+        "file_name" : "/opt/workshops/files/DATASTAGE/sectionD/input_customers.xls",
+        "write_method" : 0,
+        "doc_type" : 0,
+        "file_update_mode" : 1,
+        "allow_column_mapping" : false,
+        "registerDataAsset" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "bdebbecd-81f3-40bf-968c-f2f9c14b7e28",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "48f26af3-8789-4118-9bab-a23326368dfc"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2
+            }
+          }
+        },
+        "parameters" : {
+          "final_delim" : "end",
+          "firstLineColumnNames" : "firstLineColumnNames",
+          "buf_free_run" : 50,
+          "keepPartitions" : " ",
+          "disk_write_inc" : 1048576,
+          "file +" : [ "/opt/workshops/files/DATASTAGE/input_customers.txt" ],
+          "rejects" : "continue",
+          "quote" : "double",
+          "selection" : "file",
+          "missingFile" : " ",
+          "schemafile" : "/opt/workshops/files/DATASTAGE/input_customers.schema",
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "reportProgress" : "yes",
+          "delim" : "','"
+        },
+        "schema_ref" : "3db0d839-f162-4a59-81b7-ebaa74188064"
+      } ],
+      "op" : "PxSequentialFile",
+      "id" : "864581a0-6e7c-46d4-adfb-d3af4d205461",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSequentialFile.svg",
+          "x_pos" : 240.0,
+          "label" : "input_customers",
+          "y_pos" : 144.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    } ],
+    "id" : "e8db5faa-86f2-4a0c-9a11-132cda68ed19",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "3db0d839-f162-4a59-81b7-ebaa74188064",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "CustId",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "CustId",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none",
+        "table_def" : "Sequential-files-input_customers.txt",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 255,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "FName",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "FName",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Sequential-files-input_customers.txt",
+        "array_handling" : 0,
+        "is_unicode_string" : true,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 255,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "MiddleInit",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "MiddleInit",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Sequential-files-input_customers.txt",
+        "array_handling" : 0,
+        "is_unicode_string" : true,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 255,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "LName",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "LName",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Sequential-files-input_customers.txt",
+        "array_handling" : 0,
+        "is_unicode_string" : true,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 255,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "Address",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "Address",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Sequential-files-input_customers.txt",
+        "array_handling" : 0,
+        "is_unicode_string" : true,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "Zip",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "Zip",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none",
+        "table_def" : "Sequential-files-input_customers.txt",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 10,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "CustDate",
+      "type" : "date",
+      "app_data" : {
+        "column_reference" : "CustDate",
+        "odbc_type" : "DATE",
+        "table_def" : "Sequential-files-input_customers.txt",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DATE"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 10,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "DateEntered",
+      "type" : "date",
+      "app_data" : {
+        "column_reference" : "DateEntered",
+        "odbc_type" : "DATE",
+        "table_def" : "Sequential-files-input_customers.txt",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DATE"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 255,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "InsertUpdateFlag",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "InsertUpdateFlag",
+        "odbc_type" : "VARCHAR",
+        "table_def" : "Sequential-files-input_customers.txt",
+        "array_handling" : 0,
+        "is_unicode_string" : true,
+        "type_code" : "STRING"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "3b833aba-b5e9-4917-b9c2-14e39e52713e",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "isDefineParameterToggled" : true
+    }
+  },
+  "version" : "3.0"
+}

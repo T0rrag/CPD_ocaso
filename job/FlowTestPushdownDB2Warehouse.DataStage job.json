@@ -1,0 +1,32 @@
+{
+  "metadata" : {
+    "name" : "FlowTestPushdownDB2Warehouse.DataStage job",
+    "asset_id" : "bc5eefe3-848c-4cfa-88b3-b79c32f89b20",
+    "owner_id" : "1000331001",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "44497039-ad9b-49f1-8eee-f2a7d8239b26",
+      "schedule_id" : "",
+      "project_name" : "GITHUB integrado",
+      "configuration" : {
+        "env_type" : "",
+        "flow_limits" : {
+          "warn_limit" : 100
+        },
+        "env_variables" : [ ],
+        "runPriorityQueue" : "Medium"
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "data_intg_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "FlowTestPushdownDB2Warehouse"
+    }
+  }
+}
