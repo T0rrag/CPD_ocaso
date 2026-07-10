@@ -1,0 +1,39 @@
+{
+  "metadata" : {
+    "name" : "flow.DataStage job",
+    "asset_id" : "ee750ec8-4980-4bfb-8bca-3cf4ad84deb4",
+    "owner_id" : "1000331001",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "02e41c4a-0b51-44f2-a1bf-8a60c13b61d2",
+      "schedule_id" : "",
+      "project_name" : "GITHUB integrado II",
+      "configuration" : {
+        "env_id" : "73cc8209-f950-4a59-bc2b-c24908f7e79b",
+        "env_type" : "datastage",
+        "flow_limits" : {
+          "warn_limit" : 100
+        },
+        "env_variables" : [ ],
+        "runPriorityQueue" : "Medium"
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "data_intg_flow",
+      "job_parameters" : [ {
+        "name" : "Test",
+        "value" : "1"
+      } ],
+      "parameter_sets" : [ ],
+      "last_run_status" : "deprecated field",
+      "retention_policy" : { },
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "flow"
+    }
+  }
+}
